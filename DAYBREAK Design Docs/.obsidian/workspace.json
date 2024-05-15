@@ -4,38 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "42fd5d517f4d149f",
+        "id": "5323d20b99f57b17",
         "type": "tabs",
-        "dimension": 11.892583120204604,
+        "dimension": 67.37463126843657,
         "children": [
           {
-            "id": "9ff9faf0715a57c7",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Daybreak Game Design Document.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          }
-        ]
-      },
-      {
-        "id": "5bb6cbb8bfe06315",
-        "type": "tabs",
-        "dimension": 62.947570332480815,
-        "children": [
-          {
-            "id": "025965bf3fff972b",
+            "id": "6b4f67b719240cc9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daybreak Game Design Document.md",
+                "file": "Design/Style Guide.md",
                 "mode": "source",
                 "source": false
               }
@@ -44,12 +23,12 @@
         ]
       },
       {
-        "id": "c3ddbcc93ca11184",
+        "id": "a9514fe021261df8",
         "type": "tabs",
-        "dimension": 25.15984654731458,
+        "dimension": 32.62536873156342,
         "children": [
           {
-            "id": "111174542e1ccd60",
+            "id": "30bf5237d6c8f976",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -108,7 +87,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 622.5
   },
   "right": {
     "id": "6101de04bf8111b6",
@@ -124,6 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Design/Style Guide.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,6 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Design/Style Guide.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -161,7 +142,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Design/Style Guide.md"
+              }
             }
           }
         ]
@@ -181,20 +164,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "111174542e1ccd60",
+  "active": "6b4f67b719240cc9",
   "lastOpenFiles": [
-    "Daybreak Game Design Document.md",
-    "Summary.md",
-    "Team.md",
-    "Gameplay.md",
-    "Art and Visual Design.md",
-    "Asset List.md",
-    "Style Guide.md",
-    "Technical Design.md",
-    "TAPTICIAN.md",
-    "ADASTRA.md",
-    "WAFL.md",
-    "Narrative.md",
+    "Design/Art and Visual Design.md",
+    "Design/Level Gen.md",
+    "Design/Technical Design.md",
+    "_Home_/Daybreak Game Design Document.md",
+    "Project/Project Summary.md",
+    "Design/Style Guide.md",
+    "Design/Asset List.md",
+    "Design/Gameplay.md",
+    "Untitled",
+    "Design/Narrative.md",
+    "_Home_",
+    "Design",
+    "Project",
+    "Project/Team.md",
+    "Design/TAPTICIAN.md",
+    "Design/ADASTRA.md",
     "Welcome.md"
   ]
 }

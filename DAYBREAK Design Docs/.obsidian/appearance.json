@@ -1,3 +1,12 @@
 {
-  "accentColor": ""
+  "accentColor": "#97d0e8",
+  "cssTheme": "AnuPpuccin",
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "Iterative Rainbow Folder Icons",
+    "custom-rainbow-colors",
+    "extended-colorschemes",
+    "First level folder bg (Title only)"
+  ],
+  "nativeMenus": false
 }

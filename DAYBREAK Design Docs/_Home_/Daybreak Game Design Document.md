@@ -1,5 +1,10 @@
+**A Game by STELLAR OCTOPIANS (and friends)**
+
+>[!info]
+>Some GDD info goes here   
+
 ### Project
-[[Summary]]
+[[Project Summary]]
 [[Team]]
 ### Design
 [[Technical Design]]
