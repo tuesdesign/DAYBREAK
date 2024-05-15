@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design/Style Guide.md",
+                "file": "_Home_/Daybreak Game Design Document.md",
                 "mode": "source",
                 "source": false
               }
@@ -103,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Style Guide.md",
+                "file": "_Home_/Daybreak Game Design Document.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Style Guide.md",
+                "file": "_Home_/Daybreak Game Design Document.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Style Guide.md"
+                "file": "_Home_/Daybreak Game Design Document.md"
               }
             }
           }
@@ -166,22 +166,22 @@
   },
   "active": "6b4f67b719240cc9",
   "lastOpenFiles": [
-    "Design/Art and Visual Design.md",
     "Design/Level Gen.md",
     "Design/Technical Design.md",
     "_Home_/Daybreak Game Design Document.md",
-    "Project/Project Summary.md",
-    "Design/Style Guide.md",
-    "Design/Asset List.md",
     "Design/Gameplay.md",
-    "Untitled",
+    "Design/Asset List.md",
+    "Design/Art and Visual Design.md",
+    "Design/TAPTICIAN.md",
+    "Design/Style Guide.md",
+    "Project/Team.md",
     "Design/Narrative.md",
+    "Design/ADASTRA.md",
+    "Project/Project Summary.md",
+    "Untitled",
     "_Home_",
     "Design",
     "Project",
-    "Project/Team.md",
-    "Design/TAPTICIAN.md",
-    "Design/ADASTRA.md",
     "Welcome.md"
   ]
 }
