@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Design/Style Guide.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -159,14 +159,14 @@
   "active": "6b4f67b719240cc9",
   "lastOpenFiles": [
     "Design/Art and Visual Design.md",
-    "_Home_/Daybreak Game Design Document.md",
     "Project/Team.md",
+    "_Home_/Daybreak Game Design Document.md",
+    "Design/Style Guide.md",
     "Design/Level Gen.md",
     "Design/Technical Design.md",
     "Design/Gameplay.md",
     "Design/Asset List.md",
     "Design/TAPTICIAN.md",
-    "Design/Style Guide.md",
     "Design/Narrative.md",
     "Design/ADASTRA.md",
     "Project/Project Summary.md",
