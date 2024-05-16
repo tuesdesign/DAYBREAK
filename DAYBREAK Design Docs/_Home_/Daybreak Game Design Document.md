@@ -2,7 +2,6 @@
 
 >[!info]
 >Some GDD info goes here   
-
 ### Project
 [[Project Summary]]
 [[Team]]

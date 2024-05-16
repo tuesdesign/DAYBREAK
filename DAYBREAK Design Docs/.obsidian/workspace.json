@@ -6,7 +6,6 @@
       {
         "id": "5323d20b99f57b17",
         "type": "tabs",
-        "dimension": 67.37463126843657,
         "children": [
           {
             "id": "6b4f67b719240cc9",
@@ -14,19 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_Home_/Daybreak Game Design Document.md",
+                "file": "Design/Style Guide.md",
                 "mode": "source",
                 "source": false
               }
             }
-          }
-        ]
-      },
-      {
-        "id": "a9514fe021261df8",
-        "type": "tabs",
-        "dimension": 32.62536873156342,
-        "children": [
+          },
           {
             "id": "30bf5237d6c8f976",
             "type": "leaf",
@@ -87,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 622.5
+    "width": 297.5
   },
   "right": {
     "id": "6101de04bf8111b6",
@@ -103,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_Home_/Daybreak Game Design Document.md",
+                "file": "Design/Style Guide.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_Home_/Daybreak Game Design Document.md",
+                "file": "Design/Style Guide.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_Home_/Daybreak Game Design Document.md"
+                "file": "Design/Style Guide.md"
               }
             }
           }
@@ -166,15 +158,15 @@
   },
   "active": "6b4f67b719240cc9",
   "lastOpenFiles": [
+    "Design/Art and Visual Design.md",
+    "_Home_/Daybreak Game Design Document.md",
+    "Project/Team.md",
     "Design/Level Gen.md",
     "Design/Technical Design.md",
-    "_Home_/Daybreak Game Design Document.md",
     "Design/Gameplay.md",
     "Design/Asset List.md",
-    "Design/Art and Visual Design.md",
     "Design/TAPTICIAN.md",
     "Design/Style Guide.md",
-    "Project/Team.md",
     "Design/Narrative.md",
     "Design/ADASTRA.md",
     "Project/Project Summary.md",
