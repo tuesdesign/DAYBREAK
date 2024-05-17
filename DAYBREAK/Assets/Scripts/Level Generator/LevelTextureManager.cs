@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class LevelTextureManager : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class LevelTextureManager : MonoBehaviour
 
     private Texture2D GenerateLevelTexture(LevelTextureSettings ls)
     {
-        Texture2D texture = new Texture2D(ls.levelSize.x, ls.levelSize.y, TextureFormat.RGB24, false);
+        Texture2D texture = new Texture2D(ls.levelSize.x, ls.levelSize.y);
 
         System.Random random = new System.Random(seed.GetHashCode());
 
@@ -34,15 +35,17 @@ public class LevelTextureManager : MonoBehaviour
             }
         }
 
+        Vector2 tempScale = new Vector2(texture.width / (ls.smoothness + 1), texture.height / (ls.smoothness + 1));
+        Texture2D tempTex = new Texture2D((int)tempScale.x, (int)tempScale.y);
+
         texture.Apply();
 
-        Vector2 textureSize = new Vector2(texture.width, texture.height);
+        Graphics.ConvertTexture(texture, tempTex);
+        Graphics.ConvertTexture(tempTex, texture);
 
-        TextureScale.Bilinear(texture, textureSize.x / 4, textureSize.y / 4);
-        TextureScale.Bilinear(texture, textureSize.x, textureSize.y);
-
-        string path = filePath + $"/levelTexture_{ls.levelName}_{seed}_{ls.levelSize}.jpg";
+        string path = filePath + $"/levelTexture_{ls.levelName}_{seed}_{ls.smoothness}_{ls.levelSize}.jpg";
         System.IO.File.WriteAllBytes(path, texture.EncodeToJPG());
+        AssetDatabase.Refresh();
 
         return texture;
     }
@@ -51,7 +54,7 @@ public class LevelTextureManager : MonoBehaviour
     public struct LevelTextureSettings
     {
         public string levelName;
-        [Range(0, 10)] public float smoothness;
+        [Range(0, 100)] public float smoothness;
         public Vector2Int levelSize;
     }
 }

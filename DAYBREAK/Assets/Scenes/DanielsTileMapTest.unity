@@ -588,10 +588,10 @@ MonoBehaviour:
   seed: 0
   _levelTextureSettings:
   - levelName: Debug
-    smoothness: 0
-    levelSize: {x: 100, y: 50}
+    smoothness: 5
+    levelSize: {x: 100, y: 100}
   filePath: Assets/Scripts/Level Generator/LevelTextures
-  debugImage: {fileID: 0}
+  debugImage: {fileID: 219129068}
 --- !u!4 &1677567558
 Transform:
   m_ObjectHideFlags: 0
