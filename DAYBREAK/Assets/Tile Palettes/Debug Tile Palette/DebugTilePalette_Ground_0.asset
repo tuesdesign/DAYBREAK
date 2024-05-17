@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: DebugTile_Water_0
+  m_Name: DebugTilePalette_Ground_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1315851556193757358, guid: 12703085452813c4c847215419ef7583, type: 3}
+  m_Sprite: {fileID: 2004311583151180213, guid: e93568518c84d17439b174378bd974cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
