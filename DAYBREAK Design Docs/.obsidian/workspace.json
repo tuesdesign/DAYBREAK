@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design/Style Guide.md",
-                "mode": "preview",
+                "file": "Design/Level Gen.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -95,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Style Guide.md",
+                "file": "Design/Level Gen.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Style Guide.md",
+                "file": "Design/Level Gen.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Style Guide.md"
+                "file": "Design/Level Gen.md"
               }
             }
           }
@@ -158,10 +158,10 @@
   },
   "active": "6b4f67b719240cc9",
   "lastOpenFiles": [
+    "Design/Style Guide.md",
     "Design/Art and Visual Design.md",
     "Project/Team.md",
     "_Home_/Daybreak Game Design Document.md",
-    "Design/Style Guide.md",
     "Design/Level Gen.md",
     "Design/Technical Design.md",
     "Design/Gameplay.md",
