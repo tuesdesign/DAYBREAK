@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TreeEditor;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class LevelManager : MonoBehaviour
     [Space, Header("Temp Inspector Tiles!"), SerializeField] public IsometricRuleTile groundTop;
     [SerializeField] public IsometricRuleTile groundFill;
     [SerializeField] public IsometricRuleTile water;
+    [SerializeField] public IsometricRuleTile debugTile;
 
     [Space, SerializeField] LevelSettings[] _levelSettings;
     private LevelSettings _currentLS;
@@ -55,6 +57,7 @@ public class LevelManager : MonoBehaviour
 
         _levelGrid = new int[_currentLS.levelSize.x, _currentLS.levelSize.y];
 
+        // Generate the terrain
         for (int x = 0; x < _currentLS.levelSize.x; x++)
             for (int y = 0; y < _currentLS.levelSize.y; y++)
             {
@@ -72,15 +75,75 @@ public class LevelManager : MonoBehaviour
                 zLevel -= _currentLS.levelFallOff.Evaluate(Mathf.Abs((float)y - (float)_currentLS.levelSize.y / 2f) / (float)_currentLS.levelSize.y / 2f) * _currentLS.fallOffMultiplier;
 
                 _levelGrid[x, y] = (zLevel / _currentLS.levelFrequencyAndAmplitude.frequecies.Length * 10).ConvertTo<int>();
-
-                tilemap.SetTile(new Vector3Int(x, y, _levelGrid[x, y] > _currentLS.fallOffHeight ? _levelGrid[x, y] : _currentLS.fallOffHeight.ConvertTo<int>() - 1), _levelGrid[x, y] >= _currentLS.fallOffHeight ? groundTop : water);
             }
 
+        Dictionary<Vector2Int, LevelStructure> structurePositions = new Dictionary<Vector2Int, LevelStructure>();
+
+        // place structures
+        if (_currentLS.structureDensity > 0 && _currentLS.levelStructures.Length > 0)
+        {
+            // calculate the rough total structures to be placed
+            int totalStructureCount = (int)(_currentLS.levelSize.x * _currentLS.levelSize.y * _currentLS.structureDensity / 10000);
+            for (int i = 0; i < totalStructureCount; i++)
+            {
+                // select a random structure
+                LevelStructure tempStructure = _currentLS.levelStructures[UnityEngine.Random.Range(0, _currentLS.levelStructures.Length)];
+
+                // select a random position for the structure
+                Vector2Int tempStructurePos = new Vector2Int(
+                    UnityEngine.Random.Range(_currentLS.levelSize.x / 10, _currentLS.levelSize.x - _currentLS.levelSize.x / 10),
+                    UnityEngine.Random.Range(_currentLS.levelSize.y / 10, _currentLS.levelSize.y - _currentLS.levelSize.y / 10));
+
+                // check if the structure can be placed (structure does not overlap previously placed structure)
+                bool canPlace = true;
+                foreach (KeyValuePair<Vector2Int, LevelStructure> keyValuePair in structurePositions)
+                {
+                    Vector2 d = ((Vector2)tempStructurePos - (Vector2)keyValuePair.Key).normalized;
+                    float dist = Vector2.Distance(tempStructurePos, keyValuePair.Key);
+
+                    float distR = (tempStructure.structureRadius * d + keyValuePair.Value.structureRadius * d).magnitude;
+                    if (dist < distR)
+                    {
+                        canPlace = false;
+                        break;
+                    }
+                }
+                if (!canPlace) continue;
+
+                // flatten ground for structure
+                int structureGroundLevel = 0;
+                for (int x = tempStructurePos.x - tempStructure.structureRadius.x; x < tempStructurePos.x + tempStructure.structureRadius.x; x++)
+                    for (int y = tempStructurePos.y - tempStructure.structureRadius.y; y < tempStructurePos.y + tempStructure.structureRadius.y; y++)
+                    {
+                        structureGroundLevel += _levelGrid[x, y];
+                    }
+                structureGroundLevel /= (tempStructure.structureRadius.x * 2) * (tempStructure.structureRadius.y * 2);
+                if (structureGroundLevel <= _currentLS.fallOffHeight) continue;
+
+                for (int x = Mathf.Clamp(tempStructurePos.x - tempStructure.structureRadius.x - tempStructure.structureBorderRadius.x, 0, _currentLS.levelSize.x); x < Mathf.Clamp(tempStructurePos.x + tempStructure.structureRadius.x + tempStructure.structureBorderRadius.x, 0, _currentLS.levelSize.x); x++)
+                    for (int y = Mathf.Clamp(tempStructurePos.y - tempStructure.structureRadius.y - tempStructure.structureBorderRadius.y, 0, _currentLS.levelSize.y); y < Mathf.Clamp(tempStructurePos.y + tempStructure.structureRadius.y + tempStructure.structureBorderRadius.y, 0, _currentLS.levelSize.y); y++)
+                    {
+                        float t = Mathf.Clamp(Vector2.Distance(tempStructurePos, new Vector2(x, y)) -
+                            ((tempStructurePos - new Vector2(x, y)).normalized * tempStructure.structureRadius).magnitude -
+                            ((tempStructurePos - new Vector2(x, y)).normalized * tempStructure.structureBorderRadius).magnitude / 2f, 0f, 1f);
+                        _levelGrid[x, y] = Mathf.Lerp(structureGroundLevel, _levelGrid[x, y], t).ConvertTo<int>();
+                    }
+
+                structurePositions.Add(tempStructurePos, tempStructure);
+
+                // place debug tile
+                tilemap.SetTile(new Vector3Int(tempStructurePos.x, tempStructurePos.y, _levelGrid[tempStructurePos.x, tempStructurePos.y] + 10), debugTile);
+            }
+        }
+
+        // Place ground Tiles
         Vector2Int[] dir = new Vector2Int[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
         for (int x = 0; x < _currentLS.levelSize.x; x++)
             for (int y = 0; y < _currentLS.levelSize.y; y++)
             {
+                tilemap.SetTile(new Vector3Int(x, y, _levelGrid[x, y] > _currentLS.fallOffHeight ? _levelGrid[x, y] : _currentLS.fallOffHeight.ConvertTo<int>() - 1), _levelGrid[x, y] >= _currentLS.fallOffHeight ? groundTop : water);
+
                 if (_levelGrid[x, y] <= _currentLS.fallOffHeight) continue;
 
                 foreach (var d in dir)
@@ -163,8 +226,10 @@ public class LevelManager : MonoBehaviour
         [SerializeField] public AnimationCurve levelFallOff;
         [SerializeField] public float fallOffMultiplier;
         [SerializeField] public float fallOffHeight;
+        [SerializeField, Space, Tooltip("Density equal to 1 will yield one structure for every 1000 tiles. (100x100 space)")] public float structureDensity;
+        [SerializeField] public LevelStructure[] levelStructures;
 
-        public LevelSettings(string levelName, LevelFrequencyAndAmplitude levelFrequencyAndAmplitude, Vector2Int levelSize, float fallOffMultiplier, AnimationCurve levelFallOff, float fallOffHeight)
+        public LevelSettings(string levelName, LevelFrequencyAndAmplitude levelFrequencyAndAmplitude, Vector2Int levelSize, AnimationCurve levelFallOff, float fallOffMultiplier, float fallOffHeight, LevelStructure[] levelStructures, float structureDensity)
         {
             this.levelName = levelName;
             this.levelFrequencyAndAmplitude = levelFrequencyAndAmplitude;
@@ -172,6 +237,8 @@ public class LevelManager : MonoBehaviour
             this.levelFallOff = levelFallOff;
             this.fallOffMultiplier = fallOffMultiplier;
             this.fallOffHeight = fallOffHeight;
+            this.levelStructures = levelStructures;
+            this.structureDensity = structureDensity;
         }
 
         public override bool Equals(object obj)
@@ -214,5 +281,14 @@ public class LevelManager : MonoBehaviour
         {
             return HashCode.Combine(frequecies, amplitudes);
         }
+    }
+
+    [Serializable]
+    public struct LevelStructure
+    {
+        [SerializeField] public string structureName;
+        [SerializeField] public Vector2Int structureSize;
+        [SerializeField, Tooltip("Defines the radius of the flattened ground beneath the structure.")] public Vector2Int structureRadius;
+        [SerializeField, Tooltip("Defines the thickness of the transitioning boarder terrain.")] public Vector2Int structureBorderRadius;
     }
 }
