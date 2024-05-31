@@ -31,8 +31,8 @@
 	- Programmer
 
 - Information and Contact
-	- Student Number: 
-	- E-mail: 
+	- Student Number: 100828336
+	- E-mail: alannis.davis@ontariotechu.net
 #### Rylan Dressler
 - Roles & Responsibilities: 
 	- VFX Artist
