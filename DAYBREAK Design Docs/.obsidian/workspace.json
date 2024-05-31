@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "6b4f67b719240cc9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Design/Level Gen.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "30bf5237d6c8f976",
             "type": "leaf",
             "pinned": true,
@@ -28,8 +16,21 @@
               "state": {},
               "pinned": true
             }
+          },
+          {
+            "id": "c556110cbbbb35f7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Design/Style Guide.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -95,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Level Gen.md",
+                "file": "Design/Style Guide.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Level Gen.md",
+                "file": "Design/Style Guide.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Level Gen.md"
+                "file": "Design/Style Guide.md"
               }
             }
           }
@@ -156,20 +157,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6b4f67b719240cc9",
+  "active": "c556110cbbbb35f7",
   "lastOpenFiles": [
-    "Design/Style Guide.md",
     "Design/Art and Visual Design.md",
-    "Project/Team.md",
     "_Home_/Daybreak Game Design Document.md",
+    "Design/Style Guide.md",
+    "Project/Project Summary.md",
+    "Project/Team.md",
+    "Design/ADASTRA.md",
+    "Design/Narrative.md",
     "Design/Level Gen.md",
-    "Design/Technical Design.md",
     "Design/Gameplay.md",
     "Design/Asset List.md",
+    "Design/Technical Design.md",
     "Design/TAPTICIAN.md",
-    "Design/Narrative.md",
-    "Design/ADASTRA.md",
-    "Project/Project Summary.md",
     "Untitled",
     "_Home_",
     "Design",

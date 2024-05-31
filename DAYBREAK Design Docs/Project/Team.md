@@ -38,5 +38,5 @@
 	- VFX Artist
 
 - Information and Contact
-	- Student Number: 
-	- E-mail: 
+	- Student Number: 100789399
+	- E-mail: rylanedwardallen.dressler@ontariotechu.net
