@@ -19,11 +19,17 @@ public class PlayerBase : MonoBehaviour
 
     
     
-    [Header("Projectiles")]
+    [Header("Projectile Stats")]
     [SerializeField] float shootDelay = 0.5f;
     [SerializeField] GameObject bulletType;
     [SerializeField] float bulletSpeed = 5f;
-    bool isShooting;
+    bool canShoot = true;
+
+    [SerializeField] int maxAmmo = 6;
+    int ammoCount;
+    bool hasAmmo = true;
+    [SerializeField] float ReloadTime = 1f;
+
 
     
 
@@ -46,6 +52,11 @@ public class PlayerBase : MonoBehaviour
         _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();
         _playerInputActions.Game.Fire.performed += ctx => Shoot();
         _playerInputActions.Game.Fire.canceled += ctx => aimPosition = new Vector2(0,0);
+
+
+        //stat initialization 
+        curHealth = maxHealth;
+        ammoCount = maxAmmo;
 
     }
 
@@ -99,9 +110,25 @@ public class PlayerBase : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject b = Instantiate(bulletType,shootPosition);
-        GetShootDirection();
-        b.GetComponent<Rigidbody2D>().velocity = new Vector3(aimPosition.x,aimPosition.y,0);
+        if (canShoot && hasAmmo)
+        {
+            GameObject b = Instantiate(bulletType, shootPosition);
+            GetShootDirection();
+            b.GetComponent<Rigidbody2D>().velocity = new Vector3(aimPosition.x, aimPosition.y, 0);
+
+            canShoot = false;
+            StartCoroutine(ShootTiming());
+            ammoCount--;
+
+            if (ammoCount <= 0)
+            {
+                hasAmmo = false;
+            }
+        }
+        else if (canShoot && !hasAmmo) 
+        {
+            StartCoroutine(ReloadTiming());
+        }
 
     }
 
@@ -112,6 +139,8 @@ public class PlayerBase : MonoBehaviour
         {
             if (moveJoystick.isTouched)
                 movePosition = moveJoystick.GetJoystickVector();
+            else 
+                movePosition = Vector3.zero;
         }
         
         
@@ -124,5 +153,20 @@ public class PlayerBase : MonoBehaviour
                 aimPosition = shootJoystick.GetJoystickVector();
         }
         
+    }
+
+    IEnumerator ShootTiming()
+    {
+        yield return new WaitForSeconds(shootDelay); 
+        canShoot = true;
+    }
+
+    IEnumerator ReloadTiming()
+    {
+
+        yield return new WaitForSeconds(ReloadTime);
+        ammoCount = maxAmmo;
+        hasAmmo = true;
+
     }
 }
