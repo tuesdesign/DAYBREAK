@@ -8,7 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "6b4f67b719240cc9",
+            "id": "30bf5237d6c8f976",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "graph",
+              "state": {},
+              "pinned": true
+            }
+          },
+          {
+            "id": "c556110cbbbb35f7",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -18,18 +28,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "30bf5237d6c8f976",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "graph",
-              "state": {},
-              "pinned": true
-            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -156,20 +157,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6b4f67b719240cc9",
+  "active": "c556110cbbbb35f7",
   "lastOpenFiles": [
     "Design/Art and Visual Design.md",
+    "_Home_/Daybreak Game Design Document.md",
+    "Design/Style Guide.md",
+    "Project/Project Summary.md",
+    "Project/Team.md",
+    "Design/ADASTRA.md",
+    "Design/Narrative.md",
+    "Design/Level Gen.md",
     "Design/Gameplay.md",
     "Design/Asset List.md",
-    "Design/Level Gen.md",
-    "Design/Style Guide.md",
-    "Project/Team.md",
-    "_Home_/Daybreak Game Design Document.md",
     "Design/Technical Design.md",
     "Design/TAPTICIAN.md",
-    "Design/Narrative.md",
-    "Design/ADASTRA.md",
-    "Project/Project Summary.md",
     "Untitled",
     "_Home_",
     "Design",
