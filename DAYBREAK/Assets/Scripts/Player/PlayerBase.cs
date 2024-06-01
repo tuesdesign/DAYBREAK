@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerBase : MonoBehaviour
 {
@@ -18,7 +20,6 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] Transform shootPosition;
 
     
-    
     [Header("Projectile Stats")]
     [SerializeField] float shootDelay = 0.5f;
     [SerializeField] GameObject bulletType;
@@ -30,12 +31,9 @@ public class PlayerBase : MonoBehaviour
     bool hasAmmo = true;
     [SerializeField] float ReloadTime = 1f;
 
-
-    
-
     [Header("UI")]
-    [SerializeField] Joystick moveJoystick;
-    [SerializeField] Joystick shootJoystick;
+    [SerializeField] Slider healthBar;
+    [SerializeField] TMP_Text ammoTextBar;
 
 
 
@@ -58,6 +56,17 @@ public class PlayerBase : MonoBehaviour
         curHealth = maxHealth;
         ammoCount = maxAmmo;
 
+        //UI Call
+        if(healthBar != null)
+        {
+            healthBar.maxValue = maxHealth;
+            healthBar.value = curHealth;
+        }
+
+        if(ammoTextBar != null)
+        {
+            ammoTextBar.text = ammoCount + " / " + maxAmmo;
+        }
     }
 
     private void OnEnable()
@@ -73,10 +82,7 @@ public class PlayerBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shootJoystick.isTouched)
-        {
-            Shoot();
-        }
+        
     }
 
     void Heal(float amount)
@@ -104,7 +110,6 @@ public class PlayerBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetJSMoveDirection();
         _rb.velocity = movePosition;
     }
 
@@ -113,7 +118,7 @@ public class PlayerBase : MonoBehaviour
         if (canShoot && hasAmmo)
         {
             GameObject b = Instantiate(bulletType, shootPosition);
-            GetShootDirection();
+            
             b.GetComponent<Rigidbody2D>().velocity = new Vector3(aimPosition.x, aimPosition.y, 0);
 
             canShoot = false;
@@ -123,36 +128,31 @@ public class PlayerBase : MonoBehaviour
             if (ammoCount <= 0)
             {
                 hasAmmo = false;
+                canShoot = false;
             }
         }
         else if (canShoot && !hasAmmo) 
         {
             StartCoroutine(ReloadTiming());
         }
-
+        UpdateAmmoCount();
     }
 
 
-    void GetJSMoveDirection()
+    void UpdateHealthBar()
     {
-        if (moveJoystick)
+        if (healthBar != null)
         {
-            if (moveJoystick.isTouched)
-                movePosition = moveJoystick.GetJoystickVector();
-            else 
-                movePosition = Vector3.zero;
+            healthBar.value = curHealth;
         }
-        
-        
     }
-    void GetShootDirection()
-    {  
-        if (shootJoystick)
+
+    void UpdateAmmoCount()
+    {
+        if (ammoTextBar != null)
         {
-            if (shootJoystick.isTouched)
-                aimPosition = shootJoystick.GetJoystickVector();
+            ammoTextBar.text = ammoCount + " / " + maxAmmo;
         }
-        
     }
 
     IEnumerator ShootTiming()
@@ -163,10 +163,9 @@ public class PlayerBase : MonoBehaviour
 
     IEnumerator ReloadTiming()
     {
-
         yield return new WaitForSeconds(ReloadTime);
         ammoCount = maxAmmo;
         hasAmmo = true;
-
+        UpdateAmmoCount();
     }
 }

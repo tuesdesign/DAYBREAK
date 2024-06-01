@@ -108,7 +108,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -139,6 +139,8 @@ MonoBehaviour:
   shootDelay: 0.5
   bulletType: {fileID: 648474279696338184, guid: 34a280d89f49dd14cb60721f55eef584, type: 3}
   bulletSpeed: 5
+  maxAmmo: 6
+  ReloadTime: 1
   moveJoystick: {fileID: 0}
   shootJoystick: {fileID: 0}
 --- !u!114 &112107468821985014
