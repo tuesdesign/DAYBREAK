@@ -15,24 +15,31 @@ public class PlayerBase : MonoBehaviour
 
     [Header("Player Base")]
     [SerializeField] float maxHealth = 10;
-    [SerializeField] float curHealth;
+    float curHealth;
+    [Tooltip("The player's movement speed")]
     [SerializeField] float speed = 5;
+    [Tooltip("Where the bullets should spawn from the player")]
     [SerializeField] Transform shootPosition;
 
     
     [Header("Projectile Stats")]
+    [Tooltip("The time in seconds betweenshots")]
     [SerializeField] float shootDelay = 0.5f;
+    [Tooltip("the prefab used for the bullet")]
     [SerializeField] GameObject bulletType;
-    [SerializeField] float bulletSpeed = 5f;
-    bool canShoot = true;
-
+    [SerializeField] float bulletSpeed = 10f;
     [SerializeField] int maxAmmo = 6;
     int ammoCount;
+
     bool hasAmmo = true;
-    [SerializeField] float ReloadTime = 1f;
+    bool isReloading = false;
+    bool canShoot = true;
+    [SerializeField] float reloadTime = 1f;
 
     [Header("UI")]
+    [Tooltip("")]
     [SerializeField] Slider healthBar;
+    [Tooltip("The text bar to describe how much ammo the player has in comparisson to their maximum ammo")]
     [SerializeField] TMP_Text ammoTextBar;
 
 
@@ -115,23 +122,25 @@ public class PlayerBase : MonoBehaviour
 
     private void Shoot()
     {
-        if (canShoot && hasAmmo)
+        if (canShoot && hasAmmo) //if can shoot and has ammo
         {
             GameObject b = Instantiate(bulletType, shootPosition);
             
-            b.GetComponent<Rigidbody2D>().velocity = new Vector3(aimPosition.x, aimPosition.y, 0);
+            b.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(aimPosition) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
+            Destroy(b, 20);
 
-            canShoot = false;
-            StartCoroutine(ShootTiming());
             ammoCount--;
+            canShoot = false;
 
             if (ammoCount <= 0)
             {
                 hasAmmo = false;
-                canShoot = false;
             }
+
+            StartCoroutine(ShootTiming()); //handles delay betweenshots
+
         }
-        else if (canShoot && !hasAmmo) 
+        else if (canShoot && !hasAmmo && !isReloading) //checks if its trying to shoot but has no ammo (while not currently reloading)
         {
             StartCoroutine(ReloadTiming());
         }
@@ -163,9 +172,11 @@ public class PlayerBase : MonoBehaviour
 
     IEnumerator ReloadTiming()
     {
-        yield return new WaitForSeconds(ReloadTime);
+        isReloading = true; //variable ensures that it does not attempt to reload while already reloading
+        yield return new WaitForSeconds(reloadTime);
         ammoCount = maxAmmo;
         hasAmmo = true;
+        isReloading = false;
         UpdateAmmoCount();
     }
 }

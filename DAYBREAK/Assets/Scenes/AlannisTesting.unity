@@ -542,6 +542,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1172029556}
     - target: {fileID: 1080813219480413218, guid: e54e96247b35f724ca1845648b3ad7c1, type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080813219480413218, guid: e54e96247b35f724ca1845648b3ad7c1, type: 3}
       propertyPath: moveJoystick
       value: 
       objectReference: {fileID: 0}
@@ -549,10 +553,6 @@ PrefabInstance:
       propertyPath: shootJoystick
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1080813219480413218, guid: e54e96247b35f724ca1845648b3ad7c1, type: 3}
-      propertyPath: shootPosition
-      value: 
-      objectReference: {fileID: 917426429}
     - target: {fileID: 1413459168188343881, guid: e54e96247b35f724ca1845648b3ad7c1, type: 3}
       propertyPath: m_Name
       value: Player
@@ -706,11 +706,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!4 &917426429 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5588614994584090706, guid: e54e96247b35f724ca1845648b3ad7c1, type: 3}
-  m_PrefabInstance: {fileID: 589901740}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1055378959
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +920,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7899915217931551757, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ff355e0fd24fff49ac8f8dd2bec5d02, type: 3}
+    - target: {fileID: 8464026463085698084, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 90f7f92356e0e294582fe1c42711ba1f, type: 3}
     - target: {fileID: 8625789806965547298, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
       propertyPath: m_TargetGraphic
       value: 
