@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design/Level Gen.md",
+                "file": "Design/Style Guide.md",
                 "mode": "source",
                 "source": false
               }
@@ -95,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Level Gen.md",
+                "file": "Design/Style Guide.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Level Gen.md",
+                "file": "Design/Style Guide.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Level Gen.md"
+                "file": "Design/Style Guide.md"
               }
             }
           }
@@ -158,14 +158,14 @@
   },
   "active": "6b4f67b719240cc9",
   "lastOpenFiles": [
-    "Design/Style Guide.md",
     "Design/Art and Visual Design.md",
-    "Project/Team.md",
-    "_Home_/Daybreak Game Design Document.md",
-    "Design/Level Gen.md",
-    "Design/Technical Design.md",
     "Design/Gameplay.md",
     "Design/Asset List.md",
+    "Design/Level Gen.md",
+    "Design/Style Guide.md",
+    "Project/Team.md",
+    "_Home_/Daybreak Game Design Document.md",
+    "Design/Technical Design.md",
     "Design/TAPTICIAN.md",
     "Design/Narrative.md",
     "Design/ADASTRA.md",
