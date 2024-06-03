@@ -105,9 +105,9 @@ public class LevelManager : MonoBehaviour
                 }
 
                 for (int i = 0; i < _currentLS.terrainData.Length; i++)
-                    zLevel += terrainHeights[i] * terrainWeights[i];
+                    zLevel += terrainHeights[i] * Mathf.Pow(terrainWeights[i], 2);
 
-                zLevel /= terrainWeights.Sum();
+                zLevel /= Mathf.Pow(terrainWeights.Sum(), 2);
 
                 // apply the fall off curve to the terrain
                 zLevel -= _currentLS.levelFallOff.Evaluate(Mathf.Abs((float)x - (float)_currentLS.levelSize.x / 2f) / (float)_currentLS.levelSize.x / 2f) * _currentLS.fallOffMultiplier;
