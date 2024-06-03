@@ -9,13 +9,13 @@ public class LevelManagerEditorScript : Editor
     public override void OnInspectorGUI()
     {
         LevelManager levelManager = (LevelManager)target;
-
         DrawDefaultInspector();
 
         EditorGUILayout.Space();
 
         if (GUILayout.Button("Generate Level"))
         {
+            levelManager.ClearLevel();
             levelManager.GenerateLevel();
         }
 
@@ -23,5 +23,7 @@ public class LevelManagerEditorScript : Editor
         {
             levelManager.ClearLevel();
         }
+
+        EditorUtility.SetDirty(levelManager);
     }
 }

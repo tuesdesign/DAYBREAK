@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TreeEditor;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -59,6 +60,8 @@ public class LevelManager : MonoBehaviour
             _currentLS = _levelPresets[0];
         }
 
+        ClearLevel();
+
         // set the seed for the random number generator
         UnityEngine.Random.InitState(_seed);
         float seedOffsetX = UnityEngine.Random.Range(-100000f, 100000f);
@@ -102,11 +105,9 @@ public class LevelManager : MonoBehaviour
                 }
 
                 for (int i = 0; i < _currentLS.terrainData.Length; i++)
-                {
                     zLevel += terrainHeights[i] * terrainWeights[i];
-                }
 
-                zLevel /= _currentLS.terrainData.Length;
+                zLevel /= terrainWeights.Sum();
 
                 // apply the fall off curve to the terrain
                 zLevel -= _currentLS.levelFallOff.Evaluate(Mathf.Abs((float)x - (float)_currentLS.levelSize.x / 2f) / (float)_currentLS.levelSize.x / 2f) * _currentLS.fallOffMultiplier;
@@ -185,7 +186,7 @@ public class LevelManager : MonoBehaviour
         for (int x = 0; x < _currentLS.levelSize.x; x++)
             for (int y = 0; y < _currentLS.levelSize.y; y++)
             {
-                tilemap.SetTile(new Vector3Int(x, y, _levelGrid[x, y] > _currentLS.fallOffHeight ? _levelGrid[x, y] : _currentLS.fallOffHeight.ConvertTo<int>() - 1), _levelGrid[x, y] >= _currentLS.fallOffHeight ? dominantTerrains[x, y].terrainSurfaceTile : dominantTerrains[x, y].fallOffTile);
+                tilemap.SetTile(new Vector3Int(x, y, _levelGrid[x, y] > _currentLS.fallOffHeight ? _levelGrid[x, y] : _currentLS.fallOffHeight.ConvertTo<int>()), _levelGrid[x, y] > _currentLS.fallOffHeight ? dominantTerrains[x, y].terrainSurfaceTile : dominantTerrains[x, y].fallOffTile);
 
                 // skip the ground fill if the terrain is below the fall off height
                 if (_levelGrid[x, y] <= _currentLS.fallOffHeight) continue;
