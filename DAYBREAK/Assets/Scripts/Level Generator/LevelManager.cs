@@ -11,13 +11,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public string _currentLevelName;
     private int[,] _levelGrid;
 
-    [Space, Header("Temp Inspector Tiles!"), SerializeField] public IsometricRuleTile groundTop;
-    [SerializeField] public IsometricRuleTile groundFill;
-    [SerializeField] public IsometricRuleTile water;
-    [SerializeField] public IsometricRuleTile debugTile;
-
-    [Space, SerializeField] LevelSettings[] _levelSettings;
-    private LevelSettings _currentLS;
+    [Space, SerializeField] public LevelPreset[] _levelPresets;
+    private LevelPreset _currentLS;
 
     [Space, SerializeField] public Tilemap tilemap;
 
@@ -26,17 +21,17 @@ public class LevelManager : MonoBehaviour
         if (int.TryParse(_currentLevelName, out int levelIndex) && levelIndex >= 0)
         {
             // if the level name is a number, generate the level with the given index
-            if (_levelSettings.Length <= levelIndex)
+            if (_levelPresets.Length <= levelIndex)
             {
                 Debug.LogError("Level index out of range! " +
-                    ((_levelSettings.Length - 1 == 0) ?
+                    ((_levelPresets.Length - 1 == 0) ?
                     "\nCurrently, the only acceptable index is 0!" :
-                    $"\nCurrently, the acceptable range of valuse is between 0 and {_levelSettings.Length - 1}!"));
+                    $"\nCurrently, the acceptable range of valuse is between 0 and {_levelPresets.Length - 1}!"));
                 return;
             }
 
             // Get the level name from the index
-            string indexedLevelName = _levelSettings[levelIndex].levelName;
+            string indexedLevelName = _levelPresets[levelIndex].levelName;
             GenerateLevel(indexedLevelName);
         }
         else if (_currentLevelName.Length > 0)
@@ -53,8 +48,16 @@ public class LevelManager : MonoBehaviour
 
     public bool GenerateLevel()
     {
-        // if the level settings are empty, set the level setting to the first element in the list
-        if (_currentLS.Equals(new LevelSettings())) _currentLS = _levelSettings[0];
+        if (_levelPresets.Length == 0)
+        {
+            Debug.LogError("Level presets are empty!");
+            return false;
+        }
+
+        if (_currentLS.Equals(new LevelPreset()))
+        {
+            _currentLS = _levelPresets[0];
+        }
 
         // set the seed for the random number generator
         UnityEngine.Random.InitState(_seed);
@@ -63,6 +66,7 @@ public class LevelManager : MonoBehaviour
 
         // create the grid for the level
         _levelGrid = new int[_currentLS.levelSize.x, _currentLS.levelSize.y];
+        TerrainData[,] dominantTerrains = new TerrainData[_currentLS.levelSize.x, _currentLS.levelSize.y];
 
         // Generate the terrain
         for (int x = 0; x < _currentLS.levelSize.x; x++)
@@ -70,21 +74,46 @@ public class LevelManager : MonoBehaviour
             {
                 float zLevel = 0;
 
-                // create the terrain using perlin noise, for each frequency and amplitude
-                for (int i = 0; i < _currentLS.levelFrequencyAndAmplitude.frequecies.Length; i++)
+                // find the weighted height of the current terrain
+                float[] terrainWeights = new float[_currentLS.terrainData.Length];
+                float[] terrainHeights = new float[_currentLS.terrainData.Length];
+
+                float dominantTerrainWeight = 0;
+
+                for (int i = 0; i < _currentLS.terrainData.Length; i++)
                 {
-                    zLevel += _currentLS.levelFrequencyAndAmplitude.amplitudes[i % _currentLS.levelFrequencyAndAmplitude.amplitudes.Length] *
-                        Mathf.PerlinNoise(
-                            (x + seedOffsetX) * _currentLS.levelFrequencyAndAmplitude.frequecies[i],
-                            (y + seedOffsetY) * _currentLS.levelFrequencyAndAmplitude.frequecies[i]);
+                    float tempWeight = 0;
+                    float tempHeight = 0;
+
+                    foreach (TerrainFreqAndAmps FA in _currentLS.terrainData[i].terrainSelector)
+                        tempWeight += Mathf.PerlinNoise((x + seedOffsetX) * FA.frequecy, (y + seedOffsetY) * FA.frequecy) * FA.amplitude;
+
+                    foreach (TerrainFreqAndAmps FA in _currentLS.terrainData[i].terrainFrequenciesAndAmplitudes)
+                        tempHeight += Mathf.PerlinNoise((x + seedOffsetX) * FA.frequecy, (y + seedOffsetY) * FA.frequecy) * FA.amplitude;
+
+                    terrainWeights[i] = tempWeight / _currentLS.terrainData[i].terrainSelector.Length;
+                    terrainHeights[i] = tempHeight / _currentLS.terrainData[i].terrainFrequenciesAndAmplitudes.Length;
+
+                    if (tempWeight > dominantTerrainWeight)
+                    {
+                        dominantTerrainWeight = tempWeight; 
+                        dominantTerrains[x, y] = _currentLS.terrainData[i];
+                    }
                 }
+
+                for (int i = 0; i < _currentLS.terrainData.Length; i++)
+                {
+                    zLevel += terrainHeights[i] * terrainWeights[i];
+                }
+
+                zLevel /= _currentLS.terrainData.Length;
 
                 // apply the fall off curve to the terrain
                 zLevel -= _currentLS.levelFallOff.Evaluate(Mathf.Abs((float)x - (float)_currentLS.levelSize.x / 2f) / (float)_currentLS.levelSize.x / 2f) * _currentLS.fallOffMultiplier;
                 zLevel -= _currentLS.levelFallOff.Evaluate(Mathf.Abs((float)y - (float)_currentLS.levelSize.y / 2f) / (float)_currentLS.levelSize.y / 2f) * _currentLS.fallOffMultiplier;
 
                 // apply the terrain height to the grid
-                _levelGrid[x, y] = (zLevel / _currentLS.levelFrequencyAndAmplitude.frequecies.Length * 10).ConvertTo<int>();
+                _levelGrid[x, y] = zLevel.ConvertTo<int>(); 
             }
 
         // create a dictionary to store the structure positions
@@ -156,7 +185,7 @@ public class LevelManager : MonoBehaviour
         for (int x = 0; x < _currentLS.levelSize.x; x++)
             for (int y = 0; y < _currentLS.levelSize.y; y++)
             {
-                tilemap.SetTile(new Vector3Int(x, y, _levelGrid[x, y] > _currentLS.fallOffHeight ? _levelGrid[x, y] : _currentLS.fallOffHeight.ConvertTo<int>() - 1), _levelGrid[x, y] >= _currentLS.fallOffHeight ? groundTop : water);
+                tilemap.SetTile(new Vector3Int(x, y, _levelGrid[x, y] > _currentLS.fallOffHeight ? _levelGrid[x, y] : _currentLS.fallOffHeight.ConvertTo<int>() - 1), _levelGrid[x, y] >= _currentLS.fallOffHeight ? dominantTerrains[x, y].terrainSurfaceTile : dominantTerrains[x, y].fallOffTile);
 
                 // skip the ground fill if the terrain is below the fall off height
                 if (_levelGrid[x, y] <= _currentLS.fallOffHeight) continue;
@@ -172,7 +201,7 @@ public class LevelManager : MonoBehaviour
                     {
                         for (int i = _levelGrid[x, y] - 1; i > _levelGrid[x + d.x, y + d.y]; i -= 2)
                         {
-                            tilemap.SetTile(new Vector3Int(x, y, i), groundFill);
+                            tilemap.SetTile(new Vector3Int(x, y, i), dominantTerrains[x, y].terrainFillTile);
                         }
                     }
                 }
@@ -183,7 +212,7 @@ public class LevelManager : MonoBehaviour
 
     public bool GenerateLevel(string levelName)
     {
-        foreach (var levelTextureSetting in _levelSettings)
+        foreach (var levelTextureSetting in _levelPresets)
         {
             if (levelTextureSetting.levelName == levelName)
             {
@@ -208,7 +237,7 @@ public class LevelManager : MonoBehaviour
 
     public bool GenerateLevel(string levelName, int seed)
     {
-        foreach (var levelTextureSetting in _levelSettings)
+        foreach (var levelTextureSetting in _levelPresets)
         {
             if (levelTextureSetting.levelName == levelName)
             {
@@ -225,7 +254,7 @@ public class LevelManager : MonoBehaviour
         return false;
     }
 
-    public bool GenerateLevel(LevelSettings levelSettings)
+    public bool GenerateLevel(LevelPreset levelSettings)
     {
         // set the current level settings to the given level settings
         _currentLS = levelSettings;
@@ -233,7 +262,7 @@ public class LevelManager : MonoBehaviour
         return GenerateLevel();
     }
 
-    public bool GenerateLevel(LevelSettings levelSettings, int seed)
+    public bool GenerateLevel(LevelPreset levelSettings, int seed)
     {
         // set the current level settings to the given level settings
         _currentLS = levelSettings;
@@ -242,11 +271,16 @@ public class LevelManager : MonoBehaviour
         return GenerateLevel();
     }
 
+    public void ClearLevel()
+    {
+        tilemap.ClearAllTiles();
+    }
+
     [Serializable]
-    public struct LevelSettings
+    public struct LevelPreset
     {
         [SerializeField] public string levelName;
-        [Tooltip("Controls the terrain generation for the level. Values work best when scaled inversly to eachother."), SerializeField, Space] public LevelFrequencyAndAmplitude levelFrequencyAndAmplitude;
+        [SerializeField] public TerrainData[] terrainData;
         [SerializeField, Space] public Vector2Int levelSize;
         [SerializeField] public AnimationCurve levelFallOff;
         [SerializeField] public float fallOffMultiplier;
@@ -254,58 +288,138 @@ public class LevelManager : MonoBehaviour
         [SerializeField, Space, Tooltip("Density equal to 1 will yield one structure for every 1000 tiles. (100x100 space)")] public float structureDensity;
         [SerializeField] public LevelStructureData[] levelStructures;
 
-        public LevelSettings(string levelName, LevelFrequencyAndAmplitude levelFrequencyAndAmplitude, Vector2Int levelSize, AnimationCurve levelFallOff, float fallOffMultiplier, float fallOffHeight, LevelStructureData[] levelStructures, float structureDensity)
+        public LevelPreset(string levelName, TerrainData[] terrainData, Vector2Int levelSize, AnimationCurve levelFallOff, float fallOffMultiplier, float fallOffHeight, float structureDensity, LevelStructureData[] levelStructures)
         {
             this.levelName = levelName;
-            this.levelFrequencyAndAmplitude = levelFrequencyAndAmplitude;
+            this.terrainData = terrainData;
             this.levelSize = levelSize;
             this.levelFallOff = levelFallOff;
             this.fallOffMultiplier = fallOffMultiplier;
             this.fallOffHeight = fallOffHeight;
-            this.levelStructures = levelStructures;
             this.structureDensity = structureDensity;
+            this.levelStructures = levelStructures;
         }
 
         public override bool Equals(object obj)
         {
-            return obj is LevelSettings settings &&
-                   levelName == settings.levelName &&
-                   levelFrequencyAndAmplitude.Equals(settings.levelFrequencyAndAmplitude) &&
-                   levelSize.Equals(settings.levelSize) &&
-                   levelFallOff == settings.levelFallOff &&
-                   fallOffMultiplier == settings.fallOffMultiplier &&
-                   fallOffHeight == settings.fallOffHeight;
+            return obj is LevelPreset preset &&
+                   levelName == preset.levelName &&
+                   terrainData == preset.terrainData &&
+                   levelSize == preset.levelSize &&
+                   levelFallOff == preset.levelFallOff &&
+                   fallOffMultiplier == preset.fallOffMultiplier &&
+                   fallOffHeight == preset.fallOffHeight;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(levelName, levelFrequencyAndAmplitude, levelSize, levelFallOff, fallOffMultiplier, fallOffHeight);
+            return HashCode.Combine(levelName, terrainData, levelSize, levelFallOff, fallOffMultiplier, fallOffHeight);
         }
+
+        #region Operators
+
+        public static bool operator ==(LevelPreset left, LevelPreset right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(LevelPreset left, LevelPreset right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
     }
 
     [Serializable]
-    public struct LevelFrequencyAndAmplitude
+    public struct TerrainData
     {
-        [Tooltip("Controls the grain or roughness of resulting terrain."), SerializeField] public float[] frequecies;
-        [Tooltip("Controls the height of resulting terrain."), SerializeField] public float[] amplitudes;
+        [SerializeField] public string name;
 
-        public LevelFrequencyAndAmplitude(float[] frequecies, float[] amplitudes)
+        [Space, SerializeField] public TerrainFreqAndAmps[] terrainFrequenciesAndAmplitudes;
+        [SerializeField] public TerrainFreqAndAmps[] terrainSelector;
+
+        [Space, SerializeField] public IsometricRuleTile terrainSurfaceTile;
+        [SerializeField] public IsometricRuleTile terrainFillTile;
+        [SerializeField] public IsometricRuleTile fallOffTile;
+
+        public TerrainData(string name, TerrainFreqAndAmps[] terrainFrequenciesAndAmplitudes, TerrainFreqAndAmps[] terrainSelector, IsometricRuleTile terrainSurfaceTile, IsometricRuleTile terrainFillTile, IsometricRuleTile fallOffTile)
         {
-            this.frequecies = frequecies;
-            this.amplitudes = amplitudes;
+            this.name = name;
+            this.terrainFrequenciesAndAmplitudes = terrainFrequenciesAndAmplitudes;
+            this.terrainSelector = terrainSelector;
+            this.terrainSurfaceTile = terrainSurfaceTile;
+            this.terrainFillTile = terrainFillTile;
+            this.fallOffTile = fallOffTile;
         }
 
         public override bool Equals(object obj)
         {
-            return obj is LevelFrequencyAndAmplitude frequecies &&
-                   this.frequecies == frequecies.frequecies &&
-                   amplitudes == frequecies.amplitudes;
+            return obj is TerrainData data &&
+                   name == data.name &&
+                   terrainFrequenciesAndAmplitudes.Equals(data.terrainFrequenciesAndAmplitudes) &&
+                   terrainSurfaceTile == data.terrainSurfaceTile &&
+                   terrainFillTile == data.terrainFillTile &&
+                   fallOffTile == data.fallOffTile;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(frequecies, amplitudes);
+            return HashCode.Combine(name, terrainFrequenciesAndAmplitudes, terrainSurfaceTile, terrainFillTile, fallOffTile);
         }
+
+        #region Operators
+
+        public static bool operator ==(TerrainData left, TerrainData right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(TerrainData left, TerrainData right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
+    }
+
+    [Serializable]
+    public struct TerrainFreqAndAmps
+    {
+        [Tooltip("Controls the grain or roughness of resulting terrain."), SerializeField] public float frequecy;
+        [Tooltip("Controls the height of resulting terrain."), SerializeField] public float amplitude;
+
+        public TerrainFreqAndAmps(float frequecy, float amplitude)
+        {
+            this.frequecy = frequecy;
+            this.amplitude = amplitude;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is TerrainFreqAndAmps amps &&
+                   frequecy == amps.frequecy &&
+                   amplitude == amps.amplitude;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(frequecy, amplitude);
+        }
+
+        #region Operators
+
+        public static bool operator ==(TerrainFreqAndAmps left, TerrainFreqAndAmps right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(TerrainFreqAndAmps left, TerrainFreqAndAmps right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
     }
 
     [Serializable]

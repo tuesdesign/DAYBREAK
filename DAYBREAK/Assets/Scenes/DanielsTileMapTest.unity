@@ -301,24 +301,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f3be646d05891479681709d4a3b8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seed: 1
+  _seed: 0
   _currentLevelName: 
-  groundTop: {fileID: 11400000, guid: 353f2cfa3bb1fd94f9aca7400848fb11, type: 2}
-  groundFill: {fileID: 11400000, guid: 69f9056ad3341fa4db3981a31e8466b8, type: 2}
-  water: {fileID: 11400000, guid: 970ed45242b299f4b9fa106444cceec9, type: 2}
-  debugTile: {fileID: 11400000, guid: f8caa95b92039724590476db1590bc77, type: 2}
-  _levelSettings:
+  _levelPresets:
   - levelName: Debug
-    levelFrequencyAndAmplitude:
-      frequecies:
-      - 0.05
-      - 0.0025
-      - 0.05
-      amplitudes:
-      - 1
-      - 5
-      - 3
-    levelSize: {x: 100, y: 100}
+    terrainData:
+    - name: First Biome
+      terrainFrequenciesAndAmplitudes:
+      - frequecy: 0.01
+        amplitude: 50
+      - frequecy: 0.1
+        amplitude: 10
+      terrainSelector:
+      - frequecy: 0.02
+        amplitude: 2
+      terrainSurfaceTile: {fileID: 11400000, guid: 353f2cfa3bb1fd94f9aca7400848fb11, type: 2}
+      terrainFillTile: {fileID: 11400000, guid: 69f9056ad3341fa4db3981a31e8466b8, type: 2}
+      fallOffTile: {fileID: 11400000, guid: 970ed45242b299f4b9fa106444cceec9, type: 2}
+    - name: Second Biome
+      terrainFrequenciesAndAmplitudes:
+      - frequecy: 0.02
+        amplitude: 30
+      terrainSelector:
+      - frequecy: 0.001
+        amplitude: 5
+      terrainSurfaceTile: {fileID: 11400000, guid: 61fbfc9dff2d9bc4e920d452fcc87640, type: 2}
+      terrainFillTile: {fileID: 11400000, guid: 69f9056ad3341fa4db3981a31e8466b8, type: 2}
+      fallOffTile: {fileID: 11400000, guid: 970ed45242b299f4b9fa106444cceec9, type: 2}
+    levelSize: {x: 50, y: 50}
     levelFallOff:
       serializedVersion: 2
       m_Curve:
@@ -342,15 +352,15 @@ MonoBehaviour:
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    fallOffMultiplier: 10
+      m_RotationOrder: 0
+    fallOffMultiplier: 50
     fallOffHeight: 2
     structureDensity: 1
     levelStructures:
     - structure: {fileID: 11400000, guid: 04c8e7a83125e1e4988b75b4ef76b80b, type: 2}
-      groundLevelOffset: 15
-      structureRadius: {x: 1, y: 5}
-      structureBorderRadius: {x: 4, y: 20}
+      groundLevelOffset: 0
+      structureRadius: {x: 5, y: 5}
+      structureBorderRadius: {x: 3, y: 3}
   tilemap: {fileID: 52676097}
 --- !u!1 &1593263921
 GameObject:
