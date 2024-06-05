@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     private int[,] _levelGrid;
 
     [SerializeField, Header("Debug Options")] public bool _autoStartOnPlay;
+    [SerializeField] public bool _centerGeneratedLevel;
 
     private void Awake()
     {
@@ -43,7 +44,6 @@ public class LevelManager : MonoBehaviour
         float seedOffsetY = UnityEngine.Random.Range(-100000f, 100000f);
 
         // create the grid for the level
-        print(_currentLS.levelSize);
         _levelGrid = new int[_currentLS.levelSize.x, _currentLS.levelSize.y];
         TerrainData[,] dominantTerrains = new TerrainData[_currentLS.levelSize.x, _currentLS.levelSize.y];
 
@@ -105,6 +105,11 @@ public class LevelManager : MonoBehaviour
             {
                 // select a random structure
                 LevelStructureData tempStructure = _currentLS.levelStructures[UnityEngine.Random.Range(0, _currentLS.levelStructures.Length)];
+                if (!tempStructure.structure)
+                {
+                    Debug.LogError("Structure is null!");
+                    continue;
+                }
 
                 // select a random position for the structure
                 Vector2Int tempStructurePos = new Vector2Int(
@@ -149,7 +154,10 @@ public class LevelManager : MonoBehaviour
                     }
 
                 // place the structure
-                tempStructure.structure.PlaceStructure(new Vector3Int(tempStructurePos.x, tempStructurePos.y, structureGroundLevel), tilemap);
+                tempStructure.structure.PlaceStructure(new Vector3Int(
+                    _centerGeneratedLevel ? tempStructurePos.x - _currentLS.levelSize.x / 2 : tempStructurePos.x, 
+                    _centerGeneratedLevel ? tempStructurePos.y - _currentLS.levelSize.y / 2 : tempStructurePos.y, 
+                    structureGroundLevel), tilemap);
 
                 // add the structure to the dictionary
                 structurePositions.Add(tempStructurePos, tempStructure);
@@ -162,7 +170,11 @@ public class LevelManager : MonoBehaviour
         for (int x = 0; x < _currentLS.levelSize.x; x++)
             for (int y = 0; y < _currentLS.levelSize.y; y++)
             {
-                tilemap.SetTile(new Vector3Int(x, y, _levelGrid[x, y] > _currentLS.fallOffHeight ? _levelGrid[x, y] : _currentLS.fallOffHeight.ConvertTo<int>()), _levelGrid[x, y] > _currentLS.fallOffHeight ? dominantTerrains[x, y].terrainSurfaceTile : dominantTerrains[x, y].fallOffTile);
+                tilemap.SetTile(new Vector3Int(
+                    _centerGeneratedLevel ? (x - _currentLS.levelSize.x / 2) : x,
+                    _centerGeneratedLevel ? (y - _currentLS.levelSize.x / 2) : y,
+                    _levelGrid[x, y] > _currentLS.fallOffHeight ? _levelGrid[x, y] : _currentLS.fallOffHeight.ConvertTo<int>()),
+                    _levelGrid[x, y] > _currentLS.fallOffHeight ? dominantTerrains[x, y].terrainSurfaceTile : dominantTerrains[x, y].fallOffTile);
 
                 // skip the ground fill if the terrain is below the fall off height
                 if (_levelGrid[x, y] <= _currentLS.fallOffHeight) continue;
@@ -178,7 +190,10 @@ public class LevelManager : MonoBehaviour
                     {
                         for (int i = _levelGrid[x, y] - 1; i > _levelGrid[x + d.x, y + d.y]; i -= 2)
                         {
-                            tilemap.SetTile(new Vector3Int(x, y, i), dominantTerrains[x, y].terrainFillTile);
+                            tilemap.SetTile(new Vector3Int(
+                                _centerGeneratedLevel ? (x - _currentLS.levelSize.x / 2) : x, 
+                                _centerGeneratedLevel ? (y - _currentLS.levelSize.y / 2) : y, i), 
+                                dominantTerrains[x, y].terrainFillTile);
                         }
                     }
                 }
@@ -316,7 +331,9 @@ public class LevelManager : MonoBehaviour
                    levelSize == preset.levelSize &&
                    levelFallOff == preset.levelFallOff &&
                    fallOffMultiplier == preset.fallOffMultiplier &&
-                   fallOffHeight == preset.fallOffHeight;
+                   fallOffHeight == preset.fallOffHeight &&
+                   structureDensity == preset.structureDensity &&
+                   levelStructures == preset.levelStructures;
         }
 
         public override int GetHashCode()

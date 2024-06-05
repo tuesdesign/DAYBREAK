@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 600f6135b11248b469d41a919f7c373e, type: 3}
-  m_Name: LevelStructureObject_TestStruct
+  m_Name: Marker
   m_EditorClassIdentifier: 
+  gridZCellSize: 2
   structureTiles:
-  - position: {x: 0, y: 0, z: 2}
+  - position: {x: 0, y: 1, z: 2}
     tile: {fileID: 11400000, guid: 3c7a16f6530b1244e8195accd344925d, type: 2}
-  - position: {x: 0, y: 0, z: 6}
+  - position: {x: -1, y: 0, z: 5}
     tile: {fileID: 11400000, guid: 3c7a16f6530b1244e8195accd344925d, type: 2}
-  - position: {x: 0, y: 0, z: 8}
+  - position: {x: -1, y: 0, z: 6}
     tile: {fileID: 11400000, guid: 3c7a16f6530b1244e8195accd344925d, type: 2}
-  - position: {x: 0, y: -1, z: 10}
+  - position: {x: -1, y: -1, z: 7}
     tile: {fileID: 11400000, guid: 3c7a16f6530b1244e8195accd344925d, type: 2}
-  - position: {x: 0, y: -1, z: 12}
+  - position: {x: -1, y: -1, z: 8}
     tile: {fileID: 11400000, guid: 3c7a16f6530b1244e8195accd344925d, type: 2}
-  - position: {x: 0, y: 1, z: 12}
+  - position: {x: -1, y: 1, z: 8}
     tile: {fileID: 11400000, guid: 3c7a16f6530b1244e8195accd344925d, type: 2}
-  - position: {x: 0, y: 0, z: 14}
+  - position: {x: -1, y: 0, z: 9}
     tile: {fileID: 11400000, guid: 3c7a16f6530b1244e8195accd344925d, type: 2}

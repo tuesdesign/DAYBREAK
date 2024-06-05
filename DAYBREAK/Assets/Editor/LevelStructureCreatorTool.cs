@@ -95,8 +95,12 @@ public class LevelStructureCreatorTool : EditorWindow
 
         if (GUILayout.Button("Create Level Structure Object"))
         {
+            bool structureIsCurrentlySelected = this.levelStructure.name == structureName;
+
             LevelStructureObject levelStructure = ScriptableObject.CreateInstance<LevelStructureObject>();
             List<LevelStructureObject.StructureTile> structureTiles = new List<LevelStructureObject.StructureTile>();
+
+            levelStructure.gridZCellSize = tilemap.GetComponentInParent<Grid>().cellSize.z;
 
             foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin)
             {
@@ -107,9 +111,11 @@ public class LevelStructureCreatorTool : EditorWindow
                 }
             }
 
-            AssetDatabase.CreateAsset(levelStructure, $"Assets/Scripts/Level Generator/Level Structures/Structures/LevelStructureObject_{structureName}.asset");
+            AssetDatabase.CreateAsset(levelStructure, $"Assets/Scripts/Level Generator/Level Structures/Structures/{structureName}.asset");
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+
+            if (structureIsCurrentlySelected) this.levelStructure = levelStructure;
         }
 
         if (GUILayout.Button("Clear Tilemap"))
@@ -119,12 +125,13 @@ public class LevelStructureCreatorTool : EditorWindow
 
         EditorGUILayout.Space();
 
-        levelStructure = EditorGUILayout.ObjectField("Level Structure Object", levelStructure, typeof(LevelStructureObject), true) as LevelStructureObject;
+        levelStructure = EditorGUILayout.ObjectField(structureName, levelStructure, typeof(LevelStructureObject), true) as LevelStructureObject;
 
         if (GUILayout.Button("Place Structure"))
         {
             if (levelStructure != null)
             {
+                structureName = levelStructure.name;
                 levelStructure.PlaceStructure(Vector3Int.zero, tilemap);
             }
         }
