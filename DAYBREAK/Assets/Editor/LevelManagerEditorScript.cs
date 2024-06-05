@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 [CustomEditor(typeof(LevelManager))]
 public class LevelManagerEditorScript : Editor
@@ -11,19 +12,6 @@ public class LevelManagerEditorScript : Editor
         LevelManager levelManager = (LevelManager)target;
         DrawDefaultInspector();
 
-        EditorGUILayout.Space();
-
-        if (GUILayout.Button("Generate Level"))
-        {
-            levelManager.ClearLevel();
-            levelManager.GenerateLevel();
-        }
-
-        if (GUILayout.Button("Clear Level"))
-        {
-            levelManager.ClearLevel();
-        }
-
-        EditorUtility.SetDirty(levelManager);
+        if (GUILayout.Button("Clear Level")) levelManager.ClearLevel();
     }
 }

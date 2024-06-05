@@ -301,8 +301,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f3be646d05891479681709d4a3b8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seed: 1
-  _currentLevelName: 
+  tilemap: {fileID: 52676097}
+  _seed: 0
+  _selectedLevelPreset: 
   _levelPresets:
   - levelName: Debug
     terrainData:
@@ -316,7 +317,7 @@ MonoBehaviour:
         amplitude: 27.5
       terrainSelector:
       - frequecy: 0.04
-        amplitude: 1e+9
+        amplitude: 1
       terrainSurfaceTile: {fileID: 11400000, guid: 353f2cfa3bb1fd94f9aca7400848fb11, type: 2}
       terrainFillTile: {fileID: 11400000, guid: 69f9056ad3341fa4db3981a31e8466b8, type: 2}
       fallOffTile: {fileID: 11400000, guid: 970ed45242b299f4b9fa106444cceec9, type: 2}
@@ -330,11 +331,11 @@ MonoBehaviour:
         amplitude: 20
       terrainSelector:
       - frequecy: 0.05
-        amplitude: 1e+9
+        amplitude: 1
       terrainSurfaceTile: {fileID: 11400000, guid: 61fbfc9dff2d9bc4e920d452fcc87640, type: 2}
       terrainFillTile: {fileID: 11400000, guid: 69f9056ad3341fa4db3981a31e8466b8, type: 2}
       fallOffTile: {fileID: 11400000, guid: 970ed45242b299f4b9fa106444cceec9, type: 2}
-    levelSize: {x: 150, y: 150}
+    levelSize: {x: 2000, y: 2}
     levelFallOff:
       serializedVersion: 2
       m_Curve:
@@ -359,7 +360,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    fallOffMultiplier: 17
+    fallOffMultiplier: 7
     fallOffHeight: 1
     structureDensity: 1
     levelStructures:
@@ -367,7 +368,7 @@ MonoBehaviour:
       groundLevelOffset: 0
       structureRadius: {x: 5, y: 5}
       structureBorderRadius: {x: 3, y: 3}
-  tilemap: {fileID: 52676097}
+  _autoStartOnPlay: 1
 --- !u!1 &1593263921
 GameObject:
   m_ObjectHideFlags: 0

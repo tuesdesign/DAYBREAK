@@ -8,43 +8,18 @@ using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField, Header("Generation Settings")] public Tilemap tilemap;
     [SerializeField] public int _seed;
-    [SerializeField] public string _currentLevelName;
+    [SerializeField] private string _selectedLevelPreset;
+    [SerializeField] public LevelPreset[] _levelPresets;
+    private LevelPreset _currentLS;
     private int[,] _levelGrid;
 
-    [Space, SerializeField] public LevelPreset[] _levelPresets;
-    private LevelPreset _currentLS;
-
-    [Space, SerializeField] public Tilemap tilemap;
+    [SerializeField, Header("Debug Options")] public bool _autoStartOnPlay;
 
     private void Awake()
     {
-        if (int.TryParse(_currentLevelName, out int levelIndex) && levelIndex >= 0)
-        {
-            // if the level name is a number, generate the level with the given index
-            if (_levelPresets.Length <= levelIndex)
-            {
-                Debug.LogError("Level index out of range! " +
-                    ((_levelPresets.Length - 1 == 0) ?
-                    "\nCurrently, the only acceptable index is 0!" :
-                    $"\nCurrently, the acceptable range of valuse is between 0 and {_levelPresets.Length - 1}!"));
-                return;
-            }
-
-            // Get the level name from the index
-            string indexedLevelName = _levelPresets[levelIndex].levelName;
-            GenerateLevel(indexedLevelName);
-        }
-        else if (_currentLevelName.Length > 0)
-        {
-            // if the level name is not empty, generate the level with the given name
-            GenerateLevel(_currentLevelName);
-        }
-        else
-        {
-            // if the level name is empty, generate the first level in the list
-            GenerateLevel();
-        }
+        if (_autoStartOnPlay) DebugGenerateLevel();
     }
 
     public bool GenerateLevel()
@@ -68,6 +43,7 @@ public class LevelManager : MonoBehaviour
         float seedOffsetY = UnityEngine.Random.Range(-100000f, 100000f);
 
         // create the grid for the level
+        print(_currentLS.levelSize);
         _levelGrid = new int[_currentLS.levelSize.x, _currentLS.levelSize.y];
         TerrainData[,] dominantTerrains = new TerrainData[_currentLS.levelSize.x, _currentLS.levelSize.y];
 
@@ -271,6 +247,37 @@ public class LevelManager : MonoBehaviour
 
         return GenerateLevel();
     }
+
+    public void DebugGenerateLevel()
+    {
+        if (int.TryParse(_selectedLevelPreset, out int levelIndex) && levelIndex >= 0)
+        {
+            // if the level name is a number, generate the level with the given index
+            if (_levelPresets.Length <= levelIndex)
+            {
+                Debug.LogError("Level index out of range! " +
+                    ((_levelPresets.Length - 1 == 0) ?
+                    "\nCurrently, the only acceptable index is 0!" :
+                    $"\nCurrently, the acceptable range of valuse is between 0 and {_levelPresets.Length - 1}!"));
+                return;
+            }
+
+            // Get the level name from the index
+            string indexedLevelName = _levelPresets[levelIndex].levelName;
+            GenerateLevel(indexedLevelName);
+        }
+        else if (_selectedLevelPreset.Length > 0)
+        {
+            // if the level name is not empty, generate the level with the given name
+            GenerateLevel(_selectedLevelPreset);
+        }
+        else
+        {
+            // if the level name is empty, generate the first level in the list
+            GenerateLevel();
+        }
+    }
+
 
     public void ClearLevel()
     {
