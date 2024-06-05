@@ -314,20 +314,104 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 690300322478647421, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
       propertyPath: m_CellSize.z
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _terrainSeperation
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
       propertyPath: _centerGeneratedLevel
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].fallOffEdge
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].levelSize.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].levelSize.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].fallOffHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].fallOffRadius
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
       propertyPath: _levelPresets.Array.data[0].tileZIncrement
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].fallOffEdgeRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].fallOffMultiplier
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].terrainSeperation
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].fallOffHeightMultiplier
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
       propertyPath: _levelPresets.Array.data[0].levelStructures.Array.data[0].structure
       value: 
       objectReference: {fileID: 11400000, guid: f724d2eb828519145ab8bc91fcb3e377, type: 2}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].levelFallOff.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].levelFallOff.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].terrainData.Array.data[0].terrainSelector.Array.data[0].frequecy
+      value: 0.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].terrainData.Array.data[1].terrainSelector.Array.data[0].frequecy
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].terrainData.Array.data[0].terrainFrequenciesAndAmplitudes.Array.data[2].frequecy
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].terrainData.Array.data[1].terrainFrequenciesAndAmplitudes.Array.data[0].frequecy
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].terrainData.Array.data[1].terrainFrequenciesAndAmplitudes.Array.data[1].frequecy
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].terrainData.Array.data[0].terrainFrequenciesAndAmplitudes.Array.data[0].amplitude
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].terrainData.Array.data[1].terrainFrequenciesAndAmplitudes.Array.data[0].amplitude
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].terrainData.Array.data[1].terrainFrequenciesAndAmplitudes.Array.data[1].amplitude
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164391584390961061, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
+      propertyPath: _levelPresets.Array.data[0].terrainData.Array.data[1].terrainFrequenciesAndAmplitudes.Array.data[2].amplitude
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2173804567892127252, guid: 8f8796e59a4b197418de530b3df5ccc8, type: 3}
       propertyPath: m_Name
       value: All You Need Grid And Tilemap

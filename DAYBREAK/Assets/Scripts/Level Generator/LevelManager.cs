@@ -81,13 +81,13 @@ public class LevelManager : MonoBehaviour
                 }
 
                 for (int i = 0; i < _currentLS.terrainData.Length; i++)
-                    zLevel += terrainHeights[i] * Mathf.Pow(terrainWeights[i], 2);
+                    zLevel += terrainHeights[i] * Mathf.Pow(terrainWeights[i], _currentLS.terrainSeperation);
 
-                zLevel /= Mathf.Pow(terrainWeights.Sum(), 2);
+                zLevel /= Mathf.Pow(terrainWeights.Sum(), _currentLS.terrainSeperation);
 
                 // apply the fall off curve to the terrain
-                zLevel -= _currentLS.levelFallOff.Evaluate(Mathf.Abs((float)x - (float)_currentLS.levelSize.x / 2f) / (float)_currentLS.levelSize.x / 2f) * _currentLS.fallOffMultiplier;
-                zLevel -= _currentLS.levelFallOff.Evaluate(Mathf.Abs((float)y - (float)_currentLS.levelSize.y / 2f) / (float)_currentLS.levelSize.y / 2f) * _currentLS.fallOffMultiplier;
+                float dist = Vector2.Distance(new Vector2(x, y), new Vector2(_currentLS.levelSize.x / 2, _currentLS.levelSize.y / 2));
+                zLevel = Mathf.Lerp(zLevel, _currentLS.fallOffHeight, _currentLS.levelFallOff.Evaluate(Mathf.Clamp(dist - _currentLS.fallOffRadius, 0, Mathf.Infinity) / _currentLS.fallOffEdge));
 
                 // apply the terrain height to the grid
                 _levelGrid[x, y] = zLevel.ConvertTo<int>(); 
@@ -180,6 +180,7 @@ public class LevelManager : MonoBehaviour
                 if (_levelGrid[x, y] <= _currentLS.fallOffHeight) continue;
 
                 // fill the ground beneath the surface terrain
+                float _cellSizeZ = Mathf.Clamp(GetComponentInParent<Grid>().cellSize.z, 0.5f, Mathf.Infinity);
                 foreach (var d in dir)
                 {
                     // skip the direction if the tile is out of bounds
@@ -188,7 +189,7 @@ public class LevelManager : MonoBehaviour
                     // if the tile is lower than the current tile, fill the space between the tiles
                     if (_levelGrid[x + d.x, y + d.y] < _levelGrid[x, y] - 1)
                     {
-                        for (int i = _levelGrid[x, y] - 1; i > _levelGrid[x + d.x, y + d.y]; i -= 2)
+                        for (int i = _levelGrid[x, y] - 2; i > _levelGrid[x + d.x, y + d.y]; i -= (2 / Mathf.Clamp(_cellSizeZ, 0, 1)).ConvertTo<int>())
                         {
                             tilemap.SetTile(new Vector3Int(
                                 _centerGeneratedLevel ? (x - _currentLS.levelSize.x / 2) : x, 
@@ -304,20 +305,24 @@ public class LevelManager : MonoBehaviour
     {
         [SerializeField] public string levelName;
         [SerializeField] public TerrainData[] terrainData;
+        [SerializeField, Range(1, 10)] public float terrainSeperation;
         [SerializeField, Space] public Vector2Int levelSize;
         [SerializeField] public AnimationCurve levelFallOff;
-        [SerializeField] public float fallOffMultiplier;
+        [SerializeField] public float fallOffRadius;
+        [SerializeField] public float fallOffEdge;
         [SerializeField] public float fallOffHeight;
         [SerializeField, Space, Tooltip("Density equal to 1 will yield one structure for every 1000 tiles. (100x100 space)")] public float structureDensity;
         [SerializeField] public LevelStructureData[] levelStructures;
 
-        public LevelPreset(string levelName, TerrainData[] terrainData, Vector2Int levelSize, AnimationCurve levelFallOff, float fallOffMultiplier, float fallOffHeight, float structureDensity, LevelStructureData[] levelStructures)
+        public LevelPreset(string levelName, TerrainData[] terrainData, float _terrainSeperation, Vector2Int levelSize, AnimationCurve levelFallOff, float fallOffMultiplier, float fallOffEdgeRadius, float fallOffHeight, float structureDensity, LevelStructureData[] levelStructures)
         {
             this.levelName = levelName;
             this.terrainData = terrainData;
+            this.terrainSeperation = _terrainSeperation;
             this.levelSize = levelSize;
             this.levelFallOff = levelFallOff;
-            this.fallOffMultiplier = fallOffMultiplier;
+            this.fallOffRadius = fallOffEdgeRadius;
+            this.fallOffEdge = fallOffMultiplier;
             this.fallOffHeight = fallOffHeight;
             this.structureDensity = structureDensity;
             this.levelStructures = levelStructures;
@@ -328,9 +333,11 @@ public class LevelManager : MonoBehaviour
             return obj is LevelPreset preset &&
                    levelName == preset.levelName &&
                    terrainData == preset.terrainData &&
+                   terrainSeperation == preset.terrainSeperation &&
                    levelSize == preset.levelSize &&
                    levelFallOff == preset.levelFallOff &&
-                   fallOffMultiplier == preset.fallOffMultiplier &&
+                   fallOffRadius == preset.fallOffRadius &&
+                   fallOffEdge == preset.fallOffEdge &&
                    fallOffHeight == preset.fallOffHeight &&
                    structureDensity == preset.structureDensity &&
                    levelStructures == preset.levelStructures;
@@ -338,7 +345,7 @@ public class LevelManager : MonoBehaviour
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(levelName, terrainData, levelSize, levelFallOff, fallOffMultiplier, fallOffHeight);
+            return HashCode.Combine(levelName, terrainData, levelSize, levelFallOff, fallOffEdge, fallOffHeight);
         }
 
         #region Operators
