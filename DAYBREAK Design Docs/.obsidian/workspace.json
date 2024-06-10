@@ -23,7 +23,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design/Style Guide.md",
+                "file": "_Home_/Pitch Checklist.md",
                 "mode": "source",
                 "source": false
               }
@@ -96,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Style Guide.md",
+                "file": "_Home_/Pitch Checklist.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Style Guide.md",
+                "file": "_Home_/Pitch Checklist.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Style Guide.md"
+                "file": "_Home_/Pitch Checklist.md"
               }
             }
           }
@@ -159,18 +159,19 @@
   },
   "active": "c556110cbbbb35f7",
   "lastOpenFiles": [
-    "Design/Art and Visual Design.md",
     "_Home_/Daybreak Game Design Document.md",
+    "_Home_/Pitch Checklist.md",
+    "Design/TAPTICIAN.md",
+    "Design/Technical Design.md",
     "Design/Style Guide.md",
-    "Project/Project Summary.md",
     "Project/Team.md",
+    "Project/Project Summary.md",
     "Design/ADASTRA.md",
-    "Design/Narrative.md",
     "Design/Level Gen.md",
     "Design/Gameplay.md",
     "Design/Asset List.md",
-    "Design/Technical Design.md",
-    "Design/TAPTICIAN.md",
+    "Design/Narrative.md",
+    "Design/Art and Visual Design.md",
     "Untitled",
     "_Home_",
     "Design",
