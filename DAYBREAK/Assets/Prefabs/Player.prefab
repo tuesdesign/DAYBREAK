@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 112107468821985014}
   - component: {fileID: 8020343670104873452}
   - component: {fileID: 8832656830663316981}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
-  speed: 10
+  speed: 2.5
   shootPosition: {fileID: 5588614994584090706}
   shootDelay: 0.5
   bulletType: {fileID: 648474279696338184, guid: 34a280d89f49dd14cb60721f55eef584, type: 3}
@@ -231,7 +231,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &8832656830663316981
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

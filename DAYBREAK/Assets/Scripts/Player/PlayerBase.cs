@@ -17,7 +17,7 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] float maxHealth = 10;
     float curHealth;
     [Tooltip("The player's movement speed")]
-    [SerializeField] float speed = 5;
+    [SerializeField] float speed = 2.5f;
     [Tooltip("Where the bullets should spawn from the player")]
     [SerializeField] Transform shootPosition;
 
@@ -92,22 +92,24 @@ public class PlayerBase : MonoBehaviour
         
     }
 
-    void Heal(float amount)
+    public void Heal(float amount)
     {
         curHealth += amount;
         if(curHealth > maxHealth)
         {
             curHealth = maxHealth;
         }
+        UpdateHealthBar();
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         curHealth -= damage;
         if (curHealth <= 0)
         {
             Die();
         }
+        UpdateHealthBar();
     }
 
     void Die()
@@ -117,7 +119,7 @@ public class PlayerBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = movePosition;
+        _rb.velocity = (movePosition * speed) ;
     }
 
     private void Shoot()
@@ -178,5 +180,14 @@ public class PlayerBase : MonoBehaviour
         hasAmmo = true;
         isReloading = false;
         UpdateAmmoCount();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            TakeDamage(collision.gameObject.GetComponent<EnemyBase>().GetDamage);
+        }
+
     }
 }
