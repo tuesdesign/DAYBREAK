@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7988c70899e08814e852050f16ef1021, type: 3}
+  m_Name: Debug
+  m_EditorClassIdentifier: 
+  mapSize: {x: 250, y: 250}
+  seed: Hello World
+  biomes:
+  - skipBiome: 0
+    name: Biome 1
+    terrainMaterials:
+      top: {fileID: 0}
+      steep: {fileID: 0}
+      path: {fileID: 0}
+    terrainAF:
+    - amplitude: 30
+      frequency: 0.05
+    - amplitude: 10
+      frequency: 1
+    selectorAF:
+    - amplitude: 2
+      frequency: 0.02
+  - skipBiome: 0
+    name: Biome 1
+    terrainMaterials:
+      top: {fileID: 0}
+      steep: {fileID: 0}
+      path: {fileID: 0}
+    terrainAF:
+    - amplitude: 15
+      frequency: 0.1
+    - amplitude: 5
+      frequency: 0.5
+    selectorAF:
+    - amplitude: 2
+      frequency: 0.01
+  biomeSeperation: 50
+  islandRadius: 75
+  edgeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  edgeStrength: 10
+  naturalEdgeScale: 50
+  naturalEdgeStrength: 50
+  waterLevel: 0

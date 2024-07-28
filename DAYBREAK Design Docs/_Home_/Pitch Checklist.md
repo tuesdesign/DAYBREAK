@@ -8,7 +8,7 @@
 - [x] Features/Value Proposition (Medium Priority)
 - [x] Business Model **(High Priority)**
 - [x] Team (Medium Priority)
-- [ ] Competitors **(High Priority)**
+- [x] Competitors **(High Priority)**
 - [x] Target Market (Low Priority)
 - [ ] Market Size (Low Priority)
 - [ ] Market Validation **(High Priority)**
