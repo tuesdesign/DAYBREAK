@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerBase : MonoBehaviour
+public class OldPlayerBase : MonoBehaviour
 {
-    Rigidbody _rb;
+    Rigidbody2D _rb;
     PlayerIA _playerInputActions;
 
     Vector2 aimPosition = Vector2.zero;
@@ -49,7 +49,7 @@ public class PlayerBase : MonoBehaviour
     {
         _playerInputActions = new PlayerIA();
         _playerInputActions.Enable();
-        _rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody2D>();
 
         _playerInputActions.Game.Move.performed += ctx => movePosition = ctx.ReadValue<Vector2>();
         _playerInputActions.Game.Move.canceled += ctx => movePosition = new Vector2(0,0) ;
@@ -128,7 +128,7 @@ public class PlayerBase : MonoBehaviour
         {
             GameObject b = Instantiate(bulletType, shootPosition);
             
-            b.GetComponent<Rigidbody>().velocity = Vector3.Normalize(aimPosition) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
+            b.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(aimPosition) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
             Destroy(b, 20);
 
             ammoCount--;
@@ -182,11 +182,12 @@ public class PlayerBase : MonoBehaviour
         UpdateAmmoCount();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             TakeDamage(collision.gameObject.GetComponent<OldEnemyBase>().GetDamage);
         }
+
     }
 }

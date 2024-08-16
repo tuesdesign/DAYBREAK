@@ -4,26 +4,25 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class EnemyBase : MonoBehaviour
+public class OldEnemyBase : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
     [SerializeField] float maxHealth = 3f;
     float curHealth;
     [SerializeField] float damage=2;
 
-    Rigidbody _rb;
+    Rigidbody2D _rb;
     
 
     Transform playerPosition;
-    Vector3 movePos = Vector2.zero;
-    
+    Vector2 movePos = Vector2.zero;
 
     public float GetDamage { get => damage; set => damage = value; }
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
-        playerPosition = FindObjectOfType<PlayerBase>().gameObject.transform;
+        _rb = GetComponent<Rigidbody2D>();
+        playerPosition = FindObjectOfType<OldPlayerBase>().gameObject.transform;
         curHealth = maxHealth;
     }
 

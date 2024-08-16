@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 8020343670104873452}
   - component: {fileID: 8832656830663316981}
   m_Layer: 6
-  m_Name: Player
+  m_Name: OldPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,10 +162,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1413459168188343881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba66be6f31c4165409ed00ca17769b79, type: 3}
+  m_Script: {fileID: 11500000, guid: 73e16b3844f665b4783fc4fe7055fae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 10
   speed: 2.5
   shootPosition: {fileID: 5588614994584090706}
   shootDelay: 0.5
