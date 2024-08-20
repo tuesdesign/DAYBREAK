@@ -119,7 +119,7 @@ public class PlayerBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = (movePosition * speed) ;
+        _rb.velocity = (new Vector3(movePosition.x,0,movePosition.y) * speed) ;
     }
 
     private void Shoot()
@@ -128,7 +128,7 @@ public class PlayerBase : MonoBehaviour
         {
             GameObject b = Instantiate(bulletType, shootPosition);
             
-            b.GetComponent<Rigidbody>().velocity = Vector3.Normalize(aimPosition) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
+            b.GetComponent<Rigidbody>().velocity = Vector3.Normalize(new Vector3 (aimPosition.x,0, aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
             Destroy(b, 20);
 
             ammoCount--;
