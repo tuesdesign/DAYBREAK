@@ -119,7 +119,10 @@ public class PlayerBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = (new Vector3(movePosition.x,0,movePosition.y) * speed) ;
+
+        //Vector3 movement = new Vector3(movePosition.x, 0f, movePosition.y).normalized * speed; //normal movement (non iso)
+        Vector3 movement = new Vector3(movePosition.x - movePosition.y, 0f, movePosition.x + movePosition.y).normalized * speed; //iso mocvement 
+        _rb.MovePosition(_rb.position + movement * Time.fixedDeltaTime);
     }
 
     private void Shoot()
@@ -128,8 +131,8 @@ public class PlayerBase : MonoBehaviour
         {
             GameObject b = Instantiate(bulletType, shootPosition);
             
-            b.GetComponent<Rigidbody>().velocity = Vector3.Normalize(new Vector3 (aimPosition.x,0, aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
-            Destroy(b, 20);
+            b.GetComponent<Rigidbody>().velocity = Vector3.Normalize( new Vector3 (aimPosition.x,0, aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
+            Destroy(b, 20);    //destroys the bullet after 20 seconds
 
             ammoCount--;
             canShoot = false;
@@ -186,7 +189,7 @@ public class PlayerBase : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            TakeDamage(collision.gameObject.GetComponent<OldEnemyBase>().GetDamage);
+            TakeDamage(collision.gameObject.GetComponent<EnemyBase>().GetDamage);
         }
     }
 }

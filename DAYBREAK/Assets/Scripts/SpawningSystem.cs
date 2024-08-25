@@ -11,7 +11,10 @@ public class SpawningSystem : MonoBehaviour
         public float spawnSpeed;
         public List<GameObject> enemies;
     }
+
     int index=0;
+    [SerializeField] private float spawnDistance = 20;
+
     [SerializeField] List<SpawnGroup> spawnGroups;
     
     float timer = 0;
@@ -43,24 +46,16 @@ public class SpawningSystem : MonoBehaviour
         int spawnzone = Random.Range(0, 4);
         
         GameObject sEnemy = spawnGroups[index].enemies[Random.Range(0, spawnGroups[index].enemies.Count)];
-        if(spawnzone == 0)
-        {
-            //Instantiate(sEnemy, new Vector3(Random.Range(0, cam.pixelWidth), cam.pixelHeight),this.transform.rotation);
-            Instantiate(sEnemy, new Vector3(Random.Range(playerTransform.position.x-10, playerTransform.position.x+10), playerTransform.position.y + 15),this.transform.rotation);
-        }
-        else if (spawnzone == 1)
-        {
-            Instantiate(sEnemy, new Vector3(Random.Range(playerTransform.position.x - 10, playerTransform.position.x + 10), playerTransform.position.y - 15), this.transform.rotation);
 
-        }
-        else if (spawnzone == 2)
-        {
-            Instantiate(sEnemy, new Vector3(playerTransform.position.x + 20, Random.Range(playerTransform.position.y - 10, playerTransform.position.y + 10)), this.transform.rotation);
-        }
-        else if (spawnzone == 3)
-        {
-            Instantiate(sEnemy, new Vector3(playerTransform.position.x - 20, Random.Range(playerTransform.position.y - 10, playerTransform.position.y + 10)), this.transform.rotation);
-        }
+        // Randomly select a direction around the player
+        Vector3 randomDirection = Random.insideUnitSphere.normalized;
+        randomDirection.y = 0; // Keep the enemy on the same plane as the player
+
+        // Calculate the spawn position based on the player's position and the chosen direction
+        Vector3 spawnPosition = playerTransform.position + randomDirection * spawnDistance;
+
+        // Spawn the enemy at the calculated position with no rotation
+        Instantiate(sEnemy, spawnPosition, Quaternion.identity);
 
     }
 }
