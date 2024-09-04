@@ -60,7 +60,7 @@
 	- Phone: (289)-600-9285
 #### Lillian Anderson
 - Roles & Responsibilities: 
-	- 
+	- hmmmmm
 
 - Information and Contact
 	- Student Number: 100822492
@@ -71,7 +71,8 @@
 
 #### Gavin Cole
 - Roles & Responsibilities: 
-	- 
+	- UI Design and Programming
+	- Games User Research (GUR) Head
 
 - Information and Contact
 	- Student Number: 100815981
