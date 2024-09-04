@@ -44,9 +44,9 @@
 
 - Information and Contact
 	- Student Number: 100828336
-	- E-mail: alannis.davis@ontariotechu.net\
-	- Discord:
-	- GitHub:
+	- E-mail: alannis.davis@ontariotechu.net
+	- Discord: AceSavaid
+	- GitHub: AceSavaid
 	- Phone:
 #### Rylan Dressler
 - Roles & Responsibilities: 

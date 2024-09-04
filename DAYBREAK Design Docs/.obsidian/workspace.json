@@ -14,12 +14,25 @@
               "type": "markdown",
               "state": {
                 "file": "Project/Team.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1d4c762435be77d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Project/Project Summary.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Project/Team.md",
+                "file": "Project/Project Summary.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Project/Team.md",
+                "file": "Project/Project Summary.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Project/Team.md"
+                "file": "Project/Project Summary.md"
               }
             }
           }
@@ -146,16 +159,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c556110cbbbb35f7",
+  "active": "1d4c762435be77d4",
   "lastOpenFiles": [
+    "Project/Asset Procurement.md",
+    "Project/Project Summary.md",
+    "Project/Team.md",
     "_Home_/Daybreak Game Design Document.md",
     "Design/Technical Design.md",
     "Design/Art and Visual Design.md",
     "Design/TAPTICIAN.md",
     "Design/Asset List.md",
     "Design/Gameplay.md",
-    "Project/Team.md",
-    "Project/Project Summary.md",
     "Design/ADASTRA.md",
     "Design/Level Gen.md",
     "Design/Narrative.md",
