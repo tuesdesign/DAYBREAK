@@ -14,6 +14,18 @@
               "type": "markdown",
               "state": {
                 "file": "Project/Team.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1d4c762435be77d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Project/Project Summary.md",
                 "mode": "source",
                 "source": false
               }
@@ -148,20 +160,20 @@
   },
   "active": "c556110cbbbb35f7",
   "lastOpenFiles": [
-    "_Home_/Daybreak Game Design Document.md",
     "Project/Project Summary.md",
-    "_Home_/Pitch Checklist.md",
-    "Project/Team.md",
-    "Design/Asset List.md",
-    "Design/Art and Visual Design.md",
-    "Design/Style Guide.md",
-    "Design/ADASTRA.md",
-    "Design/Narrative.md",
-    "Design/Level Gen.md",
-    "Design/Gameplay.md",
-    "Design/Technical Design.md",
-    "Design/TAPTICIAN.md",
     "Project/Asset Procurement.md",
+    "Project/Team.md",
+    "_Home_/Daybreak Game Design Document.md",
+    "Design/Technical Design.md",
+    "Design/Art and Visual Design.md",
+    "Design/TAPTICIAN.md",
+    "Design/Asset List.md",
+    "Design/Gameplay.md",
+    "Design/ADASTRA.md",
+    "Design/Level Gen.md",
+    "Design/Narrative.md",
+    "Design/Style Guide.md",
+    "_Home_/Pitch Checklist.md",
     "Untitled",
     "_Home_",
     "Design",
