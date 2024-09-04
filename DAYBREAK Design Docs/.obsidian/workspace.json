@@ -31,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Project/Project Summary.md",
+                "file": "Project/Team.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Project/Project Summary.md",
+                "file": "Project/Team.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Project/Project Summary.md"
+                "file": "Project/Team.md"
               }
             }
           }
@@ -159,10 +158,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1d4c762435be77d4",
+  "active": "c556110cbbbb35f7",
   "lastOpenFiles": [
-    "Project/Asset Procurement.md",
     "Project/Project Summary.md",
+    "Project/Asset Procurement.md",
     "Project/Team.md",
     "_Home_/Daybreak Game Design Document.md",
     "Design/Technical Design.md",

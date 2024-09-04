@@ -58,7 +58,7 @@
 	- Discord: the_advocate42
 	- GitHub: Rylan-Dressler
 	- Phone: (289)-600-9285
-#### Lillian Anderson
+#### Lilian Anderson
 - Roles & Responsibilities: 
 	- 
 
