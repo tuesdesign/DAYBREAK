@@ -60,7 +60,8 @@
 	- Phone: (289)-600-9285
 #### Lillian Anderson
 - Roles & Responsibilities: 
-	- hmmmmm
+	- Art Assets
+	- Public Relations / Social Media Marketing
 
 - Information and Contact
 	- Student Number: 100822492
@@ -73,6 +74,7 @@
 - Roles & Responsibilities: 
 	- UI Design and Programming
 	- Games User Research (GUR) Head
+	- Assistant Gameplay Programmer
 
 - Information and Contact
 	- Student Number: 100815981
