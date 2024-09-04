@@ -6,14 +6,22 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBase : MonoBehaviour
 {
+    [Tooltip("Enemy movement speed")]
     [SerializeField] float speed = 5f;
+    [Tooltip("Health")]
     [SerializeField] float maxHealth = 3f;
     float curHealth;
+    [Tooltip("damage")]
     [SerializeField] float damage=2;
+
+    [Tooltip("The type of exp that the enemy drops when kiled")]
+    [SerializeField] GameObject expDrop;
+    [SerializeField][Range(1f, 100f)] float expDropChance = 100;
+    
+
 
     Rigidbody _rb;
     
-
     Transform playerPosition;
     Vector3 movePos = Vector2.zero;
     
@@ -55,6 +63,16 @@ public class EnemyBase : MonoBehaviour
 
     public void Die()
     {
+        if (expDrop != null) //if this enemy drops exp on kill
+        {
+            if (Random.Range(0, 100) <= expDropChance) //random drop if the number is under the drop chance
+            {
+                GameObject exp = Instantiate(expDrop, this.transform);
+                exp.transform.parent = this.transform.parent;
+            }
+            
+        }
+        
         Destroy(this.gameObject);
     }
     

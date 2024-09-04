@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6921676083708403884}
   - component: {fileID: 5618091757914751819}
-  - component: {fileID: 1137617130498008405}
   - component: {fileID: 5764458172752867269}
   - component: {fileID: 1438580432476299544}
+  - component: {fileID: 1811003218735908818}
   m_Layer: 8
   m_Name: OldBullet
   m_TagString: Bullet
@@ -87,31 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1137617130498008405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648474279696338184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c70cdd834bdea24081fcbdef6d59aff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  damage: 1
-  canBurn: 0
-  burnChance: 0
-  isexplosive: 0
-  explosionRange: 0
-  explosionDamage: 0
-  canFreeze: 0
-  freezeChance: 0
-  canBounce: 0
-  bounceAmount: 0
-  canPierce: 0
-  pierceAmount: 0
 --- !u!50 &5764458172752867269
 Rigidbody2D:
   serializedVersion: 4
@@ -174,3 +149,28 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1811003218735908818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648474279696338184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f26d686343cf8340a00339991a239b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  damage: 1
+  canBurn: 0
+  burnChance: 0
+  isexplosive: 0
+  explosionRange: 0
+  explosionDamage: 0
+  canFreeze: 0
+  freezeChance: 0
+  canBounce: 0
+  bounceAmount: 0
+  canPierce: 0
+  pierceAmount: 0

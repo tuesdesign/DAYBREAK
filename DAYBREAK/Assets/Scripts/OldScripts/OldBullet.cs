@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build;
 using UnityEngine;
 
-
-public class Bullet : MonoBehaviour
+public class OldBullet : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float damage;
@@ -17,7 +15,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float explosionRange;
     [SerializeField] float explosionDamage;
 
-    [SerializeField] bool canFreeze ;
+    [SerializeField] bool canFreeze;
     [SerializeField] float freezeChance;
 
     [SerializeField] bool canBounce;
@@ -25,7 +23,6 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] float canPierce;
     [SerializeField] float pierceAmount;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -37,12 +34,11 @@ public class Bullet : MonoBehaviour
     {
         
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<EnemyBase>().TakeDamage(damage);
+            collision.gameObject.GetComponent<OldEnemyBase>().TakeDamage(damage);
             Destroy(this.gameObject);
         }
     }

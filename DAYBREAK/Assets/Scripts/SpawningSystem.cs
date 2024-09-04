@@ -13,20 +13,20 @@ public class SpawningSystem : MonoBehaviour
     }
 
     int index=0;
+
+    [Tooltip("List of different stages of enemy spawns you want in game")]
+    [SerializeField] List<SpawnGroup> spawnGroups;
+
+    [Tooltip("Distance away from player")]
     [SerializeField] private float spawnDistance = 20;
 
-    [SerializeField] List<SpawnGroup> spawnGroups;
-    
     float timer = 0;
-
-    Camera cam;
     Transform playerTransform;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        cam = Camera.main;
         playerTransform = FindObjectOfType<PlayerBase>().gameObject.transform;
     }
 
@@ -36,7 +36,7 @@ public class SpawningSystem : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= spawnGroups[index].spawnSpeed) {
             Spawn();
-            timer = 0;
+            timer -= spawnGroups[index].spawnSpeed; 
         }
         
     }
@@ -53,7 +53,7 @@ public class SpawningSystem : MonoBehaviour
 
         // Calculate the spawn position based on the player's position and the chosen direction
         Vector3 spawnPosition = playerTransform.position + randomDirection * spawnDistance;
-
+        
         // Spawn the enemy at the calculated position with no rotation
         Instantiate(sEnemy, spawnPosition, Quaternion.identity);
 

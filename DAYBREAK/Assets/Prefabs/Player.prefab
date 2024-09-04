@@ -295,12 +295,15 @@ MonoBehaviour:
   maxHealth: 10
   speed: 2.5
   shootPosition: {fileID: 4597465106178929703}
+  level: 1
+  levelIncrement: 100
   shootDelay: 0.5
   bulletType: {fileID: 2895593067169026987, guid: 341566cbe871ac14b8244a3ae203b3a7, type: 3}
   bulletSpeed: 10
   maxAmmo: 6
   reloadTime: 1
   healthBar: {fileID: 0}
+  expBar: {fileID: 0}
   ammoTextBar: {fileID: 0}
 --- !u!54 &4588912894802938485
 Rigidbody:

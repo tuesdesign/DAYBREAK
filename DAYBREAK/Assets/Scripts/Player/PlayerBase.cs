@@ -13,6 +13,7 @@ public class PlayerBase : MonoBehaviour
     Vector2 aimPosition = Vector2.zero;
     Vector2 movePosition = Vector2.zero;
 
+    //Player 
     [Header("Player Base")]
     [SerializeField] float maxHealth = 10;
     float curHealth;
@@ -21,12 +22,22 @@ public class PlayerBase : MonoBehaviour
     [Tooltip("Where the bullets should spawn from the player")]
     [SerializeField] Transform shootPosition;
 
-    
+    //EXP
+    [Header("EXP System")]
+    int exp = 0;
+    [SerializeField] int level = 1;
+    [Tooltip("This determines how much it takes to level up initialy")]
+    [SerializeField] int levelIncrement = 100;
+    [Tooltip("NOT IMPLIMENTED \n Rate of increse of exp needed for each level")]
+    [SerializeField] AnimationCurve incrementRate; //does nothing for now
+
+    //Projectile
     [Header("Projectile Stats")]
     [Tooltip("The time in seconds betweenshots")]
     [SerializeField] float shootDelay = 0.5f;
     [Tooltip("the prefab used for the bullet")]
     [SerializeField] GameObject bulletType;
+    [Tooltip("The speed that bullets are fired")]
     [SerializeField] float bulletSpeed = 10f;
     [SerializeField] int maxAmmo = 6;
     int ammoCount;
@@ -36,9 +47,12 @@ public class PlayerBase : MonoBehaviour
     bool canShoot = true;
     [SerializeField] float reloadTime = 1f;
 
+    //UI
     [Header("UI")]
-    [Tooltip("")]
+    [Tooltip("This is the health bar.")]
     [SerializeField] Slider healthBar;
+    [Tooltip("This is the exp bar.")]
+    [SerializeField] Slider expBar;
     [Tooltip("The text bar to describe how much ammo the player has in comparisson to their maximum ammo")]
     [SerializeField] TMP_Text ammoTextBar;
 
@@ -63,7 +77,7 @@ public class PlayerBase : MonoBehaviour
         curHealth = maxHealth;
         ammoCount = maxAmmo;
 
-        //UI Call
+        //UI initialization
         if(healthBar != null)
         {
             healthBar.maxValue = maxHealth;
@@ -73,6 +87,12 @@ public class PlayerBase : MonoBehaviour
         if(ammoTextBar != null)
         {
             ammoTextBar.text = ammoCount + " / " + maxAmmo;
+        }
+
+        if (expBar != null)
+        {
+            expBar.maxValue = levelIncrement;
+            expBar.value = exp;
         }
     }
 
@@ -92,6 +112,7 @@ public class PlayerBase : MonoBehaviour
         
     }
 
+    #region Health Related Code (Heal, Damage, Death)
     public void Heal(float amount)
     {
         curHealth += amount;
@@ -112,16 +133,17 @@ public class PlayerBase : MonoBehaviour
         UpdateHealthBar();
     }
 
-    void Die()
+    void Die() //empty for now
     {
 
     }
+    #endregion 
 
     private void FixedUpdate()
     {
 
         //Vector3 movement = new Vector3(movePosition.x, 0f, movePosition.y).normalized * speed; //normal movement (non iso)
-        Vector3 movement = new Vector3(movePosition.x - movePosition.y, 0f, movePosition.x + movePosition.y).normalized * speed; //iso mocvement 
+        Vector3 movement = new Vector3(movePosition.x - movePosition.y, 0f, movePosition.x + movePosition.y).normalized * speed; //iso movement 
         _rb.MovePosition(_rb.position + movement * Time.fixedDeltaTime);
     }
 
@@ -131,7 +153,8 @@ public class PlayerBase : MonoBehaviour
         {
             GameObject b = Instantiate(bulletType, shootPosition);
             
-            b.GetComponent<Rigidbody>().velocity = Vector3.Normalize( new Vector3 (aimPosition.x,0, aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
+            //b.GetComponent<Rigidbody>().velocity = Vector3.Normalize( new Vector3 (aimPosition.x,0, aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
+            b.GetComponent<Rigidbody>().velocity = Vector3.Normalize( new Vector3 (aimPosition.x - aimPosition.y, 0, aimPosition.x + aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
             Destroy(b, 20);    //destroys the bullet after 20 seconds
 
             ammoCount--;
@@ -152,7 +175,30 @@ public class PlayerBase : MonoBehaviour
         UpdateAmmoCount();
     }
 
+    private void GainEXP(int amount)
+    {
+        exp += amount;
+        UpdateEXPBar();
+        if (exp >= levelIncrement)
+        {
+            LevelUp();
+        }
+    }
 
+    private void LevelUp()
+    {
+        exp -= levelIncrement;
+        level++;
+        // INSERT A CALL TO SPAWN THE UPGRADE MENU AND PAUSE THE TIME  (ALSO ENSURE THAT AFTER SELECTING THE UPGRADE MENU THAT TIME REVERTS)
+
+        if (exp >= levelIncrement)
+        {
+            LevelUp();
+        }
+        UpdateEXPBar();
+    }
+
+    #region UI Handling
     void UpdateHealthBar()
     {
         if (healthBar != null)
@@ -168,6 +214,16 @@ public class PlayerBase : MonoBehaviour
             ammoTextBar.text = ammoCount + " / " + maxAmmo;
         }
     }
+
+    void UpdateEXPBar()
+    {
+        if (expBar != null)
+        {
+            expBar.value = exp;
+        }
+    }
+
+    #endregion
 
     IEnumerator ShootTiming()
     {
@@ -190,6 +246,16 @@ public class PlayerBase : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             TakeDamage(collision.gameObject.GetComponent<EnemyBase>().GetDamage);
+        }
+
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "EXP")
+        {
+            GainEXP(other.gameObject.GetComponent<ExpDrop>().ExpAmount);
+            Destroy(other.gameObject); 
         }
     }
 }
