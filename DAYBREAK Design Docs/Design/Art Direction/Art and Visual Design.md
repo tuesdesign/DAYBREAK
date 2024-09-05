@@ -1,2 +1,2 @@
-[[Asset List]]
+
 [[Style Guide]]

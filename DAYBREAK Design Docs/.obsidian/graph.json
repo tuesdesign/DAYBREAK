@@ -3,42 +3,63 @@
   "search": "",
   "showTags": false,
   "showAttachments": false,
-  "hideUnresolved": false,
+  "hideUnresolved": true,
   "showOrphans": true,
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "path:_Home_  ",
+      "query": "path:\"Design/Game Design\"  ",
       "color": {
         "a": 1,
-        "rgb": 14048348
+        "rgb": 13121335
       }
     },
     {
-      "query": "path:Design  ",
+      "query": "path:\"Design/Art Direction\"  ",
       "color": {
         "a": 1,
-        "rgb": 12768860
+        "rgb": 3618760
       }
     },
     {
-      "query": "path:Project  ",
+      "query": "path:\"Design/Narrative Direction\"  ",
       "color": {
         "a": 1,
-        "rgb": 6084241
+        "rgb": 3655735
+      }
+    },
+    {
+      "query": "path:Kanban  ",
+      "color": {
+        "a": 1,
+        "rgb": 3655880
+      }
+    },
+    {
+      "query": "path:\"Design/Technical Design\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 13158455
+      }
+    },
+    {
+      "query": "path:\"Design/Sound Design\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 13121480
       }
     }
   ],
-  "collapse-display": false,
+  "collapse-display": true,
   "showArrow": false,
-  "textFadeMultiplier": -1.4,
-  "nodeSizeMultiplier": 1.42708333333333,
-  "lineSizeMultiplier": 2.49895833333333,
-  "collapse-forces": true,
-  "centerStrength": 0.518713248970312,
-  "repelStrength": 10,
-  "linkStrength": 1,
-  "linkDistance": 250,
-  "scale": 1.0000000000000138,
-  "close": true
+  "textFadeMultiplier": -1,
+  "nodeSizeMultiplier": 1.249920997921,
+  "lineSizeMultiplier": 1.75102494802495,
+  "collapse-forces": false,
+  "centerStrength": 0.816008316008316,
+  "repelStrength": 20,
+  "linkStrength": 0.741164241164241,
+  "linkDistance": 30,
+  "scale": 0.6554983534947023,
+  "close": false
 }

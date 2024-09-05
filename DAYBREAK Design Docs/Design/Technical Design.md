@@ -1,5 +1,4 @@
-
- Systems
-[[Level Gen]]
+Systems
+[[Level Generation]]
 [[ADASTRA]]
 [[TAPTICIAN]]

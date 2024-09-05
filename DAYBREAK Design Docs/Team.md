@@ -7,17 +7,15 @@
 	- E-mail: constantine.pallas@ontariotechu.net
 	- Discord: constantinepallas
 	- GitHub: tuesdesign
-	- Phone: (647)-325-4284
 #### Daniel Fiuk
 - Roles & Responsibilities: 
-	- Programmer
+	- Games Systems Programmer
 
 - Information and Contact
 	- Student Number: 100834886
 	- E-mail: daniel.fiuk21@gmail.com, daniel.fiuk@ontariotechu.net
 	- Discord: shock_wave_gamer
 	- GitHub: ShockWaveGamer
-	- Phone: (403)-667-0580
 #### Mason Desjarlais
 - Roles & Responsibilities: 
 	- Writer
@@ -27,7 +25,6 @@
 	- E-mail: mason.desjarlais@ontariotechu.net
 	- Discord: .its_yaboi
 	- GitHub: GitGoing87
-	- Phone: (905)-926-9072
 #### Oscar Espinola
 - Roles & Responsibilities: 
 	- Artist
@@ -37,7 +34,6 @@
 	- E-mail: 
 	- Discord:
 	- GitHub:
-	- Phone:
 #### Alannis Davis
 - Roles & Responsibilities: 
 	- Programmer
@@ -47,7 +43,6 @@
 	- E-mail: alannis.davis@ontariotechu.net
 	- Discord: AceSavaid
 	- GitHub: AceSavaid
-	- Phone:
 #### Rylan Dressler
 - Roles & Responsibilities: 
 	- VFX Artist
@@ -57,7 +52,6 @@
 	- E-mail: rylanedwardallen.dressler@ontariotechu.net
 	- Discord: the_advocate42
 	- GitHub: Rylan-Dressler
-	- Phone: (289)-600-9285
 #### Lilian Anderson
 - Roles & Responsibilities: 
 	- Art Assets
@@ -68,7 +62,6 @@
 	- E-mail: lilian.anderson@ontartiotechu.net
 	- Discord: liliannaaa
 	- GitHub: liliancool7
-	- Phone: (613)-807-5459
 
 #### Gavin Cole
 - Roles & Responsibilities: 
@@ -81,5 +74,4 @@
 	- E-mail: gavin.cole@ontariotechu.net
 	- Discord: allnamessuck_
 	- GitHub: GCole600
-	- Phone: (705)-331-7626
 

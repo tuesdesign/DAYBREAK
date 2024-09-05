@@ -8,37 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c556110cbbbb35f7",
-            "type": "leaf",
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "Kanban/Kanban Board.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
-              }
-            }
-          },
-          {
             "id": "85644584a7b8bfaf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Kanban/Kanban Help.md",
+                "file": "Design/Art Direction/Art and Visual Design.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -57,7 +38,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "byModifiedTime"
+                "sortOrder": "alphabetical"
               }
             }
           },
@@ -104,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Kanban/Kanban Help.md",
+                "file": "Design/Art Direction/Art and Visual Design.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Kanban/Kanban Help.md",
+                "file": "Design/Art Direction/Art and Visual Design.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Kanban/Kanban Help.md"
+                "file": "Design/Art Direction/Art and Visual Design.md"
               }
             }
           }
@@ -152,7 +133,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 200,
     "collapsed": true
   },
   "left-ribbon": {
@@ -168,30 +149,34 @@
   },
   "active": "85644584a7b8bfaf",
   "lastOpenFiles": [
+    "Design/Art Direction/Style Guide.md",
+    "Design/Art Direction/Art and Visual Design.md",
+    "Project Summary.md",
+    "Daybreak Game Design Document.md",
+    "Design/Technical Design.md",
+    "Design/Game Design/Level Generation.md",
+    "Design/Game Design/Gameplay.md",
+    "Design/Narrative Direction/Narrative.md",
+    "Design/Sound Design/ADASTRA.md",
+    "Design/Technical Design",
+    "Team.md",
+    "_Home_/Pitch Checklist.md",
+    "Design/Technical Design/TAPTICIAN.md",
+    "Design/Asset List.md",
     "Kanban/Kanban Board.md",
+    "Design/Art Direction",
+    "Design/Narrative Direction",
+    "Design/Game Design",
+    "Design/Sound Design",
     "Kanban/Kanban Help.md",
     "Kanban/Kanban Items/Temp Cheese.md",
     "Kanban/Kanban Items/Images/Temp Cheese.png",
     "Kanban/Kanban Items/Images",
     "Kanban/Kanban Items",
     "Kanban",
-    "Project/Project Summary.md",
-    "Project/Team.md",
     "Project/Asset Procurement.md",
-    "_Home_/Daybreak Game Design Document.md",
-    "Design/Technical Design.md",
-    "Design/Art and Visual Design.md",
-    "Design/TAPTICIAN.md",
-    "Design/Asset List.md",
-    "Design/Gameplay.md",
-    "Design/ADASTRA.md",
-    "Design/Level Gen.md",
-    "Design/Narrative.md",
-    "Design/Style Guide.md",
-    "_Home_/Pitch Checklist.md",
     "_Home_",
     "Design",
-    "Project",
     "Welcome.md"
   ]
 }
