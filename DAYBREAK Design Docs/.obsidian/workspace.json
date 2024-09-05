@@ -11,11 +11,17 @@
             "id": "85644584a7b8bfaf",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Design/Art Direction/Art and Visual Design.md",
-                "mode": "source",
-                "source": false
+                "file": "Kanban/Kanban Board.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
               }
             }
           }
@@ -85,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Art Direction/Art and Visual Design.md",
+                "file": "Kanban/Kanban Board.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +108,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Art Direction/Art and Visual Design.md",
+                "file": "Kanban/Kanban Board.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +131,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Art Direction/Art and Visual Design.md"
+                "file": "Kanban/Kanban Board.md"
               }
             }
           }
@@ -149,26 +155,30 @@
   },
   "active": "85644584a7b8bfaf",
   "lastOpenFiles": [
-    "Design/Art Direction/Style Guide.md",
-    "Design/Art Direction/Art and Visual Design.md",
-    "Project Summary.md",
-    "Daybreak Game Design Document.md",
-    "Design/Technical Design.md",
-    "Design/Game Design/Level Generation.md",
+    "_Home_/Daybreak Game Design Document.md",
+    "_Home_/Project Summary.md",
     "Design/Game Design/Gameplay.md",
+    "Art Direction.md",
+    "Design/Art Direction/Art and Visual Design.md",
+    "_Home_/Team.md",
+    "Design/Game Systems and Technical Design.md",
+    "Kanban/Kanban Board.md",
+    "Untitled 1.canvas",
+    "Untitled 2.canvas",
+    "Untitled.canvas",
+    "Kanban/Kanban Help.md",
+    "_Home_/Pitch Checklist.md",
+    "Design/Art Direction/Style Guide.md",
+    "Design/Game Design/Level Generation.md",
     "Design/Narrative Direction/Narrative.md",
     "Design/Sound Design/ADASTRA.md",
     "Design/Technical Design",
-    "Team.md",
-    "_Home_/Pitch Checklist.md",
     "Design/Technical Design/TAPTICIAN.md",
     "Design/Asset List.md",
-    "Kanban/Kanban Board.md",
     "Design/Art Direction",
     "Design/Narrative Direction",
     "Design/Game Design",
     "Design/Sound Design",
-    "Kanban/Kanban Help.md",
     "Kanban/Kanban Items/Temp Cheese.md",
     "Kanban/Kanban Items/Images/Temp Cheese.png",
     "Kanban/Kanban Items/Images",
