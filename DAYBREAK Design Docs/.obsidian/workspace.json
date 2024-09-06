@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design/Narrative Direction/Narrative.md",
+                "file": "Design/Game Design/Gameplay.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Narrative Direction/Narrative.md",
+                "file": "Design/Game Design/Gameplay.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Narrative Direction/Narrative.md",
+                "file": "Design/Game Design/Gameplay.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Narrative Direction/Narrative.md"
+                "file": "Design/Game Design/Gameplay.md"
               }
             }
           }
@@ -150,22 +150,23 @@
   },
   "active": "85644584a7b8bfaf",
   "lastOpenFiles": [
-    "_Home_/Daybreak Game Design Document.md",
-    "Design/Sound Design/ADASTRA.md",
-    "Design/Narrative Direction/Narrative.md",
-    "Design/Technical Design/TAPTICIAN.md",
     "Design/Art Direction/Style Guide.md",
-    "Kanban/Kanban Board.md",
-    "_Home_/Project Summary.md",
-    "Design/Game Design/Gameplay.md",
-    "Art Direction.md",
     "Design/Art Direction/Art and Visual Design.md",
     "_Home_/Team.md",
+    "_Home_/Project Summary.md",
+    "_Home_/Daybreak Game Design Document.md",
+    "Kanban/Kanban Items/Completed Items",
+    "Kanban/Kanban Board.md",
+    "Kanban/Kanban Help.md",
+    "Design/Technical Design/TAPTICIAN.md",
+    "Design/Sound Design/ADASTRA.md",
+    "Design/Narrative Direction/Narrative.md",
+    "Design/Game Design/Gameplay.md",
+    "Art Direction.md",
     "Design/Game Systems and Technical Design.md",
     "Untitled 1.canvas",
     "Untitled 2.canvas",
     "Untitled.canvas",
-    "Kanban/Kanban Help.md",
     "_Home_/Pitch Checklist.md",
     "Design/Game Design/Level Generation.md",
     "Design/Technical Design",
@@ -181,7 +182,6 @@
     "Kanban",
     "Project/Asset Procurement.md",
     "_Home_",
-    "Design",
     "Welcome.md"
   ]
 }

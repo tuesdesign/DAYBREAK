@@ -1,4 +1,4 @@
-**A Game by STELLAR OCTOPIANS (and friends)**
+ **A Game by STELLAR OCTOPIANS (and friends)**
 
 >[!info]
 >Some GDD info goes here   
