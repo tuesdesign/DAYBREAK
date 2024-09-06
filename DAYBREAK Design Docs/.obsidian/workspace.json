@@ -11,17 +11,12 @@
             "id": "85644584a7b8bfaf",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Kanban/Kanban Board.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "Design/Narrative Direction/Narrative.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -91,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Kanban/Kanban Board.md",
+                "file": "Design/Narrative Direction/Narrative.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Kanban/Kanban Board.md",
+                "file": "Design/Narrative Direction/Narrative.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Kanban/Kanban Board.md"
+                "file": "Design/Narrative Direction/Narrative.md"
               }
             }
           }
@@ -156,24 +151,24 @@
   "active": "85644584a7b8bfaf",
   "lastOpenFiles": [
     "_Home_/Daybreak Game Design Document.md",
+    "Design/Sound Design/ADASTRA.md",
+    "Design/Narrative Direction/Narrative.md",
+    "Design/Technical Design/TAPTICIAN.md",
+    "Design/Art Direction/Style Guide.md",
+    "Kanban/Kanban Board.md",
     "_Home_/Project Summary.md",
     "Design/Game Design/Gameplay.md",
     "Art Direction.md",
     "Design/Art Direction/Art and Visual Design.md",
     "_Home_/Team.md",
     "Design/Game Systems and Technical Design.md",
-    "Kanban/Kanban Board.md",
     "Untitled 1.canvas",
     "Untitled 2.canvas",
     "Untitled.canvas",
     "Kanban/Kanban Help.md",
     "_Home_/Pitch Checklist.md",
-    "Design/Art Direction/Style Guide.md",
     "Design/Game Design/Level Generation.md",
-    "Design/Narrative Direction/Narrative.md",
-    "Design/Sound Design/ADASTRA.md",
     "Design/Technical Design",
-    "Design/Technical Design/TAPTICIAN.md",
     "Design/Asset List.md",
     "Design/Art Direction",
     "Design/Narrative Direction",
