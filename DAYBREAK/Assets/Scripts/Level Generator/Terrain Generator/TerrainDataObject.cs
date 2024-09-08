@@ -23,18 +23,4 @@ public class TerrainDataObject : ScriptableObject
     public float naturalEdgeStrength = 0.1f;
 
     [Space] public float waterLevel = 0.5f;
-
-    public TerrainDataObject(Vector2Int mapSize, int resolution, string seed, Biome[] biomes, float terrainSeperation, float islandRadius, AnimationCurve edgeCurve, float edgeStrength, float naturalEdgeStrength, float naturalEdgeScale, float waterLevel)
-    {
-        this.mapSize = mapSize;
-        this.seed = seed;
-        this.biomes = biomes;
-        this.biomeSeperation = terrainSeperation;
-        this.islandRadius = islandRadius;
-        this.edgeCurve = edgeCurve;
-        this.edgeStrength = edgeStrength;
-        this.naturalEdgeScale = naturalEdgeScale;
-        this.naturalEdgeStrength = naturalEdgeStrength;
-        this.waterLevel = waterLevel;
-    }
 }
