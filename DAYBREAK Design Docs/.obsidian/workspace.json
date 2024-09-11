@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design/Game Design/Gameplay.md",
+                "file": "_Home_/Team.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Game Design/Gameplay.md",
+                "file": "_Home_/Team.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Game Design/Gameplay.md",
+                "file": "_Home_/Team.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Game Design/Gameplay.md"
+                "file": "_Home_/Team.md"
               }
             }
           }
@@ -150,6 +150,7 @@
   },
   "active": "85644584a7b8bfaf",
   "lastOpenFiles": [
+    "Design/Game Design/Gameplay.md",
     "Design/Art Direction/Style Guide.md",
     "Design/Art Direction/Art and Visual Design.md",
     "_Home_/Team.md",
@@ -161,7 +162,6 @@
     "Design/Technical Design/TAPTICIAN.md",
     "Design/Sound Design/ADASTRA.md",
     "Design/Narrative Direction/Narrative.md",
-    "Design/Game Design/Gameplay.md",
     "Art Direction.md",
     "Design/Game Systems and Technical Design.md",
     "Untitled 1.canvas",

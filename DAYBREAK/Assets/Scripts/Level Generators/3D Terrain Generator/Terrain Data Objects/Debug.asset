@@ -15,32 +15,35 @@ MonoBehaviour:
   mapSize: {x: 250, y: 250}
   seed: Hello World
   biomes:
-  - skipBiome: 0
-    name: Biome 1
-    baseTerrainLayer: {fileID: 8574412962073106934, guid: 328c778709857ca4b9735f1b5f005904, type: 2}
+  - name: Biome 1
+    skipBiome: 0
+    baseTerrainLayer: {fileID: 8574412962073106934, guid: 270fb9ff29304eb44b0f333e21d1019a, type: 2}
     pathTerrainLayer: {fileID: 8574412962073106934, guid: b58e19c7cb19f50458e6c2e45f3afbad, type: 2}
     terrainAF:
     - amplitude: 30
-      frequency: 0.05
+      frequency: 0.005
     - amplitude: 10
-      frequency: 0.02
+      frequency: 0.05
     selectorAF:
-    - amplitude: 5
-      frequency: 0.5
-  - skipBiome: 0
-    name: Biome 2
-    baseTerrainLayer: {fileID: 8574412962073106934, guid: b58e19c7cb19f50458e6c2e45f3afbad, type: 2}
+    - amplitude: 6
+      frequency: 0.01
+    structures:
+    - {fileID: 7510159459844304910, guid: cf0b6cff157001b4286d9015ba33eae5, type: 3}
+  - name: Biome 2
+    skipBiome: 0
+    baseTerrainLayer: {fileID: 8574412962073106934, guid: 19c64478e8294d24ebde63eb1ec74c0d, type: 2}
     pathTerrainLayer: {fileID: 8574412962073106934, guid: 328c778709857ca4b9735f1b5f005904, type: 2}
     terrainAF:
+    - amplitude: 25
+      frequency: 0.01
     - amplitude: 15
-      frequency: 0.1
-    - amplitude: 5
-      frequency: 0.5
+      frequency: 0.05
     selectorAF:
-    - amplitude: 5
-      frequency: 1
-  biomeSeperation: 50
-  islandRadius: 75
+    - amplitude: 6
+      frequency: 0.005
+    structures: []
+  biomeSeperation: 10
+  islandRadius: 40
   edgeCurve:
     serializedVersion: 2
     m_Curve:
@@ -65,7 +68,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  edgeStrength: 10
+  edgeStrength: 30
   naturalEdgeScale: 100
   naturalEdgeStrength: 65
   waterLevel: 0

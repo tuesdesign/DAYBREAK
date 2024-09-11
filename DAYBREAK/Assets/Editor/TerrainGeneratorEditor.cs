@@ -12,7 +12,6 @@ public class TerrainGeneratorEditor : Editor
     Editor terrainDataObjectEditor;
 
     bool showTerrainDataObject = false;
-    bool showDebugOptions = false;
 
     private void OnEnable()
     {
