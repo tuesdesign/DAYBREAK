@@ -123,9 +123,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   maxHealth: 3
-  damage: 2
+  damage: 3
   expDrop: {fileID: 1899146013018079469, guid: 256ee127cad89df4e93f5fccfd2e93bb, type: 3}
-  expDropChance: 1
+  expDropChance: 100
 --- !u!54 &6856018474405385931
 Rigidbody:
   m_ObjectHideFlags: 0

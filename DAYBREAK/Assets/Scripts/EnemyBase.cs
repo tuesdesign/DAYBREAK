@@ -17,6 +17,8 @@ public class EnemyBase : MonoBehaviour
     [Tooltip("The type of exp that the enemy drops when kiled")]
     [SerializeField] GameObject expDrop;
     [SerializeField][Range(1f, 100f)] float expDropChance = 100;
+
+    //enemy effects
     
 
 

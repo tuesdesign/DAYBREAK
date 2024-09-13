@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerBase : MonoBehaviour
 {
@@ -135,7 +136,7 @@ public class PlayerBase : MonoBehaviour
 
     void Die() //empty for now
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     #endregion 
 

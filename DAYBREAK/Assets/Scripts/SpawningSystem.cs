@@ -20,7 +20,8 @@ public class SpawningSystem : MonoBehaviour
     [Tooltip("Distance away from player")]
     [SerializeField] private float spawnDistance = 20;
 
-    float timer = 0;
+    float spawnTimer = 0;
+    float stageTimer = 0;
     Transform playerTransform;
     
 
@@ -33,18 +34,23 @@ public class SpawningSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= spawnGroups[index].spawnSpeed) {
+        spawnTimer += Time.deltaTime;
+        stageTimer += Time.deltaTime;
+        if (stageTimer >= spawnGroups[index].duration && index < spawnGroups.Count-1)
+        {
+            index++;
+            stageTimer = 0;
+        }
+
+        if (spawnTimer >= spawnGroups[index].spawnSpeed) {
             Spawn();
-            timer -= spawnGroups[index].spawnSpeed; 
+            spawnTimer -= spawnGroups[index].spawnSpeed; 
         }
         
     }
 
     void Spawn()
-    {
-        int spawnzone = Random.Range(0, 4);
-        
+    {        
         GameObject sEnemy = spawnGroups[index].enemies[Random.Range(0, spawnGroups[index].enemies.Count)];
 
         // Randomly select a direction around the player
