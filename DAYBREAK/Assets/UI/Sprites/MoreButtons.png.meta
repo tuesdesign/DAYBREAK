@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 9b8999d78ad372c4a99c184e02cbe087
+guid: 208085cd7e300964db39fae4421921a5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 74
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,34 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MainMenuButtons_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 74
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 189b54b2fa188d4408ce74c7a5716820
-      internalID: 1369483304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MainMenuButtons_1
+      name: MoreButtons_0
       rect:
         serializedVersion: 2
         x: 74
-        y: 64
-        width: 74
-        height: 64
+        y: 339
+        width: 164
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +137,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8aaa99823a21e57499012f31b1c5b9fb
-      internalID: 379063717
+      spriteID: 3fba94a4807b01a46be7159678fbc2cc
+      internalID: 1785673766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MainMenuButtons_2
+      name: MoreButtons_1
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 339
+        width: 164
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9439e3bfe73aea440ae37c546edfd3eb
+      internalID: -262752699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoreButtons_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 74
-        height: 64
+        width: 316
+        height: 272
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd5729d76c8949a4493326fb5a4d903d
-      internalID: -1084257957
+      spriteID: 43985baefbc298d4f8f5cc76407f4ca1
+      internalID: 1915510292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MainMenuButtons_3
+      name: MoreButtons_3
       rect:
         serializedVersion: 2
-        x: 74
-        y: 0
-        width: 74
-        height: 64
+        x: 369
+        y: 60
+        width: 164
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fc976935aac89b4aa2ea3855f1c5eb9
-      internalID: -117053746
+      spriteID: da5da91af385df64382563f502c0834d
+      internalID: -1489490183
       vertices: []
       indices: 
       edges: []
@@ -209,7 +209,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c7748e2636b2d334da7a861a2985e9fb
+    spriteID: 3034aaaee8ea3394aba57f0d7c559838
     internalID: 0
     vertices: []
     indices: 
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MainMenuButtons_0: 1369483304
-      MainMenuButtons_1: 379063717
-      MainMenuButtons_2: -1084257957
-      MainMenuButtons_3: -117053746
+      MoreButtons_0: 1785673766
+      MoreButtons_1: -262752699
+      MoreButtons_2: 1915510292
+      MoreButtons_3: -1489490183
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

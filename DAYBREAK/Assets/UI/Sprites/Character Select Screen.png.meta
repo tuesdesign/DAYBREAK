@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 208085cd7e300964db39fae4421921a5
+guid: bb00a2021ffb8dd43b0dbedf2e771ef4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -45,10 +45,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 106.56
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MoreButtons_0
+      name: Character Select Screen_0
       rect:
         serializedVersion: 2
-        x: 74
-        y: 339
-        width: 164
-        height: 144
+        x: 101
+        y: 3216
+        width: 122
+        height: 1522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fba94a4807b01a46be7159678fbc2cc
-      internalID: 1785673766
+      spriteID: 2fbb3cc7fe246e042bf62a1728985aa8
+      internalID: 318395701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MoreButtons_1
+      name: Character Select Screen_1
       rect:
         serializedVersion: 2
-        x: 369
-        y: 339
-        width: 164
-        height: 144
+        x: 367
+        y: 4568
+        width: 180
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,41 +158,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9439e3bfe73aea440ae37c546edfd3eb
-      internalID: -262752699
+      spriteID: d2d60c7a6d11faf4b9c0b4089beb080c
+      internalID: 1010838353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MoreButtons_2
+      name: Character Select Screen_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 316
-        height: 272
+        x: 381
+        y: 3215
+        width: 1465
+        height: 1139
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 704.5583, y: 569.5}
+        - {x: -732.5, y: 178.03934}
+        - {x: -732.5, y: -569.5}
+        - {x: -664.70294, y: -569.5}
+        - {x: 732.5, y: -168.90791}
+        - {x: 732.5, y: 569.5}
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43985baefbc298d4f8f5cc76407f4ca1
-      internalID: 1915510292
+      spriteID: 1fb9476c17314714aa35a805368153cf
+      internalID: 589506845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MoreButtons_3
+      name: Character Select Screen_3
       rect:
         serializedVersion: 2
-        x: 369
-        y: 60
-        width: 164
-        height: 144
+        x: 1987
+        y: 3229
+        width: 1465
+        height: 1142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +206,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da5da91af385df64382563f502c0834d
-      internalID: -1489490183
+      spriteID: 713a5cc30fd23be4cbfa7ba9493e2168
+      internalID: 137147475
       vertices: []
       indices: 
       edges: []
@@ -209,7 +215,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3034aaaee8ea3394aba57f0d7c559838
+    spriteID: 7f4972865f606664fbce71a88576f481
     internalID: 0
     vertices: []
     indices: 
@@ -217,10 +223,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MoreButtons_0: 1785673766
-      MoreButtons_1: -262752699
-      MoreButtons_2: 1915510292
-      MoreButtons_3: -1489490183
+      Character Select Screen_0: 318395701
+      Character Select Screen_1: 1010838353
+      Character Select Screen_2: 589506845
+      Character Select Screen_3: 137147475
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
