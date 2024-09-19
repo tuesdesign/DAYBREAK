@@ -22,6 +22,8 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] float speed = 2.5f;
     [Tooltip("Where the bullets should spawn from the player")]
     [SerializeField] Transform shootPosition;
+    [Tooltip("should you use twinstick controls \n if on it uses left and right analog sticks \n if off it only uses the move direction")]
+    [SerializeField] bool twinStick = true;
 
     //EXP
     [Header("EXP System")]
@@ -69,9 +71,17 @@ public class PlayerBase : MonoBehaviour
         _playerInputActions.Game.Move.performed += ctx => movePosition = ctx.ReadValue<Vector2>();
         _playerInputActions.Game.Move.canceled += ctx => movePosition = new Vector2(0,0) ;
 
-        _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();
-        _playerInputActions.Game.Fire.performed += ctx => Shoot();
-        _playerInputActions.Game.Fire.canceled += ctx => aimPosition = new Vector2(0,0);
+        if (twinStick)
+        {
+            _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();
+            _playerInputActions.Game.Fire.performed += ctx => Shoot();
+            _playerInputActions.Game.Fire.canceled += ctx => aimPosition = new Vector2(0, 0);
+        }
+        else
+        {
+            _playerInputActions.Game.Move.performed += ctx => Shoot();
+        }
+        
 
 
         //stat initialization 
@@ -155,7 +165,15 @@ public class PlayerBase : MonoBehaviour
             GameObject b = Instantiate(bulletType, shootPosition);
             
             //b.GetComponent<Rigidbody>().velocity = Vector3.Normalize( new Vector3 (aimPosition.x,0, aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
-            b.GetComponent<Rigidbody>().velocity = Vector3.Normalize( new Vector3 (aimPosition.x - aimPosition.y, 0, aimPosition.x + aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
+            if (twinStick)
+            {
+                b.GetComponent<Rigidbody>().velocity = Vector3.Normalize(new Vector3(aimPosition.x - aimPosition.y, 0, aimPosition.x + aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
+            }
+            else
+            {
+                b.GetComponent<Rigidbody>().velocity = Vector3.Normalize(new Vector3(movePosition.x - movePosition.y, 0, movePosition.x + movePosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
+            }
+            
             Destroy(b, 20);    //destroys the bullet after 20 seconds
 
             ammoCount--;
