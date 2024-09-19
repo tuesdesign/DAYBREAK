@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_Home_/Team.md",
+                "file": "_Home_/Daybreak Game Design Document.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_Home_/Team.md",
+                "file": "_Home_/Daybreak Game Design Document.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_Home_/Team.md",
+                "file": "_Home_/Daybreak Game Design Document.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_Home_/Team.md"
+                "file": "_Home_/Daybreak Game Design Document.md"
               }
             }
           }
@@ -150,12 +150,12 @@
   },
   "active": "85644584a7b8bfaf",
   "lastOpenFiles": [
-    "_Home_/Daybreak Game Design Document.md",
-    "_Home_/Project Summary.md",
-    "Design/Art Direction/Style Guide.md",
-    "Design/Art Direction/Art and Visual Design.md",
-    "_Home_/Team.md",
     "Design/Game Design/Gameplay.md",
+    "_Home_/Daybreak Game Design Document.md",
+    "Design/Art Direction/Art and Visual Design.md",
+    "_Home_/Project Summary.md",
+    "_Home_/Team.md",
+    "Design/Art Direction/Style Guide.md",
     "Kanban/Kanban Items/Completed Items",
     "Kanban/Kanban Board.md",
     "Kanban/Kanban Help.md",
