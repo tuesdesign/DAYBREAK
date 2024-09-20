@@ -9,3 +9,5 @@
 * The player will run around exploring the area.
 * They will fight against eldritch monsters.
 * Picking up exp, and earning upgrades.
+
+[[Proposed Upgrade Tree]]
