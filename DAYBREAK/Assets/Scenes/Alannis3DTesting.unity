@@ -347,8 +347,14 @@ MonoBehaviour:
     - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
     - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
   - duration: 30
+    spawnSpeed: 6
+    enemies:
+    - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
+    - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
+  - duration: 60
     spawnSpeed: 4
     enemies:
+    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
     - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
     - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
   spawnDistance: 40
@@ -375,12 +381,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 49292051603689960, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 543658803925856533, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
       propertyPath: m_Color.a
       value: 0.46666667
       objectReference: {fileID: 0}
     - target: {fileID: 2513032231869433368, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377079794506297937, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3940420839463810474, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
