@@ -293,24 +293,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  speed: 2.5
+  speed: 10
   shootPosition: {fileID: 4597465106178929703}
+  twinStick: 1
   level: 1
-  levelIncrement: 100
+  levelIncrement: 20
   incrementRate:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  shootDelay: 0.5
+  shootDelay: 0.4
   bulletType: {fileID: 2895593067169026987, guid: 341566cbe871ac14b8244a3ae203b3a7, type: 3}
-  bulletSpeed: 10
+  bulletSpeed: 20
   maxAmmo: 6
-  reloadTime: 1
+  reloadTime: 0.75
   healthBar: {fileID: 0}
   expBar: {fileID: 0}
   ammoTextBar: {fileID: 0}
+  shootSounds:
+  - {fileID: 8300000, guid: f119b447d836da944abbbd51abbe43ac, type: 3}
+  - {fileID: 8300000, guid: 6d4ed617c3d74314db38f2a7e94cd276, type: 3}
+  - {fileID: 8300000, guid: 3f49232a41a0bac4298ead3e67f566e3, type: 3}
+  - {fileID: 8300000, guid: 91222c07e49c1b84db9b26850be25b49, type: 3}
+  - {fileID: 8300000, guid: 6e64aeb58aab12f4d974b28ca23febbb, type: 3}
+  reloadSounds:
+  - {fileID: 8300000, guid: 07ed6a52a2cbaa14891200721e16a301, type: 3}
+  - {fileID: 8300000, guid: 43674f1b1507ff6468a301e55b9f35c7, type: 3}
+  - {fileID: 8300000, guid: a1e9e3ea33d4164488718963a275cd34, type: 3}
 --- !u!54 &4588912894802938485
 Rigidbody:
   m_ObjectHideFlags: 0

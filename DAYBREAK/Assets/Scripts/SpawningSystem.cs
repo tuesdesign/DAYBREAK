@@ -18,7 +18,7 @@ public class SpawningSystem : MonoBehaviour
     [SerializeField] List<SpawnGroup> spawnGroups;
 
     [Tooltip("Distance away from player")]
-    [SerializeField] private float spawnDistance = 20;
+    [SerializeField] private float spawnDistance = 30;
 
     float spawnTimer = 0;
     float stageTimer = 0;
@@ -38,8 +38,9 @@ public class SpawningSystem : MonoBehaviour
         stageTimer += Time.deltaTime;
         if (stageTimer >= spawnGroups[index].duration && index < spawnGroups.Count-1)
         {
-            index++;
             stageTimer = 0;
+            index++;
+            
         }
 
         if (spawnTimer >= spawnGroups[index].spawnSpeed) {
@@ -54,7 +55,7 @@ public class SpawningSystem : MonoBehaviour
         GameObject sEnemy = spawnGroups[index].enemies[Random.Range(0, spawnGroups[index].enemies.Count)];
 
         // Randomly select a direction around the player
-        Vector3 randomDirection = Random.insideUnitSphere.normalized;
+        Vector3 randomDirection = Random.insideUnitSphere;
         randomDirection.y = 0; // Keep the enemy on the same plane as the player
 
         // Calculate the spawn position based on the player's position and the chosen direction

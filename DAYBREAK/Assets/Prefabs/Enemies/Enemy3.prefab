@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7698515316624146868}
   - component: {fileID: 3939029876456748827}
   - component: {fileID: 6856018474405385931}
-  m_Layer: 0
-  m_Name: Enemy
+  m_Layer: 7
+  m_Name: Enemy3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f2cbe320971e61b4bace95b3963e0699, type: 2}
+  - {fileID: 2100000, guid: c4a1273d78e487245823d8c05e68fc40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,11 +121,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8436402d765a0541b53c3952d6c66ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  maxHealth: 3
-  damage: 2
+  speed: 5
+  maxHealth: 1
+  damage: 1
   expDrop: {fileID: 1899146013018079469, guid: 256ee127cad89df4e93f5fccfd2e93bb, type: 3}
-  expDropChance: 41
+  expDropChance: 25
+  hurtSounds:
+  - {fileID: 8300000, guid: d397d227199083c478fc948b4f771426, type: 3}
+  - {fileID: 8300000, guid: 9251b01af7728d649a48d222a7fa61cd, type: 3}
+  - {fileID: 8300000, guid: a60b7e183a0e074489628110eac4a2ad, type: 3}
+  - {fileID: 8300000, guid: c7e030577ec10e04885bf3528e8520ab, type: 3}
 --- !u!54 &6856018474405385931
 Rigidbody:
   m_ObjectHideFlags: 0

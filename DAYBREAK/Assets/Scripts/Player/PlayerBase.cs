@@ -59,6 +59,10 @@ public class PlayerBase : MonoBehaviour
     [Tooltip("The text bar to describe how much ammo the player has in comparisson to their maximum ammo")]
     [SerializeField] TMP_Text ammoTextBar;
 
+    //sound effects
+    [Header("Sound Effects")]
+    [SerializeField] List<AudioClip> shootSounds = new List<AudioClip>();
+    [SerializeField] List<AudioClip> reloadSounds = new List<AudioClip>();
 
 
     // Start is called before the first frame update
@@ -162,6 +166,7 @@ public class PlayerBase : MonoBehaviour
     {
         if (canShoot && hasAmmo) //if can shoot and has ammo
         {
+            PlaySoundEffect(shootSounds);
             GameObject b = Instantiate(bulletType, shootPosition);
             
             //b.GetComponent<Rigidbody>().velocity = Vector3.Normalize( new Vector3 (aimPosition.x,0, aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
@@ -192,6 +197,11 @@ public class PlayerBase : MonoBehaviour
             StartCoroutine(ReloadTiming());
         }
         UpdateAmmoCount();
+    }
+
+    void ToggleTwinstick()
+    {
+        twinStick = !twinStick;
     }
 
     private void GainEXP(int amount)
@@ -244,6 +254,14 @@ public class PlayerBase : MonoBehaviour
 
     #endregion
 
+    void PlaySoundEffect(List<AudioClip> soundList)
+    {
+        if (soundList != null)
+        {
+            AudioSource.PlayClipAtPoint(soundList[Random.Range(0, soundList.Count)], this.transform.position);
+        }
+    }
+
     IEnumerator ShootTiming()
     {
         yield return new WaitForSeconds(shootDelay); 
@@ -253,6 +271,7 @@ public class PlayerBase : MonoBehaviour
     IEnumerator ReloadTiming()
     {
         isReloading = true; //variable ensures that it does not attempt to reload while already reloading
+        PlaySoundEffect(reloadSounds);
         yield return new WaitForSeconds(reloadTime);
         ammoCount = maxAmmo;
         hasAmmo = true;
@@ -267,7 +286,6 @@ public class PlayerBase : MonoBehaviour
             TakeDamage(collision.gameObject.GetComponent<EnemyBase>().GetDamage);
         }
 
-        
     }
     private void OnTriggerEnter(Collider other)
     {

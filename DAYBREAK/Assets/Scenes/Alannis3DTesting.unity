@@ -262,7 +262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2c7df7bb951ad7e4c8be5bb3cdb799db, type: 2}
+  - {fileID: 2100000, guid: 573e1ed0b3f25a647bcf331a6d3b77b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -337,15 +337,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnGroups:
-  - duration: 10
-    spawnSpeed: 4
-    enemies:
-    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
   - duration: 20
     spawnSpeed: 4
     enemies:
+    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
+  - duration: 40
+    spawnSpeed: 4
+    enemies:
+    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
     - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
-  spawnDistance: 30
+  - duration: 30
+    spawnSpeed: 4
+    enemies:
+    - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
+    - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
+  spawnDistance: 40
 --- !u!4 &653609240
 Transform:
   m_ObjectHideFlags: 0
@@ -704,10 +710,6 @@ PrefabInstance:
       value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: expBar
       value: 
       objectReference: {fileID: 1551913283}
@@ -717,28 +719,12 @@ PrefabInstance:
       objectReference: {fileID: 1331382111}
     - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: twinStick
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: reloadTime
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: shootDelay
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: ammoTextBar
       value: 
       objectReference: {fileID: 1615562782}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: bulletSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: levelIncrement
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: incrementRate.m_PostInfinity
       value: 2

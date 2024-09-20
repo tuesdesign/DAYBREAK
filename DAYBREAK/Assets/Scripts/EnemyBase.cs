@@ -18,6 +18,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] GameObject expDrop;
     [SerializeField][Range(1f, 100f)] float expDropChance = 100;
 
+    [SerializeField] List<AudioClip> hurtSounds = new List<AudioClip>();
+
     //enemy effects
     
 
@@ -57,6 +59,7 @@ public class EnemyBase : MonoBehaviour
     public void TakeDamage(float damage)
     {
         curHealth -= damage;
+        PlaySoundEffect(hurtSounds);
         if (curHealth <= 0)
         {
             Die();
@@ -77,5 +80,13 @@ public class EnemyBase : MonoBehaviour
         
         Destroy(this.gameObject);
     }
-    
+
+
+    void PlaySoundEffect(List<AudioClip> soundList)
+    {
+        if (soundList != null)
+        {
+            AudioSource.PlayClipAtPoint(soundList[Random.Range(0, soundList.Count)], this.transform.position);
+        }
+    }
 }

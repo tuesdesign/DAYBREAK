@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7698515316624146868}
   - component: {fileID: 3939029876456748827}
   - component: {fileID: 6856018474405385931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -126,6 +126,10 @@ MonoBehaviour:
   damage: 3
   expDrop: {fileID: 1899146013018079469, guid: 256ee127cad89df4e93f5fccfd2e93bb, type: 3}
   expDropChance: 100
+  hurtSounds:
+  - {fileID: 8300000, guid: 6b468d55058209440b960a8df083fcf7, type: 3}
+  - {fileID: 8300000, guid: a60b7e183a0e074489628110eac4a2ad, type: 3}
+  - {fileID: 8300000, guid: c7e030577ec10e04885bf3528e8520ab, type: 3}
 --- !u!54 &6856018474405385931
 Rigidbody:
   m_ObjectHideFlags: 0
