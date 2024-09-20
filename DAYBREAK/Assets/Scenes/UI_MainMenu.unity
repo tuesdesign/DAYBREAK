@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 9593712}
   - component: {fileID: 9593711}
   - component: {fileID: 9593714}
+  - component: {fileID: 9593715}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -338,7 +339,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9593712}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9593715}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Alannis3DTesting
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9593712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +400,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 891faabd1de72d1458a5901e4cb68f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9593715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9593709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb40f9fbbfb660b4f9388c84a10f8ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &90193487
@@ -1828,7 +1853,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1496423277
 RectTransform:
