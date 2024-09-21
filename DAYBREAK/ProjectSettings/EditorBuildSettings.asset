@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/UI_MainMenu.unity
     guid: 6ffd8e0541353004dbc89f45143b95ff
   - enabled: 1
-    path: Assets/Scenes/Alannis3DTesting.unity
+    path: Assets/Scenes/Alannis' Testing/Alannis3DTesting.unity
     guid: 95ee72fbbfef3be49a518f0c4266332b
   m_configObjects: {}

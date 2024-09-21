@@ -8,6 +8,7 @@ using UnityEditor.SceneManagement;
 public class TerrainGeneratorEditor : Editor
 {
     SerializedProperty terrainDataObject;
+    SerializedProperty terrainMaterial;
 
     Editor terrainDataObjectEditor;
 
@@ -17,6 +18,8 @@ public class TerrainGeneratorEditor : Editor
     {
         terrainDataObject = serializedObject.FindProperty("terrainDataObject");
         terrainDataObjectEditor = CreateEditor(terrainDataObject.objectReferenceValue);
+
+        terrainMaterial = serializedObject.FindProperty("terrainMaterial");
     }
 
     public override void OnInspectorGUI()
@@ -38,11 +41,24 @@ public class TerrainGeneratorEditor : Editor
                 terrainDataObjectEditor = CreateEditor(terrainDataObject.objectReferenceValue);
 
         // Show the terrain data object editor
-        if (showTerrainDataObject = EditorGUILayout.Foldout(showTerrainDataObject, "Terrain Data Values")) terrainDataObjectEditor.OnInspectorGUI();
-        EditorGUILayout.Space();
+        if (showTerrainDataObject = EditorGUILayout.Foldout(showTerrainDataObject, "Terrain Data Values"))
+        {
+            EditorGUI.indentLevel++;
+
+            terrainDataObjectEditor.OnInspectorGUI();
+            EditorGUILayout.Space();
+
+            terrainMaterial.objectReferenceValue = EditorGUILayout.ObjectField("Terrain Material", terrainMaterial.objectReferenceValue, typeof(Material), false);
+            EditorGUILayout.Space();
+
+            EditorGUI.indentLevel--;
+        }
 
         // Show the debug options
         EditorGUILayout.PropertyField(serializedObject.FindProperty("debugOptions"), true);
+
+        if (terrainGenerator.debugOptions.randomSeed)
+            EditorGUILayout.LabelField("Current Seed: " + terrainGenerator._seed);
 
         serializedObject.ApplyModifiedProperties();
     }

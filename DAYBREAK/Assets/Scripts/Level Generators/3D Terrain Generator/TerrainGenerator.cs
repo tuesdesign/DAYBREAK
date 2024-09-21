@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,12 +12,13 @@ public class TerrainGenerator : MonoBehaviour
 {
     Terrain _terrain;
     TerrainMap _terrainMap;
+    public int _seed;
 
     [SerializeField]
     public TerrainDataObject terrainDataObject;
 
     [SerializeField]
-    DebugOptions debugOptions;
+    public DebugOptions debugOptions;
 
     [SerializeField]
     private Material terrainMaterial;
@@ -43,17 +46,17 @@ public class TerrainGenerator : MonoBehaviour
         _terrain = CreateNewTerrain(terrainDataObject);
 
         // Generate the height map
-        int seed = debugOptions.randomSeed ? System.DateTime.UtcNow.Millisecond : terrainDataObject.seed.GetHashCode();
-        _terrainMap = CreateNewTerrainMap(_terrain, terrainDataObject, seed);
+        _seed = debugOptions.randomSeed ? System.DateTime.UtcNow.Millisecond : terrainDataObject.seed.GetHashCode();
+        _terrainMap = CreateNewTerrainMap(_terrain, terrainDataObject, _seed);
 
         // Apply the terrain heights and transforms
         ApplyTerrainMap(_terrain, terrainDataObject, _terrainMap);
 
         // Generate the structures
-        GenerateStructures();
+        GenerateStructures(_terrain, terrainDataObject, _terrainMap);
 
         // Create the paths
-        CreatePaths();
+        //CreatePaths();
     }
 
     private bool GenerationPreChecks()
@@ -105,103 +108,78 @@ public class TerrainGenerator : MonoBehaviour
         // Set the terrain detail resolution
         newTerrain.terrainData.SetDetailResolution(data.mapSize.x, 32);
 
+        // Set terrain object layer to Terrain
+        newTerrain.gameObject.layer = LayerMask.NameToLayer("Terrain");
+
         // Set the terrain size
         return newTerrain;
     }
 
     private TerrainMap CreateNewTerrainMap(Terrain terrain, TerrainDataObject data, int seed)
     {
-        #region biome checks
+        // Get the biomes that are not set to be skipped
+        Biome[] biomes = data.biomes.Where(b => !b.skipBiome).ToArray();
 
-        bool noBiomes = true;
-        foreach (Biome biome in data.biomes)
-            if (biome.skipBiome) continue;
-            else
-            {
-                noBiomes = false; break;
-            }
-        if (noBiomes)
-        {
-            Debug.LogError("No biomes are set to be generated.");
-            return new TerrainMap(new float[data.mapSize.x, data.mapSize.y], 0, new float[terrain.terrainData.alphamapWidth, terrain.terrainData.alphamapHeight, data.biomes.Length]);
-        }
+        // Log an error and return if no biomes are set to be generated
+        if (biomes.Length <= 0) throw new Exception("No biomes are set to be generated.");
 
-        #endregion
-
+        // Set the random seed
         Random.InitState(seed);
 
-        #region biome weight map initialization
+        // Create an offset for every biome noise map
+        Vector4[] mapOffsets = new Vector4[biomes.Length];
+        for (int biomeIndex = 0; biomeIndex < biomes.Length; biomeIndex++) mapOffsets[biomeIndex] = new Vector4(Random.Range(0, 10000), Random.Range(0, 10000), Random.Range(0, 10000), Random.Range(0, 10000));
 
-        float[,,] biomeWeightMap = new float[terrain.terrainData.alphamapWidth, terrain.terrainData.alphamapHeight, data.biomes.Length];
+        // Create the weight map
+        float[,,] weightMap = new float[terrain.terrainData.alphamapWidth, terrain.terrainData.alphamapHeight, biomes.Length];
 
-        // define biome weights
-        foreach (Biome biome in data.biomes)
-        {
-            Vector4 biomeNoiseOffset = new Vector4(Random.Range(0, 10000), Random.Range(0, 10000), Random.Range(0, 10000), Random.Range(0, 10000));
-
-            // skip biome if it is set to be skipped
-            if (biome.skipBiome) continue;
-
-            // generate biome weight map
-            for (int x = 0; x < terrain.terrainData.alphamapWidth; x++)
-                for (int y = 0; y < terrain.terrainData.alphamapHeight; y++)
-                {
-                    float weight = 0;
-
-                    foreach (AmpsAndFreq af in biome.selectorAF)
-                        weight += Mathf.Pow(Mathf.PerlinNoise((x + biomeNoiseOffset.z) * af.frequency, (y + biomeNoiseOffset.w) * af.frequency) * af.amplitude, data.biomeSeperation);
-
-                    biomeWeightMap[x, y, Array.IndexOf(data.biomes, biome)] = weight;
-                }
-        }
-
-        // normalize biome weight map
+        // Generate the biome weight map
         for (int x = 0; x < terrain.terrainData.alphamapWidth; x++)
             for (int y = 0; y < terrain.terrainData.alphamapHeight; y++)
             {
-                float sum = 0;
-                for (int i = 0; i < data.biomes.Length; i++)
-                    sum += biomeWeightMap[x, y, i];
+                // Generate a weight for each biome
+                for (int biomeIndex = 0; biomeIndex < biomes.Length; biomeIndex++)
+                {
+                    float weight = 0;
 
-                for (int i = 0; i < data.biomes.Length; i++)
-                    biomeWeightMap[x, y, i] /= sum;
+                    foreach (AmpsAndFreq af in biomes[biomeIndex].selectorAF)
+                        weight += Mathf.Pow(Mathf.PerlinNoise((x + mapOffsets[biomeIndex].z) * af.frequency, (y + mapOffsets[biomeIndex].w) * af.frequency) * af.amplitude, data.biomeSeperation);
+
+                    weightMap[x, y, biomeIndex] = weight / biomes[biomeIndex].selectorAF.Length;
+                }
+
+                // Normalize the weights
+                float sum = 0;
+                for (int biomeIndex = 0; biomeIndex < biomes.Length; biomeIndex++)
+                    sum += weightMap[x, y, biomeIndex];
+
+                for (int biomeIndex = 0; biomeIndex < biomes.Length; biomeIndex++)
+                    weightMap[x, y, biomeIndex] /= sum;
             }
 
-        #endregion
-
-        #region terrain height map initialization
-
+        // Create the height map
         float[,] heightMap = new float[data.mapSize.x, data.mapSize.y];
+        float maxHeight = 0, minHeight = 0;
 
-        float maxHeight = 0;
-        float minHeight = 0;
-
-        Vector4 heightNoiseOffset = new Vector4(Random.Range(0, 10000), Random.Range(0, 10000), Random.Range(0, 10000), Random.Range(0, 10000));
-
-        // generate terrain height map
+        // Generate the biome height map
         for (int x = 0; x < data.mapSize.x; x++)
             for (int y = 0; y < data.mapSize.y; y++)
             {
                 float height = 0;
 
-                foreach (Biome biome in data.biomes)
-                {
-                    // skip biome if it is set to be skipped
-                    if (biome.skipBiome) continue;
-
-                    // generate terrain height
-                    foreach (AmpsAndFreq af in biome.terrainAF)
+                // generate a height foreach biome
+                for (int biomeIndex = 0; biomeIndex < biomes.Length; biomeIndex++)
+                    foreach (AmpsAndFreq af in biomes[biomeIndex].terrainAF)
                     {
-                        float weight = biomeWeightMap[x * biomeWeightMap.GetLength(0) / data.mapSize.x, y * biomeWeightMap.GetLength(1) / data.mapSize.y, Array.IndexOf(data.biomes, biome)];
-                        height += Mathf.PerlinNoise((x + heightNoiseOffset.x) * af.frequency, (y + heightNoiseOffset.y) * af.frequency) * af.amplitude * weight;
+                        float weight = weightMap[x * weightMap.GetLength(0) / data.mapSize.x, y * weightMap.GetLength(1) / data.mapSize.y, biomeIndex];
+                        height += Mathf.PerlinNoise((x + mapOffsets[biomeIndex].x) * af.frequency, (y + mapOffsets[biomeIndex].y) * af.frequency) * af.amplitude * weight;
                     }
-                }
 
-                height /= data.biomes.Length;
+                height /= biomes.Length;
 
                 // apply the fall off curve to the terrain
                 float dist = Vector2.Distance(new Vector2(x, y), new Vector2(data.mapSize.x / 2, data.mapSize.y / 2));
-                height = Mathf.Lerp(height, 0, terrainDataObject.edgeCurve.Evaluate(Mathf.Clamp(dist - terrainDataObject.islandRadius - Mathf.PerlinNoise((x + heightNoiseOffset.x) / terrainDataObject.naturalEdgeScale, (y + heightNoiseOffset.y) / terrainDataObject.naturalEdgeScale) * terrainDataObject.naturalEdgeStrength, 0, Mathf.Infinity) / terrainDataObject.edgeStrength));
+                height = Mathf.Lerp(height, 0, terrainDataObject.edgeCurve.Evaluate(Mathf.Clamp(dist - terrainDataObject.islandRadius - Mathf.PerlinNoise((x + mapOffsets[0].x) / terrainDataObject.naturalEdgeScale, (y + mapOffsets[0].y) / terrainDataObject.naturalEdgeScale) * terrainDataObject.naturalEdgeStrength, 0, Mathf.Infinity) / terrainDataObject.edgeStrength));
 
                 // update the max and min height
                 if (height > maxHeight) maxHeight = height;
@@ -221,17 +199,16 @@ public class TerrainGenerator : MonoBehaviour
             }
         }
 
-        #endregion
-
-        return new TerrainMap(heightMap, maxHeight - minHeight, biomeWeightMap);
+        // return the terrain map
+        return new TerrainMap(heightMap, maxHeight - minHeight, biomes, weightMap);
     }
 
     private void ApplyTerrainMap(Terrain terrain, TerrainDataObject data, TerrainMap map)
     {
         // Set the terrain heights
-        terrain.terrainData.size = new Vector3(map.size.x, map.maxHeight, map.size.y);
-        int terrainOffset = terrain.terrainData.heightmapResolution / 2 - map.size.x / 2;
-        terrain.terrainData.SetHeights(terrainOffset, terrainOffset, map.heights);
+        terrain.terrainData.size = new Vector3(map.heightMapSize.x, map.maxHeight, map.heightMapSize.y);
+        int terrainOffset = terrain.terrainData.heightmapResolution / 2 - map.heightMapSize.x / 2;
+        terrain.terrainData.SetHeights(terrainOffset, terrainOffset, map.heightMap);
 
         if (debugOptions.centerGeneratedTerrain) terrain.gameObject.transform.position = new Vector3(-terrain.terrainData.heightmapResolution / 2, 0, -terrain.terrainData.heightmapResolution / 2);
 
@@ -252,17 +229,79 @@ public class TerrainGenerator : MonoBehaviour
 
         for (int x = 0; x < _terrain.terrainData.alphamapWidth; x++)
             for (int y = 0; y < _terrain.terrainData.alphamapHeight; y++)
-                for (int i = 0; i < data.biomes.Length; i++)
+                for (int i = 0; i < map.biomes.Length; i++)
                 {
-                    layerAlphaMap[x, y, i] = _terrainMap.biomeWeights[x, y, i];
+                    layerAlphaMap[x, y, i] = _terrainMap.weightMap[x, y, i];
                 }
 
         _terrain.terrainData.SetAlphamaps(0, 0, layerAlphaMap);
     }
 
-    private void GenerateStructures()
+    private void GenerateStructures(Terrain terrain, TerrainDataObject data, TerrainMap map)
     {
-        throw new NotImplementedException();
+        int structureCount = Mathf.RoundToInt(data.mapSize.x * data.mapSize.y * data.structureDensity * 0.0001f);
+
+        for (int i = 0; i < structureCount; i++)
+        {
+            Vector2Int sMapLocal = new Vector2Int(Random.Range(0, data.mapSize.x), Random.Range(0, data.mapSize.y));
+
+            Vector3 sPos = new Vector3(
+                (float)sMapLocal.x / terrain.terrainData.heightmapResolution * data.mapSize.x,
+                Mathf.Clamp(terrain.terrainData.GetHeight(Mathf.RoundToInt(sMapLocal.x), Mathf.RoundToInt(sMapLocal.y)), data.waterLevel, Mathf.Infinity),
+                (float)sMapLocal.y / terrain.terrainData.heightmapResolution * data.mapSize.y
+                );
+
+            Biome dominantBiome = new Biome();
+            float dominantBiomeWeight = 0;
+            foreach (Biome biome in map.biomes)
+            {
+                float weight = _terrainMap.weightMap[Mathf.RoundToInt(sMapLocal.x), Mathf.RoundToInt(sMapLocal.y), Array.IndexOf(map.biomes, biome)];
+
+                if (dominantBiomeWeight < weight)
+                {
+                    dominantBiomeWeight = weight;
+                    dominantBiome = biome;
+                }
+            }
+
+            // skip biome has no structures
+            if (dominantBiome.structures.Length <= 0) continue;
+
+            // Create the structure
+            Structure structure = dominantBiome.structures[Random.Range(0, dominantBiome.structures.Length)];
+
+            // flaten the terrain around the structure
+            int perimeter = (structure.radius + data.structureEdgeBuffer) * 2;
+
+            // get the height map around the structure that is within the terrain bounds
+            float[,] heightMap = terrain.terrainData.GetHeights(
+                Mathf.Clamp(sMapLocal.x - perimeter / 2, 0, data.mapSize.x),
+                Mathf.Clamp(sMapLocal.y - perimeter / 2, 0, data.mapSize.y),
+                perimeter - (sMapLocal.x < 0 ? Mathf.Abs(sMapLocal.x) : 0) - (sMapLocal.x > (data.mapSize.x - perimeter / 2) ? sMapLocal.x - (data.mapSize.x - perimeter / 2) : 0),
+                perimeter - (sMapLocal.y < 0 ? Mathf.Abs(sMapLocal.y) : 0) - (sMapLocal.y > (data.mapSize.y - perimeter / 2) ? sMapLocal.y - (data.mapSize.y - perimeter / 2) : 0));
+
+            // get the flat terrain height
+            float flatTerrain = heightMap[perimeter / 2, perimeter / 2];
+
+            // apply the flat and structure edge curve to the terrain
+            for (int x = 0; x < heightMap.GetLength(0); x++)
+                for (int y = 0; y < heightMap.GetLength(1); y++)
+                {
+                    float dist = Vector2.Distance(new Vector2(x, y), new Vector2(perimeter / 2, perimeter / 2));
+                    float t = Mathf.Clamp(dist - structure.radius, 0, data.structureEdgeBuffer) / data.structureEdgeBuffer;
+                    heightMap[x, y] = Mathf.Lerp(flatTerrain, heightMap[x, y], terrainDataObject.structureEdgeCurve.Evaluate(t));
+                }
+
+            terrain.terrainData.SetHeights(
+                Mathf.Clamp(sMapLocal.x - perimeter / 2, 0, data.mapSize.x),
+                Mathf.Clamp(sMapLocal.y - perimeter / 2, 0, data.mapSize.y),
+                heightMap);
+
+            GameObject structureObj = Instantiate(structure.obj);
+            structureObj.transform.parent = terrain.transform;
+            structureObj.transform.localPosition = sPos + new Vector3(0, structure.offestY, 0);
+            structureObj.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     private void CreatePaths()
@@ -274,24 +313,28 @@ public class TerrainGenerator : MonoBehaviour
 
     private struct TerrainMap
     {
-        public float[,] heights;
+        public float[,] heightMap;
         public float maxHeight;
 
-        public float[,,] biomeWeights;
+        public Biome[] biomes;
+        public float[,,] weightMap;
 
-        public TerrainMap(float[,] heights, float maxHeight, float[,,] biomeWeights)
+        public TerrainMap(float[,] heightMap, float maxHeight, Biome[] biomes, float[,,] weightMap)
         {
-            this.heights = heights;
+            this.heightMap = heightMap;
             this.maxHeight = maxHeight;
 
-            this.biomeWeights = biomeWeights;
+            this.biomes = biomes;
+            this.weightMap = weightMap;
         }
 
-        public Vector2Int size => new Vector2Int(heights.GetLength(0), heights.GetLength(1));
+        public Vector2Int heightMapSize => new Vector2Int(heightMap.GetLength(0), heightMap.GetLength(1));
+
+        public Vector2Int weightMapSize => new Vector2Int(weightMap.GetLength(0), weightMap.GetLength(1));
     }
 
     [Serializable]
-    struct DebugOptions
+    public struct DebugOptions
     {
         public bool generateOnStart;
         public bool centerGeneratedTerrain;
@@ -313,7 +356,7 @@ public class TerrainGenerator : MonoBehaviour
         public AmpsAndFreq[] selectorAF;
 
         [Space]
-        public GameObject[] structures;
+        public Structure[] structures;
     }
 
     [Serializable]
@@ -321,6 +364,14 @@ public class TerrainGenerator : MonoBehaviour
     {
         public float amplitude;
         public float frequency;
+    }
+
+    [Serializable]
+    public struct Structure
+    {
+        public GameObject obj;
+        public float offestY;
+        public int radius;
     }
 
     #endregion

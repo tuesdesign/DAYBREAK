@@ -13,26 +13,28 @@ MonoBehaviour:
   m_Name: Debug
   m_EditorClassIdentifier: 
   mapSize: {x: 250, y: 250}
-  seed: Hello World
+  seed: -352
   biomes:
   - name: Biome 1
     skipBiome: 0
-    baseTerrainLayer: {fileID: 8574412962073106934, guid: 270fb9ff29304eb44b0f333e21d1019a, type: 2}
+    baseTerrainLayer: {fileID: 8574412962073106934, guid: 328c778709857ca4b9735f1b5f005904, type: 2}
     pathTerrainLayer: {fileID: 8574412962073106934, guid: b58e19c7cb19f50458e6c2e45f3afbad, type: 2}
     terrainAF:
-    - amplitude: 30
-      frequency: 0.005
-    - amplitude: 10
+    - amplitude: 5
       frequency: 0.05
+    - amplitude: 30
+      frequency: 0.01
     selectorAF:
     - amplitude: 6
       frequency: 0.01
     structures:
-    - {fileID: 7510159459844304910, guid: cf0b6cff157001b4286d9015ba33eae5, type: 3}
+    - obj: {fileID: 7510159459844304910, guid: cf0b6cff157001b4286d9015ba33eae5, type: 3}
+      offestY: 5
+      radius: 15
   - name: Biome 2
     skipBiome: 0
     baseTerrainLayer: {fileID: 8574412962073106934, guid: 19c64478e8294d24ebde63eb1ec74c0d, type: 2}
-    pathTerrainLayer: {fileID: 8574412962073106934, guid: 328c778709857ca4b9735f1b5f005904, type: 2}
+    pathTerrainLayer: {fileID: 8574412962073106934, guid: 270fb9ff29304eb44b0f333e21d1019a, type: 2}
     terrainAF:
     - amplitude: 25
       frequency: 0.01
@@ -41,9 +43,39 @@ MonoBehaviour:
     selectorAF:
     - amplitude: 6
       frequency: 0.005
-    structures: []
+    structures:
+    - obj: {fileID: 7510159459844304910, guid: 990599aa357122041ad1c103f37db0d1, type: 3}
+      offestY: 5
+      radius: 15
   biomeSeperation: 10
-  islandRadius: 40
+  structureDensity: 0.2
+  structureEdgeBuffer: 10
+  structureEdgeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  waterLevel: 0
+  islandRadius: 50
   edgeCurve:
     serializedVersion: 2
     m_Curve:
@@ -70,5 +102,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   edgeStrength: 30
   naturalEdgeScale: 100
-  naturalEdgeStrength: 65
-  waterLevel: 0
+  naturalEdgeStrength: 35
