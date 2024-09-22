@@ -75,3 +75,5 @@
 	- Discord: allnamessuck_
 	- GitHub: GCole600
 
+# Contract
+[Stellar Octopians Contract 2024-2025](https://docs.google.com/document/d/1T0xfTwQROIWXSYcNSRDkAUhRdcYi30-i/edit?usp=sharing&ouid=114794458623150760929&rtpof=true&sd=true)

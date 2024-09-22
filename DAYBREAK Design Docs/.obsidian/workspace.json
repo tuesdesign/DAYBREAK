@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "5323d20b99f57b17",
+        "id": "6e126335f10ffe47",
         "type": "tabs",
         "children": [
           {
-            "id": "85644584a7b8bfaf",
+            "id": "4451ecf8b190f6f9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design/Art Direction/Style Guide.md",
+                "file": "_Home_/Team.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Art Direction/Style Guide.md",
+                "file": "_Home_/Team.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Art Direction/Style Guide.md",
+                "file": "_Home_/Team.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Art Direction/Style Guide.md"
+                "file": "_Home_/Team.md"
               }
             }
           }
@@ -148,14 +148,14 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "85644584a7b8bfaf",
+  "active": "4451ecf8b190f6f9",
   "lastOpenFiles": [
+    "_Home_/Team.md",
+    "Design/Art Direction/Style Guide.md",
     "Design/Art Direction/Art and Visual Design.md",
     "_Home_/Daybreak Game Design Document.md",
     "_Home_/Project Summary.md",
     "Design/Game Design/Gameplay.md",
-    "_Home_/Team.md",
-    "Design/Art Direction/Style Guide.md",
     "Kanban/Kanban Items/Completed Items",
     "Kanban/Kanban Board.md",
     "Kanban/Kanban Help.md",
