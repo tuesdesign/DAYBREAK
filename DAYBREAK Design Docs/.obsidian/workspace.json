@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_Home_/Team.md",
+                "file": "Design/Art Direction/FVX Notes.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_Home_/Team.md",
+                "file": "Design/Art Direction/FVX Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_Home_/Team.md",
+                "file": "Design/Art Direction/FVX Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_Home_/Team.md"
+                "file": "Design/Art Direction/FVX Notes.md"
               }
             }
           }
@@ -150,7 +150,9 @@
   },
   "active": "4451ecf8b190f6f9",
   "lastOpenFiles": [
+    "Pasted image 20240925221407.png",
     "_Home_/Team.md",
+    "Design/Art Direction/FVX Notes.md",
     "Design/Art Direction/Style Guide.md",
     "Design/Art Direction/Art and Visual Design.md",
     "_Home_/Daybreak Game Design Document.md",
