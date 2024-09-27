@@ -732,77 +732,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1331382111}
     - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: twinStick
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: ammoTextBar
       value: 
       objectReference: {fileID: 1615562782}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_PostInfinity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[0].time
-      value: 0.016666412
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[1].time
-      value: 5.1526294
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[2].time
-      value: 10.145056
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[0].value
-      value: -0.0047302246
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[1].value
-      value: 5.1195602
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[2].value
-      value: 10.0305395
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[0].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[1].inSlope
-      value: -0.082376175
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[0].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[1].outSlope
-      value: -0.082376175
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[1].outWeight
-      value: 0.66283005
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[0].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: incrementRate.m_Curve.Array.data[1].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3959736111990005083, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: near clip plane
       value: -15
@@ -855,6 +787,18 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1990532903}
+    - target: {fileID: 5435242875879500283, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: expBar
+      value: 
+      objectReference: {fileID: 1551913283}
+    - target: {fileID: 5435242875879500283, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1331382111}
+    - target: {fileID: 5435242875879500283, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: ammoTextBar
+      value: 
+      objectReference: {fileID: 1615562782}
     - target: {fileID: 6631379535519671540, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: m_Name
       value: Player

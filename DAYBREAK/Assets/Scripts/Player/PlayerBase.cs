@@ -16,16 +16,14 @@ public class PlayerBase : MonoBehaviour
 
     //Player 
     [Header("Player Base")]
-    [SerializeField] float maxHealth = 10;
-    float curHealth;
+    [SerializeField] int maxHealth = 10;
+    int curHealth;
     [Tooltip("The player's movement speed")]
     [SerializeField] float speed = 2.5f;
-    [Tooltip("Where the bullets should spawn from the player")]
-    [SerializeField] Transform shootPosition;
-    [Tooltip("should you use twinstick controls \n if on it uses left and right analog sticks \n if off it only uses the move direction")]
-    [SerializeField] bool twinStick = true;
+    
+    
 
-    //EXP
+    //EXP   - - - MOVE TO OWN SCRIPT
     [Header("EXP System")]
     int exp = 0;
     [SerializeField] int level = 1;
@@ -34,8 +32,14 @@ public class PlayerBase : MonoBehaviour
     [Tooltip("NOT IMPLEMENTED \n Rate of increase of exp needed for each level")]
     [SerializeField] AnimationCurve incrementRate; //does nothing for now
 
-    //Projectile
+    //Projectile - - - MOVE TO OWN SCRIPT 
     [Header("Projectile Stats")]
+
+    [Tooltip("Where the bullets should spawn from the player")]
+    [SerializeField] Transform shootPosition;
+    [Tooltip("should you use twinstick controls \n if on it uses left and right analog sticks \n if off it only uses the move direction")]
+    [SerializeField] bool twinStick = true;
+    
     [Tooltip("The time in seconds betweenshots")]
     [SerializeField] float shootDelay = 0.5f;
     [Tooltip("the prefab used for the bullet")]
@@ -50,19 +54,21 @@ public class PlayerBase : MonoBehaviour
     bool canShoot = true;
     [SerializeField] float reloadTime = 1f;
 
-    //UI
-    [Header("UI")]
-    [Tooltip("This is the health bar.")]
-    [SerializeField] Slider healthBar;
-    [Tooltip("This is the exp bar.")]
-    [SerializeField] Slider expBar;
-    [Tooltip("The text bar to describe how much ammo the player has in comparisson to their maximum ammo")]
-    [SerializeField] TMP_Text ammoTextBar;
-
-    //sound effects
+    //sound effects - - - MOVE TO OWN SCRIPT WITH VFX 
     [Header("Sound Effects")]
     [SerializeField] List<AudioClip> shootSounds = new List<AudioClip>();
     [SerializeField] List<AudioClip> reloadSounds = new List<AudioClip>();
+
+    PlayerUI _playerUI;
+    
+
+    public int CurHealth { get => curHealth; set => curHealth = value; }
+    public int MaxHealth { get => maxHealth; set => maxHealth = value; }
+    public int LevelIncrement { get => levelIncrement; set => levelIncrement = value; }
+    public int Exp { get => exp; set => exp = value; }
+    public int Level { get => level; set => level = value; }
+    public int MaxAmmo { get => maxAmmo; set => maxAmmo = value; }
+    public int AmmoCount { get => ammoCount; set => ammoCount = value; }
 
 
     // Start is called before the first frame update
@@ -71,6 +77,8 @@ public class PlayerBase : MonoBehaviour
         _playerInputActions = new PlayerIA();
         _playerInputActions.Enable();
         _rb = GetComponent<Rigidbody>();
+
+        _playerUI = GetComponent<PlayerUI>();
 
         _playerInputActions.Game.Move.performed += ctx => movePosition = ctx.ReadValue<Vector2>();
         _playerInputActions.Game.Move.canceled += ctx => movePosition = new Vector2(0,0) ;
@@ -92,23 +100,7 @@ public class PlayerBase : MonoBehaviour
         curHealth = maxHealth;
         ammoCount = maxAmmo;
 
-        //UI initialization
-        if(healthBar != null)
-        {
-            healthBar.maxValue = maxHealth;
-            healthBar.value = curHealth;
-        }
-
-        if(ammoTextBar != null)
-        {
-            ammoTextBar.text = ammoCount + " / " + maxAmmo;
-        }
-
-        if (expBar != null)
-        {
-            expBar.maxValue = levelIncrement;
-            expBar.value = exp;
-        }
+       
     }
 
     private void OnEnable()
@@ -128,24 +120,25 @@ public class PlayerBase : MonoBehaviour
     }
 
     #region Health Related Code (Heal, Damage, Death)
-    public void Heal(float amount)
+    public void Heal(int amount)
     {
         curHealth += amount;
         if(curHealth > maxHealth)
         {
             curHealth = maxHealth;
         }
-        UpdateHealthBar();
+        _playerUI.UpdateHealthBar();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         curHealth -= damage;
         if (curHealth <= 0)
         {
             Die();
         }
-        UpdateHealthBar();
+        
+        _playerUI.UpdateHealthBar();
     }
 
     void Die() //empty for now
@@ -196,7 +189,7 @@ public class PlayerBase : MonoBehaviour
         {
             StartCoroutine(ReloadTiming());
         }
-        UpdateAmmoCount();
+        _playerUI.UpdateAmmoCount();
     }
 
     void ToggleTwinstick()
@@ -207,7 +200,7 @@ public class PlayerBase : MonoBehaviour
     private void GainEXP(int amount)
     {
         exp += amount;
-        UpdateEXPBar();
+        _playerUI.UpdateEXPBar();
         if (exp >= levelIncrement)
         {
             LevelUp();
@@ -224,35 +217,9 @@ public class PlayerBase : MonoBehaviour
         {
             LevelUp();
         }
-        UpdateEXPBar();
+        _playerUI.UpdateEXPBar();
     }
 
-    #region UI Handling
-    void UpdateHealthBar()
-    {
-        if (healthBar != null)
-        {
-            healthBar.value = curHealth;
-        }
-    }
-
-    void UpdateAmmoCount()
-    {
-        if (ammoTextBar != null)
-        {
-            ammoTextBar.text = ammoCount + " / " + maxAmmo;
-        }
-    }
-
-    void UpdateEXPBar()
-    {
-        if (expBar != null)
-        {
-            expBar.value = exp;
-        }
-    }
-
-    #endregion
 
     void PlaySoundEffect(List<AudioClip> soundList)
     {
@@ -276,14 +243,14 @@ public class PlayerBase : MonoBehaviour
         ammoCount = maxAmmo;
         hasAmmo = true;
         isReloading = false;
-        UpdateAmmoCount();
+        _playerUI.UpdateAmmoCount();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            TakeDamage(collision.gameObject.GetComponent<EnemyBase>().GetDamage);
+            TakeDamage((int)collision.gameObject.GetComponent<EnemyBase>().GetDamage);
         }
 
     }
