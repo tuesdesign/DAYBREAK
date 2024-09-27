@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbce9b9e57a96ea48970221757dee550
+guid: b577877d4b4adc6429a4221b97e80ecf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -123,22 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character Select Screen BG_0
+      name: EXPBars_0
       rect:
         serializedVersion: 2
-        x: 2027
-        y: 862
-        width: 1447
-        height: 3206
+        x: 14
+        y: 96
+        width: 1522
+        height: 122
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6787e39dcf1923c46968b59a7a017d95
-      internalID: -1331267141
+      spriteID: 5199b704c0b886546ac969d813758860
+      internalID: -846184990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EXPBars_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 14
+        width: 1461
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 775cbc24a79e732499e7b054b04d5cc3
+      internalID: -2039078177
       vertices: []
       indices: 
       edges: []
@@ -146,7 +167,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c8c1d77f31e59f64092eb61407980720
+    spriteID: 7c0af709a25db1e40a9f0d291ee29d67
     internalID: 0
     vertices: []
     indices: 
@@ -154,7 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Character Select Screen BG_0: -1331267141
+      EXPBars_0: -846184990
+      EXPBars_1: -2039078177
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

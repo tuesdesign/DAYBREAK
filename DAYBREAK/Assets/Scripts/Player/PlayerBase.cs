@@ -29,9 +29,9 @@ public class PlayerBase : MonoBehaviour
     [Header("EXP System")]
     int exp = 0;
     [SerializeField] int level = 1;
-    [Tooltip("This determines how much it takes to level up initialy")]
+    [Tooltip("This determines how much it takes to level up initially")]
     [SerializeField] int levelIncrement = 100;
-    [Tooltip("NOT IMPLIMENTED \n Rate of increse of exp needed for each level")]
+    [Tooltip("NOT IMPLEMENTED \n Rate of increase of exp needed for each level")]
     [SerializeField] AnimationCurve incrementRate; //does nothing for now
 
     //Projectile

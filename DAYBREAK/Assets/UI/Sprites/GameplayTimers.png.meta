@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbce9b9e57a96ea48970221757dee550
+guid: 5bd0ed9a6e3f377419e881af278eccf4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character Select Screen BG_0
+      name: GameplayTimers_0
       rect:
         serializedVersion: 2
-        x: 2027
-        y: 862
-        width: 1447
-        height: 3206
+        x: 10
+        y: 25
+        width: 470
+        height: 473
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6787e39dcf1923c46968b59a7a017d95
-      internalID: -1331267141
+      spriteID: 599db4ae829320949846ff4d3728cbc0
+      internalID: 989418639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameplayTimers_1
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 0
+        width: 534
+        height: 533
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27e9a97b391d2f94d8f8037c653c2495
+      internalID: 761649086
       vertices: []
       indices: 
       edges: []
@@ -146,7 +167,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c8c1d77f31e59f64092eb61407980720
+    spriteID: 657f7c5f4c6afb446a9d453ccfc4f7f7
     internalID: 0
     vertices: []
     indices: 
@@ -154,7 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Character Select Screen BG_0: -1331267141
+      GameplayTimers_0: 989418639
+      GameplayTimers_1: 761649086
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
