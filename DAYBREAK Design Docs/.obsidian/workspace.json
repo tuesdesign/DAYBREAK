@@ -11,8 +11,18 @@
             "id": "c5b7dfe186127307",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "kanban",
+              "state": {
+                "file": "Kanban/Kanban Board.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              }
             }
           }
         ]
@@ -81,6 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Kanban/Kanban Board.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +108,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Kanban/Kanban Board.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +130,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Kanban/Kanban Board.md"
+              }
             }
           }
         ]
@@ -141,18 +155,18 @@
   },
   "active": "c5b7dfe186127307",
   "lastOpenFiles": [
-    "Pasted image 20240925221407.png",
-    "Proposed Upgrade Tree.md",
-    "Kanban/Kanban Board.md",
     "Kanban/Kanban Items/Temp Cheese.md",
     "Kanban/Kanban Help.md",
-    "Kanban/Kanban Items/Images/Temp Cheese.png",
-    "Design/Art Direction/FVX Notes.md",
-    "_Home_/Team.md",
-    "Design/Art Direction/Style Guide.md",
-    "Design/Art Direction/Art and Visual Design.md",
+    "Kanban/Kanban Board.md",
     "_Home_/Daybreak Game Design Document.md",
     "_Home_/Project Summary.md",
+    "_Home_/Team.md",
+    "Pasted image 20240925221407.png",
+    "Proposed Upgrade Tree.md",
+    "Kanban/Kanban Items/Images/Temp Cheese.png",
+    "Design/Art Direction/FVX Notes.md",
+    "Design/Art Direction/Style Guide.md",
+    "Design/Art Direction/Art and Visual Design.md",
     "Design/Game Design/Gameplay.md",
     "Kanban/Kanban Items/Completed Items",
     "Design/Technical Design/TAPTICIAN.md",
