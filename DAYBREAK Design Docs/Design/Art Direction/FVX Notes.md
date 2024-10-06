@@ -3,11 +3,4 @@
 Particles *can* emit light
 Particles should be 3D, but look 2D
 
-List to make: 
-
-Basic gun Bullet
-
-Enemy Blood Splatter
-
-XP orb pickup
-
+[[List to make]] stuff here

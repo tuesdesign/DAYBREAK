@@ -13,11 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design/Art Direction/FVX Notes.md",
+                "file": "List to make.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
+            }
+          },
+          {
+            "id": "1caf2d81e8bec377",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
             }
           }
         ]
@@ -86,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Art Direction/FVX Notes.md",
+                "file": "List to make.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Art Direction/FVX Notes.md",
+                "file": "List to make.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Art Direction/FVX Notes.md"
+                "file": "List to make.md"
               }
             }
           }
@@ -150,13 +158,14 @@
   },
   "active": "c5b7dfe186127307",
   "lastOpenFiles": [
+    "Design/Art Direction/FVX Notes.md",
+    "List to make.md",
     "Kanban/Kanban Board.md",
     "Kanban/Kanban Help.md",
     "Kanban/Kanban Items/Temp Cheese.md",
     "Pasted image 20240925221407.png",
     "Proposed Upgrade Tree.md",
     "Kanban/Kanban Items/Images/Temp Cheese.png",
-    "Design/Art Direction/FVX Notes.md",
     "_Home_/Team.md",
     "Design/Art Direction/Style Guide.md",
     "Design/Art Direction/Art and Visual Design.md",
