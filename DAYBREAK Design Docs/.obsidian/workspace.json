@@ -11,17 +11,12 @@
             "id": "c5b7dfe186127307",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Kanban/Kanban Board.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "Design/Art Direction/FVX Notes.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -91,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Kanban/Kanban Board.md",
+                "file": "Design/Art Direction/FVX Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Kanban/Kanban Board.md",
+                "file": "Design/Art Direction/FVX Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Kanban/Kanban Board.md"
+                "file": "Design/Art Direction/FVX Notes.md"
               }
             }
           }
@@ -155,8 +150,8 @@
   },
   "active": "c5b7dfe186127307",
   "lastOpenFiles": [
-    "Kanban/Kanban Help.md",
     "Kanban/Kanban Board.md",
+    "Kanban/Kanban Help.md",
     "Kanban/Kanban Items/Temp Cheese.md",
     "Pasted image 20240925221407.png",
     "Proposed Upgrade Tree.md",
