@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "List to make.md",
+                "file": "_Home_/Daybreak Game Design Document.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "List to make.md",
+                "file": "_Home_/Daybreak Game Design Document.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "List to make.md",
+                "file": "_Home_/Daybreak Game Design Document.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "List to make.md"
+                "file": "_Home_/Daybreak Game Design Document.md"
               }
             }
           }
@@ -158,31 +158,32 @@
   },
   "active": "c5b7dfe186127307",
   "lastOpenFiles": [
-    "Design/Art Direction/FVX Notes.md",
-    "List to make.md",
-    "Kanban/Kanban Board.md",
-    "Kanban/Kanban Help.md",
-    "Kanban/Kanban Items/Temp Cheese.md",
-    "Pasted image 20240925221407.png",
-    "Proposed Upgrade Tree.md",
-    "Kanban/Kanban Items/Images/Temp Cheese.png",
-    "_Home_/Team.md",
-    "Design/Art Direction/Style Guide.md",
-    "Design/Art Direction/Art and Visual Design.md",
-    "_Home_/Daybreak Game Design Document.md",
     "_Home_/Project Summary.md",
+    "_Home_/Team.md",
+    "_Home_/Daybreak Game Design Document.md",
     "Design/Game Design/Gameplay.md",
-    "Kanban/Kanban Items/Completed Items",
+    "Design/Narrative Direction/Narrative.md",
+    "Design/Art Direction/Art and Visual Design.md",
+    "Proposed Upgrade Tree.md",
+    "Pasted image 20240925221407.png",
+    "Kanban/Kanban Help.md",
+    "Kanban/Kanban Board.md",
+    "Kanban/Kanban Items/Temp Cheese.md",
+    "Kanban/Kanban Items/Images/Temp Cheese.png",
     "Design/Technical Design/TAPTICIAN.md",
     "Design/Sound Design/ADASTRA.md",
-    "Design/Narrative Direction/Narrative.md",
+    "Design/Game Design/Upgrades.md",
+    "Design/Game Design/Level Generation.md",
+    "Design/Art Direction/List to make.md",
+    "Design/Art Direction/FVX Notes.md",
+    "Design/Art Direction/Style Guide.md",
+    "Kanban/Kanban Items/Completed Items",
     "Art Direction.md",
     "Design/Game Systems and Technical Design.md",
     "Untitled 1.canvas",
     "Untitled 2.canvas",
     "Untitled.canvas",
     "_Home_/Pitch Checklist.md",
-    "Design/Game Design/Level Generation.md",
     "Design/Technical Design",
     "Design/Asset List.md",
     "Design/Art Direction",
