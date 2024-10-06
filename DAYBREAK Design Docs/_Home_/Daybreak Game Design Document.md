@@ -8,8 +8,13 @@
 # Design
 ## Art Direction
 - [[Art and Visual Design]]
+- [[UI Notes]]
+- [[Style Guide]]
+- [[FVX Notes]]
 ## Game Design
 * [[Gameplay]]
+* [[Upgrades]]
+* [[Level Generation]]
 ## Narrative Direction
 * [[Narrative]]
 ## Sound Design

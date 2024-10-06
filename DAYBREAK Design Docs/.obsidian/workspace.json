@@ -13,19 +13,11 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_Home_/Daybreak Game Design Document.md",
+                "file": "Design/Art Direction/List to make.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
-            }
-          },
-          {
-            "id": "1caf2d81e8bec377",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
             }
           }
         ]
@@ -94,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_Home_/Daybreak Game Design Document.md",
+                "file": "Design/Art Direction/List to make.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_Home_/Daybreak Game Design Document.md",
+                "file": "Design/Art Direction/List to make.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_Home_/Daybreak Game Design Document.md"
+                "file": "Design/Art Direction/List to make.md"
               }
             }
           }
@@ -158,26 +150,27 @@
   },
   "active": "c5b7dfe186127307",
   "lastOpenFiles": [
-    "_Home_/Project Summary.md",
-    "_Home_/Team.md",
     "_Home_/Daybreak Game Design Document.md",
-    "Design/Game Design/Gameplay.md",
-    "Design/Narrative Direction/Narrative.md",
+    "Design/Art Direction/UI Notes.md",
+    "Design/Art Direction/List to make.md",
+    "Design/Game Design/Level Generation.md",
+    "_Home_/Team.md",
+    "_Home_/Project Summary.md",
+    "Design/Art Direction/FVX Notes.md",
     "Design/Art Direction/Art and Visual Design.md",
-    "Proposed Upgrade Tree.md",
+    "Design/Art Direction/Style Guide.md",
     "Pasted image 20240925221407.png",
-    "Kanban/Kanban Help.md",
+    "List to make.md",
+    "Proposed Upgrade Tree.md",
     "Kanban/Kanban Board.md",
+    "Kanban/Kanban Help.md",
     "Kanban/Kanban Items/Temp Cheese.md",
     "Kanban/Kanban Items/Images/Temp Cheese.png",
+    "Design/Game Design/Gameplay.md",
+    "Kanban/Kanban Items/Completed Items",
     "Design/Technical Design/TAPTICIAN.md",
     "Design/Sound Design/ADASTRA.md",
-    "Design/Game Design/Upgrades.md",
-    "Design/Game Design/Level Generation.md",
-    "Design/Art Direction/List to make.md",
-    "Design/Art Direction/FVX Notes.md",
-    "Design/Art Direction/Style Guide.md",
-    "Kanban/Kanban Items/Completed Items",
+    "Design/Narrative Direction/Narrative.md",
     "Art Direction.md",
     "Design/Game Systems and Technical Design.md",
     "Untitled 1.canvas",
