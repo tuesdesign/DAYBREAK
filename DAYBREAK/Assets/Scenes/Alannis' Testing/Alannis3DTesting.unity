@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnGroups:
-  - duration: 20
+  - duration: 30
     spawnSpeed: 4
     enemies:
     - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
@@ -558,6 +558,14 @@ MonoBehaviour:
     - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
     - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
     - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
+  - duration: 60
+    spawnSpeed: 3
+    enemies:
+    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
+    - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
+    - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
+    - {fileID: 5392011093294169524, guid: 1562a638c3c926b4aa338b23deabe496, type: 3}
+    - {fileID: 5392011093294169524, guid: 02d720debd0ed984d90aee0959002e02, type: 3}
   spawnDistance: 40
 --- !u!4 &653609240
 Transform:
@@ -725,6 +733,10 @@ PrefabInstance:
     - target: {fileID: 6384438752115081947, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -217
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860264535830490509, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6860264535830490509, guid: 5367a3b60e7edf64199b04c6a109f236, type: 3}
       propertyPath: m_AnchorMax.y
@@ -923,10 +935,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1331382111}
     - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
-      propertyPath: twinStick
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: ammoTextBar
       value: 
       objectReference: {fileID: 1615562782}
@@ -994,6 +1002,10 @@ PrefabInstance:
       propertyPath: ammoTextBar
       value: 
       objectReference: {fileID: 1615562782}
+    - target: {fileID: 6178749827301179355, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6631379535519671540, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1007,10 +1019,10 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 653609240}
   - {fileID: 357444038}
   - {fileID: 775443179}
   - {fileID: 342421749}
   - {fileID: 7086813288570532480}
   - {fileID: 1925781594}
   - {fileID: 320366038}
-  - {fileID: 653609240}

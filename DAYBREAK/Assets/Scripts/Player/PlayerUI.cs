@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
     PlayerBase player;
+    PlayerExpHandler playerExpHandler;
+    PlayerShooting playerShooting;
 
     [Tooltip("This is the health bar.")]
     [SerializeField] Slider healthBar;
@@ -19,21 +21,24 @@ public class PlayerUI : MonoBehaviour
     private void Start()
     {
         player = GetComponent<PlayerBase>();
+        playerExpHandler = GetComponent<PlayerExpHandler>();
+        playerShooting = GetComponent<PlayerShooting>();
+
         if (healthBar != null)
         {
             healthBar.maxValue = player.MaxHealth;
-            healthBar.value = player.CurHealth;
+            healthBar.value = player.MaxHealth;
         }
 
         if (ammoTextBar != null)
         {
-            ammoTextBar.text = player.AmmoCount + " / " + player.MaxAmmo;
+            ammoTextBar.text = playerShooting.AmmoCount + " / " + playerShooting.MaxAmmo;
         }
 
         if (expBar != null)
         {
-            expBar.maxValue = player.LevelIncrement;
-            expBar.value = player.Exp;
+            expBar.maxValue = playerExpHandler.LevelIncrement;
+            expBar.value = playerExpHandler.Exp;
         }
     }
     public void UpdateHealthBar()
@@ -48,7 +53,7 @@ public class PlayerUI : MonoBehaviour
     {
         if (ammoTextBar != null)
         {
-            ammoTextBar.text = player.AmmoCount + " / " + player.MaxAmmo;
+            ammoTextBar.text = playerShooting.AmmoCount + " / " + playerShooting.MaxAmmo;
         }
     }
 
@@ -56,7 +61,7 @@ public class PlayerUI : MonoBehaviour
     {
         if (expBar != null)
         {
-            expBar.value = player.Exp;
+            expBar.value = playerExpHandler.Exp;
         }
     }
 }

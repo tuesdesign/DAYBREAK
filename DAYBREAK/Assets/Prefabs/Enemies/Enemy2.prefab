@@ -121,11 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8436402d765a0541b53c3952d6c66ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  maxHealth: 3
-  damage: 3
-  expDrop: {fileID: 1899146013018079469, guid: 26f98b1dbdad29245a03804f574fc83c, type: 3}
-  expDropChance: 100
+  enemySO: {fileID: 11400000, guid: 4139facfa86d4cd4a9c2bcae683a39a6, type: 2}
+  curdamage: 2
+  curspeed: 0
   hurtSounds:
   - {fileID: 8300000, guid: 6b468d55058209440b960a8df083fcf7, type: 3}
   - {fileID: 8300000, guid: a60b7e183a0e074489628110eac4a2ad, type: 3}

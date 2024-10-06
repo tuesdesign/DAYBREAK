@@ -6,37 +6,28 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBase : MonoBehaviour
 {
-    [Tooltip("Enemy movement speed")]
-    [SerializeField] float speed = 5f;
-    [Tooltip("Health")]
-    [SerializeField] float maxHealth = 3f;
+    [SerializeField] public EnemySO enemySO;
+    Rigidbody _rb;
+    Transform playerPosition;
+
     float curHealth;
     [Tooltip("damage")]
-    [SerializeField] float damage=2;
-
-    [Tooltip("The type of exp that the enemy drops when kiled")]
-    [SerializeField] GameObject expDrop;
-    [SerializeField][Range(1f, 100f)] float expDropChance = 100;
+    [SerializeField] int curdamage=2;
+    [SerializeField] float curspeed;
+    Vector3 movePos = Vector2.zero;
 
     [SerializeField] List<AudioClip> hurtSounds = new List<AudioClip>();
 
-    //enemy effects
-    
-
-
-    Rigidbody _rb;
-    
-    Transform playerPosition;
-    Vector3 movePos = Vector2.zero;
-    
-
-    public float GetDamage { get => damage; set => damage = value; }
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         playerPosition = FindObjectOfType<PlayerBase>().gameObject.transform;
-        curHealth = maxHealth;
+
+        curHealth = enemySO.maxHealth;
+        curspeed = enemySO.speed;
+        curdamage = enemySO.damage;
+
     }
 
     // Update is called once per frame
@@ -53,7 +44,7 @@ public class EnemyBase : MonoBehaviour
         //transform.position = Vector2.MoveTowards(transform.position, playerPosition.position, speed * Time.deltaTime);
         
         movePos = (playerPosition.position - transform.position).normalized;
-        _rb.velocity = movePos * speed;
+        _rb.velocity = movePos * curspeed;
     }
 
     public void TakeDamage(float damage)
@@ -68,11 +59,11 @@ public class EnemyBase : MonoBehaviour
 
     public void Die()
     {
-        if (expDrop != null) //if this enemy drops exp on kill
+        if (enemySO.expDrop != null) //if this enemy drops exp on kill
         {
-            if (Random.Range(0, 100) <= expDropChance) //random drop if the number is under the drop chance
+            if (Random.Range(0, 100) <= enemySO.expDropChance) //random drop if the number is under the drop chance
             {
-                GameObject exp = Instantiate(expDrop, this.transform);
+                GameObject exp = Instantiate(enemySO.expDrop, this.transform);
                 exp.transform.parent = this.transform.parent;
             }
             
@@ -81,6 +72,10 @@ public class EnemyBase : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public int GetDamage()
+    {
+        return curdamage;
+    }
 
     void PlaySoundEffect(List<AudioClip> soundList)
     {

@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 1360874391}
   - component: {fileID: 1360874390}
   m_Layer: 0
-  m_Name: fuck
+  m_Name: Enemy Spawn System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
