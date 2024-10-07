@@ -10,16 +10,19 @@ public class ExpDrop : MonoBehaviour
     public int ExpAmount { get => expAmount; set => expAmount = value; }
     bool moveToPlayer = false;
     GameObject player;
+    bool givePlayerEXP = true;
 
     private void Update()
     {
         if (moveToPlayer)
         {
             transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed);
-            if (Vector3.Distance(this.transform.position, player.transform.position) < 1)
+            if (Vector3.Distance(this.transform.position, player.transform.position) < 1 && givePlayerEXP)
             {
                 player.GetComponent<PlayerExpHandler>().GainEXP(expAmount);
-                Destroy(this.gameObject);
+                GetComponent<SphereCollider>().enabled = false;
+                Destroy(this.gameObject, .01f);
+                givePlayerEXP = false;
             }
         }
     }

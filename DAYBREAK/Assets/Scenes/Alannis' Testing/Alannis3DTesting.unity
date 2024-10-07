@@ -926,6 +926,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -45
       objectReference: {fileID: 0}
+    - target: {fileID: 2827645804143565017, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3837147139839552184, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: expBar
       value: 
@@ -939,12 +943,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1615562782}
     - target: {fileID: 3959736111990005083, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959736111990005083, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: near clip plane
       value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 3959736111990005083, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: orthographic size
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959736111990005083, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959736111990005083, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.28627452
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959736111990005083, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.28235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959736111990005083, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.2901961
       objectReference: {fileID: 0}
     - target: {fileID: 4096170690120279971, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -990,6 +1014,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1990532903}
+    - target: {fileID: 5194035956099343012, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: twinStick
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194035956099343012, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
+      propertyPath: bulletSpeed
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 5435242875879500283, guid: d5f8e9961a296ac4883c4778a996f7fa, type: 3}
       propertyPath: expBar
       value: 

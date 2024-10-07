@@ -45,20 +45,28 @@ public class PlayerShooting : MonoBehaviour
 
         ammoCount = maxAmmo;
 
-        _playerInputActions.Game.Move.performed += ctx => movePosition = ctx.ReadValue<Vector2>();
-        _playerInputActions.Game.Move.canceled += ctx => movePosition = new Vector2(0, 0);
+        
+        //_playerInputActions.Game.Move.canceled += ctx => movePosition = new Vector2(0, 0);
+
         if (twinStick)
         {
             _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();
-            _playerInputActions.Game.Fire.performed += ctx => Shoot();
-            _playerInputActions.Game.Fire.canceled += ctx => aimPosition = new Vector2(0, 0);
+            //_playerInputActions.Game.Fire.canceled += ctx => aimPosition = new Vector2(0, 0);
+        
+
+            _playerInputActions.Game.Fire.started += ctx => StartShooting();
+            _playerInputActions.Game.Fire.canceled += ctx => StopShooting();
         }
         else
-        {   
-            _playerInputActions.Game.Move.performed += ctx => Shoot();
-            
+        {
+
+            _playerInputActions.Game.Move.performed += ctx => movePosition = ctx.ReadValue<Vector2>();
+            _playerInputActions.Game.Move.started += ctx => StartShooting();
+            _playerInputActions.Game.Move.canceled += ctx => StopShooting();
         }
+
     }
+
     private void OnDisable()
     {
         _playerInputActions.Disable();
@@ -70,7 +78,6 @@ public class PlayerShooting : MonoBehaviour
             PlaySoundEffect(shootSounds);
             GameObject b = Instantiate(bulletType, shootPosition);
 
-            //b.GetComponent<Rigidbody>().velocity = Vector3.Normalize( new Vector3 (aimPosition.x,0, aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
             if (twinStick)
             {
                 b.GetComponent<Rigidbody>().velocity = Vector3.Normalize(new Vector3(aimPosition.x - aimPosition.y, 0, aimPosition.x + aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
@@ -91,13 +98,10 @@ public class PlayerShooting : MonoBehaviour
                 StartCoroutine(ReloadTiming());
             }
 
-            StartCoroutine(ShootTiming()); //handles delay betweenshots
+            StartCoroutine(ShootTiming());
 
         }
-        //else if (canShoot && !hasAmmo && !isReloading) //checks if its trying to shoot but has no ammo (while not currently reloading)
-        //{
-        //    StartCoroutine(ReloadTiming());
-        //}
+       
         _playerUI.UpdateAmmoCount();
     }
 
@@ -115,11 +119,39 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    IEnumerator ShootTiming()
+    private Coroutine shootingCoroutine;
+
+    private void StartShooting()
     {
-        yield return new WaitForSeconds(shootDelay);
-        canShoot = true;
+        if (shootingCoroutine == null)
+        {
+            shootingCoroutine = StartCoroutine(ShootContinuously());
+        }
     }
+
+    private void StopShooting()
+    {
+        if (shootingCoroutine != null)
+        {
+            StopCoroutine(shootingCoroutine);
+            shootingCoroutine = null;
+        }
+    }
+
+    private IEnumerator ShootContinuously()
+    {
+        while (true)
+        {
+            Shoot();
+            yield return new WaitForSeconds(shootDelay); // Delay between shots
+        }
+    }
+
+    IEnumerator ShootTiming()
+{
+    yield return new WaitForSeconds(shootDelay);
+    canShoot = true;
+}
 
     IEnumerator ReloadTiming()
     {

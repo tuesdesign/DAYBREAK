@@ -55,7 +55,7 @@ public class SpawningSystem : MonoBehaviour
         GameObject sEnemy = spawnGroups[index].enemies[Random.Range(0, spawnGroups[index].enemies.Count)];
 
         // Randomly select a direction around the player
-        Vector3 randomDirection = Random.insideUnitSphere;
+        Vector3 randomDirection = Random.onUnitSphere;
         randomDirection.y = 0; // Keep the enemy on the same plane as the player
 
         // Calculate the spawn position based on the player's position and the chosen direction

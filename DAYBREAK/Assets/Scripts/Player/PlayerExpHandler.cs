@@ -49,4 +49,9 @@ public class PlayerExpHandler : MonoBehaviour
         }
         playerUI.UpdateEXPBar();
     }
+
+    void UpdateRadius()
+    {
+        GetComponent<SphereCollider>().radius = expPickUpRadius;
+    }
 }
