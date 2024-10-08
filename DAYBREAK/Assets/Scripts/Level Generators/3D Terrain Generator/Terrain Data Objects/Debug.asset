@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Debug
   m_EditorClassIdentifier: 
   mapSize: {x: 250, y: 250}
-  seed: -352
+  seed: 250
   biomes:
   - name: Biome 1
     skipBiome: 0
@@ -47,8 +47,8 @@ MonoBehaviour:
     - obj: {fileID: 7510159459844304910, guid: 990599aa357122041ad1c103f37db0d1, type: 3}
       offestY: 5
       radius: 15
-  biomeSeperation: 10
-  structureDensity: 0.2
+  biomeSeperation: 15
+  structureDensity: 0.5
   structureEdgeBuffer: 10
   structureEdgeCurve:
     serializedVersion: 2
@@ -101,5 +101,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   edgeStrength: 30
-  naturalEdgeScale: 100
+  naturalEdgeScale: 0
   naturalEdgeStrength: 35
