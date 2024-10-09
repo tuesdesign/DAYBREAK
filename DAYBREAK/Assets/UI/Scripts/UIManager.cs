@@ -96,6 +96,12 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+    
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("UI_MainMenu");
+    }
+
 
     public void DisplayWinLoss(bool isLoss)
     {
@@ -115,7 +121,7 @@ public class UIManager : MonoBehaviour
             winLossText.text = "YOU WIN";
 
         // Convert time left -> time alive & display
-        _timeValue = 300 - _timeValue;
+        _timeValue = StartTime - _timeValue;
         float minutes = Mathf.FloorToInt(_timeValue / 60);
         float seconds = Mathf.FloorToInt(_timeValue % 60);
         timerText.text = "You survived: " + $"{minutes:00}:{seconds:00}";
