@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 public class PlayerShooting : MonoBehaviour
@@ -31,7 +32,9 @@ public class PlayerShooting : MonoBehaviour
 
     [Header("Sound Effects")]
     [SerializeField] List<AudioClip> shootSounds = new List<AudioClip>();
+    [SerializeField] AudioClip reloadStartSound = null;
     [SerializeField] List<AudioClip> reloadSounds = new List<AudioClip>();
+    [SerializeField] AudioClip reloadStopSound = null;
 
     //MODIFIERS FOR UPGRADES
     [HideInInspector] public float bspeedMod = 0;
@@ -123,6 +126,15 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
+    void PlaySoundEffect(AudioClip sound)
+    {
+        if (sound != null) 
+        {
+            AudioSource.PlayClipAtPoint(sound, this.transform.position);
+        
+        }
+    }
+
     private Coroutine shootingCoroutine;
 
     private void StartShooting()
@@ -159,12 +171,35 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator ReloadTiming()
     {
+        PlaySoundEffect(reloadStartSound);
+
         isReloading = true; //variable ensures that it does not attempt to reload while already reloading
-        PlaySoundEffect(reloadSounds);
+        StartCoroutine(ReloadTick());
+
         yield return new WaitForSeconds(reloadTime + reloadTimeMod);
+
+        
         ammoCount = maxAmmo + maxAmmoMod;
         hasAmmo = true;
         isReloading = false;
         _playerUI.UpdateAmmoCount();
+    }
+
+    IEnumerator ReloadTick()
+    {
+        if (isReloading)
+        {
+            
+            yield return new WaitForSeconds((reloadTime+reloadTimeMod)/ (maxAmmo+maxAmmoMod));
+            PlaySoundEffect(reloadSounds);
+            StartCoroutine(ReloadTick());
+
+        }
+        else
+        {
+            PlaySoundEffect(reloadStopSound);
+            yield return new WaitForSeconds(reloadTime + reloadTimeMod);
+            
+        }
     }
 }
