@@ -31,6 +31,8 @@ public class PlayerBase : MonoBehaviour
     public int CurHealth { get => curHealth; set => curHealth = value; }
     public int MaxHealth { get => maxHealth; set => maxHealth = value; }
    
+    
+    private UIManager _uiManager;
 
 
     // Start is called before the first frame update
@@ -50,6 +52,8 @@ public class PlayerBase : MonoBehaviour
 
         // FIX THE PLAYER'S PIVOT ORIGIN TO THEIR FEET -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
         transform.position = FindObjectOfType<TerrainGenerator>().GetNearestSpawnPos(Vector3.zero);
+
+        _uiManager = (UIManager)FindObjectOfType(typeof(UIManager));
     }
 
 
@@ -117,11 +121,12 @@ public class PlayerBase : MonoBehaviour
         _playerUI.UpdateHealthBar();
     }
 
-    void Die() //empty for now
+    void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _uiManager.DisplayWinLoss(true);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    #endregion 
+    #endregion
 
     void PlaySoundEffect(List<AudioClip> soundList)
     {
@@ -131,14 +136,11 @@ public class PlayerBase : MonoBehaviour
         }
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage((int)collision.gameObject.GetComponent<EnemyBase>().GetDamage());
         }
-
     }
-
 }

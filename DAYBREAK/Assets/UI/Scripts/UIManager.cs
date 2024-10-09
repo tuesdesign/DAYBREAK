@@ -14,10 +14,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Canvas mobileCharacterSelect;
     [SerializeField] TMP_Text currentTime;
     
+    [Header("Main UI Items")]
+    [SerializeField] private Canvas mainPCUI;
+    [SerializeField] private Canvas mainMobileUI;
+    [SerializeField] private TMP_Text timeText;
+    [SerializeField] private Image timerFill;
+    
     [Header("Win/Loss Screen Items")]
     [SerializeField] private Canvas winLossScreen;
+    [SerializeField] private TMP_Text winLossText;
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private Image timerFill;
+    
     
     private const float StartTime = 300;
     private float _timeValue;
@@ -46,14 +53,15 @@ public class UIManager : MonoBehaviour
         if (!timerText)
             currentTime.text = DateTime.Now.ToLongDateString();
         
-        if (_timeValue > 0)
+        if (_timeValue > 0 && updateTimer)
         {
             _timeValue -= Time.deltaTime;
         }
-        else
+        // Time ran out -> Player wins
+        else if (updateTimer)
         {
-            // Time Ran Out
             _timeValue = 0;
+            DisplayWinLoss(false);
         }
         
         if (updateTimer)
@@ -70,7 +78,7 @@ public class UIManager : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         timerFill.fillAmount = timeToDisplay / StartTime;
     }
 
@@ -89,8 +97,27 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void DisplayWinLoss(float time)
+    public void DisplayWinLoss(bool isLoss)
     {
+        // Pause game
+        Time.timeScale = 0;
+        
+        // Stop timer and display end screen 
+        updateTimer = false;
+        mainPCUI.GetComponent<Canvas>().enabled = false;
+        mainMobileUI.GetComponent<Canvas>().enabled = false;
         winLossScreen.GetComponent<Canvas>().enabled = true;
+
+        // Change win/loss text
+        if (isLoss)
+            winLossText.text = "YOU LOSE";
+        if (!isLoss)
+            winLossText.text = "YOU WIN";
+
+        // Convert time left -> time alive & display
+        _timeValue = 300 - _timeValue;
+        float minutes = Mathf.FloorToInt(_timeValue / 60);
+        float seconds = Mathf.FloorToInt(_timeValue % 60);
+        timerText.text = "You survived: " + $"{minutes:00}:{seconds:00}";
     }
 }
