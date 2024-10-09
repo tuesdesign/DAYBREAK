@@ -11,7 +11,8 @@ public class PlayerUI : MonoBehaviour
     PlayerShooting playerShooting;
 
     [Tooltip("This is the health bar.")]
-    [SerializeField] Slider healthBar;
+    [SerializeField] Slider healthBar1;
+    [SerializeField] Slider healthBar2;
     [Tooltip("This is the exp bar.")]
     [SerializeField] Slider expBar;
     [Tooltip("The text bar to describe how much ammo the player has in comparisson to their maximum ammo")]
@@ -24,10 +25,13 @@ public class PlayerUI : MonoBehaviour
         playerExpHandler = GetComponent<PlayerExpHandler>();
         playerShooting = GetComponent<PlayerShooting>();
 
-        if (healthBar != null)
+        if (healthBar1 != null && healthBar2 != null)
         {
-            healthBar.maxValue = player.MaxHealth + player.maxHealthModifier;
-            healthBar.value = player.MaxHealth + player.maxHealthModifier;
+            healthBar1.maxValue = player.MaxHealth + player.maxHealthModifier;
+            healthBar1.value = player.MaxHealth + player.maxHealthModifier;
+            
+            healthBar2.maxValue = player.MaxHealth + player.maxHealthModifier;
+            healthBar2.value = player.MaxHealth + player.maxHealthModifier;
         }
 
         if (ammoTextBar != null)
@@ -43,9 +47,13 @@ public class PlayerUI : MonoBehaviour
     }
     public void UpdateHealthBar()
     {
-        if (healthBar != null)
+        if (healthBar1 != null)
         {
-            healthBar.value = player.CurHealth;
+            healthBar1.value = player.CurHealth;
+        }
+        if (healthBar2 != null)
+        {
+            healthBar2.value = player.CurHealth;
         }
     }
 
