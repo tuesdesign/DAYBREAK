@@ -19,6 +19,13 @@ public class PlayerBase : MonoBehaviour
     int curHealth;
     [Tooltip("The player's movement speed")]
     [SerializeField] float speed = 2.5f;
+
+
+    //UpgradeModifiers
+    [HideInInspector] public int maxHealthModifier = 0;
+    [HideInInspector] public int speedModifier = 0;
+
+
     
 
     public int CurHealth { get => curHealth; set => curHealth = value; }
@@ -60,9 +67,9 @@ public class PlayerBase : MonoBehaviour
     public void Heal(int amount)
     {
         curHealth += amount;
-        if(curHealth > maxHealth)
+        if(curHealth > maxHealth + maxHealthModifier)
         {
-            curHealth = maxHealth;
+            curHealth = maxHealth + maxHealthModifier;
         }
         _playerUI.UpdateHealthBar();
     }

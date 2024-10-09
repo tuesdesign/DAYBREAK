@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7988c70899e08814e852050f16ef1021, type: 3}
   m_Name: Debug
   m_EditorClassIdentifier: 
-  mapSize: {x: 250, y: 250}
+  mapSize: {x: 300, y: 300}
   seed: 250
   biomes:
   - name: Biome 1
