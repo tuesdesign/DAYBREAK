@@ -111,7 +111,8 @@ public class EnemyBase : MonoBehaviour
     {
         if (soundList != null)
         {
-            AudioSource.PlayClipAtPoint(soundList[Random.Range(0, soundList.Count)], this.transform.position);
+            
+            AudioSource.PlayClipAtPoint(soundList[Random.Range(0, soundList.Count)], playerTrans.position);
         }
     }
 

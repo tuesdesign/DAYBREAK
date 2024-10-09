@@ -87,6 +87,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   speed: 10
+  maxHealthModifier: 0
+  speedModifier: 0
 --- !u!114 &5435242875879500283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +125,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  expPickUPRadMod: 0
+  expMultiplier: 1
 --- !u!114 &5194035956099343012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,8 +152,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3f49232a41a0bac4298ead3e67f566e3, type: 3}
   - {fileID: 8300000, guid: 91222c07e49c1b84db9b26850be25b49, type: 3}
   - {fileID: 8300000, guid: 6e64aeb58aab12f4d974b28ca23febbb, type: 3}
+  reloadStartSound: {fileID: 8300000, guid: a1e9e3ea33d4164488718963a275cd34, type: 3}
   reloadSounds:
   - {fileID: 8300000, guid: 07ed6a52a2cbaa14891200721e16a301, type: 3}
+  reloadStopSound: {fileID: 8300000, guid: 43674f1b1507ff6468a301e55b9f35c7, type: 3}
+  bspeedMod: 0
+  shootdelayMod: 0
+  reloadTimeMod: 0
+  maxAmmoMod: 0
 --- !u!54 &4588912894802938485
 Rigidbody:
   m_ObjectHideFlags: 0
