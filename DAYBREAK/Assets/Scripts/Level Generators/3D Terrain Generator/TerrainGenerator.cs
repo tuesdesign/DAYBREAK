@@ -180,7 +180,7 @@ public class TerrainGenerator : MonoBehaviour
                 // apply the fall off curve to the terrain
                 float dist = Vector2.Distance(new Vector2(x, y), new Vector2(data.mapSize.x / 2, data.mapSize.y / 2));
                 height = Mathf.Lerp(height, 0, terrainDataObject.edgeCurve.Evaluate(Mathf.Clamp(dist - terrainDataObject.islandRadius - Mathf.PerlinNoise((x + mapOffsets[0].x) / terrainDataObject.naturalEdgeScale, (y + mapOffsets[0].y) / terrainDataObject.naturalEdgeScale) * terrainDataObject.naturalEdgeStrength, 0, Mathf.Infinity) / terrainDataObject.edgeStrength));
-
+                
                 // update the max and min height
                 if (height > maxHeight) maxHeight = height;
                 if (height < minHeight) minHeight = height;
@@ -210,7 +210,7 @@ public class TerrainGenerator : MonoBehaviour
         int terrainOffset = terrain.terrainData.heightmapResolution / 2 - map.heightMapSize.x / 2;
         terrain.terrainData.SetHeights(terrainOffset, terrainOffset, map.heightMap);
 
-        if (debugOptions.centerGeneratedTerrain) terrain.gameObject.transform.position = new Vector3(-terrain.terrainData.heightmapResolution / 2, 0, -terrain.terrainData.heightmapResolution / 2);
+        if (debugOptions.centerGeneratedTerrain) terrain.gameObject.transform.position = new Vector3(-terrain.terrainData.size.x / 2, 0, -terrain.terrainData.size.z / 2);
 
         //Paint Terrain Biomes
         List<TerrainLayer> terrainLayers = new List<TerrainLayer>();
@@ -307,6 +307,25 @@ public class TerrainGenerator : MonoBehaviour
     private void CreatePaths()
     {
         throw new NotImplementedException();
+    }
+
+    public Vector3 GetNearestSpawnPos(Vector3 vector3)
+    {
+        // Get the terrain if it is not set
+        if (!_terrain) _terrain = GetComponentInChildren<Terrain>();
+
+        // Get the world to terrain local position
+        Vector3 worldToTerrainLocal = _terrain.transform.InverseTransformPoint(vector3);
+
+        // Clamp the position to the terrain bounds
+        float x = Mathf.Clamp(worldToTerrainLocal.x, 0, _terrain.terrainData.size.x);
+        float z = Mathf.Clamp(worldToTerrainLocal.z, 0, _terrain.terrainData.size.z);
+
+        // Get the height at the clamped position
+        float y = _terrain.terrainData.GetHeight(Mathf.RoundToInt(x / _terrain.terrainData.size.x * _terrain.terrainData.heightmapResolution), Mathf.RoundToInt(z / _terrain.terrainData.size.z * _terrain.terrainData.heightmapResolution));
+
+        // Return the nearest spawn position
+        return new Vector3(x, y + 1f, z) + _terrain.transform.position;
     }
 
     #region structs

@@ -15,6 +15,11 @@ public class PlayerExpHandler : MonoBehaviour
     [SerializeField] AnimationCurve incrementRate; //does nothing for now
 
 
+    //Modifiers for upgrades 
+    [HideInInspector] public float expPickUPRadMod = 0;
+    [HideInInspector] public float expMultiplier = 1;
+
+
     public int Exp { get => exp; set => exp = value; }
     public int Level { get => level; set => level = value; }
     public int LevelIncrement { get => levelIncrement; set => levelIncrement = value; }
@@ -29,7 +34,7 @@ public class PlayerExpHandler : MonoBehaviour
 
     public void GainEXP(int amount)
     {
-        exp += amount;
+        exp += Mathf.RoundToInt(amount * expMultiplier);
         playerUI.UpdateEXPBar();
         if (exp >= levelIncrement)
         {
@@ -52,6 +57,6 @@ public class PlayerExpHandler : MonoBehaviour
 
     void UpdateRadius()
     {
-        GetComponent<SphereCollider>().radius = expPickUpRadius;
+        GetComponent<SphereCollider>().radius = expPickUpRadius + expPickUPRadMod;
     }
 }

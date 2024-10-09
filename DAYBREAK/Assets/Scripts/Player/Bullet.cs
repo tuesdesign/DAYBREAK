@@ -38,6 +38,11 @@ public class Bullet : MonoBehaviour
         
     }
 
+    void CheckStatusAffliction()
+    {
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")

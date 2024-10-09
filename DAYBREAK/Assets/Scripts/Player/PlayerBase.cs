@@ -19,6 +19,13 @@ public class PlayerBase : MonoBehaviour
     int curHealth;
     [Tooltip("The player's movement speed")]
     [SerializeField] float speed = 2.5f;
+
+
+    //UpgradeModifiers
+    [HideInInspector] public int maxHealthModifier = 0;
+    [HideInInspector] public int speedModifier = 0;
+
+
     
 
     public int CurHealth { get => curHealth; set => curHealth = value; }
@@ -40,6 +47,9 @@ public class PlayerBase : MonoBehaviour
 
         //stat initialization 
         curHealth = maxHealth;
+
+        // FIX THE PLAYER'S PIVOT ORIGIN TO THEIR FEET -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+        transform.position = FindObjectOfType<TerrainGenerator>().GetNearestSpawnPos(Vector3.zero);
     }
 
 
@@ -52,17 +62,46 @@ public class PlayerBase : MonoBehaviour
     {
 
         //Vector3 movement = new Vector3(movePosition.x, 0f, movePosition.y).normalized * speed; //normal movement (non iso)
-        Vector3 movement = new Vector3(movePosition.x - movePosition.y, 0f, movePosition.x + movePosition.y).normalized * speed; //iso movement 
-        _rb.MovePosition(_rb.position + movement * Time.fixedDeltaTime);
+
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
+        {
+            /*
+
+             If the normal is too steap we can add a sliding mechanic that will push the player down slopes
+                        if (hit.normal.y < 0.7f)
+                        {
+                            Vector3 slide = new Vector3(hit.normal.x, 0, hit.normal.z);
+                            _rb.velocity = slide * speed;
+                            return;
+                        }
+
+             */
+
+            // Get the direction, disregard the y axis
+            Vector3 direction = new Vector3(movePosition.x - movePosition.y, 0f, movePosition.x + movePosition.y).normalized; //iso movement 
+
+            // Get the right and forward vectors by calculating the cross product of the normal of the ground and the direction
+            Vector3 right = Vector3.Cross(hit.normal, direction);
+            Vector3 forward = Vector3.Cross(right, hit.normal);
+
+            // Move the player with relation to the ground
+            _rb.velocity = forward * speed;
+        }
+        else
+        {
+            // If the player is not on the ground, move it towards the player by adding a force
+            Vector3 movement = new Vector3(movePosition.x - movePosition.y, 0f, movePosition.x + movePosition.y).normalized * speed; //iso movement 
+            _rb.AddForce(movement);
+        }
     }
 
     #region Health Related Code (Heal, Damage, Death)
     public void Heal(int amount)
     {
         curHealth += amount;
-        if(curHealth > maxHealth)
+        if(curHealth > maxHealth + maxHealthModifier)
         {
-            curHealth = maxHealth;
+            curHealth = maxHealth + maxHealthModifier;
         }
         _playerUI.UpdateHealthBar();
     }
