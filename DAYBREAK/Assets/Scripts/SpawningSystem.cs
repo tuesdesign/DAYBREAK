@@ -24,11 +24,13 @@ public class SpawningSystem : MonoBehaviour
     float stageTimer = 0;
     Transform playerTransform;
     
+    [SerializeField] TerrainGenerator terrainGenerator;
 
     // Start is called before the first frame update
     void Start()
     {
         playerTransform = FindObjectOfType<PlayerBase>().gameObject.transform;
+        if (!terrainGenerator) terrainGenerator = FindObjectOfType<TerrainGenerator>();
     }
 
     // Update is called once per frame
@@ -59,7 +61,9 @@ public class SpawningSystem : MonoBehaviour
         randomDirection.y = 0; // Keep the enemy on the same plane as the player
 
         // Calculate the spawn position based on the player's position and the chosen direction
-        Vector3 spawnPosition = playerTransform.position + randomDirection * spawnDistance;
+        Vector3 spawnPosition = terrainGenerator ? terrainGenerator.GetNearestSpawnPos(playerTransform.position + randomDirection * spawnDistance) :
+            playerTransform.position + randomDirection * spawnDistance;
+            
         
         // Spawn the enemy at the calculated position with no rotation
         Instantiate(sEnemy, spawnPosition, Quaternion.identity);
