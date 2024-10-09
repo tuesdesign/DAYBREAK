@@ -7,10 +7,7 @@ kanban-plugin: board
 ## To Do:
 
 - [ ] [[Temp Cheese]]
-- [ ] UI - Health bar Creation
-- [ ] UI - Aim Reticle Creation
 - [ ] UI - Joystick Creation
-- [ ] UI - Health Bar Implem.
 - [ ] UI - Joystick Implem.
 - [ ] UI - Aim Reticle Implem.
 - [ ] UI - Settings Menu Creation
@@ -26,6 +23,8 @@ kanban-plugin: board
 ## Work In Progress...
 
 - [ ] UI - Main Menu Functionality
+- [ ] UI - Health bar Creation
+- [ ] UI - Health Bar Implem.
 
 
 ## Done!
@@ -33,6 +32,7 @@ kanban-plugin: board
 - [ ] UI - Experience Bar Creation
 - [ ] UI - Timer Creation
 - [ ] UI - Main Menu Buttons Creation
+- [ ] UI - Aim Reticle Creation
 - [ ] UI - Experience Bar Implementation
 - [ ] UI - Timer Implementation
 

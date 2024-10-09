@@ -11,12 +11,17 @@
             "id": "c5b7dfe186127307",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Design/Art Direction/Art and Visual Design.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
+                "file": "Kanban/Kanban Board.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
               }
             }
           }
@@ -86,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Art Direction/Art and Visual Design.md",
+                "file": "Kanban/Kanban Board.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +108,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Art Direction/Art and Visual Design.md",
+                "file": "Kanban/Kanban Board.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +131,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Art Direction/Art and Visual Design.md"
+                "file": "Kanban/Kanban Board.md"
               }
             }
           }
@@ -150,22 +155,22 @@
   },
   "active": "c5b7dfe186127307",
   "lastOpenFiles": [
-    "Design/Art Direction/FVX Notes.md",
+    "Design/Game Design/Upgrades.md",
+    "Design/Game Design/Proposed Upgrade Tree.md",
+    "Design/Game Design/Level Generation.md",
+    "Design/Game Design/Gameplay.md",
+    "Kanban/Kanban Board.md",
     "Design/Art Direction/Art and Visual Design.md",
+    "Design/Art Direction/FVX Notes.md",
     "Design/Art Direction/Style Guide.md",
     "Design/Art Direction/List to make.md",
     "Design/Art Direction/UI Notes.md",
-    "Design/Game Design/Proposed Upgrade Tree.md",
-    "Design/Game Design/Gameplay.md",
-    "Design/Game Design/Level Generation.md",
-    "Design/Game Design/Upgrades.md",
     "Design/Narrative Direction/Narrative.md",
     "_Home_/Daybreak Game Design Document.md",
     "_Home_/Team.md",
     "_Home_/Project Summary.md",
     "Pasted image 20240925221407.png",
     "List to make.md",
-    "Kanban/Kanban Board.md",
     "Kanban/Kanban Help.md",
     "Kanban/Kanban Items/Temp Cheese.md",
     "Kanban/Kanban Items/Images/Temp Cheese.png",
