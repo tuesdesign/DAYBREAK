@@ -210,7 +210,7 @@ public class TerrainGenerator : MonoBehaviour
         int terrainOffset = terrain.terrainData.heightmapResolution / 2 - map.heightMapSize.x / 2;
         terrain.terrainData.SetHeights(terrainOffset, terrainOffset, map.heightMap);
 
-        if (debugOptions.centerGeneratedTerrain) terrain.gameObject.transform.position = new Vector3(-terrain.terrainData.heightmapResolution / 2, 0, -terrain.terrainData.heightmapResolution / 2);
+        if (debugOptions.centerGeneratedTerrain) terrain.gameObject.transform.position = new Vector3(-terrain.terrainData.size.x / 2, 0, -terrain.terrainData.size.z / 2);
 
         //Paint Terrain Biomes
         List<TerrainLayer> terrainLayers = new List<TerrainLayer>();

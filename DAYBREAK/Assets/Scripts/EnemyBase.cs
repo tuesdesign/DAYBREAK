@@ -18,32 +18,20 @@ public class EnemyBase : MonoBehaviour
 
     [SerializeField] List<AudioClip> hurtSounds = new List<AudioClip>();
 
-<<<<<<< Updated upstream
-=======
     //enemy effects
     
-    Rigidbody _rb;
-    
     Transform playerTrans;
-    Vector3 movePos = Vector2.zero;
 
-    public float GetDamage { get => damage; set => damage = value; }
->>>>>>> Stashed changes
+    //public float GetDamage { get => damage; set => damage = value; }
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-<<<<<<< Updated upstream
-        playerPosition = FindObjectOfType<PlayerBase>().gameObject.transform;
+        playerTrans = FindObjectOfType<PlayerBase>().gameObject.transform;
 
         curHealth = enemySO.maxHealth;
         curspeed = enemySO.speed;
         curdamage = enemySO.damage;
-
-=======
-        playerTrans = FindObjectOfType<PlayerBase>().gameObject.transform;
-        curHealth = maxHealth;
->>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -57,12 +45,6 @@ public class EnemyBase : MonoBehaviour
 
     void MoveTowardsPlayer()
     {
-        //transform.position = Vector2.MoveTowards(transform.position, playerPosition.position, speed * Time.deltaTime);
-        
-<<<<<<< Updated upstream
-        movePos = (playerPosition.position - transform.position).normalized;
-        _rb.velocity = movePos * curspeed;
-=======
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
         {
             /*
@@ -85,15 +67,14 @@ public class EnemyBase : MonoBehaviour
             Vector3 forward = Vector3.Cross(right, hit.normal);
 
             // Move the enemy in the direction of the player with relation to the ground
-            _rb.velocity = forward * speed;
+            _rb.velocity = forward * enemySO.speed;
         }
         else
         {
             // If the enemy is not on the ground, move it towards the player by adding a force
             movePos = (playerTrans.position - transform.position).normalized;
-            _rb.AddForce(movePos * speed);
+            _rb.AddForce(movePos * enemySO.speed);
         }
->>>>>>> Stashed changes
     }
 
     public void TakeDamage(float damage)
