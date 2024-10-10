@@ -269,7 +269,6 @@ GameObject:
   - component: {fileID: 9593712}
   - component: {fileID: 9593711}
   - component: {fileID: 9593714}
-  - component: {fileID: 9593715}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -340,8 +339,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835546}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 158835548}
+        m_TargetAssemblyTypeName: MainMenu_Manager, Assembly-CSharp
         m_MethodName: OpenCharacterSelect
         m_Mode: 1
         m_Arguments:
@@ -349,7 +348,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Alannis3DTesting
+          m_StringArgument: Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &9593712
@@ -400,18 +399,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 891faabd1de72d1458a5901e4cb68f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9593715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9593709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb40f9fbbfb660b4f9388c84a10f8ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &10271969
@@ -620,33 +607,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 158835547}
-  - component: {fileID: 158835546}
+  - component: {fileID: 158835548}
   m_Layer: 0
-  m_Name: UI_Manager
+  m_Name: MainMenu_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &158835546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158835545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b38a815c963eb498d96a1849b5f989, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 1704939574}
-  pcCharacterSelect: {fileID: 1237743682}
-  mobileCharacterSelect: {fileID: 1496423276}
-  currentTime: {fileID: 272453859}
-  winLossScreen: {fileID: 0}
-  timerText: {fileID: 0}
-  timerFill: {fileID: 0}
 --- !u!4 &158835547
 Transform:
   m_ObjectHideFlags: 0
@@ -662,6 +630,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &158835548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158835545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70be41c5a34f33d4b9b514b2be352700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 1704939574}
+  pcCharacterSelect: {fileID: 1237743682}
+  mobileCharacterSelect: {fileID: 1496423276}
+  currentTime: {fileID: 272453859}
 --- !u!1 &224679044
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,7 +2182,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237743679}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -3062,7 +3046,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704939571}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -3692,7 +3676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -350}
+  m_AnchoredPosition: {x: 0, y: -341.5317}
   m_SizeDelta: {x: 340, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2041139619
@@ -3839,8 +3823,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835546}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 158835548}
+        m_TargetAssemblyTypeName: MainMenu_Manager, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:

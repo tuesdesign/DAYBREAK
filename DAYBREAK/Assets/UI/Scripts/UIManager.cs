@@ -8,12 +8,6 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Main Menu Items")]
-    [SerializeField] private Canvas mainMenu;
-    [SerializeField] private Canvas pcCharacterSelect;
-    [SerializeField] private Canvas mobileCharacterSelect;
-    [SerializeField] TMP_Text currentTime;
-    
     [Header("Main UI Items")]
     [SerializeField] private Canvas mainPCUI;
     [SerializeField] private Canvas mainMobileUI;
@@ -24,48 +18,42 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Canvas winLossScreen;
     [SerializeField] private TMP_Text winLossText;
     [SerializeField] private TMP_Text timerText;
-    
+
+    private Canvas _activeUI;
     
     private const float StartTime = 300;
     private float _timeValue;
-    private bool updateTimer = false;
+    private bool _countdown;
 
     private void Awake()
     {
-        if (mainMenu != null)
-            mainMenu.GetComponent<Canvas>().enabled = true;
-        if (pcCharacterSelect != null)
-            pcCharacterSelect.GetComponent<Canvas>().enabled = false;
-        if (mobileCharacterSelect != null)
-            mobileCharacterSelect.GetComponent<Canvas>().enabled = false;
+        // Determine which UI to display
+        _activeUI = SystemInfo.deviceType == DeviceType.Handheld ? mainMobileUI : mainPCUI;
 
-        if (timerText != null)
-            updateTimer = true;
+        Time.timeScale = 1;
     }
-    
+
     private void Start()
     {
+        _activeUI.enabled = true;
         _timeValue = StartTime;
+        _countdown = true;
     }
 
     void Update()
     {
-        if (!timerText)
-            currentTime.text = DateTime.Now.ToLongDateString();
-        
-        if (_timeValue > 0 && updateTimer)
+        if (_timeValue > 0 && _countdown)
         {
             _timeValue -= Time.deltaTime;
         }
         // Time ran out -> Player wins
-        else if (updateTimer)
+        else if (_timeValue <=  0)
         {
             _timeValue = 0;
             DisplayWinLoss(false);
         }
         
-        if (updateTimer)
-            DisplayTime(_timeValue);
+        DisplayTime(_timeValue);
     }
     
     private void DisplayTime(float timeToDisplay)
@@ -78,50 +66,35 @@ public class UIManager : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeText.text = $"{minutes:00}:{seconds:00}";
         timerFill.fillAmount = timeToDisplay / StartTime;
-    }
-
-    public void OpenCharacterSelect()
-    {
-        mainMenu.GetComponent<Canvas>().enabled = false;
-
-        if (SystemInfo.deviceType == DeviceType.Handheld)
-            mobileCharacterSelect.GetComponent<Canvas>().enabled = true;
-        else 
-            pcCharacterSelect.GetComponent<Canvas>().enabled = true;
-    }
-    
-    public void LoadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
     }
     
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("UI_MainMenu");
     }
-
+    
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     public void DisplayWinLoss(bool isLoss)
     {
         // Pause game
         Time.timeScale = 0;
+        _countdown = false;
+        _timeValue = StartTime - _timeValue;
         
-        // Stop timer and display end screen 
-        updateTimer = false;
-        mainPCUI.GetComponent<Canvas>().enabled = false;
-        mainMobileUI.GetComponent<Canvas>().enabled = false;
-        winLossScreen.GetComponent<Canvas>().enabled = true;
+        // Display end screen
+        _activeUI.enabled = false;
+        winLossScreen.enabled = true;
 
         // Change win/loss text
-        if (isLoss)
-            winLossText.text = "YOU LOSE";
-        if (!isLoss)
-            winLossText.text = "YOU WIN";
+        winLossText.text = isLoss ? "YOU LOSE" : "YOU WIN";
 
-        // Convert time left -> time alive & display
-        _timeValue = StartTime - _timeValue;
+        // Time alive & display
         float minutes = Mathf.FloorToInt(_timeValue / 60);
         float seconds = Mathf.FloorToInt(_timeValue % 60);
         timerText.text = "You survived: " + $"{minutes:00}:{seconds:00}";

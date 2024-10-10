@@ -25,15 +25,10 @@ public class PlayerBase : MonoBehaviour
     [HideInInspector] public int maxHealthModifier = 0;
     [HideInInspector] public int speedModifier = 0;
 
-
-    
-
     public int CurHealth { get => curHealth; set => curHealth = value; }
     public int MaxHealth { get => maxHealth; set => maxHealth = value; }
-   
     
     private UIManager _uiManager;
-
 
     // Start is called before the first frame update
     void Start()
