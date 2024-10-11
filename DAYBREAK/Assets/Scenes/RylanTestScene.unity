@@ -175,6 +175,38 @@ PrefabInstance:
       propertyPath: m_Parameters.widthMultiplier
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4907766114298511686, guid: b509c13f3be8fee4b81f08b3304e9038, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907766114298511686, guid: b509c13f3be8fee4b81f08b3304e9038, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907766114298511686, guid: b509c13f3be8fee4b81f08b3304e9038, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.2528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907766114298511686, guid: b509c13f3be8fee4b81f08b3304e9038, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.2528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907766114298511686, guid: b509c13f3be8fee4b81f08b3304e9038, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.2528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907766114298511686, guid: b509c13f3be8fee4b81f08b3304e9038, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.7207546
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907766114298511686, guid: b509c13f3be8fee4b81f08b3304e9038, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.7207546
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907766114298511686, guid: b509c13f3be8fee4b81f08b3304e9038, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.7207546
+      objectReference: {fileID: 0}
     - target: {fileID: 6078616774190623060, guid: b509c13f3be8fee4b81f08b3304e9038, type: 3}
       propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].time
       value: 0.8168311
