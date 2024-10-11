@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UpgradeHandling : MonoBehaviour
 {
     public List<UpgradeBaseSO> upgradeList;
+
+
+    public List<UpgradeBaseSO> FullupgradeList;
 
     PlayerBase playerBase;
     PlayerShooting shooting;
@@ -14,28 +18,74 @@ public class UpgradeHandling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerBase = FindAnyObjectByType(typeof(PlayerBase)).GetComponent<PlayerBase>();
+        shooting = FindAnyObjectByType(typeof(PlayerShooting)).GetComponent<PlayerShooting>();
+        expHandler = FindAnyObjectByType(typeof(PlayerExpHandler)).GetComponent<PlayerExpHandler>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public UpgradeBaseSO GetUpgrade()
     {
-        
+        return FullupgradeList[Random.Range(0,FullupgradeList.Count)];
     }
 
-    public void ApplyUpgrade(UpgradeBaseSO upgradeToAdd)
+    public void IncreaseUpgrade(UpgradeBaseSO upgradeToAdd)
     {
-        UpgradeBaseSO upgrade = upgradeList.Find(u => u.upgradeName == upgradeToAdd.upgradeName);
+        var existingUpgrade = upgradeList.Find(u => u.upgradeName == upgradeToAdd.upgradeName);
 
-        if (upgrade != null&& upgrade.level >= upgrade.maxLevel)
+        if (existingUpgrade != null)
         {
-            upgrade.level++;
+            // Increase the level of the existing upgrade in the list
+            existingUpgrade.level++;
+            ApplyUpgrade(existingUpgrade);  // Apply changes to the stored instance
+        }
+        else
+        {
 
+            var newUpgrade = Instantiate(upgradeToAdd);
+            newUpgrade.level = 0; // Start at level 0 if that's your base level
+            upgradeList.Add(newUpgrade);
+            ApplyUpgrade(newUpgrade);  // Apply the newly added upgrade
+        }
+        
+    }
+
+    public void ApplyUpgrade(UpgradeBaseSO upgradeToApply)
+    {
+        if (upgradeToApply == null || upgradeToApply.level < 0 || upgradeToApply.level >= upgradeToApply.maxLevel)
+        {
+            return; // Ensure valid upgrade
+        }
+        Debug.Log("Applying upgrade: " + upgradeToApply.upgradeName + " at level " + upgradeToApply.level);
+
+        var upgradeLevel = upgradeToApply.upgradeLevels[upgradeToApply.level];
+
+        if (upgradeLevel.usesBasePlayer)
+        {
+            
+            if (upgradeLevel.basePlayerStats.maxHealthModifier != 0)
+            {
+                playerBase.UpdateMaxHealth(upgradeLevel.basePlayerStats.maxHealthModifier, upgradeLevel.basePlayerStats.healsOnApply);
+            }
+            playerBase.UpdateMaxHealth(upgradeLevel.basePlayerStats.maxHealthModifier, upgradeLevel.basePlayerStats.healsOnApply);
+            playerBase.maxHealthModifier += upgradeLevel.basePlayerStats.maxHealthModifier;
+            playerBase.speedModifier += upgradeLevel.basePlayerStats.moveSpeedIncrease;
+        }
+
+        if (upgradeLevel.usesExp)
+        {
+            expHandler.UpdateRadius(upgradeLevel.expStats.expPickUPRadMod);
+            expHandler.UpdageEXPMultiplier(upgradeLevel.expStats.expMultiplier);
+        }
+        if (upgradeLevel.usesShooting)
+        {
+            shooting.maxAmmoMod += upgradeLevel.playerShooting.maxAmmoModifier;
+            shooting.shootdelayMod += upgradeLevel.playerShooting.shootDelayModifier;
+            shooting.bspeedMod += upgradeLevel.playerShooting.bulletSpeedModifier;
+        }
+        if (upgradeLevel.usesbulletPropersties)
+        {
 
         }
-    }
-    public void UpdateUpgrades()
-    {
 
     }
 

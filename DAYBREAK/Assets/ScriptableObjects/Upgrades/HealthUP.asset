@@ -10,27 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da3fe4eefeb98f847b40af3fdd0db4ad, type: 3}
-  m_Name: UpgradeB
+  m_Name: HealthUP
   m_EditorClassIdentifier: 
-  upgradeName: Health UP
+  upgradeName: HealthUP
   maxLevel: 3
   level: 0
+  image: {fileID: 0}
   description: 
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: Health +
+    usesBasePlayer: 1
     basePlayerStats:
       maxHealthModifier: 10
-      healsOnApply: 0
+      healsOnApply: 1
       moveSpeedIncrease: 0
+    usesExp: 0
     expStats:
       expPickUPRadMod: 0
       expMultiplier: 0
+    usesShooting: 0
     playerShooting:
       bulletSpeedModifier: 0
       shootDelayModifier: 0
       maxAmmoModifier: 0
       reloadTimeModifier: 0
+    usesbulletPropersties: 0
     bulletProperties:
       speed: 0
       damage: 0
@@ -47,18 +52,22 @@ MonoBehaviour:
       pierceAmount: 0
   - replacePrevUpgrade: 0
     description: Health ++
+    usesBasePlayer: 1
     basePlayerStats:
       maxHealthModifier: 20
-      healsOnApply: 0
+      healsOnApply: 1
       moveSpeedIncrease: 0
+    usesExp: 0
     expStats:
       expPickUPRadMod: 0
       expMultiplier: 0
+    usesShooting: 0
     playerShooting:
       bulletSpeedModifier: 0
       shootDelayModifier: 0
       maxAmmoModifier: 0
       reloadTimeModifier: 0
+    usesbulletPropersties: 0
     bulletProperties:
       speed: 0
       damage: 0
@@ -75,18 +84,22 @@ MonoBehaviour:
       pierceAmount: 0
   - replacePrevUpgrade: 0
     description: Health +++
+    usesBasePlayer: 1
     basePlayerStats:
       maxHealthModifier: 30
-      healsOnApply: 0
+      healsOnApply: 1
       moveSpeedIncrease: 0
+    usesExp: 0
     expStats:
       expPickUPRadMod: 0
       expMultiplier: 0
+    usesShooting: 0
     playerShooting:
       bulletSpeedModifier: 0
       shootDelayModifier: 0
       maxAmmoModifier: 0
       reloadTimeModifier: 0
+    usesbulletPropersties: 0
     bulletProperties:
       speed: 0
       damage: 0

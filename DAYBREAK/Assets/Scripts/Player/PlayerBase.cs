@@ -22,8 +22,10 @@ public class PlayerBase : MonoBehaviour
 
 
     //UpgradeModifiers
-    [HideInInspector] public int maxHealthModifier = 0;
-    [HideInInspector] public int speedModifier = 0;
+    //[HideInInspector] 
+    public int maxHealthModifier = 0;
+    //[HideInInspector] 
+    public float speedModifier = 0;
 
     public int CurHealth { get => curHealth; set => curHealth = value; }
     public int MaxHealth { get => maxHealth; set => maxHealth = value; }
@@ -120,6 +122,17 @@ public class PlayerBase : MonoBehaviour
     {
         _uiManager.DisplayWinLoss(true);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void UpdateMaxHealth(int health, bool increaseCurHealth)
+    {
+        maxHealthModifier += health;
+
+        if (increaseCurHealth)
+        {
+            curHealth += health;
+        }
+        _playerUI.UpdateHealthBar();
     }
     #endregion
 

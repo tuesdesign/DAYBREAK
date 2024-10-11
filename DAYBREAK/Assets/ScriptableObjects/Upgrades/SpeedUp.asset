@@ -12,25 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3fe4eefeb98f847b40af3fdd0db4ad, type: 3}
   m_Name: SpeedUp
   m_EditorClassIdentifier: 
-  upgradeName: 
-  maxLevel: 0
-  level: 0
+  upgradeName: SpeedUp
+  maxLevel: 3
+  level: 2
   description: 
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 
+    usesBasePlayer: 1
     basePlayerStats:
       maxHealthModifier: 0
       healsOnApply: 0
-      moveSpeedIncrease: 0
+      moveSpeedIncrease: 20
+    usesExp: 0
     expStats:
       expPickUPRadMod: 0
       expMultiplier: 0
+    usesShooting: 0
     playerShooting:
       bulletSpeedModifier: 0
       shootDelayModifier: 0
       maxAmmoModifier: 0
       reloadTimeModifier: 0
+    usesbulletPropersties: 0
     bulletProperties:
       speed: 0
       damage: 0
@@ -47,18 +51,22 @@ MonoBehaviour:
       pierceAmount: 0
   - replacePrevUpgrade: 0
     description: 
+    usesBasePlayer: 1
     basePlayerStats:
       maxHealthModifier: 0
       healsOnApply: 0
-      moveSpeedIncrease: 0
+      moveSpeedIncrease: 100
+    usesExp: 0
     expStats:
       expPickUPRadMod: 0
       expMultiplier: 0
+    usesShooting: 0
     playerShooting:
       bulletSpeedModifier: 0
       shootDelayModifier: 0
       maxAmmoModifier: 0
       reloadTimeModifier: 0
+    usesbulletPropersties: 0
     bulletProperties:
       speed: 0
       damage: 0
@@ -75,18 +83,22 @@ MonoBehaviour:
       pierceAmount: 0
   - replacePrevUpgrade: 0
     description: 
+    usesBasePlayer: 1
     basePlayerStats:
       maxHealthModifier: 0
       healsOnApply: 0
       moveSpeedIncrease: 0
+    usesExp: 0
     expStats:
       expPickUPRadMod: 0
       expMultiplier: 0
+    usesShooting: 0
     playerShooting:
       bulletSpeedModifier: 0
       shootDelayModifier: 0
       maxAmmoModifier: 0
       reloadTimeModifier: 0
+    usesbulletPropersties: 0
     bulletProperties:
       speed: 0
       damage: 0

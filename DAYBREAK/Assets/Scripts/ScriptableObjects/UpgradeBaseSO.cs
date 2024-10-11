@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "UpgradeB", menuName = "ScriptableObjects/Upgrade", order = 1)]
 public class UpgradeBaseSO : ScriptableObject
@@ -8,6 +9,7 @@ public class UpgradeBaseSO : ScriptableObject
     public string upgradeName; // Name of the upgrade
     public int maxLevel;
     public int level; // Current level of the upgrade
+    public Sprite image;
     public string description;
     
 
@@ -19,26 +21,33 @@ public class UpgradeBaseSO : ScriptableObject
         public bool replacePrevUpgrade;
         public string description;
 
-        public BasePlayerStats basePlayerStats;  
+        public bool usesBasePlayer;
+        public BasePlayerStats basePlayerStats; 
+
+        public bool usesExp;
         public ExpStats expStats;
+
+        public bool usesShooting;
         public PlayerShooting playerShooting;
+
+        public bool usesbulletPropersties;
         public BulletProperties bulletProperties;
     }
 
     [System.Serializable]
     public class BasePlayerStats
     {
-        public int maxHealthModifier;
-        public bool healsOnApply;
+        public int maxHealthModifier = 0;
+        public bool healsOnApply = true;
 
-        public float moveSpeedIncrease;
+        public float moveSpeedIncrease = 0;
     }
 
     [System.Serializable]
     public class ExpStats
     {
-        public float expPickUPRadMod;
-        public float expMultiplier;
+        public float expPickUPRadMod = 0;
+        public float expMultiplier = 0;
     }
 
     [System.Serializable]
