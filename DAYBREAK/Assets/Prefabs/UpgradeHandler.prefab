@@ -45,3 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeList: []
+  FullupgradeList:
+  - {fileID: 11400000, guid: 6130d3d06931d9145bfed4ea19407de9, type: 2}
+  - {fileID: 11400000, guid: ad489d3cd9a61da4bb70719e2490fcf4, type: 2}
+  - {fileID: 11400000, guid: b8570d43c41ea8947be496ab99eb863e, type: 2}

@@ -12,8 +12,105 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3fe4eefeb98f847b40af3fdd0db4ad, type: 3}
   m_Name: ExpRadiusUp
   m_EditorClassIdentifier: 
-  upgradeName: 
-  maxLevel: 0
+  upgradeName: EXP Radius Up
+  maxLevel: 3
   level: 0
+  image: {fileID: 0}
   description: 
-  upgradeLevels: []
+  upgradeLevels:
+  - replacePrevUpgrade: 0
+    description: 
+    usesBasePlayer: 0
+    basePlayerStats:
+      maxHealthModifier: 0
+      healsOnApply: 0
+      moveSpeedIncrease: 0
+    usesExp: 1
+    expStats:
+      expPickUPRadMod: 1
+      expMultiplier: 0
+    usesShooting: 0
+    playerShooting:
+      bulletSpeedModifier: 0
+      shootDelayModifier: 0
+      maxAmmoModifier: 0
+      reloadTimeModifier: 0
+    usesbulletPropersties: 0
+    bulletProperties:
+      speed: 0
+      damage: 0
+      canBurn: 0
+      burnChance: 0
+      isExplosive: 0
+      explosionRange: 0
+      explosionDamage: 0
+      canFreeze: 0
+      freezeChance: 0
+      canBounce: 0
+      bounceAmount: 0
+      canPierce: 0
+      pierceAmount: 0
+  - replacePrevUpgrade: 0
+    description: 
+    usesBasePlayer: 0
+    basePlayerStats:
+      maxHealthModifier: 0
+      healsOnApply: 0
+      moveSpeedIncrease: 0
+    usesExp: 1
+    expStats:
+      expPickUPRadMod: 2
+      expMultiplier: 0
+    usesShooting: 0
+    playerShooting:
+      bulletSpeedModifier: 0
+      shootDelayModifier: 0
+      maxAmmoModifier: 0
+      reloadTimeModifier: 0
+    usesbulletPropersties: 0
+    bulletProperties:
+      speed: 0
+      damage: 0
+      canBurn: 0
+      burnChance: 0
+      isExplosive: 0
+      explosionRange: 0
+      explosionDamage: 0
+      canFreeze: 0
+      freezeChance: 0
+      canBounce: 0
+      bounceAmount: 0
+      canPierce: 0
+      pierceAmount: 0
+  - replacePrevUpgrade: 0
+    description: 
+    usesBasePlayer: 0
+    basePlayerStats:
+      maxHealthModifier: 0
+      healsOnApply: 0
+      moveSpeedIncrease: 0
+    usesExp: 1
+    expStats:
+      expPickUPRadMod: 5
+      expMultiplier: 0
+    usesShooting: 0
+    playerShooting:
+      bulletSpeedModifier: 0
+      shootDelayModifier: 0
+      maxAmmoModifier: 0
+      reloadTimeModifier: 0
+    usesbulletPropersties: 0
+    bulletProperties:
+      speed: 0
+      damage: 0
+      canBurn: 0
+      burnChance: 0
+      isExplosive: 0
+      explosionRange: 0
+      explosionDamage: 0
+      canFreeze: 0
+      freezeChance: 0
+      canBounce: 0
+      bounceAmount: 0
+      canPierce: 0
+      pierceAmount: 0
