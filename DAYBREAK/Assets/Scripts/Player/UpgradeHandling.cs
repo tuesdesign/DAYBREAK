@@ -12,6 +12,7 @@ public class UpgradeHandling : MonoBehaviour
     PlayerBase playerBase;
     PlayerShooting shooting;
     PlayerExpHandler expHandler;
+    PlayerUI playerUI;
 
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class UpgradeHandling : MonoBehaviour
         playerBase = FindAnyObjectByType(typeof(PlayerBase)).GetComponent<PlayerBase>();
         shooting = FindAnyObjectByType(typeof(PlayerShooting)).GetComponent<PlayerShooting>();
         expHandler = FindAnyObjectByType(typeof(PlayerExpHandler)).GetComponent<PlayerExpHandler>();
+        playerUI = FindAnyObjectByType<PlayerUI>().GetComponent<PlayerUI>();
     }
 
     public UpgradeBaseSO GetUpgrade()
@@ -52,7 +54,7 @@ public class UpgradeHandling : MonoBehaviour
     {
         if (upgradeToApply == null || upgradeToApply.level < 0 || upgradeToApply.level >= upgradeToApply.maxLevel)
         {
-            return; // Ensure valid upgrade
+            return; 
         }
         Debug.Log("Applying upgrade: " + upgradeToApply.upgradeName + " at level " + upgradeToApply.level);
 
@@ -60,11 +62,6 @@ public class UpgradeHandling : MonoBehaviour
 
         if (upgradeLevel.usesBasePlayer)
         {
-            
-            if (upgradeLevel.basePlayerStats.maxHealthModifier != 0)
-            {
-                playerBase.UpdateMaxHealth(upgradeLevel.basePlayerStats.maxHealthModifier, upgradeLevel.basePlayerStats.healsOnApply);
-            }
             playerBase.UpdateMaxHealth(upgradeLevel.basePlayerStats.maxHealthModifier, upgradeLevel.basePlayerStats.healsOnApply);
             playerBase.maxHealthModifier += upgradeLevel.basePlayerStats.maxHealthModifier;
             playerBase.speedModifier += upgradeLevel.basePlayerStats.moveSpeedIncrease;
@@ -80,6 +77,7 @@ public class UpgradeHandling : MonoBehaviour
             shooting.maxAmmoMod += upgradeLevel.playerShooting.maxAmmoModifier;
             shooting.shootdelayMod += upgradeLevel.playerShooting.shootDelayModifier;
             shooting.bspeedMod += upgradeLevel.playerShooting.bulletSpeedModifier;
+            playerUI.UpdateAmmoCount();
         }
         if (upgradeLevel.usesbulletPropersties)
         {

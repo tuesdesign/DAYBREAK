@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3fe4eefeb98f847b40af3fdd0db4ad, type: 3}
   m_Name: MaxAmmoIncrease
   m_EditorClassIdentifier: 
-  upgradeName: Bullet Speed Up
+  upgradeName: Max Ammo Up
   maxLevel: 3
   level: 0
   image: {fileID: 0}
@@ -31,9 +31,9 @@ MonoBehaviour:
       expMultiplier: 0
     usesShooting: 1
     playerShooting:
-      bulletSpeedModifier: 10
+      bulletSpeedModifier: 0
       shootDelayModifier: 0
-      maxAmmoModifier: 0
+      maxAmmoModifier: 4
       reloadTimeModifier: 0
     usesbulletPropersties: 0
     bulletProperties:
@@ -63,9 +63,9 @@ MonoBehaviour:
       expMultiplier: 0
     usesShooting: 1
     playerShooting:
-      bulletSpeedModifier: 20
+      bulletSpeedModifier: 0
       shootDelayModifier: 0
-      maxAmmoModifier: 0
+      maxAmmoModifier: 5
       reloadTimeModifier: 0
     usesbulletPropersties: 0
     bulletProperties:
@@ -95,9 +95,9 @@ MonoBehaviour:
       expMultiplier: 0
     usesShooting: 1
     playerShooting:
-      bulletSpeedModifier: 15
+      bulletSpeedModifier: 0
       shootDelayModifier: 0
-      maxAmmoModifier: 0
+      maxAmmoModifier: 10
       reloadTimeModifier: 0
     usesbulletPropersties: 0
     bulletProperties:

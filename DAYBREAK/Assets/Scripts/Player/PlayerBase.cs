@@ -130,7 +130,7 @@ public class PlayerBase : MonoBehaviour
 
         if (increaseCurHealth)
         {
-            curHealth += health;
+            Heal(health);
         }
         _playerUI.UpdateHealthBar();
     }
