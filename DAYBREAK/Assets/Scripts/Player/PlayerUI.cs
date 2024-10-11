@@ -50,10 +50,12 @@ public class PlayerUI : MonoBehaviour
         if (healthBar1 != null)
         {
             healthBar1.value = player.CurHealth;
+            healthBar1.maxValue = player.MaxHealth + player.maxHealthModifier;
         }
         if (healthBar2 != null)
         {
             healthBar2.value = player.CurHealth;
+            healthBar2.maxValue = player.MaxHealth + player.maxHealthModifier;
         }
     }
 
@@ -61,7 +63,7 @@ public class PlayerUI : MonoBehaviour
     {
         if (ammoTextBar != null)
         {
-            ammoTextBar.text = playerShooting.AmmoCount + " / " + playerShooting.MaxAmmo;
+            ammoTextBar.text = playerShooting.AmmoCount + " / " + (playerShooting.MaxAmmo+ playerShooting.maxAmmoMod);
         }
     }
 
