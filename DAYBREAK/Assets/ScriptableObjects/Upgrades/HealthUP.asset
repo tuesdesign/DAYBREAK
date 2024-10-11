@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLevel: 3
   level: 0
   image: {fileID: 0}
-  description: 
+  description: Increase your health
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: Health +

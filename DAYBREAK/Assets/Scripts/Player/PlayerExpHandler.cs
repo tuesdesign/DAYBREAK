@@ -14,17 +14,16 @@ public class PlayerExpHandler : MonoBehaviour
     [Tooltip("NOT IMPLEMENTED \n Rate of increase of exp needed for each level")]
     [SerializeField] AnimationCurve incrementRate; //does nothing for now
 
-
     //Modifiers for upgrades 
     [HideInInspector] public float expPickUPRadMod = 0;
     [HideInInspector] public float expMultiplier = 1;
+
+    [SerializeField] private UpgradeManagerMenu _upgradeManagerMenu;
 
 
     public int Exp { get => exp; set => exp = value; }
     public int Level { get => level; set => level = value; }
     public int LevelIncrement { get => levelIncrement; set => levelIncrement = value; }
-
-
 
     void Start()
     {
@@ -46,7 +45,9 @@ public class PlayerExpHandler : MonoBehaviour
     {
         exp -= levelIncrement;
         level++;
+        
         // INSERT A CALL TO SPAWN THE UPGRADE MENU AND PAUSE THE TIME  (ALSO ENSURE THAT AFTER SELECTING THE UPGRADE MENU THAT TIME REVERTS)
+        _upgradeManagerMenu.PopulateMenu();
 
         if (exp >= levelIncrement)
         {

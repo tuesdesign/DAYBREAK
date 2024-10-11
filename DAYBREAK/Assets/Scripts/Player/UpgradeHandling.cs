@@ -6,8 +6,7 @@ using UnityEngine;
 public class UpgradeHandling : MonoBehaviour
 {
     public List<UpgradeBaseSO> upgradeList;
-
-
+    
     public List<UpgradeBaseSO> FullupgradeList;
 
     PlayerBase playerBase;

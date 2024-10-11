@@ -9,7 +9,7 @@ public class UpgradeBaseSO : ScriptableObject
     public string upgradeName; // Name of the upgrade
     public int maxLevel;
     public int level; // Current level of the upgrade
-    public Sprite image;
+    public Image image;
     public string description;
     
 

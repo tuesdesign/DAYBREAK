@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLevel: 3
   level: 0
   image: {fileID: 0}
-  description: 
+  description: Increase the radius of EXP drops
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 

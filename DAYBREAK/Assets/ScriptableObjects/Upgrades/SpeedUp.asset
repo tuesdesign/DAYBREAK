@@ -15,7 +15,8 @@ MonoBehaviour:
   upgradeName: SpeedUp
   maxLevel: 3
   level: 2
-  description: 
+  image: {fileID: 0}
+  description: Increase your movement speed
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 

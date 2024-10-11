@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -42,7 +45,8 @@ public class PlayerShooting : MonoBehaviour
     [HideInInspector] public float reloadTimeMod = 0 ;
     [HideInInspector] public int maxAmmoMod = 0;
 
-
+    
+    private Canvas reloadBar;
 
     public int MaxAmmo { get => maxAmmo; set => maxAmmo = value; }
     public int AmmoCount { get => ammoCount; set => ammoCount = value; }
@@ -56,6 +60,8 @@ public class PlayerShooting : MonoBehaviour
 
         ammoCount = maxAmmo;
         canShoot = true;
+        
+        reloadBar = FindObjectOfType<Canvas>();
 
         if (twinStick)
         {
@@ -71,7 +77,6 @@ public class PlayerShooting : MonoBehaviour
             _playerInputActions.Game.Move.started += ctx => StartShooting();
             _playerInputActions.Game.Move.canceled += ctx => StopShooting();
         }
-
     }
 
     private void OnDisable()
@@ -176,9 +181,11 @@ public class PlayerShooting : MonoBehaviour
         isReloading = true; //variable ensures that it does not attempt to reload while already reloading
         StartCoroutine(ReloadTick());
 
+        reloadBar.enabled = true;
+        
         yield return new WaitForSeconds(reloadTime + reloadTimeMod);
 
-        
+        reloadBar.enabled = false;
         ammoCount = maxAmmo + maxAmmoMod;
         hasAmmo = true;
         isReloading = false;
