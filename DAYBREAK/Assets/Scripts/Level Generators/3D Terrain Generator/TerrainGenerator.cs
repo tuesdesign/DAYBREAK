@@ -57,6 +57,9 @@ public class TerrainGenerator : MonoBehaviour
 
         // Create the paths
         //CreatePaths();
+
+        //Temp
+        FindObjectOfType<PlayerBase>().transform.position = GetNearestSpawnPos(Vector3.zero) + Vector3.up;
     }
 
     private bool GenerationPreChecks()

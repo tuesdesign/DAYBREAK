@@ -200,6 +200,9 @@ MonoBehaviour:
   bounceAmount: 0
   canPierce: 0
   pierceAmount: 0
+  enableTerrainGlueForce: 1
+  glueDistance: 1
+  gluePower: 10
 --- !u!54 &6588048106972015134
 Rigidbody:
   m_ObjectHideFlags: 0

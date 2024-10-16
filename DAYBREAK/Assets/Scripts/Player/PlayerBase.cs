@@ -64,7 +64,7 @@ public class PlayerBase : MonoBehaviour
 
         //Vector3 movement = new Vector3(movePosition.x, 0f, movePosition.y).normalized * speed; //normal movement (non iso)
 
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f, LayerMask.GetMask("Terrain")))
         {
             /*
 

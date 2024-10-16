@@ -45,7 +45,7 @@ public class EnemyBase : MonoBehaviour
 
     void MoveTowardsPlayer()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f, LayerMask.GetMask("Terrain")))
         {
             /*
 
