@@ -8,6 +8,7 @@ using UnityEditor.SceneManagement;
 public class TerrainGeneratorEditor : Editor
 {
     SerializedProperty terrainDataObject;
+    SerializedProperty terrainSeed;
     SerializedProperty terrainMaterial;
 
     Editor terrainDataObjectEditor;
@@ -19,6 +20,7 @@ public class TerrainGeneratorEditor : Editor
         terrainDataObject = serializedObject.FindProperty("terrainDataObject");
         terrainDataObjectEditor = CreateEditor(terrainDataObject.objectReferenceValue);
 
+        terrainSeed = serializedObject.FindProperty("_seed");
         terrainMaterial = serializedObject.FindProperty("terrainMaterial");
     }
 
@@ -33,6 +35,19 @@ public class TerrainGeneratorEditor : Editor
         // Generate terrain buttons
         if (GUILayout.Button("Generate Terrain")) terrainGenerator.GenerateTerrain();
         if (GUILayout.Button("Clear Level")) terrainGenerator.ClearTerrain();
+        EditorGUILayout.Space();
+
+        // Seed field
+        string seed = terrainSeed.stringValue = EditorGUILayout.TextField("Seed", terrainSeed.stringValue);
+        if (!int.TryParse(seed, out int intSeed))
+            if (GUILayout.Button($"Copy Seed After Conversion: {seed.GetHashCode()}"))
+            {
+                TextEditor te = new TextEditor();
+                te.text = seed.GetHashCode().ToString();
+                te.SelectAll();
+                te.Copy();
+            }
+
         EditorGUILayout.Space();
 
         // if terrain data object updated in inspector, update the editor
@@ -56,9 +71,6 @@ public class TerrainGeneratorEditor : Editor
 
         // Show the debug options
         EditorGUILayout.PropertyField(serializedObject.FindProperty("debugOptions"), true);
-
-        if (terrainGenerator.debugOptions.randomSeed)
-            EditorGUILayout.LabelField("Current Seed: " + terrainGenerator._seed);
 
         serializedObject.ApplyModifiedProperties();
     }

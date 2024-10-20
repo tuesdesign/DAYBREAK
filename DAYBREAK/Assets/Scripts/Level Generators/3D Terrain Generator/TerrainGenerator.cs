@@ -12,7 +12,7 @@ public class TerrainGenerator : MonoBehaviour
 {
     Terrain _terrain;
     TerrainMap _terrainMap;
-    public int _seed;
+    public string _seed;
 
     [SerializeField]
     public TerrainDataObject terrainDataObject;
@@ -45,18 +45,36 @@ public class TerrainGenerator : MonoBehaviour
         // Create the terrain object
         _terrain = CreateNewTerrain(terrainDataObject);
 
-        // Generate the height map
-        _seed = debugOptions.randomSeed ? System.DateTime.UtcNow.Millisecond : terrainDataObject.seed.GetHashCode();
-        _terrainMap = CreateNewTerrainMap(_terrain, terrainDataObject, _seed);
+        // Set the seed. CRY CONSTANTINE! COPE!
+        int newSeed;
+        if (debugOptions.randomSeed)
+        {
+            newSeed = System.DateTime.UtcNow.TimeOfDay.GetHashCode();
+            _seed = newSeed.ToString();
+        }
+        else if (debugOptions.useDataObjectSeed)
+        {
+            newSeed = int.TryParse(terrainDataObject.seed, out int intSeed) ? intSeed : terrainDataObject.seed.GetHashCode();
+            _seed = terrainDataObject.seed;
+        }
+        else
+        {
+            newSeed = int.TryParse(_seed, out int intSeed) ? intSeed : _seed.GetHashCode();
+        }
+
+        //Generate the terrain map
+        _terrainMap = CreateNewTerrainMap(_terrain, terrainDataObject, newSeed);
 
         // Apply the terrain heights and transforms
         ApplyTerrainMap(_terrain, terrainDataObject, _terrainMap);
+
+        Dictionary<Vector2Int, float> structurePosistionsAndRadii = new Dictionary<Vector2Int, float>();
 
         // Generate the structures
         GenerateStructures(_terrain, terrainDataObject, _terrainMap);
 
         // Create the paths
-        //CreatePaths();
+        CreatePaths();
 
         //Temp
         FindObjectOfType<PlayerBase>().transform.position = GetNearestSpawnPos(Vector3.zero) + Vector3.up;
@@ -240,19 +258,36 @@ public class TerrainGenerator : MonoBehaviour
         _terrain.terrainData.SetAlphamaps(0, 0, layerAlphaMap);
     }
 
-    private void GenerateStructures(Terrain terrain, TerrainDataObject data, TerrainMap map)
+    private Dictionary<Vector2Int, float> GenerateStructures(Terrain terrain, TerrainDataObject data, TerrainMap map)
     {
+        Dictionary<Vector2Int, float> structurePosistionsAndRadii = new Dictionary<Vector2Int, float>();
         int structureCount = Mathf.RoundToInt(data.mapSize.x * data.mapSize.y * data.structureDensity * 0.0001f);
+
+        // if the loop fails to generate a structure 10 times in a row, stop trying
+        int structureFailures = 0;
 
         for (int i = 0; i < structureCount; i++)
         {
-            Vector2Int sMapLocal = new Vector2Int(Random.Range(0, data.mapSize.x), Random.Range(0, data.mapSize.y));
+            if (structureFailures >= 10) break;
+
+            // pick a random position on the map within the rough bounds of the island
+            int xEdgeBuffer = Mathf.Clamp(data.mapSize.x / 2 - Mathf.RoundToInt(data.islandRadius / 2), 0, data.mapSize.x);
+            int yEdgeBuffer = Mathf.Clamp(data.mapSize.y / 2 - Mathf.RoundToInt(data.islandRadius / 2), 0, data.mapSize.y);
+            Vector2Int sMapLocal = new Vector2Int(Random.Range(xEdgeBuffer, data.mapSize.x - xEdgeBuffer), Random.Range(yEdgeBuffer, data.mapSize.y - yEdgeBuffer));
 
             Vector3 sPos = new Vector3(
                 (float)sMapLocal.x / terrain.terrainData.heightmapResolution * data.mapSize.x,
                 Mathf.Clamp(terrain.terrainData.GetHeight(Mathf.RoundToInt(sMapLocal.x), Mathf.RoundToInt(sMapLocal.y)), data.waterLevel, Mathf.Infinity),
                 (float)sMapLocal.y / terrain.terrainData.heightmapResolution * data.mapSize.y
                 );
+
+            // fail if the structure is in the water
+            if (sPos.y < data.waterLevel + data.structureElevationAboveWater)
+            {
+                structureFailures++;
+                structureCount--;
+                continue;
+            }
 
             Biome dominantBiome = new Biome();
             float dominantBiomeWeight = 0;
@@ -267,11 +302,34 @@ public class TerrainGenerator : MonoBehaviour
                 }
             }
 
-            // skip biome has no structures
-            if (dominantBiome.structures.Length <= 0) continue;
+            // fail if biome has no structures
+            if (dominantBiome.structures.Length <= 0) 
+            { 
+                structureFailures++;
+                structureCount--;
+                continue;
+            }
 
             // Create the structure
             Structure structure = dominantBiome.structures[Random.Range(0, dominantBiome.structures.Length)];
+
+            // fail if the structure is too close to another structure
+            bool structureGeneratedInsideAnotherStructure = false;
+            foreach (KeyValuePair<Vector2Int, float> kv in structurePosistionsAndRadii)
+            {
+                if (Vector2.Distance(sMapLocal, kv.Key) < kv.Value + structure.radius)
+                {
+                    structureGeneratedInsideAnotherStructure = true;
+                    break;
+                }
+            }
+
+            if (structureGeneratedInsideAnotherStructure)
+            {
+                structureFailures++;
+                structureCount--;
+                continue;
+            }
 
             // flaten the terrain around the structure
             int perimeter = (structure.radius + data.structureEdgeBuffer) * 2;
@@ -304,12 +362,16 @@ public class TerrainGenerator : MonoBehaviour
             structureObj.transform.parent = terrain.transform;
             structureObj.transform.localPosition = sPos + new Vector3(0, structure.offestY, 0);
             structureObj.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            structurePosistionsAndRadii.Add(sMapLocal, structure.radius);
         }
+
+        return structurePosistionsAndRadii;
     }
 
     private void CreatePaths()
     {
-        throw new NotImplementedException();
+        
     }
 
     public Vector3 GetNearestSpawnPos(Vector3 vector3)
@@ -361,6 +423,7 @@ public class TerrainGenerator : MonoBehaviour
         public bool generateOnStart;
         public bool centerGeneratedTerrain;
         public bool randomSeed;
+        public bool useDataObjectSeed;
     }
 
     [Serializable]

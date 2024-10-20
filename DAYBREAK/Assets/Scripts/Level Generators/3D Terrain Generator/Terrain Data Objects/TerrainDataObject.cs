@@ -8,8 +8,11 @@ using Biome = TerrainGenerator.Biome;
 [CreateAssetMenu(fileName = "New Terrain Data Object", menuName = "ScriptableObjects/Terrain Data Object")]
 public class TerrainDataObject : ScriptableObject
 {
-    public Vector2Int mapSize;
+    [Space]
     public string seed;
+
+    [Space]
+    public Vector2Int mapSize;
 
     [Space] 
     public Biome[] biomes;
@@ -19,6 +22,7 @@ public class TerrainDataObject : ScriptableObject
     [Tooltip("structureDensity of 1 will yield 1 structure per 100 x 100 map size")] public float structureDensity;
     public int structureEdgeBuffer;
     public AnimationCurve structureEdgeCurve;
+    public float structureElevationAboveWater;
 
     [Space]
     public float waterLevel = 0.5f;
