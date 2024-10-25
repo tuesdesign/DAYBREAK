@@ -13,10 +13,13 @@ public class PlayerBase : MonoBehaviour
     Vector2 aimPosition = Vector2.zero;
     Vector2 movePosition = Vector2.zero;
 
-    //Player 
-    [Header("Player Base")]
     [SerializeField] int maxHealth = 10;
     int curHealth;
+    int shield;
+
+    bool canTakeDamage = true;
+    float invincibilityTime;
+
     [Tooltip("The player's movement speed")]
     [SerializeField] float speed = 2.5f;
 
@@ -24,8 +27,12 @@ public class PlayerBase : MonoBehaviour
     //UpgradeModifiers
     //[HideInInspector] 
     public int maxHealthModifier = 0;
+    public int shieldModifier = 0;
+    public float invincibilityTimeModifier = 0.25f;
     //[HideInInspector] 
     public float speedModifier = 0;
+
+
 
     public int CurHealth { get => curHealth; set => curHealth = value; }
     public int MaxHealth { get => maxHealth; set => maxHealth = value; }
@@ -116,6 +123,8 @@ public class PlayerBase : MonoBehaviour
         }
         
         _playerUI.UpdateHealthBar();
+        canTakeDamage = false;
+        StartCoroutine(InvincibilityFrames());
     }
 
     void Die()
@@ -150,5 +159,12 @@ public class PlayerBase : MonoBehaviour
         {
             TakeDamage((int)collision.gameObject.GetComponent<EnemyBase>().GetDamage());
         }
+    }
+
+    IEnumerator InvincibilityFrames()
+    {
+        yield return new WaitForSeconds(invincibilityTime);
+        canTakeDamage = true;
+
     }
 }

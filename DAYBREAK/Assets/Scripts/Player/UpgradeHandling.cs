@@ -63,7 +63,6 @@ public class UpgradeHandling : MonoBehaviour
         if (upgradeLevel.usesBasePlayer)
         {
             playerBase.UpdateMaxHealth(upgradeLevel.basePlayerStats.maxHealthModifier, upgradeLevel.basePlayerStats.healsOnApply);
-            playerBase.maxHealthModifier += upgradeLevel.basePlayerStats.maxHealthModifier;
             playerBase.speedModifier += upgradeLevel.basePlayerStats.moveSpeedIncrease;
         }
 

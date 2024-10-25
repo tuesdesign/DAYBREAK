@@ -41,6 +41,12 @@ public class UpgradeBaseSO : ScriptableObject
         public bool healsOnApply = true;
 
         public float moveSpeedIncrease = 0;
+
+        public int sheildMod;
+        public float dodgeChanceMod;
+        public float invincibilityFrameMod;
+        
+
     }
 
     [System.Serializable]
