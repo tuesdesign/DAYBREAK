@@ -4,7 +4,7 @@ Enemy Blood Splatter
 
 XP orb pickup
 
-- [ ] Enemy Hurt particles - Enemies should have some dark red gloop that flickers white on initial explosion temporarily fly out of them 
+- [x] Enemy Hurt particles - Enemies should have some dark red gloop that flickers white on initial explosion temporarily fly out of them 
 - [ ] Enemy Death particles - enemies crumble into ground, could be a bit gloopy but have it also slightly explode away from the center of the enemy (not too much as enemies - will have additional death particle explosions based on if 
 - [ ] Player Hurt particles - same thing but maybe just pure white and whatever colour we choose for the final health bar
 - [ ] Flame particles on bullet - for when bullet shoots fire, want to apply a material/particle that shows it is flaming, this should also trail a lil
