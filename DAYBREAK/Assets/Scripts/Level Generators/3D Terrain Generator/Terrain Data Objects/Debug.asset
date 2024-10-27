@@ -31,6 +31,9 @@ MonoBehaviour:
     - obj: {fileID: 7510159459844304910, guid: cf0b6cff157001b4286d9015ba33eae5, type: 3}
       offestY: 5
       radius: 15
+    - obj: {fileID: 7510159459844304910, guid: cb424580ac93c3b4e84a603bc7434f15, type: 3}
+      offestY: 10
+      radius: 25
   - name: Biome 2
     skipBiome: 0
     baseTerrainLayer: {fileID: 8574412962073106934, guid: 19c64478e8294d24ebde63eb1ec74c0d, type: 2}
@@ -47,6 +50,9 @@ MonoBehaviour:
     - obj: {fileID: 7510159459844304910, guid: 990599aa357122041ad1c103f37db0d1, type: 3}
       offestY: 5
       radius: 15
+    - obj: {fileID: 7510159459844304910, guid: de36ad7cde0f8574a9e4d4abd0c79d63, type: 3}
+      offestY: 10
+      radius: 25
   biomeSeperation: 5
   structureDensity: 1
   structureEdgeBuffer: 10
@@ -74,9 +80,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  structureElevationAboveWater: 0
+  structureSeperationBuffer: 25
+  structureElevationAboveWater: 2
   waterLevel: 0
-  islandRadius: 250
+  islandRadius: 150
   edgeCurve:
     serializedVersion: 2
     m_Curve:

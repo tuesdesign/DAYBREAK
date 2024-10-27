@@ -22,6 +22,7 @@ public class TerrainDataObject : ScriptableObject
     [Tooltip("structureDensity of 1 will yield 1 structure per 100 x 100 map size")] public float structureDensity;
     public int structureEdgeBuffer;
     public AnimationCurve structureEdgeCurve;
+    public float structureSeperationBuffer;
     public float structureElevationAboveWater;
 
     [Space]

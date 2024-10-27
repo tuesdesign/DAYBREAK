@@ -6,7 +6,10 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D;
 using Random = UnityEngine.Random;
+using Path = TerrainPaths.Path;
+using System.IO;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -14,14 +17,14 @@ public class TerrainGenerator : MonoBehaviour
     TerrainMap _terrainMap;
     public string _seed;
 
-    [SerializeField]
-    public TerrainDataObject terrainDataObject;
+    [SerializeField] public TerrainDataObject terrainDataObject;
 
-    [SerializeField]
-    public DebugOptions debugOptions;
+    [SerializeField] public DebugOptions debugOptions;
 
-    [SerializeField]
-    private Material terrainMaterial;
+    [SerializeField] private Material terrainMaterial;
+
+    private Dictionary<Vector2Int, float> _structurePosistionsAndRadii = new Dictionary<Vector2Int, float>();
+    private List<Path> _paths = new List<Path>();
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +37,6 @@ public class TerrainGenerator : MonoBehaviour
     public void SetTerrainData(TerrainDataObject terrainDataObject) => this.terrainDataObject = terrainDataObject;
 
     // Generate the terrain
-    [ContextMenu("Generate Terrain")]
     public void GenerateTerrain()
     {
         if (!GenerationPreChecks()) return;
@@ -68,10 +70,8 @@ public class TerrainGenerator : MonoBehaviour
         // Apply the terrain heights and transforms
         ApplyTerrainMap(_terrain, terrainDataObject, _terrainMap);
 
-        Dictionary<Vector2Int, float> structurePosistionsAndRadii = new Dictionary<Vector2Int, float>();
-
         // Generate the structures
-        GenerateStructures(_terrain, terrainDataObject, _terrainMap);
+        _structurePosistionsAndRadii = GenerateStructures(_terrain, terrainDataObject, _terrainMap);
 
         // Create the paths
         CreatePaths();
@@ -131,6 +131,9 @@ public class TerrainGenerator : MonoBehaviour
 
         // Set terrain object layer to Terrain
         newTerrain.gameObject.layer = LayerMask.NameToLayer("Terrain");
+
+        _structurePosistionsAndRadii = new Dictionary<Vector2Int, float>();
+        _paths = new List<Path>();
 
         // Set the terrain size
         return newTerrain;
@@ -271,8 +274,8 @@ public class TerrainGenerator : MonoBehaviour
             if (structureFailures >= 10) break;
 
             // pick a random position on the map within the rough bounds of the island
-            int xEdgeBuffer = Mathf.Clamp(data.mapSize.x / 2 - Mathf.RoundToInt(data.islandRadius / 2), 0, data.mapSize.x);
-            int yEdgeBuffer = Mathf.Clamp(data.mapSize.y / 2 - Mathf.RoundToInt(data.islandRadius / 2), 0, data.mapSize.y);
+            int xEdgeBuffer = Mathf.Clamp(data.mapSize.x / 2 - Mathf.RoundToInt(data.islandRadius), 0, data.mapSize.x);
+            int yEdgeBuffer = Mathf.Clamp(data.mapSize.y / 2 - Mathf.RoundToInt(data.islandRadius), 0, data.mapSize.y);
             Vector2Int sMapLocal = new Vector2Int(Random.Range(xEdgeBuffer, data.mapSize.x - xEdgeBuffer), Random.Range(yEdgeBuffer, data.mapSize.y - yEdgeBuffer));
 
             Vector3 sPos = new Vector3(
@@ -317,7 +320,7 @@ public class TerrainGenerator : MonoBehaviour
             bool structureGeneratedInsideAnotherStructure = false;
             foreach (KeyValuePair<Vector2Int, float> kv in structurePosistionsAndRadii)
             {
-                if (Vector2.Distance(sMapLocal, kv.Key) < kv.Value + structure.radius)
+                if (Vector2.Distance(sMapLocal, kv.Key) < kv.Value + structure.radius + terrainDataObject.structureSeperationBuffer)
                 {
                     structureGeneratedInsideAnotherStructure = true;
                     break;
@@ -371,7 +374,41 @@ public class TerrainGenerator : MonoBehaviour
 
     private void CreatePaths()
     {
-        
+        // Get the structures
+        Dictionary<Vector2Int, float> structures = new Dictionary<Vector2Int, float>(_structurePosistionsAndRadii);
+
+        List<Vector3> points = new List<Vector3>();
+
+        // Get the start and end structures
+        KeyValuePair<Vector2Int, float> start = structures.ElementAt(Random.Range(0, structures.Count));
+        KeyValuePair<Vector2Int, float> end = structures.ElementAt(Random.Range(0, structures.Count));
+
+        // Add the center point of a structure
+        points.Add(new Vector3(start.Key.x, start.Key.y));
+
+        // Add a random point on the boarder of the structure
+        Vector3 dir = (new Vector3(end.Key.x, end.Key.y) - new Vector3(start.Key.x, start.Key.y)).normalized;
+        float rotation = Random.Range(-45, 45);
+        dir = Quaternion.Euler(0, 0, rotation) * dir;
+
+        Vector3 startPoint = new Vector3(start.Key.x, start.Key.y) + dir * start.Value;
+        startPoint = new Vector3(startPoint.x, startPoint.y);
+        points.Add(startPoint);
+
+        // Add a random point on the boarder of the second structure
+        dir = (new Vector3(start.Key.x, start.Key.y) - new Vector3(end.Key.x, end.Key.y)).normalized;
+        rotation = Random.Range(-45, 45);
+        dir = Quaternion.Euler(0, 0, rotation) * dir;
+
+        Vector3 endPoint = new Vector3(end.Key.x, end.Key.y) + dir * end.Value;
+        endPoint = new Vector3(endPoint.x, endPoint.y);
+        points.Add(endPoint);
+
+        // Add the center point of the second structure
+        points.Add(new Vector3(end.Key.x, end.Key.y));
+
+        // Create the path
+        _paths.Add(new Path(points.ToArray()));
     }
 
     public Vector3 GetNearestSpawnPos(Vector3 vector3)
@@ -387,10 +424,76 @@ public class TerrainGenerator : MonoBehaviour
         float z = Mathf.Clamp(worldToTerrainLocal.z, 0, _terrain.terrainData.size.z);
 
         // Get the height at the clamped position
-        float y = _terrain.terrainData.GetHeight(Mathf.RoundToInt(x / _terrain.terrainData.size.x * _terrain.terrainData.heightmapResolution), Mathf.RoundToInt(z / _terrain.terrainData.size.z * _terrain.terrainData.heightmapResolution));
+        Vector3Int vec = WorldToTerrain(new Vector3(x, 0, z));
+        float y = _terrain.terrainData.GetHeight(vec.x, vec.z);
 
         // Return the nearest spawn position
         return new Vector3(x, y + 1f, z) + _terrain.transform.position;
+    }
+
+    // Convert world position to terrain position
+    public Vector3Int WorldToTerrain(Vector3 vec)
+    {
+        int x = Mathf.RoundToInt(vec.x / terrainDataObject.mapSize.x * _terrain.terrainData.heightmapResolution);
+        int y = Mathf.RoundToInt(vec.y / terrainDataObject.mapSize.y * _terrain.terrainData.heightmapResolution);
+        int z = Mathf.RoundToInt(vec.z * _terrain.terrainData.heightmapResolution);
+
+        return new Vector3Int(x, y, z);
+    }
+
+    // Convert terrain position to world position
+    public Vector3 TerrainToWorld(Vector3 vec)
+    {
+        float x = vec.x / _terrain.terrainData.heightmapResolution * terrainDataObject.mapSize.x;
+        float y = vec.y / _terrain.terrainData.heightmapResolution * terrainDataObject.mapSize.y;
+        float z = vec.z / _terrain.terrainData.heightmapResolution;
+
+        return new Vector3(x, y, z) - (new Vector3(terrainDataObject.mapSize.x, terrainDataObject.mapSize.y) / 2);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!_terrain || !terrainDataObject) return;
+
+        // map bounds
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(_terrain.gameObject.transform.position + new Vector3(terrainDataObject.mapSize.x, 0, terrainDataObject.mapSize.y) / 2, Vector3.up, terrainDataObject.islandRadius);
+
+        // structure bounds
+        Handles.color = Color.green;
+        foreach (KeyValuePair<Vector2Int, float> kv in _structurePosistionsAndRadii)
+        {
+            Vector3 pos = TerrainToWorld(new Vector3Int(kv.Key.x, kv.Key.y));
+            Handles.DrawWireDisc(new Vector3(pos.x, 0, pos.y), Vector3.up, kv.Value);
+        }
+
+        // draw the paths
+        foreach (Path path in _paths)
+        {
+            Handles.color = Color.cyan;
+            foreach (Vector3 point in path.points)
+            {
+                Vector3 discPoint = TerrainToWorld(point);
+                Handles.DrawWireDisc(new Vector3(discPoint.x, 0, discPoint.y), Vector3.up, 0.5f);
+            }
+
+            Handles.color = Color.blue;
+            float detail = 1f / 10f;
+
+            Vector3 lastPos = path.Start;
+
+            for (float t = detail; t <= 1.1f; t += detail)
+            {
+                Vector3 newPos = path.Spline(t);
+
+                Vector3 lastPoint = TerrainToWorld(lastPos);
+                Vector3 newPoint = TerrainToWorld(newPos);
+
+                Handles.DrawLine(new Vector3(lastPoint.x, 0, lastPoint.y), new Vector3(newPoint.x, 0, newPoint.y));
+
+                lastPos = newPos;
+            }
+        }
     }
 
     #region structs
@@ -417,8 +520,7 @@ public class TerrainGenerator : MonoBehaviour
         public Vector2Int weightMapSize => new Vector2Int(weightMap.GetLength(0), weightMap.GetLength(1));
     }
 
-    [Serializable]
-    public struct DebugOptions
+    [Serializable] public struct DebugOptions
     {
         public bool generateOnStart;
         public bool centerGeneratedTerrain;
@@ -426,8 +528,7 @@ public class TerrainGenerator : MonoBehaviour
         public bool useDataObjectSeed;
     }
 
-    [Serializable]
-    public struct Biome
+    [Serializable] public struct Biome
     {
         public string name;
         public bool skipBiome;
@@ -444,15 +545,13 @@ public class TerrainGenerator : MonoBehaviour
         public Structure[] structures;
     }
 
-    [Serializable]
-    public struct AmpsAndFreq
+    [Serializable] public struct AmpsAndFreq
     {
         public float amplitude;
         public float frequency;
     }
 
-    [Serializable]
-    public struct Structure
+    [Serializable] public struct Structure
     {
         public GameObject obj;
         public float offestY;
