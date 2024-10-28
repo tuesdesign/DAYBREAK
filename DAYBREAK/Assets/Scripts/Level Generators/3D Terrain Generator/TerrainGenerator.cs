@@ -10,6 +10,8 @@ using UnityEngine.U2D;
 using Random = UnityEngine.Random;
 using Path = TerrainPaths.Path;
 using System.IO;
+using UnityEngine.UIElements;
+using static TerrainGenerator;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -251,11 +253,30 @@ public class TerrainGenerator : MonoBehaviour
 
         float[,,] layerAlphaMap = new float[_terrain.terrainData.alphamapWidth, _terrain.terrainData.alphamapHeight, _terrain.terrainData.alphamapLayers];
 
+        float[,,] paintMap = new float[_terrain.terrainData.alphamapWidth, _terrain.terrainData.alphamapHeight, terrainLayers.Count];
+
+        for (int x = 0; x < _terrain.terrainData.alphamapWidth; x++)
+            for (int y = 0; y < _terrain.terrainData.alphamapHeight; y++)
+            {
+                for (int i = 0; i < map.biomes.Length; i++)
+                {
+                    paintMap[x, y, i] = Mathf.Pow(_terrainMap.weightMap[x, y, i], terrainDataObject.biomePaintSeperation);
+                }
+
+                // Normalize the weights
+                float sum = 0;
+                for (int biomeIndex = 0; biomeIndex < map.biomes.Length; biomeIndex++)
+                    sum += paintMap[x, y, biomeIndex];
+
+                for (int biomeIndex = 0; biomeIndex < map.biomes.Length; biomeIndex++)
+                    paintMap[x, y, biomeIndex] /= sum;
+            }
+
         for (int x = 0; x < _terrain.terrainData.alphamapWidth; x++)
             for (int y = 0; y < _terrain.terrainData.alphamapHeight; y++)
                 for (int i = 0; i < map.biomes.Length; i++)
                 {
-                    layerAlphaMap[x, y, i] = _terrainMap.weightMap[x, y, i];
+                    layerAlphaMap[x, y, i] = paintMap[x, y, i];
                 }
 
         _terrain.terrainData.SetAlphamaps(0, 0, layerAlphaMap);
@@ -375,40 +396,91 @@ public class TerrainGenerator : MonoBehaviour
     private void CreatePaths()
     {
         // Get the structures
-        Dictionary<Vector2Int, float> structures = new Dictionary<Vector2Int, float>(_structurePosistionsAndRadii);
+        Dictionary<Vector2Int, float> tempStructures = new Dictionary<Vector2Int, float>(_structurePosistionsAndRadii);
 
-        List<Vector3> points = new List<Vector3>();
+        int infiniteLoopPrevention = 0;
+        int structureReset = 0;
+        int pathReset = 0;
+        while (tempStructures.Count > 0)
+        {
+            // Get the start and end structures
+            List<Vector3> points = new List<Vector3>();
+            KeyValuePair<Vector2Int, float> startingPoint = tempStructures.ElementAt(Random.Range(0, tempStructures.Count));
+            KeyValuePair<Vector2Int, float> endingPoint = tempStructures.ElementAt(Random.Range(0, tempStructures.Count));
 
-        // Get the start and end structures
-        KeyValuePair<Vector2Int, float> start = structures.ElementAt(Random.Range(0, structures.Count));
-        KeyValuePair<Vector2Int, float> end = structures.ElementAt(Random.Range(0, structures.Count));
+            checkIntersectsAgain:
 
-        // Add the center point of a structure
-        points.Add(new Vector3(start.Key.x, start.Key.y));
+            if (infiniteLoopPrevention++ >= 100)
+            {
+                Debug.LogError($"Infinite loop detected in path generation. Structure Intersects: {structureReset}, Path Intersects: {pathReset}");
+                break;
+            }
 
-        // Add a random point on the boarder of the structure
-        Vector3 dir = (new Vector3(end.Key.x, end.Key.y) - new Vector3(start.Key.x, start.Key.y)).normalized;
-        float rotation = Random.Range(-45, 45);
-        dir = Quaternion.Euler(0, 0, rotation) * dir;
+            foreach (KeyValuePair<Vector2Int, float> structure in _structurePosistionsAndRadii)
+            {
+                if (structure.Key == startingPoint.Key || structure.Key == endingPoint.Key) continue;
 
-        Vector3 startPoint = new Vector3(start.Key.x, start.Key.y) + dir * start.Value;
-        startPoint = new Vector3(startPoint.x, startPoint.y);
-        points.Add(startPoint);
+                // check if the path intercects with another structure
+                Vector2 vec = endingPoint.Key - startingPoint.Key;
+                Vector2 structurePos = structure.Key - startingPoint.Key;
 
-        // Add a random point on the boarder of the second structure
-        dir = (new Vector3(start.Key.x, start.Key.y) - new Vector3(end.Key.x, end.Key.y)).normalized;
-        rotation = Random.Range(-45, 45);
-        dir = Quaternion.Euler(0, 0, rotation) * dir;
+                // check if the structure intersects with the path between the start and end structures
+                bool radiusIntersects = Mathf.Abs(Mathf.Sin(Vector2.SignedAngle(vec, structurePos) * Mathf.Deg2Rad) * structurePos.magnitude) <= structure.Value;
+                bool distanceIntersects = structurePos.magnitude < vec.magnitude;
+                if (radiusIntersects && distanceIntersects)
+                {
+                    structureReset++;
+                    endingPoint = structure;
 
-        Vector3 endPoint = new Vector3(end.Key.x, end.Key.y) + dir * end.Value;
-        endPoint = new Vector3(endPoint.x, endPoint.y);
-        points.Add(endPoint);
+                    goto checkIntersectsAgain;
+                }
+            }
 
-        // Add the center point of the second structure
-        points.Add(new Vector3(end.Key.x, end.Key.y));
+            foreach (Path path in _paths)
+            {
+                Vector2 v1 = startingPoint.Key;
+                Vector2 v2 = endingPoint.Key;
+                Vector2 v3 = path.Start;
+                Vector2 v4 = path.End;
 
-        // Create the path
-        _paths.Add(new Path(points.ToArray()));
+                float x = ((v1.x * v2.y - v1.y * v2.x) * (v3.x - v4.x) - (v1.x - v2.x) * (v3.x * v4.y - v3.y * v4.x)) / 
+                    ((v1.x - v2.x) * (v3.y - v4.y) - (v1.y - v2.y) * (v3.x - v4.x));
+
+                float y = ((v1.x * v2.y - v1.y * v2.x) * (v3.y - v4.y) - (v1.y - v2.y) * (v3.x * v4.y - v3.y * v4.x)) /
+                    ((v1.x - v2.x) * (v3.y - v4.y) - (v1.y - v2.y) * (v3.x - v4.x));
+
+
+            }
+
+            // Add the center point of a structure
+            points.Add(new Vector3(startingPoint.Key.x, startingPoint.Key.y));
+
+            // Add a random point on the boarder of the first structure
+            points.Add(GetStructureBoarderPos(startingPoint, new Vector3(endingPoint.Key.x, endingPoint.Key.y) - new Vector3(startingPoint.Key.x, startingPoint.Key.y)));
+
+            // Add a random point on the boarder of the second structure
+            points.Add(GetStructureBoarderPos(endingPoint, new Vector3(startingPoint.Key.x, startingPoint.Key.y) - new Vector3(endingPoint.Key.x, endingPoint.Key.y)));
+
+            // Add the center point of the second structure
+            points.Add(new Vector3(endingPoint.Key.x, endingPoint.Key.y));
+
+            // Create the path
+            _paths.Add(new Path(points.ToArray()));
+
+            tempStructures.Remove(startingPoint.Key);
+            tempStructures.Remove(endingPoint.Key);
+        }
+
+        Vector3 GetStructureBoarderPos(KeyValuePair<Vector2Int, float> structure, Vector3 direction)
+        {
+            float rotation = Random.Range(-45, 45);
+            direction = Quaternion.Euler(0, 0, rotation) * direction.normalized;
+
+            Vector3 point = new Vector3(structure.Key.x, structure.Key.y) + direction * structure.Value;
+            point = new Vector3(point.x, point.y);
+
+            return point;
+        }
     }
 
     public Vector3 GetNearestSpawnPos(Vector3 vector3)

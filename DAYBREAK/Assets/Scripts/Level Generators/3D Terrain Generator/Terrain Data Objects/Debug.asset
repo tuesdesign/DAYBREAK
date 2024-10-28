@@ -54,6 +54,7 @@ MonoBehaviour:
       offestY: 10
       radius: 25
   biomeSeperation: 5
+  biomePaintSeperation: 10
   structureDensity: 1
   structureEdgeBuffer: 10
   structureEdgeCurve:
