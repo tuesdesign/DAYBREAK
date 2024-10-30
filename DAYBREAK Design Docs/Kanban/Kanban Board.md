@@ -12,19 +12,15 @@ kanban-plugin: board
 - [ ] UI - Aim Reticle Implem.
 - [ ] UI - Settings Menu Creation
 - [ ] UI - Settings Menu Implementation
-- [ ] UI - Pause Menu Creation
-- [ ] UI - Pause Menu Implementation
-- [ ] UI - Upgrade Menu Creation
-- [ ] UI - Upgrade Menu Functionality
-- [ ] UI - Win/Loss Screen Creation
-- [ ] UI - Win/Loss Screen Implementation
 
 
 ## Work In Progress...
 
 - [ ] UI - Main Menu Functionality
-- [ ] UI - Health bar Creation
-- [ ] UI - Health Bar Implem.
+- [ ] UI - Health bar
+- [ ] UI - Pause Menu
+- [ ] UI - Upgrade Menu
+- [ ] UI - Win/Loss Screen
 
 
 ## Done!
