@@ -169,19 +169,13 @@ public class TerrainGenerator : MonoBehaviour
                     float weight = 0;
 
                     foreach (AmpsAndFreq af in biomes[biomeIndex].selectorAF)
-                        weight += Mathf.Pow(Mathf.PerlinNoise((x + mapOffsets[biomeIndex].z) * af.frequency, (y + mapOffsets[biomeIndex].w) * af.frequency) * af.amplitude, data.biomeSeperation);
+                        weight += Mathf.PerlinNoise((x + mapOffsets[biomeIndex].z) * af.frequency, (y + mapOffsets[biomeIndex].w) * af.frequency) * af.amplitude;
 
                     weightMap[x, y, biomeIndex] = weight / biomes[biomeIndex].selectorAF.Length;
                 }
-
-                // Normalize the weights
-                float sum = 0;
-                for (int biomeIndex = 0; biomeIndex < biomes.Length; biomeIndex++)
-                    sum += weightMap[x, y, biomeIndex];
-
-                for (int biomeIndex = 0; biomeIndex < biomes.Length; biomeIndex++)
-                    weightMap[x, y, biomeIndex] /= sum;
             }
+
+        weightMap = Float3Powerize(weightMap, data.biomeSeperation);
 
         // Create the height map
         float[,] heightMap = new float[data.mapSize.x, data.mapSize.y];
@@ -253,24 +247,7 @@ public class TerrainGenerator : MonoBehaviour
 
         float[,,] layerAlphaMap = new float[_terrain.terrainData.alphamapWidth, _terrain.terrainData.alphamapHeight, _terrain.terrainData.alphamapLayers];
 
-        float[,,] paintMap = new float[_terrain.terrainData.alphamapWidth, _terrain.terrainData.alphamapHeight, terrainLayers.Count];
-
-        for (int x = 0; x < _terrain.terrainData.alphamapWidth; x++)
-            for (int y = 0; y < _terrain.terrainData.alphamapHeight; y++)
-            {
-                for (int i = 0; i < map.biomes.Length; i++)
-                {
-                    paintMap[x, y, i] = Mathf.Pow(_terrainMap.weightMap[x, y, i], terrainDataObject.biomePaintSeperation);
-                }
-
-                // Normalize the weights
-                float sum = 0;
-                for (int biomeIndex = 0; biomeIndex < map.biomes.Length; biomeIndex++)
-                    sum += paintMap[x, y, biomeIndex];
-
-                for (int biomeIndex = 0; biomeIndex < map.biomes.Length; biomeIndex++)
-                    paintMap[x, y, biomeIndex] /= sum;
-            }
+        float[,,] paintMap = Float3Powerize(map.weightMap, terrainDataObject.biomePaintSeperation);
 
         for (int x = 0; x < _terrain.terrainData.alphamapWidth; x++)
             for (int y = 0; y < _terrain.terrainData.alphamapHeight; y++)
@@ -521,6 +498,35 @@ public class TerrainGenerator : MonoBehaviour
         float z = vec.z / _terrain.terrainData.heightmapResolution;
 
         return new Vector3(x, y, z) - (new Vector3(terrainDataObject.mapSize.x, terrainDataObject.mapSize.y) / 2);
+    }
+
+    float[,,] Float3Powerize(float[,,] ar, float pow)
+    {
+        // Create a new array
+        float[,,] newAR = new float[ar.GetLength(0), ar.GetLength(1), ar.GetLength(2)];
+
+        // Loop through the array
+        for (int x = 0; x < ar.GetLength(0); x++)
+            for (int y = 0; y < ar.GetLength(1); y++)
+            {
+                // Multiply the values by the power
+                for (int z = 0; z < ar.GetLength(2); z++)
+                    newAR[x, y, z] = Mathf.Pow(ar[x, y, z], pow);
+
+                // Normalize the values
+                float sum = 0;
+
+                // get sum of all values
+                for (int i = 0; i < ar.GetLength(2); i++)
+                    sum += newAR[x, y, i];
+
+                // divide all values by the sum
+                for (int i = 0; i < ar.GetLength(2); i++)
+                    newAR[x, y, i] /= sum;
+            }
+
+        // return the new array
+        return newAR;
     }
 
     private void OnDrawGizmos()
