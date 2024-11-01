@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Canvas mainMobileUI;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private Image timerFill;
+    [SerializeField] private GameObject countdownText;
     
     [Header("Win/Loss Screen Items")]
     [SerializeField] private Canvas winLossScreen;
@@ -78,6 +79,25 @@ public class UIManager : MonoBehaviour
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ReturnCountdown(int time)
+    {
+        StartCoroutine(Countdown(time));
+    }
+
+    private IEnumerator Countdown(int time)
+    {
+        countdownText.SetActive(true);
+
+        for (int i = time; i > 0; i--)
+        {
+            countdownText.GetComponent<TMP_Text>().text = i.ToString();
+            yield return new WaitForSecondsRealtime(1f);
+        }
+        
+        countdownText.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void DisplayWinLoss(bool isLoss)

@@ -10,7 +10,9 @@ public class PauseManager : MonoBehaviour
     private InputAction _pauseMenu;
     
     [SerializeField] private Canvas pauseCanvas;
+    [SerializeField] private Canvas settingsCanvas;
     [SerializeField] private bool isPaused;
+    [SerializeField] private UIManager uiManager;
 
     private void Awake()
     {
@@ -25,7 +27,6 @@ public class PauseManager : MonoBehaviour
             ActivateMenu();
         else
             DeactivateMenu();
-        
     }
 
     private void ActivateMenu()
@@ -37,10 +38,17 @@ public class PauseManager : MonoBehaviour
     
     public void DeactivateMenu()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
+        uiManager.ReturnCountdown(3);
         AudioListener.pause = false;
         pauseCanvas.enabled = false;
         isPaused = false;
+    }
+
+    public void OpenSettings()
+    {
+        pauseCanvas.enabled = false;
+        settingsCanvas.enabled = true;
     }
     
     public void LoadMainMenu()

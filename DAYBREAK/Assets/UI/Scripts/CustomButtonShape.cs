@@ -7,6 +7,6 @@ public class CustomButtonShape : MonoBehaviour
 {
     void Start()
     {
-        this.GetComponent<Image>().alphaHitTestMinimumThreshold = 0.5f;
+        GetComponent<Image>().alphaHitTestMinimumThreshold = 0.2f;
     }
 }

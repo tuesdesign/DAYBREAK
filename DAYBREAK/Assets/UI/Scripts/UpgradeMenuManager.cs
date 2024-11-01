@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class UpgradeManagerMenu : MonoBehaviour
 {
+    [SerializeField] private UIManager uiManager;
     [SerializeField] private Canvas upgradeMenu;
     [SerializeField] private TMP_Text descriptionText1;
     [SerializeField] private Image image1;
@@ -65,6 +66,6 @@ public class UpgradeManagerMenu : MonoBehaviour
         }
 
         upgradeMenu.enabled = false;
-        Time.timeScale = 1;
+        uiManager.ReturnCountdown(3);
     }
 }
