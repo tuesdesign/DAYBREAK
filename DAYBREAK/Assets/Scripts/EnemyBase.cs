@@ -20,6 +20,7 @@ public class EnemyBase : MonoBehaviour
 
     //enemy effects
     
+    
     Transform playerTrans;
 
     //public float GetDamage { get => damage; set => damage = value; }

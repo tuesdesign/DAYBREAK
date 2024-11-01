@@ -16,9 +16,10 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] int maxHealth = 10;
     int curHealth;
     int shield;
+    [SerializeField] float dodgeChange;
 
     bool canTakeDamage = true;
-    float invincibilityTime;
+    float invincibilityTime = 0.2f;
 
     [Tooltip("The player's movement speed")]
     [SerializeField] float speed = 2.5f;
@@ -27,7 +28,7 @@ public class PlayerBase : MonoBehaviour
     //UpgradeModifiers
     //[HideInInspector] 
     public int maxHealthModifier = 0;
-    public int shieldModifier = 0;
+    public int shieldModifier = 0; // do i need this, sheild should be able to just be added to regular as it will be depleated 
     public float invincibilityTimeModifier = 0.25f;
     //[HideInInspector] 
     public float speedModifier = 0;
@@ -116,15 +117,35 @@ public class PlayerBase : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        curHealth -= damage;
-        if (curHealth <= 0)
+        if (canTakeDamage) //if the player can be damaged currently
         {
-            Die();
+            if (dodgeChange >= Random.Range(0, 100)) { //if player's dodge chance triggers  (out of 100%)
+                canTakeDamage = false;
+                StartCoroutine(InvincibilityFrames());  //player dodges for length of invincibility frames. 
+            }
+            else if (shield > 0) //checks if the player has any sheild
+            {
+                shield -= damage;
+                if (shield < 0) //if the player takes more damage than they have sheild
+                {
+                    curHealth += shield;
+                    shield = 0;
+                }
+            }
+            else
+            {
+                curHealth -= damage;
+            }
+
+            if (curHealth <= 0)
+            {
+                Die();
+            }
+
+            _playerUI.UpdateHealthBar();
+            canTakeDamage = false;
+            StartCoroutine(InvincibilityFrames());
         }
-        
-        _playerUI.UpdateHealthBar();
-        canTakeDamage = false;
-        StartCoroutine(InvincibilityFrames());
     }
 
     void Die()
@@ -137,7 +158,7 @@ public class PlayerBase : MonoBehaviour
     {
         maxHealthModifier += health;
 
-        if (increaseCurHealth)
+        if (increaseCurHealth) //this variable is for if the health upgrade should also heal the player of tthat amount
         {
             Heal(health);
         }
@@ -161,7 +182,7 @@ public class PlayerBase : MonoBehaviour
         }
     }
 
-    IEnumerator InvincibilityFrames()
+    IEnumerator InvincibilityFrames() //this coroutine runs for the amount of seconds that the player should be invincible for and then allows them to take damage
     {
         yield return new WaitForSeconds(invincibilityTime);
         canTakeDamage = true;
