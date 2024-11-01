@@ -15,8 +15,8 @@ public class PlayerBase : MonoBehaviour
 
     [SerializeField] int maxHealth = 10;
     int curHealth;
-    int shield;
-    [SerializeField] float dodgeChange;
+    public int shield;
+    [SerializeField] public float dodgeChange;
 
     bool canTakeDamage = true;
     float invincibilityTime = 0.2f;
@@ -28,8 +28,7 @@ public class PlayerBase : MonoBehaviour
     //UpgradeModifiers
     //[HideInInspector] 
     public int maxHealthModifier = 0;
-    public int shieldModifier = 0; // do i need this, sheild should be able to just be added to regular as it will be depleated 
-    public float invincibilityTimeModifier = 0.25f;
+    public float invincibilityTimeModifier = 0;
     //[HideInInspector] 
     public float speedModifier = 0;
 

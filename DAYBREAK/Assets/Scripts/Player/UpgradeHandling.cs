@@ -64,6 +64,9 @@ public class UpgradeHandling : MonoBehaviour
         {
             playerBase.UpdateMaxHealth(upgradeLevel.basePlayerStats.maxHealthModifier, upgradeLevel.basePlayerStats.healsOnApply);
             playerBase.speedModifier += upgradeLevel.basePlayerStats.moveSpeedIncrease;
+            playerBase.invincibilityTimeModifier += upgradeLevel.basePlayerStats.invincibilityFrameMod;
+            playerBase.shield += upgradeLevel.basePlayerStats.sheildMod;
+            playerBase.dodgeChange += upgradeLevel.basePlayerStats.dodgeChanceMod;
         }
 
         if (upgradeLevel.usesExp)

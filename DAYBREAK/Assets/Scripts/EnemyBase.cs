@@ -120,6 +120,6 @@ public class EnemyBase : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position + _rb.velocity);
+        //Gizmos.DrawLine(transform.position, transform.position + _rb.velocity);
     }
 }

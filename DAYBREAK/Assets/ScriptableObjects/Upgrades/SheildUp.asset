@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da3fe4eefeb98f847b40af3fdd0db4ad, type: 3}
+  m_Name: SheildUp
+  m_EditorClassIdentifier: 
+  upgradeName: Sheild Up
+  maxLevel: 5
+  level: 0
+  image: {fileID: 0}
+  description: Gives the player a protective sheild
+  upgradeLevels:
+  - replacePrevUpgrade: 0
+    description: 
+    usesBasePlayer: 1
+    basePlayerStats:
+      maxHealthModifier: 0
+      healsOnApply: 0
+      moveSpeedIncrease: 0
+      sheildMod: 10
+      dodgeChanceMod: 0
+      invincibilityFrameMod: 0
+    usesExp: 0
+    expStats:
+      expPickUPRadMod: 0
+      expMultiplier: 0
+    usesShooting: 0
+    playerShooting:
+      bulletSpeedModifier: 0
+      shootDelayModifier: 0
+      maxAmmoModifier: 0
+      reloadTimeModifier: 0
+    usesbulletPropersties: 0
+    bulletProperties:
+      speed: 0
+      damage: 0
+      canBurn: 0
+      burnChance: 0
+      isExplosive: 0
+      explosionRange: 0
+      explosionDamage: 0
+      canFreeze: 0
+      freezeChance: 0
+      canBounce: 0
+      bounceAmount: 0
+      canPierce: 0
+      pierceAmount: 0
+  - replacePrevUpgrade: 0
+    description: 
+    usesBasePlayer: 1
+    basePlayerStats:
+      maxHealthModifier: 0
+      healsOnApply: 0
+      moveSpeedIncrease: 0
+      sheildMod: 20
+      dodgeChanceMod: 0
+      invincibilityFrameMod: 0
+    usesExp: 0
+    expStats:
+      expPickUPRadMod: 0
+      expMultiplier: 0
+    usesShooting: 0
+    playerShooting:
+      bulletSpeedModifier: 0
+      shootDelayModifier: 0
+      maxAmmoModifier: 0
+      reloadTimeModifier: 0
+    usesbulletPropersties: 0
+    bulletProperties:
+      speed: 0
+      damage: 0
+      canBurn: 0
+      burnChance: 0
+      isExplosive: 0
+      explosionRange: 0
+      explosionDamage: 0
+      canFreeze: 0
+      freezeChance: 0
+      canBounce: 0
+      bounceAmount: 0
+      canPierce: 0
+      pierceAmount: 0
+  - replacePrevUpgrade: 0
+    description: 
+    usesBasePlayer: 1
+    basePlayerStats:
+      maxHealthModifier: 0
+      healsOnApply: 0
+      moveSpeedIncrease: 0
+      sheildMod: 30
+      dodgeChanceMod: 0
+      invincibilityFrameMod: 0
+    usesExp: 0
+    expStats:
+      expPickUPRadMod: 0
+      expMultiplier: 0
+    usesShooting: 0
+    playerShooting:
+      bulletSpeedModifier: 0
+      shootDelayModifier: 0
+      maxAmmoModifier: 0
+      reloadTimeModifier: 0
+    usesbulletPropersties: 0
+    bulletProperties:
+      speed: 0
+      damage: 0
+      canBurn: 0
+      burnChance: 0
+      isExplosive: 0
+      explosionRange: 0
+      explosionDamage: 0
+      canFreeze: 0
+      freezeChance: 0
+      canBounce: 0
+      bounceAmount: 0
+      canPierce: 0
+      pierceAmount: 0
+  - replacePrevUpgrade: 0
+    description: 
+    usesBasePlayer: 1
+    basePlayerStats:
+      maxHealthModifier: 0
+      healsOnApply: 0
+      moveSpeedIncrease: 0
+      sheildMod: 40
+      dodgeChanceMod: 0
+      invincibilityFrameMod: 0
+    usesExp: 0
+    expStats:
+      expPickUPRadMod: 0
+      expMultiplier: 0
+    usesShooting: 0
+    playerShooting:
+      bulletSpeedModifier: 0
+      shootDelayModifier: 0
+      maxAmmoModifier: 0
+      reloadTimeModifier: 0
+    usesbulletPropersties: 0
+    bulletProperties:
+      speed: 0
+      damage: 0
+      canBurn: 0
+      burnChance: 0
+      isExplosive: 0
+      explosionRange: 0
+      explosionDamage: 0
+      canFreeze: 0
+      freezeChance: 0
+      canBounce: 0
+      bounceAmount: 0
+      canPierce: 0
+      pierceAmount: 0
+  - replacePrevUpgrade: 0
+    description: 
+    usesBasePlayer: 1
+    basePlayerStats:
+      maxHealthModifier: 0
+      healsOnApply: 0
+      moveSpeedIncrease: 0
+      sheildMod: 50
+      dodgeChanceMod: 0
+      invincibilityFrameMod: 0
+    usesExp: 0
+    expStats:
+      expPickUPRadMod: 0
+      expMultiplier: 0
+    usesShooting: 0
+    playerShooting:
+      bulletSpeedModifier: 0
+      shootDelayModifier: 0
+      maxAmmoModifier: 0
+      reloadTimeModifier: 0
+    usesbulletPropersties: 0
+    bulletProperties:
+      speed: 0
+      damage: 0
+      canBurn: 0
+      burnChance: 0
+      isExplosive: 0
+      explosionRange: 0
+      explosionDamage: 0
+      canFreeze: 0
+      freezeChance: 0
+      canBounce: 0
+      bounceAmount: 0
+      canPierce: 0
+      pierceAmount: 0
