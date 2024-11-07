@@ -639,7 +639,7 @@ Transform:
   m_GameObject: {fileID: 158835545}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 141.06511, y: 311.0406, z: -34.694412}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1335,7 +1335,7 @@ GameObject:
   - component: {fileID: 547436528}
   - component: {fileID: 547436531}
   - component: {fileID: 547436530}
-  - component: {fileID: 547436529}
+  - component: {fileID: 547436532}
   m_Layer: 5
   m_Name: NotifButton
   m_TagString: Untagged
@@ -1363,31 +1363,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &547436529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547436527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2042d236504c37b4cb9464c2a4a453df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  backgroundImage: {fileID: 547436530}
-  circleImage: {fileID: 1346544394}
-  circle: {fileID: 1346544392}
-  states:
-  - value: 1
-    background: {fileID: 1154292107, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    circle: {fileID: 1595127928, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    pos: {x: 45, y: 0, z: 0}
-  - value: 2
-    background: {fileID: -376968271, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    circle: {fileID: 1472496285, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    pos: {x: -45, y: 0, z: 0}
 --- !u!114 &547436530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1426,6 +1401,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547436527}
   m_CullTransparentMesh: 1
+--- !u!114 &547436532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547436527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e88a4fd2a8a0784d866ed5fb3c35d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleImage: {fileID: 1346544392}
 --- !u!1 &566938173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1555,7 @@ GameObject:
   - component: {fileID: 610059375}
   - component: {fileID: 610059378}
   - component: {fileID: 610059377}
-  - component: {fileID: 610059376}
+  - component: {fileID: 610059379}
   m_Layer: 5
   m_Name: VibrationButton
   m_TagString: Untagged
@@ -1595,31 +1583,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &610059376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610059374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2042d236504c37b4cb9464c2a4a453df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  backgroundImage: {fileID: 610059377}
-  circleImage: {fileID: 229069532}
-  circle: {fileID: 229069530}
-  states:
-  - value: 1
-    background: {fileID: 1154292107, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    circle: {fileID: 1595127928, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    pos: {x: 45, y: 0, z: 0}
-  - value: 2
-    background: {fileID: -376968271, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    circle: {fileID: 1472496285, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    pos: {x: -45, y: 0, z: 0}
 --- !u!114 &610059377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1658,6 +1621,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610059374}
   m_CullTransparentMesh: 1
+--- !u!114 &610059379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610059374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e88a4fd2a8a0784d866ed5fb3c35d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleImage: {fileID: 229069530}
 --- !u!1 &714617667
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,7 +2506,7 @@ GameObject:
   - component: {fileID: 1036999397}
   - component: {fileID: 1036999400}
   - component: {fileID: 1036999399}
-  - component: {fileID: 1036999398}
+  - component: {fileID: 1036999401}
   m_Layer: 5
   m_Name: MusicButton
   m_TagString: Untagged
@@ -2558,31 +2534,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1036999398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036999396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2042d236504c37b4cb9464c2a4a453df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  backgroundImage: {fileID: 1036999399}
-  circleImage: {fileID: 2146606786}
-  circle: {fileID: 2146606784}
-  states:
-  - value: 1
-    background: {fileID: 1154292107, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    circle: {fileID: 1595127928, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    pos: {x: 45, y: 0, z: 0}
-  - value: 2
-    background: {fileID: -376968271, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    circle: {fileID: 1472496285, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    pos: {x: -45, y: 0, z: 0}
 --- !u!114 &1036999399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2621,6 +2572,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036999396}
   m_CullTransparentMesh: 1
+--- !u!114 &1036999401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036999396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e88a4fd2a8a0784d866ed5fb3c35d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleImage: {fileID: 2146606784}
 --- !u!1 &1151707865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,7 +2942,7 @@ GameObject:
   - component: {fileID: 1215575191}
   - component: {fileID: 1215575194}
   - component: {fileID: 1215575193}
-  - component: {fileID: 1215575192}
+  - component: {fileID: 1215575195}
   m_Layer: 5
   m_Name: SFXButton
   m_TagString: Untagged
@@ -3006,31 +2970,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1215575192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215575190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2042d236504c37b4cb9464c2a4a453df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  backgroundImage: {fileID: 1215575193}
-  circleImage: {fileID: 1640196368}
-  circle: {fileID: 1640196366}
-  states:
-  - value: 1
-    background: {fileID: 1154292107, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    circle: {fileID: 1595127928, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    pos: {x: 45, y: 0, z: 0}
-  - value: 2
-    background: {fileID: -376968271, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    circle: {fileID: 1472496285, guid: 0aa65d1a25a23f74fa87016eac0926a8, type: 3}
-    pos: {x: -45, y: 0, z: 0}
 --- !u!114 &1215575193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3069,6 +3008,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215575190}
   m_CullTransparentMesh: 1
+--- !u!114 &1215575195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215575190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e88a4fd2a8a0784d866ed5fb3c35d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleImage: {fileID: 1640196366}
 --- !u!1 &1237743679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,8 +3610,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1611591189}
-  - component: {fileID: 1611591191}
-  - component: {fileID: 1611591190}
   m_Layer: 5
   m_Name: ButtonHolder
   m_TagString: Untagged
@@ -3690,44 +3640,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -24.87677}
   m_SizeDelta: {x: 363, y: 255}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1611591190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611591188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1611591191
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611591188}
-  m_CullTransparentMesh: 1
 --- !u!1 &1640196366
 GameObject:
   m_ObjectHideFlags: 0
@@ -4095,6 +4007,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1860028875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1860028878}
+  - component: {fileID: 1860028879}
+  m_Layer: 0
+  m_Name: SettingsMenu_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1860028878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860028875}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 141.06511, y: 311.0406, z: -34.694412}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1860028879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860028875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004c85c7217a4b9449076f60615d6863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverDuration: 0.15
+  slideDuration: 0.4
 --- !u!1 &1875993307
 GameObject:
   m_ObjectHideFlags: 0
@@ -4966,6 +4924,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1980166305}
   - {fileID: 158835547}
+  - {fileID: 1860028878}
   - {fileID: 1704939575}
   - {fileID: 1237743683}
   - {fileID: 1849228634}

@@ -17,6 +17,7 @@ namespace UI.Scripts.MainMenu
         {
             mainMenu.enabled = true;
             characterSelect.enabled = false;
+            Time.timeScale = 1;
         }
 
         private void Update()
