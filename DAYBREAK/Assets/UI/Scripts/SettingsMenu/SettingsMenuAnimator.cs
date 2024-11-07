@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Scripts.SettingsMenu
 {
@@ -7,6 +8,8 @@ namespace UI.Scripts.SettingsMenu
     {
         [SerializeField] private float hoverDuration;
         [SerializeField] private float slideDuration;
+        [SerializeField] private Sprite onImage;
+        [SerializeField] private Sprite offImage;
         
         private bool _isClick;
             
@@ -40,11 +43,17 @@ namespace UI.Scripts.SettingsMenu
             _isClick = true;
 
             if (slideLeft)
+            {
                 LeanTween.moveLocalX(go, -45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick);
+                go.GetComponent<Image>().sprite = offImage;
+            }
             else
+            {
                 LeanTween.moveLocalX(go, 45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick);
+                go.GetComponent<Image>().sprite = onImage;
+            }
         }
-    
+
         private void ResetClick() { _isClick = false; }
     }
 }
