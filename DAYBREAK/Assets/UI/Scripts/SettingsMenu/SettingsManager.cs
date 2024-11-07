@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.UI;
 
-namespace UI.Scripts
+namespace UI.Scripts.SettingsMenu
 {
     public class SettingsManager : MonoBehaviour
     {

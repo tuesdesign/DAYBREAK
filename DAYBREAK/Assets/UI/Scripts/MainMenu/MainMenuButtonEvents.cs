@@ -7,17 +7,17 @@ namespace UI.Scripts.MainMenu
     {
         public void OnPointerEnter(PointerEventData eventData)
         {
-            MainMenuAnimator.Instance.ButtonHover(this.gameObject);
+            MainMenuAnimator.Instance.ButtonHover(gameObject);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            MainMenuAnimator.Instance.ButtonExit(this.gameObject);
+            MainMenuAnimator.Instance.ButtonExit(gameObject);
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            MainMenuAnimator.Instance.ButtonClick(this.gameObject);
+            MainMenuAnimator.Instance.ButtonClick(gameObject);
         }
     }
 }

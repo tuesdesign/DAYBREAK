@@ -4,8 +4,12 @@ namespace UI.Scripts.MainMenu
 {
     public class MainMenuAnimator : MonoBehaviour
     {
+        [SerializeField] private GameObject mainMenuCanvas;
+        [SerializeField] private GameObject settingsCanvas;
+        
         [SerializeField] private float hoverDuration;
         [SerializeField] private float clickDuration;
+        [SerializeField] private float scaleDuration;
         
         private bool _isClick;
         
@@ -42,5 +46,17 @@ namespace UI.Scripts.MainMenu
         }
 
         private void ResetClick() { _isClick = false; }
+
+        public void OpenSettings()
+        {
+            LeanTween.scale(mainMenuCanvas, Vector3.zero, scaleDuration);
+            LeanTween.scale(settingsCanvas, Vector3.one, scaleDuration);
+        }
+        
+        public void CloseSettings()
+        {
+            LeanTween.scale(mainMenuCanvas, Vector3.one, scaleDuration);
+            LeanTween.scale(settingsCanvas, Vector3.zero, scaleDuration);
+        }
     }
 }

@@ -6,28 +6,17 @@ using UnityEngine.SceneManagement;
 
 namespace UI.Scripts.MainMenu
 {
-    public class MainMenu_Manager : MonoBehaviour
+    public class MainMenuManager : MonoBehaviour
     {
         [Header("Main Menu Items")]
         [SerializeField] private Canvas mainMenu;
-        [SerializeField] private Canvas pcCharacterSelect;
-        [SerializeField] private Canvas mobileCharacterSelect;
-        [SerializeField] TMP_Text currentTime;
-
-        private static MainMenu_Manager _instance;
-
-        public static MainMenu_Manager Instance => _instance;
+        [SerializeField] private Canvas characterSelect;
+        [SerializeField] private TMP_Text currentTime;
 
         private void Awake()
         {
-            if (_instance != null && _instance != this)
-                Destroy(this.gameObject);
-            else
-                _instance = this;
-        
             mainMenu.enabled = true;
-            mobileCharacterSelect.enabled = false;
-            pcCharacterSelect.enabled = false;
+            characterSelect.enabled = false;
         }
 
         private void Update()
@@ -45,11 +34,7 @@ namespace UI.Scripts.MainMenu
             yield return new WaitForSeconds(0.2f);
             
             mainMenu.enabled = false;
-
-            if (SystemInfo.deviceType == DeviceType.Handheld)
-                mobileCharacterSelect.enabled = true;
-            else 
-                pcCharacterSelect.enabled = true;
+            characterSelect.enabled = true;
         }
     
         public void LoadScene(string sceneName)
