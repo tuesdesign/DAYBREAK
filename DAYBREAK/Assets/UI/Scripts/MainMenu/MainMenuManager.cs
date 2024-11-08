@@ -17,7 +17,6 @@ namespace UI.Scripts.MainMenu
         {
             mainMenu.enabled = true;
             characterSelect.enabled = false;
-            Time.timeScale = 1;
         }
 
         private void Update()
@@ -32,7 +31,7 @@ namespace UI.Scripts.MainMenu
 
         private IEnumerator CharacterSelect()
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSecondsRealtime(0.2f);
             
             mainMenu.enabled = false;
             characterSelect.enabled = true;
@@ -45,7 +44,7 @@ namespace UI.Scripts.MainMenu
 
         private IEnumerator LoadGame(string sceneName)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSecondsRealtime(0.2f);
             SceneManager.LoadScene(sceneName);
         }
     }

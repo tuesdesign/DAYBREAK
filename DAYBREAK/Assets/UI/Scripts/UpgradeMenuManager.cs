@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UI.Scripts;
 using Random = UnityEngine.Random;
 
 public class UpgradeManagerMenu : MonoBehaviour

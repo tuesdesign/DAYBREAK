@@ -1,10 +1,9 @@
 using UnityEngine;
 
-namespace UI.Scripts.MainMenu
+namespace UI.Scripts.PauseMenu
 {
-    public class MainMenuAnimator : MonoBehaviour
+    public class PauseMenuAnimator : MonoBehaviour
     {
-        [SerializeField] private GameObject mainMenuCanvas;
         [SerializeField] private GameObject settingsCanvas;
         
         [SerializeField] private float hoverDuration;
@@ -12,9 +11,10 @@ namespace UI.Scripts.MainMenu
         [SerializeField] private float scaleDuration;
         
         private bool _isClick;
+        public bool inSettings;
         
-        private static MainMenuAnimator _instance;
-        public static MainMenuAnimator Instance => _instance;
+        private static PauseMenuAnimator _instance;
+        public static PauseMenuAnimator Instance => _instance;
         
         private void Awake()
         {
@@ -49,14 +49,14 @@ namespace UI.Scripts.MainMenu
 
         public void OpenSettings()
         {
-            LeanTween.scale(mainMenuCanvas, Vector3.zero, scaleDuration).setIgnoreTimeScale(true);
             LeanTween.scale(settingsCanvas, Vector3.one, scaleDuration).setIgnoreTimeScale(true);
+            inSettings = true;
         }
         
         public void CloseSettings()
         {
-            LeanTween.scale(mainMenuCanvas, Vector3.one, scaleDuration).setIgnoreTimeScale(true);
             LeanTween.scale(settingsCanvas, Vector3.zero, scaleDuration).setIgnoreTimeScale(true);
+            inSettings = false;
         }
     }
 }

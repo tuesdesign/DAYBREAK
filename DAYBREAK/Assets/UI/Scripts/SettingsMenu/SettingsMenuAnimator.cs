@@ -29,13 +29,13 @@ namespace UI.Scripts.SettingsMenu
         public void ButtonHover(GameObject go)
         {
             if (!_isClick)
-                LeanTween.scale(go, new Vector3(0.95f, 0.95f, 0.95f), hoverDuration);
+                LeanTween.scale(go, new Vector3(0.95f, 0.95f, 0.95f), hoverDuration).setIgnoreTimeScale(true);
         }
             
         public void ButtonExit(GameObject go)
         {
             if (!_isClick)
-                LeanTween.scale(go, Vector3.one, hoverDuration);
+                LeanTween.scale(go, Vector3.one, hoverDuration).setIgnoreTimeScale(true);
         }
     
         public void ButtonClick(GameObject go, bool slideLeft)
@@ -44,12 +44,14 @@ namespace UI.Scripts.SettingsMenu
 
             if (slideLeft)
             {
-                LeanTween.moveLocalX(go, -45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick);
+                Debug.Log("Left");
+                LeanTween.moveLocalX(go, -45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
                 go.GetComponent<Image>().sprite = offImage;
             }
             else
             {
-                LeanTween.moveLocalX(go, 45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick);
+                Debug.Log("Right");
+                LeanTween.moveLocalX(go, 45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
                 go.GetComponent<Image>().sprite = onImage;
             }
         }
