@@ -198,7 +198,10 @@ public class PlayerShooting : MonoBehaviour
         {
             
             yield return new WaitForSeconds((reloadTime+reloadTimeMod)/ (maxAmmo+maxAmmoMod));
+            ammoCount++;
             PlaySoundEffect(reloadSounds);
+            _playerUI.UpdateAmmoCount();
+            
             StartCoroutine(ReloadTick());
 
         }

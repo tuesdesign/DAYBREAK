@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    Rigidbody rb;
+    public Rigidbody rb;
 
     [SerializeField] float speed;
     [SerializeField] float damage;
@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
     Vector3 glueForce;
     Vector3 glueCast;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
