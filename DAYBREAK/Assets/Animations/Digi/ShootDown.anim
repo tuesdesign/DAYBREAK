@@ -32,7 +32,7 @@ AnimationClip:
       value: {fileID: -2432090755550338912, guid: fd70da1f8c3134743b5f48b04c77a649, type: 3}
     - time: 0.6666667
       value: {fileID: -2432090755550338912, guid: c92027df8609b4d469420cafb3e3fe9c, type: 3}
-    - time: 0.81666666
+    - time: 0.78333336
       value: {fileID: -2432090755550338912, guid: c92027df8609b4d469420cafb3e3fe9c, type: 3}
     attribute: m_Mesh
     path: 
@@ -68,7 +68,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8333333
+    m_StopTime: 0.8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
