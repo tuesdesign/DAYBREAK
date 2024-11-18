@@ -15,7 +15,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] Slider healthBar2;
     [Tooltip("This is the exp bar.")]
     [SerializeField] Slider expBar;
-    [Tooltip("The text bar to describe how much ammo the player has in comparisson to their maximum ammo")]
+    [Tooltip("The text bar to describe how much ammo the player has in comparison to their max ammo")]
     [SerializeField] TMP_Text ammoTextBar;
 
 
@@ -25,53 +25,63 @@ public class PlayerUI : MonoBehaviour
         playerExpHandler = GetComponent<PlayerExpHandler>();
         playerShooting = GetComponent<PlayerShooting>();
 
-        if (healthBar1 != null && healthBar2 != null)
-        {
-            healthBar1.maxValue = player.MaxHealth + player.maxHealthModifier;
-            healthBar1.value = player.MaxHealth + player.maxHealthModifier;
+        if (healthBar1 == null || healthBar2 == null || ammoTextBar == null || expBar == null)
+            Debug.LogError("Missing variable assignment!");
+        
+        // Assign starting values
+        healthBar1.maxValue = player.MaxHealth + player.maxHealthModifier;
+        healthBar1.value = player.MaxHealth + player.maxHealthModifier;
             
-            healthBar2.maxValue = player.MaxHealth + player.maxHealthModifier;
-            healthBar2.value = player.MaxHealth + player.maxHealthModifier;
-        }
+        healthBar2.maxValue = player.MaxHealth + player.maxHealthModifier;
+        healthBar2.value = player.MaxHealth + player.maxHealthModifier;
 
-        if (ammoTextBar != null)
-        {
-            ammoTextBar.text = playerShooting.AmmoCount + " / " + (playerShooting.MaxAmmo + playerShooting.maxAmmoMod);
-        }
+        ammoTextBar.text = playerShooting.AmmoCount + " / " + (playerShooting.MaxAmmo + playerShooting.maxAmmoMod);
 
-        if (expBar != null)
-        {
-            expBar.maxValue = playerExpHandler.LevelIncrement;
-            expBar.value = playerExpHandler.Exp;
-        }
+        expBar.maxValue = playerExpHandler.LevelIncrement;
+        expBar.value = playerExpHandler.Exp;
     }
     public void UpdateHealthBar()
     {
-        if (healthBar1 != null)
+        StartCoroutine(AnimateHealthBar());
+    }
+
+    private IEnumerator AnimateHealthBar()
+    {
+        healthBar1.maxValue = player.MaxHealth + player.maxHealthModifier;
+        healthBar2.maxValue = player.MaxHealth + player.maxHealthModifier;
+        
+        var animTime = 0f;
+
+        while (animTime < 1.0f)
         {
-            healthBar1.value = player.CurHealth;
-            healthBar1.maxValue = player.MaxHealth + player.maxHealthModifier;
-        }
-        if (healthBar2 != null)
-        {
-            healthBar2.value = player.CurHealth;
-            healthBar2.maxValue = player.MaxHealth + player.maxHealthModifier;
+            animTime += Time.deltaTime;
+            var lerpValue = animTime / 1.0f;
+            healthBar1.value = Mathf.Lerp(healthBar1.value, player.CurHealth, lerpValue);
+            healthBar2.value = Mathf.Lerp(healthBar2.value, player.CurHealth, lerpValue);
+            yield return null;
         }
     }
 
     public void UpdateAmmoCount()
     {
-        if (ammoTextBar != null)
-        {
-            ammoTextBar.text = playerShooting.AmmoCount + " / " + (playerShooting.MaxAmmo+ playerShooting.maxAmmoMod);
-        }
+        ammoTextBar.text = playerShooting.AmmoCount + " / " + (playerShooting.MaxAmmo+ playerShooting.maxAmmoMod);
     }
 
-    public void UpdateEXPBar()
+    public void UpdateExpBar()
     {
-        if (expBar != null)
+        StartCoroutine(AnimateExpBar());
+    }
+
+    private IEnumerator AnimateExpBar()
+    {
+        var animTime = 0f;
+
+        while (animTime < 1.0f)
         {
-            expBar.value = playerExpHandler.Exp;
+            animTime += Time.deltaTime;
+            var lerpValue = animTime / 1.0f;
+            expBar.value = Mathf.Lerp(expBar.value, playerExpHandler.Exp, lerpValue);
+            yield return null;
         }
     }
 }

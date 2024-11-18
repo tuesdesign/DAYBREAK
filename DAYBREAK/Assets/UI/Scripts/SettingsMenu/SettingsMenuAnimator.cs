@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace UI.Scripts.SettingsMenu
 {
-    public class SettingsMenuAnimator : MonoBehaviour
+    public class SettingsMenuAnimator : Singleton<SettingsMenuAnimator>
     {
         [SerializeField] private float hoverDuration;
         [SerializeField] private float slideDuration;
@@ -12,19 +12,6 @@ namespace UI.Scripts.SettingsMenu
         [SerializeField] private Sprite offImage;
         
         private bool _isClick;
-            
-        private static SettingsMenuAnimator _instance;
-        public static SettingsMenuAnimator Instance => _instance;
-        
-        private void Awake()
-        {
-            if (_instance != null && _instance != this)
-                Destroy(gameObject);
-            else
-                _instance = this;
-    
-            _isClick = false;
-        }
             
         public void ButtonHover(GameObject go)
         {

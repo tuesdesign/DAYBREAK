@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UI.Scripts.MainMenu
 {
-    public class MainMenuAnimator : MonoBehaviour
+    public class MainMenuAnimator : Singleton<MainMenuAnimator>
     {
         [SerializeField] private GameObject mainMenuCanvas;
         [SerializeField] private GameObject settingsCanvas;
@@ -12,19 +12,6 @@ namespace UI.Scripts.MainMenu
         [SerializeField] private float scaleDuration;
         
         private bool _isClick;
-        
-        private static MainMenuAnimator _instance;
-        public static MainMenuAnimator Instance => _instance;
-        
-        private void Awake()
-        {
-            if (_instance != null && _instance != this)
-                Destroy(gameObject);
-            else
-                _instance = this;
-
-            _isClick = false;
-        }
         
         public void ButtonHover(GameObject go)
         {

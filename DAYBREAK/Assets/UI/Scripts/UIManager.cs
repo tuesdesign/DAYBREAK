@@ -78,12 +78,12 @@ namespace UI.Scripts
             timeText.text = $"{minutes:00}:{seconds:00}";
             timerFill.fillAmount = timeToDisplay / StartTime;
         }
-    
+        
         public void LoadMainMenu()
         {
             SceneManager.LoadScene("UI_MainMenu");
         }
-    
+        
         public void ReloadScene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

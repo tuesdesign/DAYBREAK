@@ -1,17 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace UI.Scripts.PauseMenu
+namespace UI.Scripts.WinLoss_Menu
 {
-    public class PauseMenuAnimator : Singleton<PauseMenuAnimator>
+    public class WinLossAnimator : Singleton<WinLossAnimator>
     {
-        [SerializeField] private GameObject settingsCanvas;
-        
         [SerializeField] private float hoverDuration;
         [SerializeField] private float clickDuration;
-        [SerializeField] private float scaleDuration;
         
         private bool _isClick;
-        public bool inSettings;
         
         public void ButtonHover(GameObject go)
         {
@@ -33,17 +30,5 @@ namespace UI.Scripts.PauseMenu
         }
 
         private void ResetClick() { _isClick = false; }
-
-        public void OpenSettings()
-        {
-            LeanTween.scale(settingsCanvas, Vector3.one, scaleDuration).setIgnoreTimeScale(true);
-            inSettings = true;
-        }
-        
-        public void CloseSettings()
-        {
-            LeanTween.scale(settingsCanvas, Vector3.zero, scaleDuration).setIgnoreTimeScale(true);
-            inSettings = false;
-        }
     }
 }

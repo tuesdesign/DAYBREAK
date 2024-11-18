@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CustomButtonShape : MonoBehaviour
+namespace UI.Scripts
 {
-    void Start()
+    public class CustomButtonShape : MonoBehaviour
     {
-        GetComponent<Image>().alphaHitTestMinimumThreshold = 0.2f;
+        void Start()
+        {
+            GetComponent<Image>().alphaHitTestMinimumThreshold = 0.2f;
+        }
     }
 }

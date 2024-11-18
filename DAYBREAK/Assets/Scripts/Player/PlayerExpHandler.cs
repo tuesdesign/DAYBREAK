@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI.Scripts;
 using UnityEngine;
 
 public class PlayerExpHandler : MonoBehaviour
@@ -34,7 +35,7 @@ public class PlayerExpHandler : MonoBehaviour
     public void GainEXP(int amount)
     {
         exp += Mathf.RoundToInt(amount * expMultiplier);
-        playerUI.UpdateEXPBar();
+        playerUI.UpdateExpBar();
         if (exp >= levelIncrement)
         {
             LevelUp();
@@ -53,7 +54,7 @@ public class PlayerExpHandler : MonoBehaviour
         {
             LevelUp();
         }
-        playerUI.UpdateEXPBar();
+        playerUI.UpdateExpBar();
     }
 
     public void UpdateRadius(float amount)
