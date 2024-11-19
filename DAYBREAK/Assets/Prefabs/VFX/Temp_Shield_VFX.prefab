@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5307144236070768717}
   - component: {fileID: 6627497766505306805}
   m_Layer: 0
-  m_Name: Temp_Shield
+  m_Name: Temp_Shield_VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
