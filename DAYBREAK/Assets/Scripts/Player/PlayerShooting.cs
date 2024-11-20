@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 public class PlayerShooting : MonoBehaviour
 {
     PlayerIA _playerInputActions;
+    private InputAction playerShootActions;
+
     PlayerUI _playerUI;
     Vector2 aimPosition = Vector2.up;
     Vector2 movePosition = Vector2.up;
@@ -27,6 +29,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float bulletSpeed = 10f;
     [SerializeField] int maxAmmo = 6;
     int ammoCount;
+    [SerializeField] int bulletsPerShot;
 
     bool hasAmmo = true;
     bool isReloading = false;
@@ -46,10 +49,16 @@ public class PlayerShooting : MonoBehaviour
     [HideInInspector] public int maxAmmoMod = 0;
 
     
+
+
     private Canvas reloadBar;
 
     public int MaxAmmo { get => maxAmmo; set => maxAmmo = value; }
     public int AmmoCount { get => ammoCount; set => ammoCount = value; }
+    public float BulletSpeed { get => bulletSpeed; set => bulletSpeed = value; }
+    public float ShootDelay { get => shootDelay; set => shootDelay = value; }
+    public GameObject BulletType { get => bulletType; set => bulletType = value; }
+    public int BulletsPerShot { get => bulletsPerShot; set => bulletsPerShot = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -66,16 +75,18 @@ public class PlayerShooting : MonoBehaviour
         if (twinStick)
         {
             _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();
-        
             _playerInputActions.Game.Fire.started += ctx => StartShooting();
             _playerInputActions.Game.Fire.canceled += ctx => StopShooting();
+
+            playerShootActions = _playerInputActions.Game.Fire;
         }
         else
         {
             _playerInputActions.Game.Move.performed += ctx => movePosition = ctx.ReadValue<Vector2>();
-
             _playerInputActions.Game.Move.started += ctx => StartShooting();
             _playerInputActions.Game.Move.canceled += ctx => StopShooting();
+
+            playerShootActions = _playerInputActions.Game.Move;
         }
     }
 
@@ -85,19 +96,18 @@ public class PlayerShooting : MonoBehaviour
     }
     private void Shoot()
     {
+
         if (canShoot && hasAmmo) //if can shoot and has ammo
         {
             PlaySoundEffect(shootSounds);
             GameObject b = Instantiate(bulletType, shootPosition);
 
-            if (twinStick)
-            {
-                b.GetComponent<Rigidbody>().velocity = Vector3.Normalize(new Vector3(aimPosition.x - aimPosition.y, 0, aimPosition.x + aimPosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
-            }
-            else
-            {
-                b.GetComponent<Rigidbody>().velocity = Vector3.Normalize(new Vector3(movePosition.x - movePosition.y, 0, movePosition.x + movePosition.y)) * bulletSpeed; //normalizes the aim direction and then fires it at bullet speed
-            }
+            //Vector2 direction = twinStick ? aimPosition : movePosition;
+            Vector2 direction = playerShootActions.ReadValue<Vector2>();
+            direction = ConvertToIsometric(direction);
+
+            b.GetComponent<Rigidbody>().velocity = (new Vector3(direction.x , 0, direction.y)).normalized * bulletSpeed;
+            
 
             Destroy(b, 10);    //destroys the bullet after 10 seconds
 
@@ -140,6 +150,22 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
+    public static Vector2 ConvertToIsometric(Vector2 vector)
+    {
+        
+        float cos45 = Mathf.Sqrt(2) / 2; // Approx 0.707
+        float sin45 = Mathf.Sqrt(2) / 2; // Approx 0.707
+
+        float cos35 = Mathf.Cos(35f * Mathf.Deg2Rad); // Cosine of 35 degrees
+        float sin35 = Mathf.Sin(35f * Mathf.Deg2Rad);
+
+        // Apply the isometric transformation
+        float isoX = vector.x * cos35 - vector.y * sin35;
+        float isoY = vector.x * sin45 + vector.y * cos45;
+
+        return new Vector2(isoX, isoY);
+    }
+
     private Coroutine shootingCoroutine;
 
     private void StartShooting()
@@ -164,15 +190,16 @@ public class PlayerShooting : MonoBehaviour
         while (true)
         {
             Shoot();
-            yield return new WaitForSeconds(shootDelay + shootdelayMod); // Delay between shots
+            yield return null;
+            //yield return new WaitForSeconds(shootDelay + shootdelayMod); // Delay between shots
         }
     }
 
     IEnumerator ShootTiming()
-{
-    yield return new WaitForSeconds(shootDelay + shootdelayMod);
-    canShoot = true;
-}
+    {
+        yield return new WaitForSeconds(shootDelay + shootdelayMod);
+        canShoot = true;
+    }
 
     IEnumerator ReloadTiming()
     {
@@ -185,7 +212,7 @@ public class PlayerShooting : MonoBehaviour
         
         yield return new WaitForSeconds(reloadTime + reloadTimeMod);
 
-        reloadBar.enabled = false;
+        //reloadBar.enabled = false;
         ammoCount = maxAmmo + maxAmmoMod;
         hasAmmo = true;
         isReloading = false;
@@ -196,9 +223,9 @@ public class PlayerShooting : MonoBehaviour
     {
         if (isReloading)
         {
-            
-            yield return new WaitForSeconds((reloadTime+reloadTimeMod)/ (maxAmmo+maxAmmoMod));
             ammoCount++;
+            yield return new WaitForSeconds((reloadTime+reloadTimeMod)/ (maxAmmo+maxAmmoMod));
+            
             PlaySoundEffect(reloadSounds);
             _playerUI.UpdateAmmoCount();
             

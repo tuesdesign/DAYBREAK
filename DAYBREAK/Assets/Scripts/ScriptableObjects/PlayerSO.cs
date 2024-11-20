@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSO : MonoBehaviour
+[CreateAssetMenu(fileName = "Character", menuName = "ScriptableObjects/Character", order = 1)]
+public class PlayerSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    public int maxHealth = 10;
+    public float speed = 2.5f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Shooting")]
+    public int maxammo = 6;
+    public float bulletspeed = 10f;
+    public GameObject bulletType;
+    public float reloadTime = 0.75f;
+    public float shootDelay = 0.5f;
+
 }

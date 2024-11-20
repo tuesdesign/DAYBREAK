@@ -7,26 +7,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Rigidbody rb;
+    BulletApplicationHandling bulletHandling;
 
     [SerializeField] float speed;
     [SerializeField] float damage;
-
-    [Header("Properties and Multipliers")]
-    [SerializeField] bool canBurn;
-    [SerializeField] float burnChance;
-
-    [SerializeField] bool isexplosive;
-    [SerializeField] float explosionRange;
-    [SerializeField] float explosionDamage;
-
-    [SerializeField] bool canFreeze ;
-    [SerializeField] float freezeChance;
-
-    [SerializeField] bool canBounce;
-    [SerializeField] float bounceAmount;
-
-    [SerializeField] float canPierce;
-    [SerializeField] float pierceAmount;
 
     [Space]
     [SerializeField] bool enableTerrainGlueForce;
@@ -39,6 +23,7 @@ public class Bullet : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        bulletHandling = FindObjectOfType<BulletApplicationHandling>();
     }
 
     void FixedUpdate()
@@ -46,7 +31,12 @@ public class Bullet : MonoBehaviour
         if (enableTerrainGlueForce) GlueBulletToTerrain();
     }
 
-    void CheckStatusAffliction()
+    void CheckShootStatusAffliction()
+    {
+
+    }
+
+    void CheckHitStatusAffliction()
     {
 
     }

@@ -10,6 +10,7 @@ public class PlayerBase : MonoBehaviour
     Rigidbody _rb;
     PlayerIA _playerInputActions;
     PlayerUI _playerUI;
+    PlayerShooting _playerShooting;
 
     Vector2 aimPosition = Vector2.zero;
     Vector2 movePosition = Vector2.zero;
@@ -41,13 +42,14 @@ public class PlayerBase : MonoBehaviour
     private UIManager _uiManager;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _playerInputActions = new PlayerIA();
         _playerInputActions.Enable();
         _rb = GetComponent<Rigidbody>();
 
         _playerUI = GetComponent<PlayerUI>();
+        _playerShooting = GetComponent<PlayerShooting>();
 
         _playerInputActions.Game.Move.performed += ctx => movePosition = ctx.ReadValue<Vector2>();
         _playerInputActions.Game.Move.canceled += ctx => movePosition = new Vector2(0,0) ;
@@ -102,6 +104,19 @@ public class PlayerBase : MonoBehaviour
             Vector3 movement = new Vector3(movePosition.x - movePosition.y, 0f, movePosition.x + movePosition.y).normalized * speed; //iso movement 
             _rb.AddForce(movement);
         }
+    }
+
+    public void ApplyCharacterStats(PlayerSO playerStats)
+    {
+        maxHealth = playerStats.maxHealth;
+        speed = playerStats.speed;
+
+        //sets player shooting stats
+        _playerShooting.MaxAmmo = playerStats.maxammo;
+        _playerShooting.BulletType = playerStats.bulletType;
+        _playerShooting.BulletSpeed = playerStats.bulletspeed;
+        _playerShooting.ShootDelay = playerStats.shootDelay;
+        
     }
 
     #region Health Related Code (Heal, Damage, Death)
