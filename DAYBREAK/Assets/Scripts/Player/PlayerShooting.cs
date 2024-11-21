@@ -156,11 +156,11 @@ public class PlayerShooting : MonoBehaviour
         float cos45 = Mathf.Sqrt(2) / 2; // Approx 0.707
         float sin45 = Mathf.Sqrt(2) / 2; // Approx 0.707
 
-        float cos35 = Mathf.Cos(35f * Mathf.Deg2Rad); // Cosine of 35 degrees
-        float sin35 = Mathf.Sin(35f * Mathf.Deg2Rad);
+        float cos32 = Mathf.Cos(32f * Mathf.Deg2Rad); // Cosine of 35 degrees
+        float sin32 = Mathf.Sin(32f * Mathf.Deg2Rad);
 
         // Apply the isometric transformation
-        float isoX = vector.x * cos35 - vector.y * sin35;
+        float isoX = vector.x * cos45 - vector.y * sin45;
         float isoY = vector.x * sin45 + vector.y * cos45;
 
         return new Vector2(isoX, isoY);
