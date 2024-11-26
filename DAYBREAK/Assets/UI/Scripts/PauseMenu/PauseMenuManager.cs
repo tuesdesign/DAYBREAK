@@ -50,12 +50,13 @@ namespace UI.Scripts.PauseMenu
         private void ActivateMenu()
         {
             Time.timeScale = 0;
+            UIManager.Instance.StopAllCoroutines();
             AudioListener.pause = true;
             pauseCanvas.enabled = true;
             settingsCanvas.enabled = true;
         }
-    
-        public void DeactivateMenu()
+
+        private void DeactivateMenu()
         {
             UIManager.Instance.ReturnCountdown(3);
             AudioListener.pause = false;

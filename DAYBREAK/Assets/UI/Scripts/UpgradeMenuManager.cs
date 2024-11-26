@@ -36,19 +36,26 @@ namespace UI.Scripts
 
         public void PopulateMenu()
         {
-            int index = Random.Range(0, _upgradeObject.FullupgradeList.Count - 1);
+            var index = Random.Range(0, _upgradeObject.FullupgradeList.Count - 1);
+            
             descriptionText1.text = _upgradeObject.FullupgradeList[index].upgradeName + ": " +
                                     _upgradeObject.FullupgradeList[index].description;
             image1 = _upgradeObject.FullupgradeList[index].image;
             _upgrade1 = _upgradeObject.FullupgradeList[index];
         
-            index = Random.Range(0, _upgradeObject.FullupgradeList.Count - 1);
+            var temp1 = index;
+            while (temp1 == index)
+                index = Random.Range(0, _upgradeObject.FullupgradeList.Count - 1);
+            
             descriptionText2.text = _upgradeObject.FullupgradeList[index].upgradeName + ": " +
                                     _upgradeObject.FullupgradeList[index].description;
             image2 = _upgradeObject.FullupgradeList[index].image;
             _upgrade2 = _upgradeObject.FullupgradeList[index];
         
-            index = Random.Range(0, _upgradeObject.FullupgradeList.Count - 1);
+            var temp2 = index;
+            while (temp1 == index || temp2 == index)
+                index = Random.Range(0, _upgradeObject.FullupgradeList.Count - 1);
+            
             descriptionText3.text = _upgradeObject.FullupgradeList[index].upgradeName + ": " +
                                     _upgradeObject.FullupgradeList[index].description;
             image3 = _upgradeObject.FullupgradeList[index].image;

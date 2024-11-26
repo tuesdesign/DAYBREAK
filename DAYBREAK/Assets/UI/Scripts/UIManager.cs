@@ -98,7 +98,7 @@ namespace UI.Scripts
         {
             countdownText.SetActive(true);
 
-            for (int i = time; i > 0; i--)
+            for (var i = time; i > 0; i--)
             {
                 countdownText.GetComponent<TMP_Text>().text = i.ToString();
                 yield return new WaitForSecondsRealtime(1f);
