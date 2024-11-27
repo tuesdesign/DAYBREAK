@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace UI.Scripts.WinLoss_Menu
 {
-    public class WinLossAnimator : Singleton<WinLossAnimator>
+    public class WinLossAnimator : MonoBehaviour
     {
         [SerializeField] private float hoverDuration;
         [SerializeField] private float clickDuration;

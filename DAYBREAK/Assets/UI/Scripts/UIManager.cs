@@ -1,16 +1,15 @@
 using System.Collections;
 using TMPro;
+using UI.Scripts.Misc_;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace UI.Scripts
 {
     public class UIManager : MonoBehaviour
     {
-        private static UIManager _instance;
-        public static UIManager Instance => _instance;
-        
         [Header("Main UI Items")]
         [SerializeField] private Canvas mainPCUI;
         [SerializeField] private Canvas mainMobileUI;
@@ -22,20 +21,18 @@ namespace UI.Scripts
         [SerializeField] private Canvas winLossScreen;
         [SerializeField] private TMP_Text winLossText;
         [SerializeField] private TMP_Text timerText;
+        [SerializeField] private GameObject restartButton;
 
         private Canvas _activeUI;
     
         private const float StartTime = 300;
         private float _timeValue;
         private bool _countdown;
+        
+        private ControllerCheck _controllerCheck;
 
         private void Awake()
         {
-            if (_instance != null && _instance != this)
-                Destroy(gameObject);
-            else
-                _instance = this;
-            
             // Determine which UI to display
             _activeUI = SystemInfo.deviceType == DeviceType.Handheld ? mainMobileUI : mainPCUI;
 
@@ -47,6 +44,7 @@ namespace UI.Scripts
             _activeUI.enabled = true;
             _timeValue = StartTime;
             _countdown = true;
+            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
         }
 
         private void Update()
@@ -118,6 +116,12 @@ namespace UI.Scripts
             // Display end screen
             _activeUI.enabled = false;
             winLossScreen.enabled = true;
+
+            if (_controllerCheck.connected)
+            {
+                var eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(restartButton, new BaseEventData(eventSystem));
+            }
 
             // Change win/loss text
             winLossText.text = isLoss ? "YOU LOSE" : "YOU WIN";

@@ -1,8 +1,10 @@
+using UI.Scripts.Misc_;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace UI.Scripts.MainMenu
 {
-    public class MainMenuAnimator : Singleton<MainMenuAnimator>
+    public class MainMenuAnimator : MonoBehaviour
     {
         [SerializeField] private GameObject mainMenuCanvas;
         [SerializeField] private GameObject settingsCanvas;
@@ -10,8 +12,24 @@ namespace UI.Scripts.MainMenu
         [SerializeField] private float hoverDuration;
         [SerializeField] private float clickDuration;
         [SerializeField] private float scaleDuration;
+
+        [SerializeField] private GameObject playButton;
+        [SerializeField] private GameObject musicButton;
         
         private bool _isClick;
+        
+        private ControllerCheck _controllerCheck;
+
+        private void Start()
+        {
+            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
+
+            if (_controllerCheck != null && _controllerCheck.connected)
+            {
+                var eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(playButton, new BaseEventData(eventSystem));
+            }
+        }
         
         public void ButtonHover(GameObject go)
         {
@@ -38,12 +56,24 @@ namespace UI.Scripts.MainMenu
         {
             LeanTween.scale(mainMenuCanvas, Vector3.zero, scaleDuration).setIgnoreTimeScale(true);
             LeanTween.scale(settingsCanvas, Vector3.one, scaleDuration).setIgnoreTimeScale(true);
+
+            if (_controllerCheck.connected)
+            {
+                var eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(musicButton, new BaseEventData(eventSystem));
+            }
         }
         
         public void CloseSettings()
         {
             LeanTween.scale(mainMenuCanvas, Vector3.one, scaleDuration).setIgnoreTimeScale(true);
             LeanTween.scale(settingsCanvas, Vector3.zero, scaleDuration).setIgnoreTimeScale(true);
+            
+            if (_controllerCheck.connected)
+            {
+                var eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(playButton, new BaseEventData(eventSystem));
+            }
         }
     }
 }

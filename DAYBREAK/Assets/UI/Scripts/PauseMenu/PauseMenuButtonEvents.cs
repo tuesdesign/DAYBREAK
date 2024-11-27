@@ -3,21 +3,43 @@ using UnityEngine.EventSystems;
 
 namespace UI.Scripts.PauseMenu
 {
-    public class PauseMenuButtonEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class PauseMenuButtonEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler, ISubmitHandler
     {
+        private PauseMenuAnimator _animator;
+
+        private void Start()
+        {
+            _animator = FindObjectOfType(typeof(PauseMenuAnimator)) as PauseMenuAnimator;
+        }
+        
         public void OnPointerEnter(PointerEventData eventData)
         {
-            PauseMenuAnimator.Instance.ButtonHover(gameObject);
+            _animator.ButtonHover(gameObject);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            PauseMenuAnimator.Instance.ButtonExit(gameObject);
+            _animator.ButtonExit(gameObject);
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            PauseMenuAnimator.Instance.ButtonClick(gameObject);
+            _animator.ButtonClick(gameObject);
+        }
+        
+        public void OnSelect(BaseEventData eventData)
+        {
+            _animator.ButtonHover(gameObject);
+        }
+
+        public void OnDeselect(BaseEventData eventData)
+        {
+            _animator.ButtonExit(gameObject);
+        }
+
+        public void OnSubmit(BaseEventData eventData)
+        {
+            _animator.ButtonClick(gameObject);
         }
     }
 }

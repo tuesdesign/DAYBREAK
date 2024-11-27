@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Scripts
+namespace UI.Scripts.Misc_
 {
     public class CustomButtonShape : MonoBehaviour
     {

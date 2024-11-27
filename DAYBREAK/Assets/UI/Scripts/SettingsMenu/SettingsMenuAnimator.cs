@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace UI.Scripts.SettingsMenu
 {
-    public class SettingsMenuAnimator : Singleton<SettingsMenuAnimator>
+    public class SettingsMenuAnimator : MonoBehaviour
     {
         [SerializeField] private float hoverDuration;
         [SerializeField] private float slideDuration;

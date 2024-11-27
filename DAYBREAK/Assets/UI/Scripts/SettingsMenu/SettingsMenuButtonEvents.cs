@@ -10,32 +10,35 @@ namespace UI.Scripts.SettingsMenu
         Off
     }
     
-    public class SettingsMenuButtonEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class SettingsMenuButtonEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler, ISubmitHandler
     {
         [SerializeField] private GameObject circleImage;
         [SerializeField] private string settingPlayerPref;
         
         private SettingState _settingState;
         private int _settingInt;
+        
+        private SettingsMenuAnimator _animator;
+
+        private void Start()
+        {
+            _animator = FindObjectOfType(typeof(SettingsMenuAnimator)) as SettingsMenuAnimator;
+            UpdateButton();
+        }
 
         private void Awake()
         {
             _settingInt = PlayerPrefs.GetInt(settingPlayerPref);
         }
 
-        private void Start()
-        {
-            UpdateButton();
-        }
-
         public void OnPointerEnter(PointerEventData eventData)
         {
-            SettingsMenuAnimator.Instance.ButtonHover(gameObject);
+            _animator.ButtonHover(gameObject);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            SettingsMenuAnimator.Instance.ButtonExit(gameObject);
+            _animator.ButtonExit(gameObject);
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -43,11 +46,36 @@ namespace UI.Scripts.SettingsMenu
             switch (_settingState)
             {
                 case SettingState.On:
-                    SettingsMenuAnimator.Instance.ButtonClick(circleImage, true);
+                    _animator.ButtonClick(circleImage, true);
                     _settingState = SettingState.Off;
                     break;
                 case SettingState.Off:
-                    SettingsMenuAnimator.Instance.ButtonClick(circleImage, false);
+                    _animator.ButtonClick(circleImage, false);
+                    _settingState = SettingState.On;
+                    break;
+            }
+        }
+        
+        public void OnSelect(BaseEventData eventData)
+        {
+            _animator.ButtonHover(gameObject);
+        }
+
+        public void OnDeselect(BaseEventData eventData)
+        {
+            _animator.ButtonExit(gameObject);
+        }
+
+        public void OnSubmit(BaseEventData eventData)
+        {
+            switch (_settingState)
+            {
+                case SettingState.On:
+                    _animator.ButtonClick(circleImage, true);
+                    _settingState = SettingState.Off;
+                    break;
+                case SettingState.Off:
+                    _animator.ButtonClick(circleImage, false);
                     _settingState = SettingState.On;
                     break;
             }
@@ -58,11 +86,11 @@ namespace UI.Scripts.SettingsMenu
             switch (_settingInt)
             {
                 case 0:
-                    SettingsMenuAnimator.Instance.ButtonClick(circleImage, true);
+                    _animator.ButtonClick(circleImage, true);
                     _settingState = SettingState.Off;
                     break;
                 case 1:
-                    SettingsMenuAnimator.Instance.ButtonClick(circleImage, false);
+                    _animator.ButtonClick(circleImage, false);
                     _settingState = SettingState.On;
                     break;
             }

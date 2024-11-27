@@ -1,6 +1,8 @@
+using UI.Scripts.Misc_;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 namespace UI.Scripts.PauseMenu
 {
@@ -9,10 +11,24 @@ namespace UI.Scripts.PauseMenu
         [SerializeField] private Canvas pauseCanvas;
         [SerializeField] private Canvas settingsCanvas;
         
+        [SerializeField] private GameObject resumeButton;
+        
         private PlayerIA _playerInputActions;
         private InputAction _pauseMenu;
         
         private bool _isPaused;
+        
+        private PauseMenuAnimator _animator;
+        private UIManager _manager;
+        
+        private ControllerCheck _controllerCheck;
+
+        private void Start()
+        {
+            _animator = FindObjectOfType(typeof(PauseMenuAnimator)) as PauseMenuAnimator;
+            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
+            _manager = FindObjectOfType(typeof(UIManager)) as UIManager;
+        }
         
         private void OnEnable()
         {
@@ -41,7 +57,7 @@ namespace UI.Scripts.PauseMenu
                 case true:
                     ActivateMenu();
                     break;
-                case false when !PauseMenuAnimator.Instance.inSettings:
+                case false when !_animator.inSettings:
                     DeactivateMenu();
                     break;
             }
@@ -50,15 +66,21 @@ namespace UI.Scripts.PauseMenu
         private void ActivateMenu()
         {
             Time.timeScale = 0;
-            UIManager.Instance.StopAllCoroutines();
+            _manager.StopAllCoroutines();
             AudioListener.pause = true;
             pauseCanvas.enabled = true;
             settingsCanvas.enabled = true;
+
+            if (_controllerCheck.connected)
+            {
+                var eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(resumeButton, new BaseEventData(eventSystem));
+            }
         }
 
         private void DeactivateMenu()
         {
-            UIManager.Instance.ReturnCountdown(3);
+            _manager.ReturnCountdown(3);
             AudioListener.pause = false;
             pauseCanvas.enabled = false;
             settingsCanvas.enabled = false;

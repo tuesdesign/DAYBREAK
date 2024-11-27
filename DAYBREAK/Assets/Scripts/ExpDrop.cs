@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExpDrop : MonoBehaviour
 {
-    [SerializeField] int expAmount;
-    [SerializeField] int speed = 1;
+    [SerializeField] private int expAmount;
+    [SerializeField] private int speed = 1;
+    [SerializeField] private GameObject floatingExp;
 
     public int ExpAmount { get => expAmount; set => expAmount = value; }
     bool moveToPlayer = false;
@@ -21,8 +23,12 @@ public class ExpDrop : MonoBehaviour
             {
                 player.GetComponent<PlayerExpHandler>().GainEXP(expAmount);
                 GetComponent<SphereCollider>().enabled = false;
-                Destroy(this.gameObject, .01f);
+                Destroy(gameObject, .01f);
                 givePlayerEXP = false;
+                
+                // Spawn UI floating text
+                GameObject expText = Instantiate(floatingExp, transform.position, floatingExp.transform.rotation) as GameObject;
+                expText.transform.GetChild(0).GetComponent<TextMesh>().text = expAmount.ToString();
             }
         }
     }

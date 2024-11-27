@@ -1,10 +1,14 @@
+using UI.Scripts.Misc_;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace UI.Scripts.PauseMenu
 {
-    public class PauseMenuAnimator : Singleton<PauseMenuAnimator>
+    public class PauseMenuAnimator : MonoBehaviour
     {
         [SerializeField] private GameObject settingsCanvas;
+        [SerializeField] private GameObject musicButton;
+        [SerializeField] private GameObject resumeButton;
         
         [SerializeField] private float hoverDuration;
         [SerializeField] private float clickDuration;
@@ -12,6 +16,13 @@ namespace UI.Scripts.PauseMenu
         
         private bool _isClick;
         public bool inSettings;
+        
+        private ControllerCheck _controllerCheck;
+
+        private void Start()
+        {
+            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
+        }
         
         public void ButtonHover(GameObject go)
         {
@@ -38,12 +49,24 @@ namespace UI.Scripts.PauseMenu
         {
             LeanTween.scale(settingsCanvas, Vector3.one, scaleDuration).setIgnoreTimeScale(true);
             inSettings = true;
+
+            if (_controllerCheck.connected)
+            {
+                var eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(musicButton, new BaseEventData(eventSystem));
+            }
         }
         
         public void CloseSettings()
         {
             LeanTween.scale(settingsCanvas, Vector3.zero, scaleDuration).setIgnoreTimeScale(true);
             inSettings = false;
+            
+            if (_controllerCheck.connected)
+            {
+                var eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(resumeButton, new BaseEventData(eventSystem));
+            }
         }
     }
 }

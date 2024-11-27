@@ -1,14 +1,16 @@
 using TMPro;
+using UI.Scripts.Misc_;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
 namespace UI.Scripts
 {
     public class UpgradeManagerMenu : MonoBehaviour
     {
-        [SerializeField] private UIManager uiManager;
         [SerializeField] private Canvas upgradeMenu;
+        [SerializeField] private GameObject upgrade1Button;
     
         [Header("Upgrade 1")]
         [SerializeField] private TMP_Text descriptionText1;
@@ -29,11 +31,19 @@ namespace UI.Scripts
         private UpgradeBaseSO _upgrade2;
         private UpgradeBaseSO _upgrade3;
     
+        private ControllerCheck _controllerCheck;
+
         private void Awake()
         {
             _upgradeObject = upgradeHandler.GetComponent<UpgradeHandling>();
-        }
+            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
 
+            if (_controllerCheck != null && _controllerCheck.connected)
+            {
+                var eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(upgrade1Button, new BaseEventData(eventSystem));
+            }
+        }
         public void PopulateMenu()
         {
             var index = Random.Range(0, _upgradeObject.FullupgradeList.Count - 1);
