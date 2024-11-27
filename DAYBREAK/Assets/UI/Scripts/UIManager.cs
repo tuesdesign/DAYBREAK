@@ -21,7 +21,8 @@ namespace UI.Scripts
         [SerializeField] private Canvas winLossScreen;
         [SerializeField] private TMP_Text winLossText;
         [SerializeField] private TMP_Text timerText;
-        [SerializeField] private GameObject restartButton;
+        [SerializeField] private GameObject shareButton;
+        [SerializeField] private GameObject copiedText;
         
         private Canvas _activeUI;
     
@@ -100,7 +101,7 @@ namespace UI.Scripts
             if (_controllerCheck.connected)
             {
                 var eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(restartButton, new BaseEventData(eventSystem));
+                eventSystem.SetSelectedGameObject(shareButton, new BaseEventData(eventSystem));
             }
 
             // Change win/loss text
@@ -118,6 +119,19 @@ namespace UI.Scripts
             float seconds = Mathf.FloorToInt(tempTime % 60);
 
             return $"{minutes:00}:{seconds:00}";
+        }
+
+        public void CopyText()
+        {
+            UniClipboard.SetText("I survived " + TimeSurvived() + " in Daybreak today!");
+            StartCoroutine(AnimateCopyText());
+        }
+
+        IEnumerator AnimateCopyText()
+        {
+            LeanTween.scale(copiedText, Vector3.one, 0.15f).setIgnoreTimeScale(true);
+            yield return new WaitForSecondsRealtime(3);
+            LeanTween.scale(copiedText, Vector3.zero, 0.5f).setIgnoreTimeScale(true);
         }
     }
 }
