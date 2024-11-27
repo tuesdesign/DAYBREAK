@@ -85,7 +85,7 @@ public class UpgradeHandling : MonoBehaviour
         }
         if (upgradeLevel.usesbulletPropersties)
         {
-
+            
         }
 
     }

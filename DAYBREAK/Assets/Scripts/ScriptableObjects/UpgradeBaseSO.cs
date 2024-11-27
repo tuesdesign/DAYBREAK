@@ -71,8 +71,7 @@ public class UpgradeBaseSO : ScriptableObject
     [System.Serializable]
     public class BulletProperties
     {
-        public float speed;
-        public float damage;
+        public float damageMod;
 
         public bool canBurn;
         public float burnChance;

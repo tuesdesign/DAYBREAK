@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletApplicationHandling : MonoBehaviour
 {
+    public float bulletDamageMod;
 
     public bool canBurn;
     public int shotsBetweenBurn;
@@ -11,29 +12,27 @@ public class BulletApplicationHandling : MonoBehaviour
     public float burnTick;
 
     public bool isExplosive;
-    public bool shotsBetweenExplosive;
+    public int shotsBetweenExplosive;
     public float explosionRange;
     public float explosionDamage;
 
     public bool canFreeze;
-    public float shotsBetweenFreeze;
+    public int shotsBetweenFreeze;
     public float freezeChance;
     public float freezeTime;
 
     public bool canBounce;
     public float bounceAmount;
 
-    public float canPierce;
+    public bool canPierce;
     public float pierceAmount;
 
-    public float castWind;
+    public bool castWind;
     public int shotsBetweenWind;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Particles")]
+    public GameObject burnParticles;
+
 
     // Update is called once per frame
     void Update()
@@ -41,14 +40,24 @@ public class BulletApplicationHandling : MonoBehaviour
         
     }
 
-    public void BulletShotEffects()
+    public void BulletShotEffects(GameObject bullet)
     {
+        if (canBurn) { 
+            
+        }
 
+        if (canFreeze)
+        {
+
+        }
     }
 
     public void BulletHit()
     {
+        if (canFreeze && shotsBetweenFreeze > 0)
+        {
 
+        }
     }
 
 }

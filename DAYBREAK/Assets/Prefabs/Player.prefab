@@ -150,6 +150,8 @@ MonoBehaviour:
   bulletType: {fileID: 2895593067169026987, guid: 341566cbe871ac14b8244a3ae203b3a7, type: 3}
   bulletSpeed: 75
   maxAmmo: 6
+  bulletsPerShot: 1
+  bulletSpread: 15
   reloadTime: 0.75
   shootSounds:
   - {fileID: 8300000, guid: f119b447d836da944abbbd51abbe43ac, type: 3}
