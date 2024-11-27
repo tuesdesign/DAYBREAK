@@ -63,7 +63,9 @@ public class UpgradeBaseSO : ScriptableObject
         public float shootDelayModifier;
         public int maxAmmoModifier;
         public float reloadTimeModifier;
-        
+        public int bulletsPerShotModifier;
+        [Tooltip ("This adds to the current spread")]
+        public float bulletSpreadModifier;
     }
 
     [System.Serializable]

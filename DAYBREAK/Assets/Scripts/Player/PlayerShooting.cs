@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 using Random = UnityEngine.Random;
 
 public class PlayerShooting : MonoBehaviour
@@ -29,7 +30,10 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float bulletSpeed = 10f;
     [SerializeField] int maxAmmo = 6;
     int ammoCount;
-    [SerializeField] int bulletsPerShot;
+
+    [SerializeField] int bulletsPerShot = 1;
+    [SerializeField] float bulletSpread = 15f;
+
 
     bool hasAmmo = true;
     bool isReloading = false;
@@ -48,7 +52,7 @@ public class PlayerShooting : MonoBehaviour
     [HideInInspector] public float reloadTimeMod = 0 ;
     [HideInInspector] public int maxAmmoMod = 0;
 
-    
+
 
 
     private Canvas reloadBar;
@@ -59,6 +63,7 @@ public class PlayerShooting : MonoBehaviour
     public float ShootDelay { get => shootDelay; set => shootDelay = value; }
     public GameObject BulletType { get => bulletType; set => bulletType = value; }
     public int BulletsPerShot { get => bulletsPerShot; set => bulletsPerShot = value; }
+    public float BulletSpread { get => bulletSpread; set => bulletSpread = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -100,26 +105,69 @@ public class PlayerShooting : MonoBehaviour
         if (canShoot && hasAmmo) //if can shoot and has ammo
         {
             PlaySoundEffect(shootSounds);
-            GameObject b = Instantiate(bulletType, shootPosition);
 
-            //Vector2 direction = twinStick ? aimPosition : movePosition;
-            Vector2 direction = playerShootActions.ReadValue<Vector2>();
-            direction = ConvertToIsometric(direction);
 
-            b.GetComponent<Rigidbody>().velocity = (new Vector3(direction.x , 0, direction.y)).normalized * bulletSpeed;
-            
+            float angleStep = bulletsPerShot > 1 ? bulletSpread / (bulletsPerShot - 1) : 0;
+            float startingAngle = -bulletSpread / 2;
 
-            Destroy(b, 10);    //destroys the bullet after 10 seconds
+            Vector2 inputDirection = playerShootActions.ReadValue<Vector2>();
+            inputDirection = ConvertToIsometric(inputDirection);
 
-            ammoCount--;
-            canShoot = false;
-
-            if (ammoCount <= 0)
+            if (bulletsPerShot == 1)
             {
-                hasAmmo = false;
-                StartCoroutine(ReloadTiming());
-            }
 
+                GameObject b = Instantiate(bulletType, shootPosition.position, Quaternion.identity);
+                b.GetComponent<Rigidbody>().velocity = (new Vector3(inputDirection.x, 0, inputDirection.y)).normalized * bulletSpeed;
+
+
+                Destroy(b, 10);
+
+                ammoCount--;
+
+                if (ammoCount <= 0)
+                {
+                    hasAmmo = false;
+                    StartCoroutine(ReloadTiming());
+        
+                }
+            }
+            else
+            {
+                for (int i = 0; i < bulletsPerShot; i++)
+                {
+                    // Calculate bullet direction with spread
+
+                    Vector3 baseDirection = new Vector3(inputDirection.x, 0, inputDirection.y).normalized;
+
+                    // Rotate direction by the spread angle
+                    Quaternion rotation = Quaternion.Euler(0, startingAngle + (i * angleStep), 0);
+                    Vector3 bulletDirection = rotation * baseDirection;
+
+                    // Spawn bullet 
+                    GameObject b = Instantiate(bulletType, shootPosition.position, Quaternion.identity);
+                    Rigidbody rb = b.GetComponent<Rigidbody>();
+                    rb.velocity = bulletDirection * (bulletSpeed + bspeedMod);
+
+                    // Align bullet rotation with direction
+                    b.transform.forward = rb.velocity.normalized;
+
+                    // Destroy bullet after 10 seconds
+                    Destroy(b, 10);
+
+                    ammoCount--;
+
+                    if (ammoCount <= 0)
+                    {
+                        hasAmmo = false;
+                        StartCoroutine(ReloadTiming());
+                        break;
+                    }
+
+                }
+            }
+            
+            
+            canShoot = false;
             StartCoroutine(ShootTiming());
 
         }

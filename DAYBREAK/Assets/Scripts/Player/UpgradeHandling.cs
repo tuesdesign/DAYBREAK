@@ -79,6 +79,8 @@ public class UpgradeHandling : MonoBehaviour
             shooting.maxAmmoMod += upgradeLevel.playerShooting.maxAmmoModifier;
             shooting.shootdelayMod += upgradeLevel.playerShooting.shootDelayModifier;
             shooting.bspeedMod += upgradeLevel.playerShooting.bulletSpeedModifier;
+            shooting.BulletsPerShot += upgradeLevel.playerShooting.bulletsPerShotModifier;
+            shooting.BulletSpread += upgradeLevel.playerShooting.bulletSpreadModifier;
             playerUI.UpdateAmmoCount();
         }
         if (upgradeLevel.usesbulletPropersties)
