@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UI.Scripts.Misc_;
+using UI.Scripts.PauseMenu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,14 +16,13 @@ namespace UI.Scripts
         [SerializeField] private Canvas mainMobileUI;
         [SerializeField] private TMP_Text timeText;
         [SerializeField] private Image timerFill;
-        [SerializeField] private GameObject countdownText;
     
         [Header("Win/Loss Screen Items")]
         [SerializeField] private Canvas winLossScreen;
         [SerializeField] private TMP_Text winLossText;
         [SerializeField] private TMP_Text timerText;
         [SerializeField] private GameObject restartButton;
-
+        
         private Canvas _activeUI;
     
         private const float StartTime = 300;
@@ -87,31 +87,11 @@ namespace UI.Scripts
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        public void ReturnCountdown(int time)
-        {
-            StartCoroutine(Countdown(time));
-        }
-
-        private IEnumerator Countdown(int time)
-        {
-            countdownText.SetActive(true);
-
-            for (var i = time; i > 0; i--)
-            {
-                countdownText.GetComponent<TMP_Text>().text = i.ToString();
-                yield return new WaitForSecondsRealtime(1f);
-            }
-        
-            countdownText.SetActive(false);
-            Time.timeScale = 1;
-        }
-
         public void DisplayWinLoss(bool isLoss)
         {
             // Pause game
             Time.timeScale = 0;
             _countdown = false;
-            _timeValue = StartTime - _timeValue;
         
             // Display end screen
             _activeUI.enabled = false;
@@ -127,9 +107,17 @@ namespace UI.Scripts
             winLossText.text = isLoss ? "YOU LOSE" : "YOU WIN";
 
             // Time alive & display
-            float minutes = Mathf.FloorToInt(_timeValue / 60);
-            float seconds = Mathf.FloorToInt(_timeValue % 60);
-            timerText.text = "You survived: " + $"{minutes:00}:{seconds:00}";
+            timerText.text = "You survived: " + TimeSurvived();
+        }
+
+        public string TimeSurvived()
+        {
+            var tempTime = StartTime - _timeValue;
+            
+            float minutes = Mathf.FloorToInt(tempTime / 60);
+            float seconds = Mathf.FloorToInt(tempTime % 60);
+
+            return $"{minutes:00}:{seconds:00}";
         }
     }
 }

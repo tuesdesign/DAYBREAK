@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI.Scripts;
+using UI.Scripts.PauseMenu;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -25,6 +27,9 @@ public class EnemyBase : MonoBehaviour
 
     //public float GetDamage { get => damage; set => damage = value; }
 
+    
+    private PauseMenuManager _pauseManager;
+    
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -33,6 +38,8 @@ public class EnemyBase : MonoBehaviour
         curHealth = enemySO.maxHealth;
         curspeed = enemySO.speed;
         curdamage = enemySO.damage;
+        
+        _pauseManager = FindObjectOfType(typeof(PauseMenuManager)) as PauseMenuManager;
     }
 
     // Update is called once per frame
@@ -97,8 +104,10 @@ public class EnemyBase : MonoBehaviour
                 GameObject exp = Instantiate(enemySO.expDrop, this.transform);
                 exp.transform.parent = this.transform.parent;
             }
-            
         }
+        
+        // Add to kill counter
+        _pauseManager.killCounter += 1;
         
         Destroy(this.gameObject);
     }

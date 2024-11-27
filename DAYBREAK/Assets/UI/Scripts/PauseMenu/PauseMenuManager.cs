@@ -1,8 +1,10 @@
+using TMPro;
 using UI.Scripts.Misc_;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace UI.Scripts.PauseMenu
 {
@@ -12,15 +14,18 @@ namespace UI.Scripts.PauseMenu
         [SerializeField] private Canvas settingsCanvas;
         
         [SerializeField] private GameObject resumeButton;
+
+        [SerializeField] private TMP_Text timeValueText;
+        [SerializeField] private TMP_Text killValueText;
         
         private PlayerIA _playerInputActions;
         private InputAction _pauseMenu;
         
         private bool _isPaused;
+        public int killCounter;
         
         private PauseMenuAnimator _animator;
         private UIManager _manager;
-        
         private ControllerCheck _controllerCheck;
 
         private void Start()
@@ -28,6 +33,7 @@ namespace UI.Scripts.PauseMenu
             _animator = FindObjectOfType(typeof(PauseMenuAnimator)) as PauseMenuAnimator;
             _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
             _manager = FindObjectOfType(typeof(UIManager)) as UIManager;
+            killCounter = 0;
         }
         
         private void OnEnable()
@@ -51,7 +57,7 @@ namespace UI.Scripts.PauseMenu
         private void PauseGame(InputAction.CallbackContext ctx)
         {
             _isPaused = !_isPaused;
-
+            
             switch (_isPaused)
             {
                 case true:
@@ -66,8 +72,11 @@ namespace UI.Scripts.PauseMenu
         private void ActivateMenu()
         {
             Time.timeScale = 0;
-            _manager.StopAllCoroutines();
             AudioListener.pause = true;
+
+            killValueText.text = killCounter.ToString();
+            timeValueText.text = _manager.TimeSurvived();
+            
             pauseCanvas.enabled = true;
             settingsCanvas.enabled = true;
 
@@ -80,7 +89,7 @@ namespace UI.Scripts.PauseMenu
 
         private void DeactivateMenu()
         {
-            _manager.ReturnCountdown(3);
+            Time.timeScale = 1;
             AudioListener.pause = false;
             pauseCanvas.enabled = false;
             settingsCanvas.enabled = false;
