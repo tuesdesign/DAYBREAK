@@ -12,7 +12,6 @@ public class PlayerUI : MonoBehaviour
 
     [Tooltip("This is the health bar.")]
     [SerializeField] Slider healthBar1;
-    [SerializeField] Slider healthBar2;
     [Tooltip("This is the exp bar.")]
     [SerializeField] Slider expBar;
     [Tooltip("The text bar to describe how much ammo the player has in comparison to their max ammo")]
@@ -25,15 +24,12 @@ public class PlayerUI : MonoBehaviour
         playerExpHandler = GetComponent<PlayerExpHandler>();
         playerShooting = GetComponent<PlayerShooting>();
 
-        if (healthBar1 == null || healthBar2 == null || ammoTextBar == null || expBar == null)
+        if (healthBar1 == null || ammoTextBar == null || expBar == null)
             Debug.LogError("Missing variable assignment!");
         
         // Assign starting values
         healthBar1.maxValue = player.MaxHealth + player.maxHealthModifier;
         healthBar1.value = player.MaxHealth + player.maxHealthModifier;
-            
-        healthBar2.maxValue = player.MaxHealth + player.maxHealthModifier;
-        healthBar2.value = player.MaxHealth + player.maxHealthModifier;
 
         ammoTextBar.text = playerShooting.AmmoCount + " / " + (playerShooting.MaxAmmo + playerShooting.maxAmmoMod);
 
@@ -48,7 +44,6 @@ public class PlayerUI : MonoBehaviour
     private IEnumerator AnimateHealthBar()
     {
         healthBar1.maxValue = player.MaxHealth + player.maxHealthModifier;
-        healthBar2.maxValue = player.MaxHealth + player.maxHealthModifier;
         
         var animTime = 0f;
 
@@ -57,7 +52,6 @@ public class PlayerUI : MonoBehaviour
             animTime += Time.deltaTime;
             var lerpValue = animTime / 1.0f;
             healthBar1.value = Mathf.Lerp(healthBar1.value, player.CurHealth, lerpValue);
-            healthBar2.value = Mathf.Lerp(healthBar2.value, player.CurHealth, lerpValue);
             yield return null;
         }
     }
