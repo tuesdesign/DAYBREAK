@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da3fe4eefeb98f847b40af3fdd0db4ad, type: 3}
-  m_Name: WideSpread
+  m_Name: BulkUp
   m_EditorClassIdentifier: 
-  upgradeName: Wide Spread
-  maxLevel: 0
+  upgradeName: BulkUp
+  maxLevel: 3
   level: 0
   image: {fileID: 0}
-  description: Reload Time -- /n  Bullet Spread ++
+  description: Health +5 /n Move Speed -2
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 
-    usesBasePlayer: 0
+    usesBasePlayer: 1
     basePlayerStats:
-      maxHealthModifier: 0
-      healsOnApply: 0
-      moveSpeedIncrease: 0
+      maxHealthModifier: 5
+      healsOnApply: 1
+      moveSpeedIncrease: -2
       sheildMod: 0
       dodgeChanceMod: 0
       invincibilityFrameMod: 0
@@ -32,14 +32,14 @@ MonoBehaviour:
     expStats:
       expPickUPRadMod: 0
       expMultiplier: 0
-    usesShooting: 1
+    usesShooting: 0
     playerShooting:
       bulletSpeedModifier: 0
       shootDelayModifier: 0
       maxAmmoModifier: 0
-      reloadTimeModifier: -0.2
+      reloadTimeModifier: 0
       bulletsPerShotModifier: 0
-      bulletSpreadModifier: 5
+      bulletSpreadModifier: 0
     usesbulletPropersties: 0
     bulletProperties:
       damageMod: 0
@@ -56,11 +56,11 @@ MonoBehaviour:
       pierceAmount: 0
   - replacePrevUpgrade: 0
     description: 
-    usesBasePlayer: 0
+    usesBasePlayer: 1
     basePlayerStats:
-      maxHealthModifier: 0
-      healsOnApply: 0
-      moveSpeedIncrease: 0
+      maxHealthModifier: 5
+      healsOnApply: 1
+      moveSpeedIncrease: -2
       sheildMod: 0
       dodgeChanceMod: 0
       invincibilityFrameMod: 0
@@ -68,14 +68,14 @@ MonoBehaviour:
     expStats:
       expPickUPRadMod: 0
       expMultiplier: 0
-    usesShooting: 1
+    usesShooting: 0
     playerShooting:
       bulletSpeedModifier: 0
       shootDelayModifier: 0
       maxAmmoModifier: 0
-      reloadTimeModifier: -0.2
+      reloadTimeModifier: 0
       bulletsPerShotModifier: 0
-      bulletSpreadModifier: 5
+      bulletSpreadModifier: 0
     usesbulletPropersties: 0
     bulletProperties:
       damageMod: 0
@@ -92,11 +92,11 @@ MonoBehaviour:
       pierceAmount: 0
   - replacePrevUpgrade: 0
     description: 
-    usesBasePlayer: 0
+    usesBasePlayer: 1
     basePlayerStats:
-      maxHealthModifier: 0
-      healsOnApply: 0
-      moveSpeedIncrease: 0
+      maxHealthModifier: 5
+      healsOnApply: 1
+      moveSpeedIncrease: -2
       sheildMod: 0
       dodgeChanceMod: 0
       invincibilityFrameMod: 0
@@ -104,14 +104,14 @@ MonoBehaviour:
     expStats:
       expPickUPRadMod: 0
       expMultiplier: 0
-    usesShooting: 1
+    usesShooting: 0
     playerShooting:
       bulletSpeedModifier: 0
       shootDelayModifier: 0
       maxAmmoModifier: 0
-      reloadTimeModifier: -0.2
+      reloadTimeModifier: 0
       bulletsPerShotModifier: 0
-      bulletSpreadModifier: 5
+      bulletSpreadModifier: 0
     usesbulletPropersties: 0
     bulletProperties:
       damageMod: 0

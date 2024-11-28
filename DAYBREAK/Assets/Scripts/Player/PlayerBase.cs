@@ -21,6 +21,7 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] public float dodgeChange;
 
     bool canTakeDamage = true;
+    bool tickDamageActive = false;
     float invincibilityTime = 0.2f;
 
     [Tooltip("The player's movement speed")]
@@ -195,6 +196,22 @@ public class PlayerBase : MonoBehaviour
         {
             TakeDamage((int)collision.gameObject.GetComponent<EnemyBase>().GetDamage());
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && !tickDamageActive)
+        {
+            StartCoroutine(TickDamage((int)collision.gameObject.GetComponent<EnemyBase>().GetDamage()));
+            tickDamageActive = true;
+        }
+    }
+    IEnumerator TickDamage(int damage)
+    {
+        TakeDamage(damage);
+        yield return new WaitForSeconds(.75f);
+        
+        tickDamageActive = false;
     }
 
     IEnumerator InvincibilityFrames() //this coroutine runs for the amount of seconds that the player should be invincible for and then allows them to take damage

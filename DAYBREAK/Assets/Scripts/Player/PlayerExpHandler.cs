@@ -46,15 +46,17 @@ public class PlayerExpHandler : MonoBehaviour
     {
         exp -= levelIncrement;
         level++;
+        levelIncrement += 10;
         
         // INSERT A CALL TO SPAWN THE UPGRADE MENU AND PAUSE THE TIME  (ALSO ENSURE THAT AFTER SELECTING THE UPGRADE MENU THAT TIME REVERTS)
         _upgradeManagerMenu.PopulateMenu();
 
+        playerUI.UpdateExpBar();
         if (exp >= levelIncrement)
         {
             LevelUp();
         }
-        playerUI.UpdateExpBar();
+        
     }
 
     public void UpdateRadius(float amount)

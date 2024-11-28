@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8420890599565350286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5902021386002618215}
+  - component: {fileID: 3867192644220914854}
+  m_Layer: 0
+  m_Name: SpawningSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5902021386002618215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8420890599565350286}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3867192644220914854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8420890599565350286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e8c35b38716684784643579c84d0a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnGroups:
+  - duration: 5
+    spawnSpeed: 0.75
+    enemies:
+    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
+  - duration: 10
+    spawnSpeed: 1
+    enemies:
+    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
+  - duration: 5
+    spawnSpeed: 1
+    enemies:
+    - {fileID: 5392011093294169524, guid: 970c4a57aa0b3b04d84656bfd08e7e34, type: 3}
+  - duration: 15
+    spawnSpeed: 1
+    enemies:
+    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
+    - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
+    - {fileID: 5392011093294169524, guid: 970c4a57aa0b3b04d84656bfd08e7e34, type: 3}
+  - duration: 30
+    spawnSpeed: 3
+    enemies:
+    - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
+    - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
+  - duration: 60
+    spawnSpeed: 3
+    enemies:
+    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
+    - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
+    - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
+    - {fileID: 5392011093294169524, guid: 970c4a57aa0b3b04d84656bfd08e7e34, type: 3}
+  - duration: 60
+    spawnSpeed: 3
+    enemies:
+    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
+    - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
+    - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
+    - {fileID: 5392011093294169524, guid: 1562a638c3c926b4aa338b23deabe496, type: 3}
+    - {fileID: 5392011093294169524, guid: 02d720debd0ed984d90aee0959002e02, type: 3}
+  spawnDistance: 100
+  terrainGenerator: {fileID: 0}

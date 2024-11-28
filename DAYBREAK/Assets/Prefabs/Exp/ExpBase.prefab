@@ -189,6 +189,7 @@ MonoBehaviour:
   expAmount: 1
   speed: 1
   floatingExp: {fileID: 2699663615665350695, guid: 936fae8e5814dbd47a0e412ea61e55b7, type: 3}
+  pickupSound: {fileID: 8300000, guid: e1f4f3ac7156696459372d81faaf519e, type: 3}
 --- !u!135 &-6307302120932116995
 SphereCollider:
   m_ObjectHideFlags: 0

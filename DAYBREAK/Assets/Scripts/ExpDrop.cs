@@ -14,6 +14,8 @@ public class ExpDrop : MonoBehaviour
     GameObject player;
     bool givePlayerEXP = true;
 
+    public AudioClip pickupSound;
+
     private void Update()
     {
         if (moveToPlayer)
@@ -25,6 +27,8 @@ public class ExpDrop : MonoBehaviour
                 GetComponent<SphereCollider>().enabled = false;
                 Destroy(gameObject, .01f);
                 givePlayerEXP = false;
+
+                AudioSource.PlayClipAtPoint(pickupSound, this.transform.position);
                 
                 // Spawn UI floating text
                 GameObject expText = Instantiate(floatingExp, transform.position, floatingExp.transform.rotation) as GameObject;
