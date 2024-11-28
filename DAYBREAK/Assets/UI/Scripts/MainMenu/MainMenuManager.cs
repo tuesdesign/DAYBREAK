@@ -52,10 +52,7 @@ namespace UI.Scripts.MainMenu
             _autoScrollRect.menuOpen = true;
             
             if (_controllerCheck.connected)
-            {
-                var eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(character1Button, new BaseEventData(eventSystem));
-            }
+                _controllerCheck.SetSelectedButton(character1Button);
         }
     
         public void LoadScene(string sceneName)

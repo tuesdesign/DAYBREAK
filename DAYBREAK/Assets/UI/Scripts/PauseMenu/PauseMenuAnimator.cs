@@ -49,12 +49,9 @@ namespace UI.Scripts.PauseMenu
         {
             LeanTween.scale(settingsCanvas, Vector3.one, scaleDuration).setIgnoreTimeScale(true);
             inSettings = true;
-
+            
             if (_controllerCheck.connected)
-            {
-                var eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(musicButton, new BaseEventData(eventSystem));
-            }
+                _controllerCheck.SetSelectedButton(musicButton);
         }
         
         public void CloseSettings()
@@ -63,10 +60,7 @@ namespace UI.Scripts.PauseMenu
             inSettings = false;
             
             if (_controllerCheck.connected)
-            {
-                var eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(resumeButton, new BaseEventData(eventSystem));
-            }
+                _controllerCheck.SetSelectedButton(resumeButton);
         }
     }
 }

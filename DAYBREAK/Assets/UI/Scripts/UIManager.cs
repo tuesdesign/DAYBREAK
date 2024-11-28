@@ -97,12 +97,9 @@ namespace UI.Scripts
             // Display end screen
             _activeUI.enabled = false;
             winLossScreen.enabled = true;
-
+            
             if (_controllerCheck.connected)
-            {
-                var eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(shareButton, new BaseEventData(eventSystem));
-            }
+                _controllerCheck.SetSelectedButton(shareButton);
 
             // Change win/loss text
             winLossText.text = isLoss ? "YOU LOSE" : "YOU WIN";

@@ -58,10 +58,7 @@ namespace UI.Scripts.MainMenu
             LeanTween.scale(settingsCanvas, Vector3.one, scaleDuration).setIgnoreTimeScale(true);
 
             if (_controllerCheck.connected)
-            {
-                var eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(musicButton, new BaseEventData(eventSystem));
-            }
+                _controllerCheck.SetSelectedButton(musicButton);
         }
         
         public void CloseSettings()
@@ -70,10 +67,7 @@ namespace UI.Scripts.MainMenu
             LeanTween.scale(settingsCanvas, Vector3.zero, scaleDuration).setIgnoreTimeScale(true);
             
             if (_controllerCheck.connected)
-            {
-                var eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(playButton, new BaseEventData(eventSystem));
-            }
+                _controllerCheck.SetSelectedButton(playButton);
         }
     }
 }

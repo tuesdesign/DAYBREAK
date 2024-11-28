@@ -81,10 +81,7 @@ namespace UI.Scripts.PauseMenu
             settingsCanvas.enabled = true;
 
             if (_controllerCheck.connected)
-            {
-                var eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(resumeButton, new BaseEventData(eventSystem));
-            }
+                _controllerCheck.SetSelectedButton(resumeButton);
         }
 
         private void DeactivateMenu()

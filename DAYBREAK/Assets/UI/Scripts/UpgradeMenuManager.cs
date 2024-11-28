@@ -37,13 +37,8 @@ namespace UI.Scripts
         {
             _upgradeObject = upgradeHandler.GetComponent<UpgradeHandling>();
             _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
-
-            if (_controllerCheck != null && _controllerCheck.connected)
-            {
-                var eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(upgrade1Button, new BaseEventData(eventSystem));
-            }
         }
+        
         public void PopulateMenu()
         {
             var index = Random.Range(0, _upgradeObject.FullupgradeList.Count - 1);
@@ -70,7 +65,10 @@ namespace UI.Scripts
                                     _upgradeObject.FullupgradeList[index].description;
             image3 = _upgradeObject.FullupgradeList[index].image;
             _upgrade3 = _upgradeObject.FullupgradeList[index];
-
+            
+            if (_controllerCheck.connected)
+                _controllerCheck.SetSelectedButton(upgrade1Button);
+            
             upgradeMenu.enabled = true;
             Time.timeScale = 0;
         }

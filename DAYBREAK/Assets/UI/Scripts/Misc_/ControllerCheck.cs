@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace UI.Scripts.Misc_
@@ -25,8 +27,14 @@ namespace UI.Scripts.Misc_
                     _ => connected
                 };
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(15f);
             }
+        }
+
+        public void SetSelectedButton(GameObject button)
+        {
+            var eventSystem = EventSystem.current;
+            eventSystem.SetSelectedGameObject(button, new BaseEventData(eventSystem));
         }
     }
 }
