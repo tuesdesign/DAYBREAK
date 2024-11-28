@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLevel: 0
   level: 2
   image: {fileID: 0}
-  description: Shoot Speed down  /n Reload Speed up
+  description: Lowers Shoot Speed, but increases Reload Speed
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 

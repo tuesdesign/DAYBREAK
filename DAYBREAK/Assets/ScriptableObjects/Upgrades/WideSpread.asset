@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLevel: 0
   level: 0
   image: {fileID: 0}
-  description: Reload Time -- /n  Bullet Spread ++
+  description: Decreases Reload Time while increasing Bullet Spread
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 

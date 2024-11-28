@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLevel: 3
   level: 0
   image: {fileID: 0}
-  description: Bullet Speed ++ /n Bullet Reload ++
+  description: Increases Bullet Speed and Bullet Reload
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 

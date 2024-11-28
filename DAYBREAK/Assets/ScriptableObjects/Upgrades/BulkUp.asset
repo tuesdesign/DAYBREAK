@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLevel: 3
   level: 0
   image: {fileID: 0}
-  description: Health +5 /n Move Speed -2
+  description: Increases Health (+5), but lowers Move Speed (-2)
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 
