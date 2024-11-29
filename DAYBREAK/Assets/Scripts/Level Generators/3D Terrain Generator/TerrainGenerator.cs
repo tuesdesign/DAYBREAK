@@ -529,7 +529,7 @@ public class TerrainGenerator : MonoBehaviour
         return newAR;
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         if (!_terrain || !terrainDataObject) return;
 
@@ -572,7 +572,7 @@ public class TerrainGenerator : MonoBehaviour
                 lastPos = newPos;
             }
         }
-    }
+    }*/
 
     #region structs
 
