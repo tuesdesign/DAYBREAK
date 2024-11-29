@@ -29,6 +29,7 @@ namespace UI.Scripts
         private const float StartTime = 300;
         private float _timeValue;
         private bool _countdown;
+        private bool _displayEndScreen = true;
         
         private ControllerCheck _controllerCheck;
 
@@ -36,7 +37,6 @@ namespace UI.Scripts
         {
             // Determine which UI to display
             _activeUI = SystemInfo.deviceType == DeviceType.Handheld ? mainMobileUI : mainPCUI;
-
             Time.timeScale = 1;
         }
 
@@ -45,6 +45,7 @@ namespace UI.Scripts
             _activeUI.enabled = true;
             _timeValue = StartTime;
             _countdown = true;
+            _displayEndScreen = true;
             _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
         }
 
@@ -57,7 +58,8 @@ namespace UI.Scripts
                     break;
                 
                 // Time ran out -> Player wins
-                case <= 0:
+                case <= 0 when _displayEndScreen:
+                    _displayEndScreen = false;
                     _timeValue = 0;
                     DisplayWinLoss(false);
                     break;
