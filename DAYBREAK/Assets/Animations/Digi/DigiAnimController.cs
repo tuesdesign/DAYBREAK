@@ -11,18 +11,18 @@ public class DigiAnimController : MonoBehaviour
         animator = GetComponent<Animator>();    
     }
 
-    bool isMoving {
+    public bool isMoving {
         get { return animator.GetBool("isMoving"); }
         set { animator.SetBool("isMoving", value); }
     }
 
-    bool isShooting
+    public bool isShooting
     {
         get { return animator.GetBool("isShooting"); }
         set { animator.SetBool("isShooting", value); }
     }
 
-    Vector2 moveDirection
+    public Vector2 moveDirection
     {
         get { return new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY")); }
 

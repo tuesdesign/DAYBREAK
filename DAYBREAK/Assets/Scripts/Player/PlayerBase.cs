@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UI.Scripts;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class PlayerBase : MonoBehaviour
     PlayerIA _playerInputActions;
     PlayerUI _playerUI;
     PlayerShooting _playerShooting;
+    DigiAnimController _playerAnimController;
 
     Vector2 aimPosition = Vector2.zero;
     Vector2 movePosition = Vector2.zero;
@@ -48,6 +50,7 @@ public class PlayerBase : MonoBehaviour
         _playerInputActions = new PlayerIA();
         _playerInputActions.Enable();
         _rb = GetComponent<Rigidbody>();
+        _playerAnimController = GetComponentInChildren<DigiAnimController>();
 
         _playerUI = GetComponent<PlayerUI>();
         _playerShooting = GetComponent<PlayerShooting>();
@@ -105,6 +108,11 @@ public class PlayerBase : MonoBehaviour
             Vector3 movement = new Vector3(movePosition.x - movePosition.y, 0f, movePosition.x + movePosition.y).normalized * speed; //iso movement 
             _rb.AddForce(movement);
         }
+
+        //if the player is moving, play the moving animation
+        _playerAnimController.isMoving = movePosition != Vector2.zero;
+        _playerAnimController.moveDirection = movePosition;
+        print(movePosition);
     }
 
     public void ApplyCharacterStats(PlayerSO playerStats)
