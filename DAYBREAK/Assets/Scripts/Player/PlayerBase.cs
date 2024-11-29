@@ -100,7 +100,7 @@ public class PlayerBase : MonoBehaviour
             Vector3 forward = Vector3.Cross(right, hit.normal);
 
             // Move the player with relation to the ground
-            _rb.velocity = forward * speed;
+            _rb.velocity = forward * (speed + speedModifier);
         }
         else
         {

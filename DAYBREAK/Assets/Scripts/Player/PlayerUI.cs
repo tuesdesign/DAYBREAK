@@ -63,6 +63,7 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateExpBar()
     {
+        expBar.maxValue = playerExpHandler.LevelIncrement;
         StartCoroutine(AnimateExpBar());
     }
 

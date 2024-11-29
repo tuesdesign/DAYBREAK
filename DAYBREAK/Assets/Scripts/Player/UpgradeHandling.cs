@@ -36,7 +36,7 @@ public class UpgradeHandling : MonoBehaviour
         if (existingUpgrade != null)
         {
             // Increase the level of the existing upgrade in the list
-            existingUpgrade.level++;
+            //existingUpgrade.level++; REINSTATE LATER ALANNIS
             ApplyUpgrade(existingUpgrade);  // Apply changes to the stored instance
         }
         else

@@ -52,7 +52,7 @@ public class PlayerShooting : MonoBehaviour
     [HideInInspector] public float reloadTimeMod = 0 ;
     [HideInInspector] public int maxAmmoMod = 0;
 
-    DigiAnimController _playerAnimController;
+
 
 
     private Canvas reloadBar;
@@ -71,7 +71,6 @@ public class PlayerShooting : MonoBehaviour
         _playerInputActions = new PlayerIA();
         _playerInputActions.Enable();
         _playerUI = GetComponent<PlayerUI>();
-        _playerAnimController = GetComponentInChildren<DigiAnimController>();
 
         ammoCount = maxAmmo;
         canShoot = true;
@@ -222,7 +221,6 @@ public class PlayerShooting : MonoBehaviour
         if (shootingCoroutine == null)
         {
             shootingCoroutine = StartCoroutine(ShootContinuously());
-            _playerAnimController.isShooting = true;
         }
     }
 
@@ -232,7 +230,6 @@ public class PlayerShooting : MonoBehaviour
         {
             StopCoroutine(shootingCoroutine);
             shootingCoroutine = null;
-            _playerAnimController.isShooting = false;
         }
     }
 

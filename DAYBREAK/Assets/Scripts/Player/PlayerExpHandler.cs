@@ -56,7 +56,7 @@ public class PlayerExpHandler : MonoBehaviour
         {
             LevelUp();
         }
-        
+        playerUI.UpdateExpBar();
     }
 
     public void UpdateRadius(float amount)
