@@ -53,7 +53,8 @@ public class SpawningSystem : MonoBehaviour
     }
 
     void Spawn()
-    {        
+    {
+        Transform pTransform = FindObjectOfType<PlayerBase>().gameObject.transform;
         GameObject sEnemy = spawnGroups[index].enemies[Random.Range(0, spawnGroups[index].enemies.Count)];
 
         // Randomly select a direction around the player
@@ -61,10 +62,10 @@ public class SpawningSystem : MonoBehaviour
         randomDirection.y = 0; // Keep the enemy on the same plane as the player
 
         // Calculate the spawn position based on the player's position and the chosen direction
-        Vector3 spawnPosition = terrainGenerator ? terrainGenerator.GetNearestSpawnPos(playerTransform.position + randomDirection * spawnDistance) :
-            playerTransform.position + randomDirection * spawnDistance;
-            
-        
+        //Vector3 spawnPosition = terrainGenerator ? terrainGenerator.GetNearestSpawnPos(pTransform.position + randomDirection * spawnDistance) : pTransform.position + randomDirection * spawnDistance;
+
+        Vector3 spawnPosition = pTransform.position + (randomDirection * spawnDistance);
+
         // Spawn the enemy at the calculated position with no rotation
         Instantiate(sEnemy, spawnPosition, Quaternion.identity);
 
