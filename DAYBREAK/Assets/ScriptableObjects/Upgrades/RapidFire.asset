@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RapidFire
   m_EditorClassIdentifier: 
   upgradeName: Rapid Fire
-  maxLevel: 0
-  level: 2
+  maxLevel: 10
+  level: 0
   image: {fileID: 0}
   description: Lowers Shoot Speed, but increases Reload Speed
   upgradeLevels:

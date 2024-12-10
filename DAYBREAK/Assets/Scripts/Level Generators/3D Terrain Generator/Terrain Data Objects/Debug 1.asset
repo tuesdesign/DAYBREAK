@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Debug 1
   m_EditorClassIdentifier: 
   seed: Temp Seed!
-  mapSize: {x: 500, y: 500}
+  mapSize: {x: 2000, y: 2000}
   biomes:
   - name: Biome 1
     skipBiome: 0

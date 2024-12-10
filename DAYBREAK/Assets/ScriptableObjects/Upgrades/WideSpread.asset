@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: WideSpread
   m_EditorClassIdentifier: 
   upgradeName: Wide Spread
-  maxLevel: 0
-  level: 10
+  maxLevel: 10
+  level: 0
   image: {fileID: 0}
   description: Decreases Reload Time while increasing Bullet Spread
   upgradeLevels:
