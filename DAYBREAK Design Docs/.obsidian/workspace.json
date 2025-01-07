@@ -21,8 +21,21 @@
               "icon": "lucide-file",
               "title": "List to make"
             }
+          },
+          {
+            "id": "f320dbd2a0014753",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.4"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.4"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -164,7 +177,7 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "c5b7dfe186127307",
+  "active": "f320dbd2a0014753",
   "lastOpenFiles": [
     "Design/Art Direction/FVX Notes.md",
     "Kanban/Kanban Board.md",

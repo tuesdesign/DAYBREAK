@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -10,25 +8,11 @@ namespace UI.Scripts.Misc_
     {
         public bool connected;
 
-        private void Awake() {
-            StartCoroutine(CheckForControllers());
-        }
-
-        private IEnumerator CheckForControllers() 
+        private void Update()
         {
-            while (true) 
-            {
-                var controllers = Gamepad.all.Count;
-
-                connected = connected switch
-                {
-                    false when controllers > 0 => true,
-                    true when controllers == 0 => false,
-                    _ => connected
-                };
-
-                yield return new WaitForSeconds(15f);
-            }
+            var controllers = Gamepad.all.Count;
+                
+            connected = controllers != 0;
         }
 
         public void SetSelectedButton(GameObject button)

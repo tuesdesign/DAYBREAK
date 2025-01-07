@@ -1,12 +1,6 @@
-using System.Collections;
-using UI.Scripts.MainMenu;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-
-// Add the script to your Dropdown Menu Template Object via (Your Dropdown Button > Template)
 
 namespace UI.Scripts.Misc_
 {

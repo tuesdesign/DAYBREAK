@@ -15,27 +15,43 @@ namespace UI.Scripts.MainMenu
         [SerializeField] private Canvas characterSelect;
         [SerializeField] private TMP_Text currentTime;
         
+        [SerializeField] private GameObject playButton;
         [SerializeField] private GameObject character1Button;
 
         private AutoScrollRect _autoScrollRect;
         
         private ControllerCheck _controllerCheck;
+        private bool _existingController;
 
-        private void Start()
-        {
-            _autoScrollRect = FindObjectOfType(typeof(AutoScrollRect)) as AutoScrollRect;
-            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
-        }
-        
         private void Awake()
         {
             mainMenu.enabled = true;
             characterSelect.enabled = false;
         }
+        
+        private void Start()
+        {
+            _autoScrollRect = FindObjectOfType(typeof(AutoScrollRect)) as AutoScrollRect;
+            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
+        }
 
         private void Update()
         {
             currentTime.text = DateTime.Now.ToLongDateString();
+
+            if (_existingController) return;
+            
+            if (mainMenu.enabled && _controllerCheck.connected)
+            {
+                _controllerCheck.SetSelectedButton(playButton);
+                _existingController = true;
+            }
+                
+            if (characterSelect.enabled && _controllerCheck.connected)
+            {
+                _controllerCheck.SetSelectedButton(character1Button);
+                _existingController = true;
+            }
         }
 
         public void OpenCharacterSelect()
@@ -50,9 +66,12 @@ namespace UI.Scripts.MainMenu
             mainMenu.enabled = false;
             characterSelect.enabled = true;
             _autoScrollRect.menuOpen = true;
-            
+
             if (_controllerCheck.connected)
+            {
                 _controllerCheck.SetSelectedButton(character1Button);
+                _existingController = true;
+            }
         }
     
         public void LoadScene(string sceneName)
@@ -65,6 +84,11 @@ namespace UI.Scripts.MainMenu
         {
             yield return new WaitForSecondsRealtime(0.2f);
             SceneManager.LoadScene(sceneName);
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
         }
     }
 }

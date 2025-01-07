@@ -3,8 +3,6 @@ using UI.Scripts.Misc_;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 namespace UI.Scripts.PauseMenu
 {
@@ -56,6 +54,8 @@ namespace UI.Scripts.PauseMenu
 
         private void PauseGame(InputAction.CallbackContext ctx)
         {
+            if (_manager.winLossScreen.enabled) return;
+            
             _isPaused = !_isPaused;
             
             switch (_isPaused)

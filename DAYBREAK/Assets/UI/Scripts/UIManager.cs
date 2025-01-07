@@ -18,7 +18,7 @@ namespace UI.Scripts
         [SerializeField] private Image timerFill;
     
         [Header("Win/Loss Screen Items")]
-        [SerializeField] private Canvas winLossScreen;
+        [SerializeField] public Canvas winLossScreen;
         [SerializeField] private TMP_Text winLossText;
         [SerializeField] private TMP_Text timerText;
         [SerializeField] private GameObject shareButton;
