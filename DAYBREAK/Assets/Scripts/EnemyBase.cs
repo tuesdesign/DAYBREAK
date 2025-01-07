@@ -18,6 +18,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] float curspeed;
     Vector3 movePos = Vector2.zero;
 
+    [SerializeField] private GameObject floatingDamageNum;
+    
     [SerializeField] List<AudioClip> hurtSounds = new List<AudioClip>();
 
     //enemy effects
@@ -89,6 +91,11 @@ public class EnemyBase : MonoBehaviour
     {
         curHealth -= damage;
         PlaySoundEffect(hurtSounds);
+        
+        // Spawn UI floating damage numbers
+        GameObject expText = Instantiate(floatingDamageNum, transform.position, floatingDamageNum.transform.rotation) as GameObject;
+        expText.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+        
         if (curHealth <= 0)
         {
             Die();

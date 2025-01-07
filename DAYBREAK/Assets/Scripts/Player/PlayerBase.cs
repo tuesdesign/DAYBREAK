@@ -125,7 +125,6 @@ public class PlayerBase : MonoBehaviour
         _playerShooting.BulletType = playerStats.bulletType;
         _playerShooting.BulletSpeed = playerStats.bulletspeed;
         _playerShooting.ShootDelay = playerStats.shootDelay;
-        
     }
 
     #region Health Related Code (Heal, Damage, Death)
@@ -226,6 +225,5 @@ public class PlayerBase : MonoBehaviour
     {
         yield return new WaitForSeconds(invincibilityTime);
         canTakeDamage = true;
-
     }
 }

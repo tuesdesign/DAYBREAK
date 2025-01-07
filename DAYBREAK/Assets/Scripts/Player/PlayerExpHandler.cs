@@ -21,7 +21,6 @@ public class PlayerExpHandler : MonoBehaviour
 
     [SerializeField] private UpgradeManagerMenu _upgradeManagerMenu;
 
-
     public int Exp { get => exp; set => exp = value; }
     public int Level { get => level; set => level = value; }
     public int LevelIncrement { get => levelIncrement; set => levelIncrement = value; }

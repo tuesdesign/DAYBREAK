@@ -31,8 +31,8 @@ public class ExpDrop : MonoBehaviour
                 AudioSource.PlayClipAtPoint(pickupSound, this.transform.position);
                 
                 // Spawn UI floating text
-                GameObject expText = Instantiate(floatingExp, transform.position, floatingExp.transform.rotation) as GameObject;
-                expText.transform.GetChild(0).GetComponent<TextMesh>().text = expAmount.ToString();
+                //GameObject expText = Instantiate(floatingExp, transform.position, floatingExp.transform.rotation) as GameObject;
+                //expText.transform.GetChild(0).GetComponent<TextMesh>().text = expAmount.ToString();
             }
         }
     }
