@@ -20,15 +20,15 @@ MonoBehaviour:
   biomeSeperation: 5
   biomePaintSeperation: 10
   structureDensity: 1
-  structureEdgeBuffer: 10
+  structureEdgeBuffer: 50
   structureEdgeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0

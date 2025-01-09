@@ -294,7 +294,10 @@ public class TerrainGenerator : MonoBehaviour
 
             for (int biome = 0; biome < map.biomes.Length; biome++)
             {
-                float weight = _terrainMap.weightMap[Mathf.RoundToInt(sMapLocal.x), Mathf.RoundToInt(sMapLocal.y), biome];
+                float weight = _terrainMap.weightMap[
+                    Mathf.Clamp(Mathf.RoundToInt(sMapLocal.x), 0, _terrainMap.weightMap.GetLength(0) - 1),
+                    Mathf.Clamp(Mathf.RoundToInt(sMapLocal.y), 0, _terrainMap.weightMap.GetLength(1) - 1),
+                    biome];
 
                 if (dominantBiomeWeight < weight)
                 {
