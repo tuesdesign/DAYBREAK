@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7988c70899e08814e852050f16ef1021, type: 3}
+  m_Name: Alannis' Terrain
+  m_EditorClassIdentifier: 
+  seed: Temp Seed!
+  mapSize: {x: 500, y: 500}
+  biomes:
+  - {fileID: 11400000, guid: 792be8e275ab02e4196c5b9b800cee89, type: 2}
+  - {fileID: 11400000, guid: af79ffe0f87f21145bdc82f609dbee08, type: 2}
+  biomeSeperation: 5
+  biomePaintSeperation: 2
+  structureDensity: 1
+  structureEdgeBuffer: 10
+  structureEdgeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  structureSeperationBuffer: 25
+  structureElevationAboveWater: 0
+  waterLevel: 0
+  islandSize: 200
+  islandSlope:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  islandSlopeStrength: 0.1
+  islandBorderRoughness: 0.1
+  islandBorderRoughnessStrength: 0.1
