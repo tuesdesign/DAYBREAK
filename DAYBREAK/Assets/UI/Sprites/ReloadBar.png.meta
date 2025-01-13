@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c09a70e4da2b97c4b8ea2842725d3789
+guid: e1384b4b738b64f4693db97c38ac38f8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 2
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -123,22 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AmmoCountBackground_0
+      name: ReloadBar_0
       rect:
         serializedVersion: 2
-        x: 37
+        x: 11
+        y: 41
+        width: 162
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 0, z: 18, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1209c7a02de8e645ad31ecca6bed0b7
+      internalID: -1156192603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReloadBar_1
+      rect:
+        serializedVersion: 2
+        x: 2
         y: 2
-        width: 64
+        width: 172
         height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1163ee787a35b5d409224db506c54c02
-      internalID: 1020393690
+      spriteID: 5b491c720cfc23d4abe48e6f9c62bee6
+      internalID: 537395090
       vertices: []
       indices: 
       edges: []
@@ -146,7 +167,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4ea34646a49570d4baad8e539d555e65
+    spriteID: a9fc26727d0b19441a1bbae9c03a9f96
     internalID: 0
     vertices: []
     indices: 
@@ -154,7 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AmmoCountBackground_0: 1020393690
+      ReloadBar_0: -1156192603
+      ReloadBar_1: 537395090
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
