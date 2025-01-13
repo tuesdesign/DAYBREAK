@@ -65,6 +65,11 @@ public class PlayerShooting : MonoBehaviour
     public int BulletsPerShot { get => bulletsPerShot; set => bulletsPerShot = value; }
     public float BulletSpread { get => bulletSpread; set => bulletSpread = value; }
 
+    private void Awake()
+    {
+        ammoCount = maxAmmo;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +77,6 @@ public class PlayerShooting : MonoBehaviour
         _playerInputActions.Enable();
         _playerUI = GetComponent<PlayerUI>();
 
-        ammoCount = maxAmmo;
         canShoot = true;
         
         reloadBar = FindObjectOfType<Canvas>();

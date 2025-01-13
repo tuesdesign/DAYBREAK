@@ -31,7 +31,7 @@ public class PlayerUI : MonoBehaviour
         healthBar1.maxValue = player.MaxHealth + player.maxHealthModifier;
         healthBar1.value = player.MaxHealth + player.maxHealthModifier;
 
-        ammoTextBar.text = playerShooting.AmmoCount + " / " + (playerShooting.MaxAmmo + playerShooting.maxAmmoMod);
+        ammoTextBar.text = playerShooting.AmmoCount + "/" + (playerShooting.MaxAmmo + playerShooting.maxAmmoMod);
 
         expBar.maxValue = playerExpHandler.LevelIncrement;
         expBar.value = playerExpHandler.Exp;
@@ -58,7 +58,7 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateAmmoCount()
     {
-        ammoTextBar.text = playerShooting.AmmoCount + " / " + (playerShooting.MaxAmmo+ playerShooting.maxAmmoMod);
+        ammoTextBar.text = playerShooting.AmmoCount + "/" + (playerShooting.MaxAmmo+ playerShooting.maxAmmoMod);
     }
 
     public void UpdateExpBar()
