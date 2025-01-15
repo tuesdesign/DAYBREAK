@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace UI.Scripts.SettingsMenu
 {
@@ -13,6 +14,7 @@ namespace UI.Scripts.SettingsMenu
     public class SettingsMenuButtonEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler, ISubmitHandler
     {
         [SerializeField] private GameObject circleImage;
+        [SerializeField] private GameObject backgroundImage;
         [SerializeField] private string settingPlayerPref;
         
         private SettingState _settingState;
@@ -46,11 +48,11 @@ namespace UI.Scripts.SettingsMenu
             switch (_settingState)
             {
                 case SettingState.On:
-                    _animator.ButtonClick(circleImage, true);
+                    _animator.ButtonClick(gameObject, circleImage, backgroundImage, true);
                     _settingState = SettingState.Off;
                     break;
                 case SettingState.Off:
-                    _animator.ButtonClick(circleImage, false);
+                    _animator.ButtonClick(gameObject, circleImage, backgroundImage, false);
                     _settingState = SettingState.On;
                     break;
             }
@@ -71,11 +73,11 @@ namespace UI.Scripts.SettingsMenu
             switch (_settingState)
             {
                 case SettingState.On:
-                    _animator.ButtonClick(circleImage, true);
+                    _animator.ButtonClick(gameObject, circleImage, backgroundImage, true);
                     _settingState = SettingState.Off;
                     break;
                 case SettingState.Off:
-                    _animator.ButtonClick(circleImage, false);
+                    _animator.ButtonClick(gameObject, circleImage, backgroundImage, false);
                     _settingState = SettingState.On;
                     break;
             }
@@ -86,11 +88,11 @@ namespace UI.Scripts.SettingsMenu
             switch (_settingInt)
             {
                 case 0:
-                    _animator.ButtonClick(circleImage, true);
+                    _animator.ButtonClick(gameObject, circleImage, backgroundImage, true);
                     _settingState = SettingState.Off;
                     break;
                 case 1:
-                    _animator.ButtonClick(circleImage, false);
+                    _animator.ButtonClick(gameObject, circleImage,backgroundImage, false);
                     _settingState = SettingState.On;
                     break;
             }

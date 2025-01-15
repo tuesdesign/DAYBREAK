@@ -56,10 +56,15 @@ namespace UI.Scripts.MainMenu
 
         public void OpenCharacterSelect()
         {
-            StartCoroutine(CharacterSelect());
+            StartCoroutine(CharacterSelectOpen());
+        }
+        
+        public void CloseCharacterSelect()
+        {
+            StartCoroutine(CharacterSelectClose());
         }
 
-        private IEnumerator CharacterSelect()
+        private IEnumerator CharacterSelectOpen()
         {
             yield return new WaitForSecondsRealtime(0.2f);
             
@@ -70,6 +75,21 @@ namespace UI.Scripts.MainMenu
             if (_controllerCheck.connected)
             {
                 _controllerCheck.SetSelectedButton(character1Button);
+                _existingController = true;
+            }
+        }
+        
+        private IEnumerator CharacterSelectClose()
+        {
+            yield return new WaitForSecondsRealtime(0.2f);
+            
+            mainMenu.enabled = true;
+            characterSelect.enabled = false;
+            _autoScrollRect.menuOpen = false;
+
+            if (_controllerCheck.connected)
+            {
+                _controllerCheck.SetSelectedButton(playButton);
                 _existingController = true;
             }
         }

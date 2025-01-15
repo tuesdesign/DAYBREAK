@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +9,8 @@ namespace UI.Scripts.SettingsMenu
         [SerializeField] private float slideDuration;
         [SerializeField] private Sprite onImage;
         [SerializeField] private Sprite offImage;
+        [SerializeField] private Sprite onBgImage;
+        [SerializeField] private Sprite offBgImage;
         
         private bool _isClick;
             
@@ -25,21 +26,23 @@ namespace UI.Scripts.SettingsMenu
                 LeanTween.scale(go, Vector3.one, hoverDuration).setIgnoreTimeScale(true);
         }
     
-        public void ButtonClick(GameObject go, bool slideLeft)
+        public void ButtonClick(GameObject go, GameObject circle, GameObject background, bool slideLeft)
         {
             _isClick = true;
 
             if (slideLeft)
             {
-                Debug.Log("Left");
-                LeanTween.moveLocalX(go, -45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
-                go.GetComponent<Image>().sprite = offImage;
+                LeanTween.moveLocalX(circle, -45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
+                LeanTween.scale(go, Vector3.one, hoverDuration).setIgnoreTimeScale(true);
+                circle.GetComponent<Image>().sprite = offImage;
+                background.GetComponent<Image>().sprite = offBgImage;
             }
             else
             {
-                Debug.Log("Right");
-                LeanTween.moveLocalX(go, 45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
-                go.GetComponent<Image>().sprite = onImage;
+                LeanTween.moveLocalX(circle, 45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
+                LeanTween.scale(go, Vector3.one, hoverDuration).setIgnoreTimeScale(true);
+                circle.GetComponent<Image>().sprite = onImage;
+                background.GetComponent<Image>().sprite = onBgImage;
             }
         }
 

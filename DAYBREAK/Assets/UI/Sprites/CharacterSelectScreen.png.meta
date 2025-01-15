@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ad9371e269fb8dd45914462393e304a8
+guid: 62173ba7927b1734098c30a53b675293
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,22 +123,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ResetButton_0
+      name: CharacterSelectScreen_0
       rect:
         serializedVersion: 2
-        x: 242
-        y: 212
-        width: 138
-        height: 120
+        x: 15
+        y: 2069
+        width: 1462
+        height: 1138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3741129e351061409cf2430e49e821c
-      internalID: -1778784725
+      spriteID: b8bd0cf480f9cbe429b7d37aaeba199d
+      internalID: -1039803553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSelectScreen_1
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 3
+        width: 1444
+        height: 3204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88aafc160a523554595dea3c711c105a
+      internalID: 1003037326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSelectScreen_2
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 779
+        width: 1462
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32cf682fccc703b4b9e93098e4b7e8fd
+      internalID: -1398497974
       vertices: []
       indices: 
       edges: []
@@ -146,7 +188,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e8b43982a12630d4a800a8ea9a0b612d
+    spriteID: 1041e22b21ffecd49a4b93beb3909c9f
     internalID: 0
     vertices: []
     indices: 
@@ -154,7 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ResetButton_0: -1778784725
+      CharacterSelectScreen_0: -1039803553
+      CharacterSelectScreen_1: 1003037326
+      CharacterSelectScreen_2: -1398497974
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
