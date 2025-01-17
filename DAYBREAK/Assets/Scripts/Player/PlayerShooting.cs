@@ -22,7 +22,7 @@ public class PlayerShooting : MonoBehaviour
     [Tooltip("should you use twinstick controls \n if on it uses left and right analog sticks \n if off it only uses the move direction")]
     [SerializeField] bool twinStick = true;
 
-    [Tooltip("The time in seconds betweenshots")]
+    [Tooltip("The time in seconds between shots")]
     [SerializeField] float shootDelay = 0.5f;
     [Tooltip("the prefab used for the bullet")]
     [SerializeField] GameObject bulletType;
@@ -105,7 +105,6 @@ public class PlayerShooting : MonoBehaviour
     }
     private void Shoot()
     {
-
         if (canShoot && hasAmmo) //if can shoot and has ammo
         {
             PlaySoundEffect(shootSounds);
@@ -117,6 +116,8 @@ public class PlayerShooting : MonoBehaviour
             Vector2 inputDirection = playerShootActions.ReadValue<Vector2>();
             inputDirection = ConvertToIsometric(inputDirection);
 
+            ammoCount--;
+            
             if (bulletsPerShot == 1)
             {
 
@@ -126,13 +127,12 @@ public class PlayerShooting : MonoBehaviour
 
                 Destroy(b, 10);
 
-                ammoCount--;
+                //ammoCount--;
 
                 if (ammoCount <= 0)
                 {
                     hasAmmo = false;
                     StartCoroutine(ReloadTiming());
-        
                 }
             }
             else
@@ -157,8 +157,8 @@ public class PlayerShooting : MonoBehaviour
 
                     // Destroy bullet after 10 seconds
                     Destroy(b, 10);
-
-                    ammoCount--;
+                    
+                    //ammoCount--;
 
                     if (ammoCount <= 0)
                     {
@@ -170,13 +170,14 @@ public class PlayerShooting : MonoBehaviour
                 }
             }
             
-            
             canShoot = false;
             StartCoroutine(ShootTiming());
-
         }
        
         _playerUI.UpdateAmmoCount();
+        
+        // Update Ammo UI Images
+        _playerUI.UpdateAmmoDisplayRemove();
     }
 
     void ToggleTwinstick()
@@ -275,6 +276,8 @@ public class PlayerShooting : MonoBehaviour
     {
         if (isReloading)
         {
+            _playerUI.UpdateAmmoDisplayAdd();
+            
             ammoCount++;
             yield return new WaitForSeconds((reloadTime+reloadTimeMod)/ (maxAmmo+maxAmmoMod));
             
@@ -282,13 +285,11 @@ public class PlayerShooting : MonoBehaviour
             _playerUI.UpdateAmmoCount();
             
             StartCoroutine(ReloadTick());
-
         }
         else
         {
             PlaySoundEffect(reloadStopSound);
             yield return new WaitForSeconds(reloadTime + reloadTimeMod);
-            
         }
     }
 }
