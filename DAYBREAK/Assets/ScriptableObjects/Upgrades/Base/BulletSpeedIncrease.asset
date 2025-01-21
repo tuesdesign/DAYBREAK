@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLevel: 10
   level: 0
   image: {fileID: 0}
-  description: 
+  description: Incrases the speed of bullets
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 

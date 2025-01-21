@@ -37,7 +37,7 @@ MonoBehaviour:
       bulletSpeedModifier: 0
       shootDelayModifier: -0.2
       maxAmmoModifier: 0
-      reloadTimeModifier: 0.4
+      reloadTimeModifier: 0.5
       bulletsPerShotModifier: 0
       bulletSpreadModifier: 0
     usesbulletPropersties: 0
