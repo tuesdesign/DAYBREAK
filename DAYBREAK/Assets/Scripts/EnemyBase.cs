@@ -93,8 +93,8 @@ public class EnemyBase : MonoBehaviour
         PlaySoundEffect(hurtSounds);
         
         // Spawn UI floating damage numbers
-        GameObject expText = Instantiate(floatingDamageNum, transform.position, floatingDamageNum.transform.rotation) as GameObject;
-        expText.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+        GameObject dmgText = Instantiate(floatingDamageNum, transform.position, floatingDamageNum.transform.rotation);
+        dmgText.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
         
         if (curHealth <= 0)
         {
