@@ -70,20 +70,21 @@ public class PlayerUI : MonoBehaviour
         ammoTextBar.text = playerShooting.AmmoCount + "/" + (playerShooting.MaxAmmo+ playerShooting.maxAmmoMod);
     }
 
-    public void UpdateAmmoDisplayRemove()
+    public void UpdateAmmoDisplayRemove(int bulletsShot)
     {
-        StartCoroutine(DelayedAmmoUIUpdate());
+        StartCoroutine(DelayedAmmoUIUpdate(bulletsShot));
     }
 
-    private IEnumerator DelayedAmmoUIUpdate()
+    private IEnumerator DelayedAmmoUIUpdate(int bulletsShot)
     {
         yield return new WaitForEndOfFrame();
-        
-        var numAmmo = (playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - (playerShooting.AmmoCount + 1);
 
-        if (numAmmo >= 0 && numAmmo < _ammoMainImages.Count)
+        for (var i = 1; i <= bulletsShot; i++)
         {
-            _ammoMainImages[numAmmo].enabled = false;
+            var numAmmo = (playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - (playerShooting.AmmoCount + i);
+
+            if (numAmmo >= 0 && numAmmo < _ammoMainImages.Count)
+                _ammoMainImages[numAmmo].enabled = false;
         }
     }
     
@@ -92,9 +93,7 @@ public class PlayerUI : MonoBehaviour
         var numAmmo = (playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - (playerShooting.AmmoCount + 1);
 
         if (numAmmo >= 0 && numAmmo < _ammoMainImages.Count)
-        {
             _ammoMainImages[numAmmo].enabled = true;
-        }
     }
    
     // Add initial number of bullets displayed on UI

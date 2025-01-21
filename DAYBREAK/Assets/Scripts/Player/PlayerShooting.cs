@@ -125,9 +125,6 @@ public class PlayerShooting : MonoBehaviour
                 Destroy(b, 10);
 
                 ammoCount--;
-
-                // Update Ammo UI Images
-                _playerUI.UpdateAmmoDisplayRemove();
                 
                 if (ammoCount <= 0)
                 {
@@ -158,9 +155,6 @@ public class PlayerShooting : MonoBehaviour
                     Destroy(b, 10);
                     
                     ammoCount--;
-
-                    // Update Ammo UI Images
-                    _playerUI.UpdateAmmoDisplayRemove();
                     
                     if (ammoCount <= 0)
                     {
@@ -180,7 +174,7 @@ public class PlayerShooting : MonoBehaviour
         _playerUI.UpdateAmmoCount();
         
         // Update Ammo UI Images
-        //_playerUI.UpdateAmmoDisplayRemove();
+        _playerUI.UpdateAmmoDisplayRemove(bulletsPerShot);
     }
 
     void ToggleTwinstick()
