@@ -116,7 +116,7 @@ public class PlayerShooting : MonoBehaviour
             Vector2 inputDirection = playerShootActions.ReadValue<Vector2>();
             inputDirection = ConvertToIsometric(inputDirection);
 
-            ammoCount--;
+            //ammoCount--;
             
             if (bulletsPerShot == 1)
             {
@@ -127,7 +127,7 @@ public class PlayerShooting : MonoBehaviour
 
                 Destroy(b, 10);
 
-                //ammoCount--;
+                ammoCount--;
 
                 if (ammoCount <= 0)
                 {
@@ -158,10 +158,11 @@ public class PlayerShooting : MonoBehaviour
                     // Destroy bullet after 10 seconds
                     Destroy(b, 10);
                     
-                    //ammoCount--;
+                    ammoCount--;
 
                     if (ammoCount <= 0)
                     {
+                        ammoCount = 0;
                         hasAmmo = false;
                         StartCoroutine(ReloadTiming());
                         break;
@@ -257,7 +258,7 @@ public class PlayerShooting : MonoBehaviour
     IEnumerator ReloadTiming()
     {
         PlaySoundEffect(reloadStartSound);
-
+        
         isReloading = true; //variable ensures that it does not attempt to reload while already reloading
         StartCoroutine(ReloadTick());
 
@@ -270,6 +271,7 @@ public class PlayerShooting : MonoBehaviour
         hasAmmo = true;
         isReloading = false;
         _playerUI.UpdateAmmoCount();
+
     }
 
     IEnumerator ReloadTick()

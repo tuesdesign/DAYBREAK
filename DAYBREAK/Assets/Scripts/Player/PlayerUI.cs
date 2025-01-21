@@ -73,13 +73,21 @@ public class PlayerUI : MonoBehaviour
     public void UpdateAmmoDisplayRemove()
     {
         var numAmmo = (playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - (playerShooting.AmmoCount + 1);
-        _ammoMainImages[numAmmo].enabled = false;
+
+        if (numAmmo >= 0 && numAmmo < _ammoMainImages.Count)
+        {
+            _ammoMainImages[numAmmo].enabled = false;
+        }
     }
     
     public void UpdateAmmoDisplayAdd()
     {
         var numAmmo = (playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - (playerShooting.AmmoCount + 1);
-        _ammoMainImages[numAmmo].enabled = true;
+
+        if (numAmmo >= 0 && numAmmo < _ammoMainImages.Count)
+        {
+            _ammoMainImages[numAmmo].enabled = true;
+        }
     }
     
     
