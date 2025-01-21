@@ -83,10 +83,7 @@ public class UpgradeHandling : MonoBehaviour
             shooting.BulletSpread += upgradeLevel.playerShooting.bulletSpreadModifier;
 
             if (upgradeToApply.upgradeName == "Max Ammo Up")
-            {
                 playerUI.UpdateAmmoDisplay();
-                playerUI.UpdateAmmoCount();
-            }
                 
         }
         if (upgradeLevel.usesbulletPropersties)

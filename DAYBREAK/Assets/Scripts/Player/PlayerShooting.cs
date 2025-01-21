@@ -110,22 +110,18 @@ public class PlayerShooting : MonoBehaviour
         {
             PlaySoundEffect(shootSounds);
 
-
             float angleStep = bulletsPerShot > 1 ? bulletSpread / (bulletsPerShot - 1) : 0;
             float startingAngle = -bulletSpread / 2;
 
             Vector2 inputDirection = playerShootActions.ReadValue<Vector2>();
             inputDirection = ConvertToIsometric(inputDirection);
-
-            //ammoCount--;
             
             if (bulletsPerShot == 1)
             {
 
                 GameObject b = Instantiate(bulletType, shootPosition.position, Quaternion.identity);
                 b.GetComponent<Rigidbody>().velocity = (new Vector3(inputDirection.x, 0, inputDirection.y)).normalized * bulletSpeed;
-
-
+                
                 Destroy(b, 10);
 
                 ammoCount--;
@@ -144,7 +140,6 @@ public class PlayerShooting : MonoBehaviour
                 for (int i = 0; i < bulletsPerShot; i++)
                 {
                     // Calculate bullet direction with spread
-
                     Vector3 baseDirection = new Vector3(inputDirection.x, 0, inputDirection.y).normalized;
 
                     // Rotate direction by the spread angle
@@ -191,7 +186,6 @@ public class PlayerShooting : MonoBehaviour
     void ToggleTwinstick()
     {
         twinStick = !twinStick;
-
     }
 
     void PlaySoundEffect(List<AudioClip> soundList)
@@ -262,6 +256,11 @@ public class PlayerShooting : MonoBehaviour
         canShoot = true;
     }
 
+    public void ForceReload()
+    {
+        StartCoroutine(ReloadTiming());
+    }
+
     IEnumerator ReloadTiming()
     {
         PlaySoundEffect(reloadStartSound);
@@ -278,7 +277,6 @@ public class PlayerShooting : MonoBehaviour
         hasAmmo = true;
         isReloading = false;
         _playerUI.UpdateAmmoCount();
-
     }
 
     IEnumerator ReloadTick()
@@ -288,7 +286,7 @@ public class PlayerShooting : MonoBehaviour
             _playerUI.UpdateAmmoDisplayAdd();
             
             ammoCount++;
-            yield return new WaitForSeconds((reloadTime+reloadTimeMod)/ (maxAmmo+maxAmmoMod));
+            yield return new WaitForSeconds((reloadTime+reloadTimeMod) / (maxAmmo+maxAmmoMod));
             
             PlaySoundEffect(reloadSounds);
             _playerUI.UpdateAmmoCount();

@@ -39,7 +39,7 @@ public class PlayerUI : MonoBehaviour
 
         ammoTextBar.text = playerShooting.AmmoCount + "/" + (playerShooting.MaxAmmo + playerShooting.maxAmmoMod);
 
-        UpdateAmmoDisplay();
+        InitialAmmoDisplay();
         
         expBar.maxValue = playerExpHandler.LevelIncrement;
         expBar.value = playerExpHandler.Exp;
@@ -72,13 +72,6 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateAmmoDisplayRemove()
     {
-        /*var numAmmo = (playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - (playerShooting.AmmoCount + 1);
-
-        if (numAmmo >= 0 && numAmmo < _ammoMainImages.Count)
-        {
-            _ammoMainImages[numAmmo].enabled = false;
-        }*/
-
         StartCoroutine(DelayedAmmoUIUpdate());
     }
 
@@ -103,19 +96,10 @@ public class PlayerUI : MonoBehaviour
             _ammoMainImages[numAmmo].enabled = true;
         }
     }
-    
    
-    // Update number of bullets displayed on UI
-    public void UpdateAmmoDisplay()
+    // Add initial number of bullets displayed on UI
+    private void InitialAmmoDisplay()
     {
-        // Clear ammo display
-        foreach (Transform child in ammoDisplayHolder.transform)
-        {
-            Destroy(child.gameObject);
-        }
-        
-        _ammoMainImages.Clear();
-        
         // Create UI for ammo count
         for (int i = 0; i < playerShooting.MaxAmmo + playerShooting.maxAmmoMod; i++)
         {
@@ -126,8 +110,18 @@ public class PlayerUI : MonoBehaviour
         {
             _ammoMainImages.Add(child.transform.GetChild(1).GetComponent<Image>());
         }
-
-        playerShooting.AmmoCount = playerShooting.MaxAmmo + playerShooting.maxAmmoMod;
+    }
+    
+    // Add UI for max ammo mod count
+    public void UpdateAmmoDisplay()
+    {
+        for (var i = 0; i < playerShooting.maxAmmoMod; i++)
+        {
+            var newUI = Instantiate(pistolAmmoPrefab, ammoDisplayHolder.transform);
+            _ammoMainImages.Add(newUI.transform.GetChild(1).GetComponent<Image>());
+        }
+        
+        playerShooting.ForceReload();
     }
 
     public void UpdateExpBar()
