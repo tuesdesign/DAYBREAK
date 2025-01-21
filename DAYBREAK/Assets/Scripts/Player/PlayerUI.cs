@@ -72,6 +72,20 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateAmmoDisplayRemove()
     {
+        /*var numAmmo = (playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - (playerShooting.AmmoCount + 1);
+
+        if (numAmmo >= 0 && numAmmo < _ammoMainImages.Count)
+        {
+            _ammoMainImages[numAmmo].enabled = false;
+        }*/
+
+        StartCoroutine(DelayedAmmoUIUpdate());
+    }
+
+    private IEnumerator DelayedAmmoUIUpdate()
+    {
+        yield return new WaitForEndOfFrame();
+        
         var numAmmo = (playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - (playerShooting.AmmoCount + 1);
 
         if (numAmmo >= 0 && numAmmo < _ammoMainImages.Count)
@@ -90,7 +104,7 @@ public class PlayerUI : MonoBehaviour
         }
     }
     
-    
+   
     // Update number of bullets displayed on UI
     public void UpdateAmmoDisplay()
     {

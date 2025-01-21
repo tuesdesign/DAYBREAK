@@ -38,7 +38,7 @@ namespace UI.Scripts.MainMenu
         private void Update()
         {
             currentTime.text = DateTime.Now.ToLongDateString();
-
+            
             if (_existingController) return;
             
             if (mainMenu.enabled && _controllerCheck.connected)

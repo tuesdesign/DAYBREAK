@@ -103,6 +103,7 @@ public class PlayerShooting : MonoBehaviour
     {
         _playerInputActions.Disable();
     }
+    
     private void Shoot()
     {
         if (canShoot && hasAmmo) //if can shoot and has ammo
@@ -129,6 +130,9 @@ public class PlayerShooting : MonoBehaviour
 
                 ammoCount--;
 
+                // Update Ammo UI Images
+                _playerUI.UpdateAmmoDisplayRemove();
+                
                 if (ammoCount <= 0)
                 {
                     hasAmmo = false;
@@ -160,6 +164,9 @@ public class PlayerShooting : MonoBehaviour
                     
                     ammoCount--;
 
+                    // Update Ammo UI Images
+                    _playerUI.UpdateAmmoDisplayRemove();
+                    
                     if (ammoCount <= 0)
                     {
                         ammoCount = 0;
@@ -167,7 +174,6 @@ public class PlayerShooting : MonoBehaviour
                         StartCoroutine(ReloadTiming());
                         break;
                     }
-
                 }
             }
             
@@ -175,10 +181,11 @@ public class PlayerShooting : MonoBehaviour
             StartCoroutine(ShootTiming());
         }
        
+        // Update Ammo UI Text
         _playerUI.UpdateAmmoCount();
         
         // Update Ammo UI Images
-        _playerUI.UpdateAmmoDisplayRemove();
+        //_playerUI.UpdateAmmoDisplayRemove();
     }
 
     void ToggleTwinstick()
