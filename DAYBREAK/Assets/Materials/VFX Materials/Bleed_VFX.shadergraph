@@ -64,7 +64,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "1c554a1e21c643be95ca1bf577909f91"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -491,6 +495,26 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "1c554a1e21c643be95ca1bf577909f91",
+    "m_Title": "Sideways dots",
+    "m_Content": "Bleeding comes from the side, find a way to fix wher the UV is coming in from",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -938.3999633789063,
+        "y": -664.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -1022,7 +1046,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 1.0,
+        "e00": 5.0,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,
