@@ -53,6 +53,8 @@ public class PlayerShooting : MonoBehaviour
     [HideInInspector] public int maxAmmoMod = 0;
 
 
+    public static event Action<GameObject> OnBulletShot;
+
 
 
     private Canvas reloadBar;
@@ -122,6 +124,8 @@ public class PlayerShooting : MonoBehaviour
                 GameObject b = Instantiate(bulletType, shootPosition.position, Quaternion.identity);
                 b.GetComponent<Rigidbody>().velocity = (new Vector3(inputDirection.x, 0, inputDirection.y)).normalized * bulletSpeed;
                 
+                OnBulletShot?.Invoke(b);
+
                 Destroy(b, 10);
 
                 ammoCount--;
@@ -131,6 +135,7 @@ public class PlayerShooting : MonoBehaviour
                     hasAmmo = false;
                     StartCoroutine(ReloadTiming());
                 }
+
             }
             else
             {
@@ -153,7 +158,9 @@ public class PlayerShooting : MonoBehaviour
 
                     // Destroy bullet after 10 seconds
                     Destroy(b, 10);
-                    
+
+                    OnBulletShot?.Invoke(b);
+
                     ammoCount--;
                     
                     if (ammoCount <= 0)
@@ -275,7 +282,7 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator ReloadTick()
     {
-        if (isReloading)
+        if (isReloading && ammoCount < maxAmmo)
         {
             _playerUI.UpdateAmmoDisplayAdd();
             
@@ -290,7 +297,7 @@ public class PlayerShooting : MonoBehaviour
         else
         {
             PlaySoundEffect(reloadStopSound);
-            yield return new WaitForSeconds(reloadTime + reloadTimeMod);
+            yield return new WaitForSeconds((reloadTime + reloadTimeMod) / (maxAmmo + maxAmmoMod));
         }
     }
 }

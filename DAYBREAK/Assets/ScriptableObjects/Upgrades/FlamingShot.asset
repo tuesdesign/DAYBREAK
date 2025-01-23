@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da3fe4eefeb98f847b40af3fdd0db4ad, type: 3}
-  m_Name: SpeedUp
+  m_Name: FlamingShot
   m_EditorClassIdentifier: 
-  upgradeName: SpeedUp
-  maxLevel: 10
+  upgradeName: FlamingShot
+  maxLevel: 1
   level: 0
   image: {fileID: 0}
-  description: Increase your movement speed
+  description: Burning Shot Every 3 Shots, causes  tick damage
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 
-    usesBasePlayer: 1
+    usesBasePlayer: 0
     basePlayerStats:
       maxHealthModifier: 0
       healsOnApply: 0
-      moveSpeedIncrease: 2
+      moveSpeedIncrease: 0
       sheildMod: 0
       dodgeChanceMod: 0
       invincibilityFrameMod: 0
@@ -40,12 +40,12 @@ MonoBehaviour:
       reloadTimeModifier: 0
       bulletsPerShotModifier: 0
       bulletSpreadModifier: 0
-    usesbulletPropersties: 0
+    usesbulletPropersties: 1
     bulletProperties:
       damageMod: 0
-      canBurn: 0
+      canBurn: 1
       burnChance: 0
-      shotsBetweenBurn: 0
+      shotsBetweenBurn: 3
       canExplode: 0
       explosionRange: 0
       explosionDamage: 0

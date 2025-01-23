@@ -12,6 +12,11 @@ public class Bullet : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float damage;
 
+    [Header ("Properties")]
+    public int burnDamage;
+    public int explosiveDamage;
+    public float explosionRaduis;
+
     [Space]
     [SerializeField] bool enableTerrainGlueForce;
     [SerializeField] float glueDistance;
@@ -19,6 +24,21 @@ public class Bullet : MonoBehaviour
 
     Vector3 glueForce;
     Vector3 glueCast;
+
+    //bulletinformation
+    bool canBurn;
+    bool canFreeze;
+    bool canbounce;
+    bool canExplode;
+    int explosionDamage = 2;
+    int peirceAmount = 0;
+
+    public bool CanBurn { get => canBurn; set => canBurn = value; }
+    public bool CanFreeze { get => canFreeze; set => canFreeze = value; }
+    public bool Canbounce { get => canbounce; set => canbounce = value; }
+    public int PeirceAmount { get => peirceAmount; set => peirceAmount = value; }
+    public float Damage { get => damage; set => damage = value; }
+    public bool CanExplode { get => canExplode; set => canExplode = value; }
 
     void Awake()
     {
@@ -31,10 +51,6 @@ public class Bullet : MonoBehaviour
         if (enableTerrainGlueForce) GlueBulletToTerrain();
     }
 
-    void CheckShootStatusAffliction()
-    {
-
-    }
 
     void CheckHitStatusAffliction()
     {
@@ -53,7 +69,37 @@ public class Bullet : MonoBehaviour
         {
             /*
             We should generaly 'destroy' the bullet when it hits any object. And only apply damage when it hits an enemy.
+
             */
+            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
+            
+
+            //add the connection between enemy status afflictions and the bullet handler
+            if (canBurn)
+            {
+                enemy.TickDamageClaculation(1);
+            }
+
+            if (CanExplode)
+            {
+                //create a trigger component on bullet radius that allows 
+                enemy.TakeDamage(explosionDamage);
+            }
+            
+            if (canFreeze)
+            {
+
+            }
+
+
+            if (peirceAmount <= 0)
+            {
+                
+            }
+            else
+            {
+                peirceAmount--;
+            }
 
             collision.gameObject.GetComponent<EnemyBase>().TakeDamage(damage);
             Destroy(this.gameObject);
@@ -67,8 +113,11 @@ public class Bullet : MonoBehaviour
 
             If you need help with this, let me know. I can help you with it.
             - Dan <3
+
+            ~ AAAAAA i think i can do pooling - Alannis
             */
         }
+        
     }
 
     private void OnDrawGizmos()

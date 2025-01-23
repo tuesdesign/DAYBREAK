@@ -13,6 +13,7 @@ public class UpgradeHandling : MonoBehaviour
     PlayerShooting shooting;
     PlayerExpHandler expHandler;
     PlayerUI playerUI;
+    BulletApplicationHandling bulletApplication;
 
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class UpgradeHandling : MonoBehaviour
         shooting = FindAnyObjectByType(typeof(PlayerShooting)).GetComponent<PlayerShooting>();
         expHandler = FindAnyObjectByType(typeof(PlayerExpHandler)).GetComponent<PlayerExpHandler>();
         playerUI = FindAnyObjectByType<PlayerUI>().GetComponent<PlayerUI>();
+        bulletApplication = FindAnyObjectByType<BulletApplicationHandling>().GetComponent<BulletApplicationHandling>();
     }
 
     public UpgradeBaseSO GetUpgrade()
@@ -88,6 +90,29 @@ public class UpgradeHandling : MonoBehaviour
         }
         if (upgradeLevel.usesbulletPropersties)
         {
+            //i cry
+            bulletApplication.bulletDamageMod = upgradeLevel.bulletProperties.damageMod;
+
+            if (upgradeLevel.bulletProperties.canBurn)
+            {
+                bulletApplication.canBurn = upgradeLevel.bulletProperties.canBurn;
+                bulletApplication.burnChance = upgradeLevel.bulletProperties.burnChance;
+                bulletApplication.shotsBetweenBurn = upgradeLevel.bulletProperties.shotsBetweenBurn;
+            }
+
+            if (upgradeLevel.bulletProperties.canExplode)
+            {
+                bulletApplication.canExplode = upgradeLevel.bulletProperties.canExplode;
+                bulletApplication.explosionRange = upgradeLevel.bulletProperties.explosionRange;
+                bulletApplication.explosionDamage = upgradeLevel.bulletProperties.explosionDamage;
+            }
+
+            if (upgradeLevel.bulletProperties.canFreeze)
+            {
+                bulletApplication.canFreeze = upgradeLevel.bulletProperties.canFreeze;
+                bulletApplication.freezeChance = upgradeLevel.bulletProperties.freezeChance;
+                bulletApplication.shotsBetweenFreeze = upgradeLevel.bulletProperties.shotsBwteenFreeze;
+            }
             
         }
     }
