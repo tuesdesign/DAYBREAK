@@ -22,7 +22,7 @@ public class PlayerShooting : MonoBehaviour
     [Tooltip("should you use twinstick controls \n if on it uses left and right analog sticks \n if off it only uses the move direction")]
     [SerializeField] bool twinStick = true;
 
-    [Tooltip("The time in seconds betweenshots")]
+    [Tooltip("The time in seconds between shots")]
     [SerializeField] float shootDelay = 0.5f;
     [Tooltip("the prefab used for the bullet")]
     [SerializeField] GameObject bulletType;
@@ -53,6 +53,8 @@ public class PlayerShooting : MonoBehaviour
     [HideInInspector] public int maxAmmoMod = 0;
 
 
+    public static event Action<GameObject> OnBulletShot;
+
 
 
     private Canvas reloadBar;
@@ -65,6 +67,11 @@ public class PlayerShooting : MonoBehaviour
     public int BulletsPerShot { get => bulletsPerShot; set => bulletsPerShot = value; }
     public float BulletSpread { get => bulletSpread; set => bulletSpread = value; }
 
+    private void Awake()
+    {
+        ammoCount = maxAmmo;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +79,6 @@ public class PlayerShooting : MonoBehaviour
         _playerInputActions.Enable();
         _playerUI = GetComponent<PlayerUI>();
 
-        ammoCount = maxAmmo;
         canShoot = true;
         
         reloadBar = FindObjectOfType<Canvas>();
@@ -99,44 +105,43 @@ public class PlayerShooting : MonoBehaviour
     {
         _playerInputActions.Disable();
     }
+    
     private void Shoot()
     {
-
         if (canShoot && hasAmmo) //if can shoot and has ammo
         {
             PlaySoundEffect(shootSounds);
-
 
             float angleStep = bulletsPerShot > 1 ? bulletSpread / (bulletsPerShot - 1) : 0;
             float startingAngle = -bulletSpread / 2;
 
             Vector2 inputDirection = playerShootActions.ReadValue<Vector2>();
             inputDirection = ConvertToIsometric(inputDirection);
-
+            
             if (bulletsPerShot == 1)
             {
 
                 GameObject b = Instantiate(bulletType, shootPosition.position, Quaternion.identity);
                 b.GetComponent<Rigidbody>().velocity = (new Vector3(inputDirection.x, 0, inputDirection.y)).normalized * bulletSpeed;
-
+                
+                OnBulletShot?.Invoke(b);
 
                 Destroy(b, 10);
 
                 ammoCount--;
-
+                
                 if (ammoCount <= 0)
                 {
                     hasAmmo = false;
                     StartCoroutine(ReloadTiming());
-        
                 }
+
             }
             else
             {
                 for (int i = 0; i < bulletsPerShot; i++)
                 {
                     // Calculate bullet direction with spread
-
                     Vector3 baseDirection = new Vector3(inputDirection.x, 0, inputDirection.y).normalized;
 
                     // Rotate direction by the spread angle
@@ -154,31 +159,34 @@ public class PlayerShooting : MonoBehaviour
                     // Destroy bullet after 10 seconds
                     Destroy(b, 10);
 
-                    ammoCount--;
+                    OnBulletShot?.Invoke(b);
 
+                    ammoCount--;
+                    
                     if (ammoCount <= 0)
                     {
+                        ammoCount = 0;
                         hasAmmo = false;
                         StartCoroutine(ReloadTiming());
                         break;
                     }
-
                 }
             }
             
-            
             canShoot = false;
             StartCoroutine(ShootTiming());
-
         }
        
+        // Update Ammo UI Text
         _playerUI.UpdateAmmoCount();
+        
+        // Update Ammo UI Images
+        _playerUI.UpdateAmmoDisplayRemove(bulletsPerShot);
     }
 
     void ToggleTwinstick()
     {
         twinStick = !twinStick;
-
     }
 
     void PlaySoundEffect(List<AudioClip> soundList)
@@ -249,10 +257,15 @@ public class PlayerShooting : MonoBehaviour
         canShoot = true;
     }
 
+    public void ForceReload()
+    {
+        StartCoroutine(ReloadTiming());
+    }
+
     IEnumerator ReloadTiming()
     {
         PlaySoundEffect(reloadStartSound);
-
+        
         isReloading = true; //variable ensures that it does not attempt to reload while already reloading
         StartCoroutine(ReloadTick());
 
@@ -269,22 +282,22 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator ReloadTick()
     {
-        if (isReloading)
+        if (isReloading && ammoCount < maxAmmo)
         {
+            _playerUI.UpdateAmmoDisplayAdd();
+            
             ammoCount++;
-            yield return new WaitForSeconds((reloadTime+reloadTimeMod)/ (maxAmmo+maxAmmoMod));
+            yield return new WaitForSeconds((reloadTime+reloadTimeMod) / (maxAmmo+maxAmmoMod));
             
             PlaySoundEffect(reloadSounds);
             _playerUI.UpdateAmmoCount();
             
             StartCoroutine(ReloadTick());
-
         }
         else
         {
             PlaySoundEffect(reloadStopSound);
-            yield return new WaitForSeconds(reloadTime + reloadTimeMod);
-            
+            yield return new WaitForSeconds((reloadTime + reloadTimeMod) / (maxAmmo + maxAmmoMod));
         }
     }
 }

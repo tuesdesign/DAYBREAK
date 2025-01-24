@@ -30,6 +30,7 @@ namespace UI.Scripts
         private UpgradeBaseSO _upgrade1;
         private UpgradeBaseSO _upgrade2;
         private UpgradeBaseSO _upgrade3;
+        private bool _appliedUpgrade;
     
         private ControllerCheck _controllerCheck;
 
@@ -70,24 +71,30 @@ namespace UI.Scripts
                 _controllerCheck.SetSelectedButton(upgrade1Button);
             
             upgradeMenu.enabled = true;
+            _appliedUpgrade = false;
             Time.timeScale = 0;
         }
 
         public void ApplyUpgrade(int buttonNumber)
         {
-            switch (buttonNumber)
+            if (!_appliedUpgrade)
             {
-                case 1:
-                    _upgradeObject.ApplyUpgrade(_upgrade1);
-                    break;
-                case 2:
-                    _upgradeObject.ApplyUpgrade(_upgrade2);
-                    break;
-                case 3:
-                    _upgradeObject.ApplyUpgrade(_upgrade3);
-                    break;
+                switch (buttonNumber)
+                {
+                    case 1:
+                        _upgradeObject.ApplyUpgrade(_upgrade1);
+                        break;
+                    case 2:
+                        _upgradeObject.ApplyUpgrade(_upgrade2);
+                        break;
+                    case 3:
+                        _upgradeObject.ApplyUpgrade(_upgrade3);
+                        break;
+                }
+            
+                _appliedUpgrade = true;
             }
-
+            
             upgradeMenu.enabled = false;
             Time.timeScale = 1;
             // Add Impulse force for player

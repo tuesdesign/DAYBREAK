@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7453908711207263158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5886276761192655567}
+  - component: {fileID: 7156083395473279835}
+  - component: {fileID: 5849699749753886229}
+  m_Layer: 0
+  m_Name: UpgradeMenu_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5886276761192655567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453908711207263158}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 75.94374, y: 522.57104, z: -169.99907}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7156083395473279835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453908711207263158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1566b84031774e4487c64423cb0c8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeMenu: {fileID: 0}
+  upgrade1Button: {fileID: 0}
+  descriptionText1: {fileID: 0}
+  image1: {fileID: 0}
+  descriptionText2: {fileID: 0}
+  image2: {fileID: 0}
+  descriptionText3: {fileID: 0}
+  image3: {fileID: 0}
+  upgradeHandler: {fileID: 7453908711207263158}
+--- !u!114 &5849699749753886229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453908711207263158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2fdfd1dd94e9e4aa3fe59954993bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeList: []
+  FullupgradeList:
+  - {fileID: 11400000, guid: 6130d3d06931d9145bfed4ea19407de9, type: 2}
+  - {fileID: 11400000, guid: ad489d3cd9a61da4bb70719e2490fcf4, type: 2}
+  - {fileID: 11400000, guid: b8570d43c41ea8947be496ab99eb863e, type: 2}
+  - {fileID: 11400000, guid: b846d343e0af8d24d800e68b7f5e8714, type: 2}
+  - {fileID: 11400000, guid: 6a26a36e224ae3d4b847722113e2d469, type: 2}
+  - {fileID: 11400000, guid: 40dc02051ff32854b88f910bb97b9d6f, type: 2}
+  - {fileID: 11400000, guid: 9f758c24762dfc346a894f2a8de9a7dc, type: 2}
+  - {fileID: 11400000, guid: 0178f17045aa9a74483d3016063a779b, type: 2}
+  - {fileID: 11400000, guid: 2bcd6329299efba43a90b931918de479, type: 2}
+  - {fileID: 11400000, guid: aac1cad44fa61b845b7dfc5feb932821, type: 2}
+  - {fileID: 11400000, guid: a5a48f7a2dbd486459f78043990d1237, type: 2}
+  - {fileID: 11400000, guid: 8ecd3a75372703546bb7d03a94a4e5fd, type: 2}
+  - {fileID: 11400000, guid: c711c70d25aa1ba4cacb62527c481e34, type: 2}
+  - {fileID: 11400000, guid: 0fa053797d950f24180c15b3b30ff44b, type: 2}
+  - {fileID: 11400000, guid: 50953a5fce92ae5488aef285cf4a227b, type: 2}

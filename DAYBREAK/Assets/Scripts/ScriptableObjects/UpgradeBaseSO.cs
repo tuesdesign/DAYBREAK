@@ -75,18 +75,19 @@ public class UpgradeBaseSO : ScriptableObject
 
         public bool canBurn;
         public float burnChance;
+        public int shotsBetweenBurn;
 
-        public bool isExplosive;
+        public bool canExplode;
         public float explosionRange;
         public float explosionDamage;
 
         public bool canFreeze;
         public float freezeChance;
+        public int shotsBwteenFreeze;
 
         public bool canBounce;
         public float bounceAmount;
 
-        public float canPierce;
         public float pierceAmount;
     }
 }

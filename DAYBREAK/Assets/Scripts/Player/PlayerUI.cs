@@ -10,13 +10,19 @@ public class PlayerUI : MonoBehaviour
     PlayerExpHandler playerExpHandler;
     PlayerShooting playerShooting;
 
-    [Tooltip("This is the health bar.")]
-    [SerializeField] Slider healthBar1;
-    [Tooltip("This is the exp bar.")]
-    [SerializeField] Slider expBar;
-    [Tooltip("The text bar to describe how much ammo the player has in comparison to their max ammo")]
-    [SerializeField] TMP_Text ammoTextBar;
+    [Tooltip("This is the health bar.")] [SerializeField]
+    Slider healthBar1;
 
+    [Tooltip("This is the exp bar.")] [SerializeField]
+    Slider expBar;
+
+    [Tooltip("The text bar to describe how much ammo the player has in comparison to their max ammo")] [SerializeField]
+    TMP_Text ammoTextBar;
+
+    [Header("Ammo Display")]
+    [SerializeField] private GameObject pistolAmmoPrefab;
+    [SerializeField] private GameObject ammoDisplayHolder;
+    private List<Image> _ammoMainImages = new List<Image>();
 
     private void Start()
     {
@@ -31,11 +37,14 @@ public class PlayerUI : MonoBehaviour
         healthBar1.maxValue = player.MaxHealth + player.maxHealthModifier;
         healthBar1.value = player.MaxHealth + player.maxHealthModifier;
 
-        ammoTextBar.text = playerShooting.AmmoCount + " / " + (playerShooting.MaxAmmo + playerShooting.maxAmmoMod);
+        ammoTextBar.text = playerShooting.AmmoCount + "/" + (playerShooting.MaxAmmo + playerShooting.maxAmmoMod);
 
+        InitialAmmoDisplay();
+        
         expBar.maxValue = playerExpHandler.LevelIncrement;
         expBar.value = playerExpHandler.Exp;
     }
+    
     public void UpdateHealthBar()
     {
         StartCoroutine(AnimateHealthBar());
@@ -55,10 +64,63 @@ public class PlayerUI : MonoBehaviour
             yield return null;
         }
     }
-
+    
     public void UpdateAmmoCount()
     {
-        ammoTextBar.text = playerShooting.AmmoCount + " / " + (playerShooting.MaxAmmo+ playerShooting.maxAmmoMod);
+        ammoTextBar.text = playerShooting.AmmoCount + "/" + (playerShooting.MaxAmmo+ playerShooting.maxAmmoMod);
+    }
+
+    public void UpdateAmmoDisplayRemove(int bulletsShot)
+    {
+        StartCoroutine(DelayedAmmoUIUpdate(bulletsShot));
+    }
+
+    private IEnumerator DelayedAmmoUIUpdate(int bulletsShot)
+    {
+        yield return new WaitForEndOfFrame();
+
+        for (var i = 1; i <= bulletsShot; i++)
+        {
+            var numAmmo = (playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - (playerShooting.AmmoCount + i);
+
+            if (numAmmo >= 0 && numAmmo < _ammoMainImages.Count)
+                _ammoMainImages[numAmmo].enabled = false;
+        }
+    }
+    
+    public void UpdateAmmoDisplayAdd()
+    {
+        var numAmmo = (playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - (playerShooting.AmmoCount + 1);
+
+        if (numAmmo >= 0 && numAmmo < _ammoMainImages.Count)
+            _ammoMainImages[numAmmo].enabled = true;
+    }
+   
+    // Add initial number of bullets displayed on UI
+    private void InitialAmmoDisplay()
+    {
+        // Create UI for ammo count
+        for (int i = 0; i < playerShooting.MaxAmmo + playerShooting.maxAmmoMod; i++)
+        {
+            Instantiate(pistolAmmoPrefab, ammoDisplayHolder.transform);
+        }
+
+        foreach (Transform child in ammoDisplayHolder.transform)
+        {
+            _ammoMainImages.Add(child.transform.GetChild(1).GetComponent<Image>());
+        }
+    }
+    
+    // Add UI for max ammo mod count
+    public void UpdateAmmoDisplay()
+    {
+        for (var i = 0; i < playerShooting.maxAmmoMod; i++)
+        {
+            var newUI = Instantiate(pistolAmmoPrefab, ammoDisplayHolder.transform);
+            _ammoMainImages.Add(newUI.transform.GetChild(1).GetComponent<Image>());
+        }
+        
+        playerShooting.ForceReload();
     }
 
     public void UpdateExpBar()

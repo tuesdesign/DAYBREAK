@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UI.Scripts;
 using UI.Scripts.PauseMenu;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -23,6 +21,14 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] List<AudioClip> hurtSounds = new List<AudioClip>();
 
     //enemy effects
+    bool takeTickDamage;
+    [SerializeField] float timeBetweenTicks = 1f;
+    float tdTimer = 0;
+    int curTickDamage = 1;
+    float tickDamageDuration = 5;
+
+
+    public List<Coroutine> coroutines = new List<Coroutine>();
     
     
     Transform playerTrans;
@@ -50,6 +56,16 @@ public class EnemyBase : MonoBehaviour
         if(playerTrans != null)
         {
             MoveTowardsPlayer();
+        }
+
+        if (takeTickDamage)
+        {
+            tdTimer += Time.deltaTime;
+            if (tdTimer >= timeBetweenTicks)
+            {
+                TakeDamage(curTickDamage);
+                tdTimer -= timeBetweenTicks;
+            }
         }
     }
 
@@ -93,13 +109,28 @@ public class EnemyBase : MonoBehaviour
         PlaySoundEffect(hurtSounds);
         
         // Spawn UI floating damage numbers
-        GameObject expText = Instantiate(floatingDamageNum, transform.position, floatingDamageNum.transform.rotation) as GameObject;
-        expText.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+        GameObject dmgText = Instantiate(floatingDamageNum, transform.position, floatingDamageNum.transform.rotation);
+        dmgText.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
         
         if (curHealth <= 0)
         {
             Die();
         }
+    }
+
+    public void TickDamageClaculation(int damage = 2 )
+    {
+
+        takeTickDamage = true;
+        curTickDamage = damage;
+
+
+        StartCoroutine(StatusEffectTime());
+
+        //need to make this more robust to handle multiple status effects at the same time
+        //also need to add vfx and sounds to thie mix
+
+        //have a coroutine dedicated for each status ailment possible and start and stop them based on each one
     }
 
     public void Die()
@@ -133,9 +164,19 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         //Gizmos.DrawLine(transform.position, transform.position + _rb.velocity);
+    }
+
+    private IEnumerator StatusEffectTime()
+    {
+        yield return new WaitForSeconds(tickDamageDuration);
+        takeTickDamage = false;
+        curTickDamage = 0;
+
+        tdTimer = 0;
     }
 }
