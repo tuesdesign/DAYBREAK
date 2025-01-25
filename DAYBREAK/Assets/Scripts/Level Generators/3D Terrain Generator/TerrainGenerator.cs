@@ -395,8 +395,12 @@ public class TerrainGenerator : MonoBehaviour
             KeyValuePair<Vector2Int, float> originStructure = tempStructures.ElementAt(Random.Range(0, tempStructures.Count));
             tempStructures.Remove(originStructure.Key);
 
-            KeyValuePair<Vector2Int, float> destinationStructure = _structurePosistionsAndRadii.ElementAt(Random.Range(0, tempStructures.Count));
+            Dictionary<Vector2Int, float> tmp = new Dictionary<Vector2Int, float>(_structurePosistionsAndRadii);
+            tmp.Remove(originStructure.Key);
 
+            KeyValuePair<Vector2Int, float> destinationStructure = tmp.ElementAt(Random.Range(0, tempStructures.Count));
+
+            // check if the path intersects with another structure
             foreach (KeyValuePair<Vector2Int, float> structure in _structurePosistionsAndRadii)
             {
                 if (structure.Key == originStructure.Key || structure.Key == destinationStructure.Key) continue;
