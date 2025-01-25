@@ -89,6 +89,36 @@ public class TerrainPaths
         return new IntersectionData(false, Vector3.zero, Vector3.zero);
     }
 
+    public static IntersectionData PathToStructureIntersection(Path path, Vector3 structurePos, float strucureRadius, float detail)
+    {
+        // get the start point of the first line section of the path
+        Vector2 v1 = path.Start;
+
+        if (Vector3.Distance(v1, structurePos) - strucureRadius < 0)
+        {
+            Debug.LogWarning("Path intersects structure at start point!");
+            return new IntersectionData(true, v1, Vector3.zero);
+        }
+
+        // check if the path intersects the vector
+        for (float t = detail; t <= 1; t += detail)
+        {
+            t = Mathf.Clamp(t, 0f, 1f);
+
+            // get the next point on the path
+            Vector2 v2 = path.Spline(t);
+
+            // return true if the path intersects the line
+            if (Vector3.Distance(v2, structurePos) - strucureRadius < 0) 
+                return new IntersectionData(true, v1, (v2 - v1).normalized);
+
+            // set the start point of the next line to the end point of the current line
+            v1 = v2;
+        }
+        // return false if the paths don't intersect
+        return new IntersectionData(false, Vector3.zero, Vector3.zero);
+    }
+
     public struct IntersectionData
     {
         public bool intersects;

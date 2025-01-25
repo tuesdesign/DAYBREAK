@@ -11,6 +11,7 @@ using BiomeData = TG_BiomeDataObject.BiomeData;
 using Unity.VisualScripting;
 using static TerrainPaths;
 using UnityEngine.Rendering.Universal;
+using System.Net;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -312,8 +313,8 @@ public class TerrainGenerator : MonoBehaviour
             }
 
             // fail if biome has no structures
-            if (dominantBiome.structures.Length <= 0) 
-            { 
+            if (dominantBiome.structures.Length <= 0)
+            {
                 structureFailures++;
                 structureCount--;
                 continue;
@@ -383,80 +384,145 @@ public class TerrainGenerator : MonoBehaviour
         List<Path> paths = new List<Path>();
 
         // Get the structures
-        Dictionary<Vector2Int, float> tempStructures = new Dictionary<Vector2Int, float>(_structurePosistionsAndRadii);
+        Dictionary<Vector2Int, float> structuresToConnect = new Dictionary<Vector2Int, float>(_structurePosistionsAndRadii);
 
-        int structureReset = 0;
-
-        while (tempStructures.Count > 0)
+        while (structuresToConnect.Count > 0)
         {
-            // Get the start and end structures
-            List<Vector3> points = new List<Vector3>();
+            // if the loop fails to generate a path 10 times in a row, stop trying
+            int pathAttemptCounter = 0;
 
-            KeyValuePair<Vector2Int, float> originStructure = tempStructures.ElementAt(Random.Range(0, tempStructures.Count));
-            tempStructures.Remove(originStructure.Key);
+            // Get the start structure from remaining structures to connect
+            KeyValuePair<Vector2Int, float> originStructure = structuresToConnect.ElementAt(Random.Range(0, structuresToConnect.Count));
 
-            Dictionary<Vector2Int, float> tmp = new Dictionary<Vector2Int, float>(_structurePosistionsAndRadii);
-            tmp.Remove(originStructure.Key);
+            // remove the origin structure from the structures to connect list
+            structuresToConnect.Remove(originStructure.Key);
 
-            KeyValuePair<Vector2Int, float> destinationStructure = tmp.ElementAt(Random.Range(0, tempStructures.Count));
+            // Get the possible end structures from all the structures
+            Dictionary<Vector2Int, float> tempDestinationStructures = new Dictionary<Vector2Int, float>(_structurePosistionsAndRadii);
+
+            // remove the origin structure from the destination structures list
+            tempDestinationStructures.Remove(originStructure.Key);
+
+            // select a random destination structure
+            KeyValuePair<Vector2Int, float> destinationStructure = tempDestinationStructures.ElementAt(Random.Range(0, structuresToConnect.Count));
+
+            Path newPath = CreateNewPathFromStructures(originStructure, destinationStructure);
+
+        // if an issue or intersection is detected, try attempt another path
+        _AttemptIntersectionAgain:
+
+            // if the path attempt counter reaches 10, skip the current path
+            if (pathAttemptCounter == 50) continue;
 
             // check if the path intersects with another structure
             foreach (KeyValuePair<Vector2Int, float> structure in _structurePosistionsAndRadii)
             {
+                // skip the origin and destination structures
                 if (structure.Key == originStructure.Key || structure.Key == destinationStructure.Key) continue;
 
-                // check if the path intercects with another structure
+/*                // check if the path intercects with another structure
                 Vector2 vec = destinationStructure.Key - originStructure.Key;
                 Vector2 structurePos = structure.Key - originStructure.Key;
 
                 // check if the structure intersects with the path between the start and end structures
                 bool radiusIntersects = Mathf.Abs(Mathf.Sin(Vector2.SignedAngle(vec, structurePos) * Mathf.Deg2Rad) * structurePos.magnitude) <= structure.Value;
                 bool distanceIntersects = structurePos.magnitude < vec.magnitude;
-                if (radiusIntersects && distanceIntersects)
+*/
+                IntersectionData intersectionData = PathToStructureIntersection(newPath, new Vector3(structure.Key.x, structure.Key.y), structure.Value, 0.1f);
+
+                // if the structure intersects, try another path
+                if (/*radiusIntersects && distanceIntersects*/ intersectionData.intersects)
                 {
-                    structureReset++;
-                    destinationStructure = structure;
+                    newPath = CreateNewPathFromStructures(originStructure, destinationStructure);
+                    pathAttemptCounter++;
+                    goto _AttemptIntersectionAgain;
                 }
             }
 
-            TG_PathDataObject[] originPaths = _terrainMap.GetDominantBiome(originStructure.Key).pathData;
-            TG_PathDataObject[] destinationPaths = _terrainMap.GetDominantBiome(destinationStructure.Key).pathData;
-
-            TG_PathDataObject originPath = originPaths[Random.Range(0, originPaths.Length)];
-            TG_PathDataObject destinationPath = destinationPaths[Random.Range(0, destinationPaths.Length)];
-
-            Vector3 startPoint = GetStructureBoarderPos(originStructure, new Vector3(destinationStructure.Key.x, destinationStructure.Key.y) - new Vector3(originStructure.Key.x, originStructure.Key.y));
-            Vector3 endPoint = GetStructureBoarderPos(destinationStructure, new Vector3(originStructure.Key.x, originStructure.Key.y) - new Vector3(destinationStructure.Key.x, destinationStructure.Key.y));
-
-            Vector3 startControl = (new Vector3(originStructure.Key.x, originStructure.Key.y) - startPoint).normalized * originPath.controlPointPower + startPoint;
-            Vector3 endControl = (new Vector3(destinationStructure.Key.x, destinationStructure.Key.y) - endPoint).normalized * destinationPath.controlPointPower + endPoint;
-
-            // create the path
-            Path tempPath = new Path(new Vector3[4] {startControl, startPoint, endPoint, endControl});
-
+            // check if the path intersects with another path
             foreach (Path path in paths)
             {
-                IntersectionData intersectionData = TerrainPaths.PathToPathIntersection(tempPath, path, 0.1f);
+                IntersectionData intersectionData = PathToPathIntersection(newPath, path, 0.1f);
 
                 if (intersectionData.intersects)
                 {
-                    destinationPaths = _terrainMap.GetDominantBiome(intersectionData.intersection).pathData;
-                    destinationPath = destinationPaths[Random.Range(0, destinationPaths.Length)];
-
-                    tempPath.End = intersectionData.intersection;
-                    tempPath.EndControl = intersectionData.intersection - intersectionData.normal * Vector2.Distance(tempPath.Start, intersectionData.intersection) * destinationPath.controlPointPower;
+                    newPath = CreateNewPathFromIntersection(originStructure, intersectionData);
+                    pathAttemptCounter++;
+                    goto _AttemptIntersectionAgain;
                 }
             }
 
-            tempPath.originData = originPath;
-            tempPath.destinationData = destinationPath;
+            structuresToConnect.Remove(destinationStructure.Key);
 
-            tempStructures.Remove(destinationStructure.Key);
+            paths.Add(newPath);
 
-            paths.Add(tempPath);
+            structuresToConnect.Remove(originStructure.Key);
+            structuresToConnect.Remove(destinationStructure.Key);
 
-            tempStructures.Remove(originStructure.Key);
-            tempStructures.Remove(destinationStructure.Key);
+            Path CreateNewPathFromStructures(KeyValuePair<Vector2Int, float> originStructure, KeyValuePair<Vector2Int, float> destinationStructure)
+            {
+                // Get the path data for the origin biome
+                TG_PathDataObject[] originPaths = _terrainMap.GetDominantBiome(originStructure.Key).pathData;
+                TG_PathDataObject originPath = originPaths[Random.Range(0, originPaths.Length)];
+
+                // Get the path data for the destination biome
+                TG_PathDataObject[] destinationPaths = _terrainMap.GetDominantBiome(destinationStructure.Key).pathData;
+                TG_PathDataObject destinationPath = destinationPaths[Random.Range(0, destinationPaths.Length)];
+
+                // Get the start and end points of the path
+                Vector3 startPoint = GetStructureBoarderPos(originStructure, new Vector3(destinationStructure.Key.x, destinationStructure.Key.y) - new Vector3(originStructure.Key.x, originStructure.Key.y));
+                Vector3 endPoint = GetStructureBoarderPos(destinationStructure, new Vector3(originStructure.Key.x, originStructure.Key.y) - new Vector3(destinationStructure.Key.x, destinationStructure.Key.y));
+
+                // Get the length of the path to scale the power of control points
+                float pathLength = Vector2.Distance(new Vector2(startPoint.x, startPoint.z), new Vector2(endPoint.x, endPoint.z));
+
+                // Get the control points of the path
+                Vector3 startControl = (new Vector3(originStructure.Key.x, originStructure.Key.y) - startPoint).normalized * originPath.controlPointPower * pathLength + startPoint;
+                Vector3 endControl = (new Vector3(destinationStructure.Key.x, destinationStructure.Key.y) - endPoint).normalized * destinationPath.controlPointPower * pathLength + endPoint;
+
+                // Create the path
+                Path tempPath = new Path(new Vector3[4] { startControl, startPoint, endPoint, endControl });
+
+                // Set the path data
+                tempPath.originData = originPath;
+                tempPath.destinationData = destinationPath;
+
+                // return the path
+                return tempPath;
+            }
+
+            Path CreateNewPathFromIntersection(KeyValuePair<Vector2Int, float> originStructure, IntersectionData destinationIntersection)
+            {
+                // Get the path data for the origin biome
+                TG_PathDataObject[] originPaths = _terrainMap.GetDominantBiome(originStructure.Key).pathData;
+                TG_PathDataObject originPath = originPaths[Random.Range(0, originPaths.Length)];
+
+                // Get the path data for the destination biome
+                TG_PathDataObject[] destinationPaths = _terrainMap.GetDominantBiome(destinationIntersection.intersection).pathData;
+                TG_PathDataObject destinationPath = destinationPaths[Random.Range(0, destinationPaths.Length)];
+
+                // Get the start and end points of the path
+                Vector3 startPoint = GetStructureBoarderPos(originStructure, new Vector3(destinationStructure.Key.x, destinationStructure.Key.y) - new Vector3(originStructure.Key.x, originStructure.Key.y));
+                Vector3 endPoint = destinationIntersection.intersection;
+
+                // Get the length of the path to scale the power of control points
+                float pathLength = Vector2.Distance(new Vector2(startPoint.x, startPoint.z), new Vector2(endPoint.x, endPoint.z));
+
+                // Get the control points of the path
+                Vector3 startControl = (new Vector3(originStructure.Key.x, originStructure.Key.y) - startPoint).normalized * originPath.controlPointPower * pathLength + startPoint;
+                Vector3 pathDir = (new Vector3(destinationStructure.Key.x, destinationStructure.Key.y) - new Vector3(originStructure.Key.x, originStructure.Key.y)).normalized;
+                Vector3 endControl = pathDir * pathLength * destinationPath.controlPointPower + endPoint;
+
+                // Create the path
+                Path tempPath = new Path(new Vector3[4] { startControl, startPoint, endPoint, endControl });
+
+                // Set the path data
+                tempPath.originData = originPath;
+                tempPath.destinationData = destinationPath;
+
+                // return the path
+                return tempPath;
+            }
         }
 
         return paths.ToArray();
@@ -720,7 +786,8 @@ public class TerrainGenerator : MonoBehaviour
         public BiomeData GetDominantBiome(Vector2 pos) => GetDominantBiome(new Vector2Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y)));
     }
 
-    [Serializable] public struct DebugOptions
+    [Serializable]
+    public struct DebugOptions
     {
         public bool generateOnStart;
         public bool centerGeneratedTerrain;
@@ -728,7 +795,8 @@ public class TerrainGenerator : MonoBehaviour
         public bool useDataObjectSeed;
     }
 
-    [Serializable] public struct AmpsAndFreq
+    [Serializable]
+    public struct AmpsAndFreq
     {
         public float amplitude;
         public float frequency;
