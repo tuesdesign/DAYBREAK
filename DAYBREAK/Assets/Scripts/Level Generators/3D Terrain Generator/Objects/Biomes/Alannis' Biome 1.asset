@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057d9a52f66d55c43a8994bbb613d108, type: 3}
   m_Name: Alannis' Biome 1
   m_EditorClassIdentifier: 
-  showAFs: 1
-  showTerrainAF: 1
-  showSelectorAF: 1
+  showColors: 0
+  showAFs: 0
+  showTerrainAF: 0
+  showSelectorAF: 0
   showStructures: 0
   showStructure: 0000
+  showPaths: 0
+  showPath: 00
   baseTerrainLayer: {fileID: 8574412962073106934, guid: 328c778709857ca4b9735f1b5f005904, type: 2}
-  pathTerrainLayer: {fileID: 8574412962073106934, guid: b58e19c7cb19f50458e6c2e45f3afbad, type: 2}
+  biomeColors:
+  - {r: 0, g: 0, b: 0, a: 0}
   terrainAF:
   - amplitude: 0
     frequency: 0
@@ -28,3 +32,5 @@ MonoBehaviour:
   structures:
   - {fileID: 11400000, guid: f161cd9428454734f93d1b93dc0b948f, type: 2}
   - {fileID: 11400000, guid: 478cfdfe6b5cd2e42a5f204acc387f24, type: 2}
+  paths:
+  - {fileID: 0}

@@ -30,7 +30,7 @@
 	- Artist
 
 - Information and Contact
-	- Student Number: 
+	- Student Number: 100817015
 	- E-mail: 
 	- Discord:
 	- GitHub:

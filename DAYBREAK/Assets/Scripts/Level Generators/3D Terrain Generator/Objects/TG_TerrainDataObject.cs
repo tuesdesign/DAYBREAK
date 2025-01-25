@@ -12,7 +12,6 @@ public class TG_TerrainDataObject : ScriptableObject
     [Space] 
     public TG_BiomeDataObject[] biomes;
     public float biomeSeperation;
-    public float biomePaintSeperation;
 
     [Space]
     [Tooltip("structureDensity of 1 will yield 1 structure per 100 x 100 map size")] public float structureDensity;

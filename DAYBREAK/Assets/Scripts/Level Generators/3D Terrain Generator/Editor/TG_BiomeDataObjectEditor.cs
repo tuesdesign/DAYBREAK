@@ -5,20 +5,23 @@ using UnityEngine;
 public class TG_BiomeDataObjectEditor : Editor
 {
     SerializedProperty terrainLayer;
-    SerializedProperty pathLayer;
+
+    SerializedProperty biomeColors;
 
     SerializedProperty terrainAF;
     SerializedProperty selectorAF;
 
     SerializedProperty structures;
+    SerializedProperty paths;
 
     private void OnEnable()
     {
         terrainLayer = serializedObject.FindProperty("baseTerrainLayer");
-        pathLayer = serializedObject.FindProperty("pathTerrainLayer");
+        biomeColors = serializedObject.FindProperty("biomeColors");
         terrainAF = serializedObject.FindProperty("terrainAF");
         selectorAF = serializedObject.FindProperty("selectorAF");
         structures = serializedObject.FindProperty("structures");
+        paths = serializedObject.FindProperty("paths");
     }
 
     public override void OnInspectorGUI()
@@ -28,9 +31,25 @@ public class TG_BiomeDataObjectEditor : Editor
         serializedObject.Update();
 
         terrainLayer.objectReferenceValue = EditorGUILayout.ObjectField("Base Terrain Layer", terrainLayer.objectReferenceValue, typeof(TerrainLayer), false);
-        pathLayer.objectReferenceValue = EditorGUILayout.ObjectField("Path Terrain Layer", pathLayer.objectReferenceValue, typeof(TerrainLayer), false);
 
-        EditorGUILayout.Space();
+        EditorGUILayout.BeginHorizontal();
+        biomeData.showColors = EditorGUILayout.Foldout(biomeData.showColors, biomeColors.arraySize > 1 ? "Biome Colors" : "Biome Color");
+        biomeColors.arraySize = (int)Mathf.Clamp(EditorGUILayout.IntField(biomeColors.arraySize), 1, Mathf.Infinity);
+        EditorGUILayout.EndHorizontal();
+
+        if (biomeData.showColors)
+        {
+            EditorGUI.indentLevel++;
+            EditorGUILayout.Space(2f);
+
+            for (int i = 0; i < biomeColors.arraySize; i++)
+            {
+                biomeColors.GetArrayElementAtIndex(i).colorValue = EditorGUILayout.ColorField($"Color {i + 1}", biomeColors.GetArrayElementAtIndex(i).colorValue);
+            }
+
+            EditorGUI.indentLevel--;
+        }
+        else EditorGUILayout.Space(2f);
 
         // Show Amplitudes and Frequencies
         if (biomeData.showAFs = EditorGUILayout.Foldout(biomeData.showAFs, "Amplitudes and Frequencies"))
@@ -132,7 +151,65 @@ public class TG_BiomeDataObjectEditor : Editor
             EditorGUI.indentLevel--;
         }
 
-        EditorGUILayout.Space();
+        EditorGUILayout.Space(2f);
+
+        EditorGUILayout.BeginHorizontal();
+        biomeData.showPaths = EditorGUILayout.Foldout(biomeData.showPaths, "Paths");
+        paths.arraySize = (int)Mathf.Clamp(EditorGUILayout.IntField(paths.arraySize), 0, Mathf.Infinity);
+        EditorGUILayout.EndHorizontal();
+
+        if (biomeData.showPath.Length != paths.arraySize)
+        {
+            bool[] newarray = new bool[paths.arraySize];
+            for (int i = 0; i < paths.arraySize; i++) newarray[i] = (i < biomeData.showPath.Length - 1) ? biomeData.showPath[i] : false;
+
+            biomeData.showPath = new bool[paths.arraySize];
+            for (int i = 0; i < biomeData.showPath.Length; i++) biomeData.showPath[i] = newarray[i];
+        }
+
+        if (biomeData.showPaths)
+        {
+            EditorGUI.indentLevel++;
+
+            if (paths.arraySize > 0)
+            {
+                for (int i = 0; i < paths.arraySize; i++)
+                {
+                    EditorGUILayout.Space(2f);
+
+                    TG_PathDataObject path = paths.GetArrayElementAtIndex(i).objectReferenceValue as TG_PathDataObject;
+
+                    EditorGUILayout.BeginHorizontal();
+                    biomeData.showPath[i] = EditorGUILayout.Foldout(biomeData.showPath[i], path == null ? "Path " + (i + 1) : path.name);
+                    paths.GetArrayElementAtIndex(i).objectReferenceValue = EditorGUILayout.ObjectField(paths.GetArrayElementAtIndex(i).objectReferenceValue, typeof(TG_PathDataObject), false);
+                    EditorGUILayout.EndHorizontal();
+
+                    if (biomeData.showPath[i])
+                    {
+                        EditorGUI.indentLevel++;
+
+                        if (paths.GetArrayElementAtIndex(i).objectReferenceValue)
+                        {
+                            EditorGUILayout.Space(2f);
+                            Editor pathEditor = CreateEditor(paths.GetArrayElementAtIndex(i).objectReferenceValue);
+                            pathEditor.OnInspectorGUI();
+                        }
+                        else
+                        {
+                            EditorGUILayout.LabelField("No Path Data Added!");
+                        }
+
+                        EditorGUI.indentLevel--;
+                    }
+                }
+            }
+            else
+            {
+                EditorGUILayout.LabelField("No Paths Added!");
+            }
+
+            EditorGUI.indentLevel--;
+        }
 
         serializedObject.ApplyModifiedProperties();
     }

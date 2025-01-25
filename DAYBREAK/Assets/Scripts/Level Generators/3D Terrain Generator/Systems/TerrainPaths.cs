@@ -111,10 +111,32 @@ public class TerrainPaths
         // points the first and last points are control points that rest at the center of suructures or beyond the end of a path to control shape.
 
         public Vector3[] points;
-        
-        public Vector3 Start => points[1];
+        public TG_PathDataObject originData;
+        public TG_PathDataObject destinationData;
 
-        public Vector3 End => points[points.Length - 2];
+        public Vector3 StartControl 
+        {
+            get => points[0];
+            set => points[0] = value;
+        }
+
+        public Vector3 Start
+        {
+            get => points[1];
+            set => points[1] = value;
+        }
+
+        public Vector3 End
+        {
+            get => points[points.Length - 2];
+            set => points[points.Length - 2] = value;
+        }
+
+        public Vector3 EndControl
+        {
+            get => points[points.Length - 1];
+            set => points[points.Length - 1] = value;
+        }
 
         public Vector3 this[int index]
         {
@@ -126,6 +148,18 @@ public class TerrainPaths
         {
             this.points = points;
             if (points.Length < 4) Debug.LogWarning("Path must have at least 4 points to be a valid spline.");
+
+            this.originData = null;
+            this.destinationData = null;
+        }
+
+        public Path(Vector3[] points, TG_PathDataObject originData, TG_PathDataObject destinationData)
+        {
+            this.points = points;
+            if (points.Length < 4) Debug.LogWarning("Path must have at least 4 points to be a valid spline.");
+
+            this.originData = originData;
+            this.destinationData = destinationData;
         }
 
         public void InsertPoint(Vector3 point, int index)

@@ -8,6 +8,9 @@ using Random = UnityEngine.Random;
 
 using Path = TerrainPaths.Path;
 using BiomeData = TG_BiomeDataObject.BiomeData;
+using Unity.VisualScripting;
+using static TerrainPaths;
+using UnityEngine.Rendering.Universal;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -23,7 +26,8 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private Material waterMaterial;
 
     private Dictionary<Vector2Int, float> _structurePosistionsAndRadii = new Dictionary<Vector2Int, float>();
-    private List<Path> _paths = new List<Path>();
+
+    private Path[] _paths;
 
     // Start is called before the first frame update
     void Start()
@@ -73,10 +77,12 @@ public class TerrainGenerator : MonoBehaviour
         _structurePosistionsAndRadii = GenerateStructures(_terrain, terrainDataObject, _terrainMap);
 
         // Create the paths
-        CreatePaths();
+        _paths = CreatePaths();
 
-        //Temp
-        //FindObjectOfType<PlayerBase>().transform.position = GetNearestSpawnPos(Vector3.zero) + Vector3.up;
+        //PaintPaths(_paths);
+
+        Transform[] children = gameObject.GetComponentsInChildren<Transform>();
+        foreach (Transform child in children) child.tag = "Terrain";
     }
 
     private bool GenerationPreChecks()
@@ -132,7 +138,6 @@ public class TerrainGenerator : MonoBehaviour
         newTerrain.gameObject.layer = LayerMask.NameToLayer("Terrain");
 
         _structurePosistionsAndRadii = new Dictionary<Vector2Int, float>();
-        _paths = new List<Path>();
 
         // Set the terrain size
         return newTerrain;
@@ -246,7 +251,7 @@ public class TerrainGenerator : MonoBehaviour
 
         float[,,] layerAlphaMap = new float[_terrain.terrainData.alphamapWidth, _terrain.terrainData.alphamapHeight, _terrain.terrainData.alphamapLayers];
 
-        float[,,] paintMap = Float3Powerize(map.weightMap, terrainDataObject.biomePaintSeperation);
+        float[,,] paintMap = Float3Powerize(map.weightMap, terrainDataObject.biomeSeperation);
 
         for (int x = 0; x < _terrain.terrainData.alphamapWidth; x++)
             for (int y = 0; y < _terrain.terrainData.alphamapHeight; y++)
@@ -373,8 +378,10 @@ public class TerrainGenerator : MonoBehaviour
         return structurePosistionsAndRadii;
     }
 
-    private void CreatePaths()
+    private Path[] CreatePaths()
     {
+        List<Path> paths = new List<Path>();
+
         // Get the structures
         Dictionary<Vector2Int, float> tempStructures = new Dictionary<Vector2Int, float>(_structurePosistionsAndRadii);
 
@@ -385,18 +392,18 @@ public class TerrainGenerator : MonoBehaviour
             // Get the start and end structures
             List<Vector3> points = new List<Vector3>();
 
-            KeyValuePair<Vector2Int, float> startingPoint = tempStructures.ElementAt(Random.Range(0, tempStructures.Count));
-            tempStructures.Remove(startingPoint.Key);
+            KeyValuePair<Vector2Int, float> originStructure = tempStructures.ElementAt(Random.Range(0, tempStructures.Count));
+            tempStructures.Remove(originStructure.Key);
 
-            KeyValuePair<Vector2Int, float> endingPoint = _structurePosistionsAndRadii.ElementAt(Random.Range(0, tempStructures.Count));
+            KeyValuePair<Vector2Int, float> destinationStructure = _structurePosistionsAndRadii.ElementAt(Random.Range(0, tempStructures.Count));
 
             foreach (KeyValuePair<Vector2Int, float> structure in _structurePosistionsAndRadii)
             {
-                if (structure.Key == startingPoint.Key || structure.Key == endingPoint.Key) continue;
+                if (structure.Key == originStructure.Key || structure.Key == destinationStructure.Key) continue;
 
                 // check if the path intercects with another structure
-                Vector2 vec = endingPoint.Key - startingPoint.Key;
-                Vector2 structurePos = structure.Key - startingPoint.Key;
+                Vector2 vec = destinationStructure.Key - originStructure.Key;
+                Vector2 structurePos = structure.Key - originStructure.Key;
 
                 // check if the structure intersects with the path between the start and end structures
                 bool radiusIntersects = Mathf.Abs(Mathf.Sin(Vector2.SignedAngle(vec, structurePos) * Mathf.Deg2Rad) * structurePos.magnitude) <= structure.Value;
@@ -404,43 +411,51 @@ public class TerrainGenerator : MonoBehaviour
                 if (radiusIntersects && distanceIntersects)
                 {
                     structureReset++;
-                    endingPoint = structure;
+                    destinationStructure = structure;
                 }
             }
 
-            // create the path
-            Path tempPath = new Path(new Vector3[] {
-                // control point for the start
-                new Vector3(startingPoint.Key.x, startingPoint.Key.y),
-                
-                // start point of the path
-                GetStructureBoarderPos(startingPoint, new Vector3(endingPoint.Key.x, endingPoint.Key.y) - new Vector3(startingPoint.Key.x, startingPoint.Key.y)),
-                
-                // end point of the path
-                GetStructureBoarderPos(endingPoint, new Vector3(startingPoint.Key.x, startingPoint.Key.y) - new Vector3(endingPoint.Key.x, endingPoint.Key.y)),
-                
-                // control point for the end
-                new Vector3(endingPoint.Key.x, endingPoint.Key.y)
-            });
+            TG_PathDataObject[] originPaths = _terrainMap.GetDominantBiome(originStructure.Key).pathData;
+            TG_PathDataObject[] destinationPaths = _terrainMap.GetDominantBiome(destinationStructure.Key).pathData;
 
-            foreach (Path path in _paths)
+            TG_PathDataObject originPath = originPaths[Random.Range(0, originPaths.Length)];
+            TG_PathDataObject destinationPath = destinationPaths[Random.Range(0, destinationPaths.Length)];
+
+            Vector3 startPoint = GetStructureBoarderPos(originStructure, new Vector3(destinationStructure.Key.x, destinationStructure.Key.y) - new Vector3(originStructure.Key.x, originStructure.Key.y));
+            Vector3 endPoint = GetStructureBoarderPos(destinationStructure, new Vector3(originStructure.Key.x, originStructure.Key.y) - new Vector3(destinationStructure.Key.x, destinationStructure.Key.y));
+
+            Vector3 startControl = (new Vector3(originStructure.Key.x, originStructure.Key.y) - startPoint).normalized * originPath.controlPointPower + startPoint;
+            Vector3 endControl = (new Vector3(destinationStructure.Key.x, destinationStructure.Key.y) - endPoint).normalized * destinationPath.controlPointPower + endPoint;
+
+            // create the path
+            Path tempPath = new Path(new Vector3[4] {startControl, startPoint, endPoint, endControl});
+
+            foreach (Path path in paths)
             {
-                TerrainPaths.IntersectionData intersectionData = TerrainPaths.PathToPathIntersection(tempPath, path, 0.1f);
+                IntersectionData intersectionData = TerrainPaths.PathToPathIntersection(tempPath, path, 0.1f);
 
                 if (intersectionData.intersects)
                 {
-                    tempPath.points[tempPath.points.Length - 2] = intersectionData.intersection;
-                    tempPath.points[tempPath.points.Length - 1] = intersectionData.intersection - intersectionData.normal * 100;
+                    destinationPaths = _terrainMap.GetDominantBiome(intersectionData.intersection).pathData;
+                    destinationPath = destinationPaths[Random.Range(0, destinationPaths.Length)];
+
+                    tempPath.End = intersectionData.intersection;
+                    tempPath.EndControl = intersectionData.intersection - intersectionData.normal * Vector2.Distance(tempPath.Start, intersectionData.intersection) * destinationPath.controlPointPower;
                 }
             }
 
-            tempStructures.Remove(endingPoint.Key);
+            tempPath.originData = originPath;
+            tempPath.destinationData = destinationPath;
 
-            _paths.Add(tempPath);
+            tempStructures.Remove(destinationStructure.Key);
 
-            tempStructures.Remove(startingPoint.Key);
-            tempStructures.Remove(endingPoint.Key);
+            paths.Add(tempPath);
+
+            tempStructures.Remove(originStructure.Key);
+            tempStructures.Remove(destinationStructure.Key);
         }
+
+        return paths.ToArray();
 
         Vector3 GetStructureBoarderPos(KeyValuePair<Vector2Int, float> structure, Vector3 direction)
         {
@@ -452,6 +467,79 @@ public class TerrainGenerator : MonoBehaviour
 
             return point;
         }
+    }
+
+    private void PaintPaths(Path[] paths)
+    {
+        float[,] heights = _terrain.terrainData.GetHeights(0, 0, _terrain.terrainData.heightmapResolution, _terrain.terrainData.heightmapResolution);
+        float[,] pathHeights = new float[_terrain.terrainData.heightmapResolution, _terrain.terrainData.heightmapResolution];
+
+        for (int x = 0; x < heights.GetLength(0); x++)
+            for (int y = 0; y < heights.GetLength(1); y++)
+            {
+                Path nearestPath = new Path();
+
+                Vector2 nearestPoint = new Vector2();
+                Vector2 nextNearestPoint = new Vector2();
+
+                float nearestPointDist = float.MaxValue;
+                float nextNearestPointDist = float.MaxValue;
+
+                float nearestPathHeight = 0;
+                float nextNearestPathHeight = 0;
+
+                float pathT = 0;
+
+                foreach (Path path in paths)
+                {
+                    float t = 0;
+
+                    while (t <= 1)
+                    {
+                        t = Mathf.Clamp(t, 0, 1);
+
+                        Vector2 pathPos = path.Spline(t);
+                        pathPos = new Vector2(pathPos.y, pathPos.x); // path spline needs to be flipped
+                        float dist = Vector2.Distance(new Vector2(x, y), pathPos);
+
+                        if (dist < nearestPointDist)
+                        {
+                            nextNearestPointDist = nearestPointDist;
+                            nextNearestPoint = nearestPoint;
+
+                            nearestPointDist = dist;
+                            nearestPoint = pathPos;
+
+                            nearestPath = path;
+
+                            nextNearestPathHeight = nearestPathHeight;
+
+                            int hX = Mathf.Clamp(Mathf.RoundToInt(pathPos.x), 0, heights.GetLength(0) - 1);
+                            int hY = Mathf.Clamp(Mathf.RoundToInt(pathPos.y), 0, heights.GetLength(1) - 1);
+                            nearestPathHeight = heights[hX, hY];
+                            pathT = t;
+                        }
+
+                        if (t == 1) break;
+                        else t = Mathf.Clamp(t + 0.1f, 0, 1);
+                    }
+                }
+
+                BiomeData biome = _terrainMap.GetDominantBiome(nearestPoint);
+                TG_PathDataObject pathData = biome.pathData.Contains(nearestPath.originData) ? nearestPath.originData : nearestPath.destinationData;
+
+                Vector2 hyp = new Vector2(x, y) - nearestPoint;
+                Vector2 adj = nextNearestPoint - nearestPoint;
+                float angle = Vector2.Angle(hyp, adj) * Mathf.Deg2Rad;
+
+                float heightBlend = hyp.magnitude * Mathf.Cos(angle) / adj.magnitude;
+                float pathHeight = Mathf.Lerp(nearestPathHeight, nextNearestPathHeight, heightBlend);
+
+                float blend = Mathf.Clamp01((nearestPointDist - pathData.pathWidth) / pathData.pathFade);
+                pathHeights[x, y] = Mathf.Lerp(pathHeight, heights[x, y], blend);
+            }
+
+        _terrain.terrainData.SetHeights(0, 0, pathHeights);
     }
 
     public Vector3 GetNearestSpawnPos(Vector3 vector3)
@@ -482,6 +570,13 @@ public class TerrainGenerator : MonoBehaviour
         int z = Mathf.RoundToInt(vec.z * _terrain.terrainData.heightmapResolution);
 
         return new Vector3Int(x, y, z);
+    }
+
+    public Vector2Int WorldToTerrainV2(Vector3 vec)
+    {
+        int x = Mathf.RoundToInt(vec.x / terrainDataObject.mapSize.x * _terrain.terrainData.heightmapResolution);
+        int y = Mathf.RoundToInt(vec.z / terrainDataObject.mapSize.y * _terrain.terrainData.heightmapResolution);
+        return new Vector2Int(x, y);
     }
 
     // Convert terrain position to world position
@@ -551,7 +646,7 @@ public class TerrainGenerator : MonoBehaviour
                 Handles.DrawWireDisc(new Vector3(discPoint.x, 0, discPoint.y), Vector3.up, 0.5f);
             }
 
-            Handles.color = Color.blue;
+            Handles.color = new Color(0.9f, 0.4f, 0);
             float detail = 0.1f;
 
             Vector3 lastPos = path.Start;
@@ -593,6 +688,32 @@ public class TerrainGenerator : MonoBehaviour
         public Vector2Int heightMapSize => new Vector2Int(heightMap.GetLength(0), heightMap.GetLength(1));
 
         public Vector2Int weightMapSize => new Vector2Int(weightMap.GetLength(0), weightMap.GetLength(1));
+
+        public BiomeData GetDominantBiome(Vector2Int pos)
+        {
+            float dominantBiomeWeight = 0;
+            BiomeData dominantBiome = new BiomeData();
+
+            for (int biome = 0; biome < biomes.Length; biome++)
+            {
+                int wX = Mathf.Clamp(pos.x, 0, weightMap.GetLength(0) - 1);
+                int wY = Mathf.Clamp(pos.y, 0, weightMap.GetLength(1) - 1);
+
+                float weight = weightMap[wX, wY, biome];
+
+                if (weight > dominantBiomeWeight)
+                {
+                    dominantBiome = biomes[biome];
+                    dominantBiomeWeight = weight;
+                }
+            }
+
+            return dominantBiome;
+        }
+
+        public BiomeData GetDominantBiome(Vector3 pos) => GetDominantBiome(new Vector2Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.z)));
+
+        public BiomeData GetDominantBiome(Vector2 pos) => GetDominantBiome(new Vector2Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y)));
     }
 
     [Serializable] public struct DebugOptions
