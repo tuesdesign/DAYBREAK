@@ -80,7 +80,8 @@ public class TerrainGenerator : MonoBehaviour
         // Create the paths
         _paths = CreatePaths();
 
-        //PaintPaths(_paths);
+        //ApplyPathHeights(_paths);
+        PaintPaths(_paths);
 
         Transform[] children = gameObject.GetComponentsInChildren<Transform>();
         foreach (Transform child in children) child.tag = "Terrain";
@@ -249,19 +250,7 @@ public class TerrainGenerator : MonoBehaviour
         }
 
         _terrain.terrainData.terrainLayers = terrainLayers.ToArray();
-
-        float[,,] layerAlphaMap = new float[_terrain.terrainData.alphamapWidth, _terrain.terrainData.alphamapHeight, _terrain.terrainData.alphamapLayers];
-
-        float[,,] paintMap = Float3Powerize(map.weightMap, terrainDataObject.biomeSeperation);
-
-        for (int x = 0; x < _terrain.terrainData.alphamapWidth; x++)
-            for (int y = 0; y < _terrain.terrainData.alphamapHeight; y++)
-                for (int i = 0; i < map.biomes.Length; i++)
-                {
-                    layerAlphaMap[x, y, i] = paintMap[x, y, i];
-                }
-
-        _terrain.terrainData.SetAlphamaps(0, 0, layerAlphaMap);
+        _terrain.terrainData.SetAlphamaps(0, 0, Float3Powerize(map.weightMap, terrainDataObject.biomeSeperation));
     }
 
     private Dictionary<Vector2Int, float> GenerateStructures(Terrain terrain, TG_TerrainDataObject data, TerrainMap map)
@@ -420,19 +409,12 @@ public class TerrainGenerator : MonoBehaviour
                 // skip the origin and destination structures
                 if (structure.Key == originStructure.Key || structure.Key == destinationStructure.Key) continue;
 
-/*                // check if the path intercects with another structure
-                Vector2 vec = destinationStructure.Key - originStructure.Key;
-                Vector2 structurePos = structure.Key - originStructure.Key;
-
-                // check if the structure intersects with the path between the start and end structures
-                bool radiusIntersects = Mathf.Abs(Mathf.Sin(Vector2.SignedAngle(vec, structurePos) * Mathf.Deg2Rad) * structurePos.magnitude) <= structure.Value;
-                bool distanceIntersects = structurePos.magnitude < vec.magnitude;
-*/
+                // check if the path intersects with the structure
                 IntersectionData intersectionData = PathToStructureIntersection(newPath, new Vector3(structure.Key.x, structure.Key.y), structure.Value, 0.1f);
 
-                // if the structure intersects, try another path
-                if (/*radiusIntersects && distanceIntersects*/ intersectionData.intersects)
+                if (intersectionData.intersects)
                 {
+                    // if the path intersects with a structure, try to connect to the intersection
                     newPath = CreateNewPathFromStructures(originStructure, destinationStructure);
                     pathAttemptCounter++;
                     goto _AttemptIntersectionAgain;
@@ -442,10 +424,12 @@ public class TerrainGenerator : MonoBehaviour
             // check if the path intersects with another path
             foreach (Path path in paths)
             {
+                // check if the path intersects with the structure
                 IntersectionData intersectionData = PathToPathIntersection(newPath, path, 0.1f);
 
                 if (intersectionData.intersects)
                 {
+                    // if the path intersects with another path, try to connect to the intersection
                     newPath = CreateNewPathFromIntersection(originStructure, intersectionData);
                     pathAttemptCounter++;
                     goto _AttemptIntersectionAgain;
@@ -539,7 +523,7 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
-    private void PaintPaths(Path[] paths)
+    private void ApplyPathHeights(Path[] paths)
     {
         float[,] heights = _terrain.terrainData.GetHeights(0, 0, _terrain.terrainData.heightmapResolution, _terrain.terrainData.heightmapResolution);
         float[,] pathHeights = new float[_terrain.terrainData.heightmapResolution, _terrain.terrainData.heightmapResolution];
@@ -610,6 +594,73 @@ public class TerrainGenerator : MonoBehaviour
             }
 
         _terrain.terrainData.SetHeights(0, 0, pathHeights);
+    }
+
+    private void PaintPaths(Path[] paths)
+    {
+        // Get the terrain layers
+        List<TerrainLayer> terrainLayers = _terrain.terrainData.terrainLayers.ToList();
+
+        // Get the path layers
+        List<TerrainLayer> pathLayers = new List<TerrainLayer>();
+        foreach (Path path in paths)
+        {
+            // Add the path start layer to the terrain layers
+            if (path.originData.layer)
+                if (!pathLayers.Contains(path.originData.layer))
+                    pathLayers.Add(path.originData.layer);
+
+            // Add the path end layer to the terrain layers
+            if (path.destinationData.layer)
+                if (!pathLayers.Contains(path.destinationData.layer))
+                    pathLayers.Add(path.destinationData.layer);
+        }
+
+        // Add the path layers to the terrain layers
+        terrainLayers.AddRange(pathLayers);
+        _terrain.terrainData.terrainLayers = terrainLayers.ToArray();
+
+        // Get the alpha map
+        float[,,] alphaMap = _terrain.terrainData.GetAlphamaps(0, 0, _terrain.terrainData.alphamapWidth, _terrain.terrainData.alphamapHeight);
+
+        // Loop through the alpha map
+        for (int x = 0; x < alphaMap.GetLength(0); x++)
+            for (int y = 0; y < alphaMap.GetLength(1); y++)
+                foreach (Path path in paths)
+                {
+                    // Get the layer indexes
+                    int originLayerIndex = terrainLayers.IndexOf(path.originData.layer);
+                    int destinationLayerIndex = terrainLayers.IndexOf(path.destinationData.layer);
+
+                    // Initialize the layer weights
+                    float originLayerWeight = 0;
+                    float destinationLayerWeight = 0;
+
+                    // Get distance to the path
+                    float pathDist = Vector2.Distance(path.Start, path.End);
+
+                    float t = 0;
+                    int pointsSampled = 0;
+                    while (t <= 1)
+                    {
+                        Vector3 pathPos = path.Spline(t);
+                        float distanceToPoint = Vector2.Distance(new Vector2(x, y), new Vector2(pathPos.y, pathPos.x));
+
+                        float width = Mathf.Lerp(path.originData.pathWidth, path.destinationData.pathWidth, t);
+                        float pathStrength = Mathf.Clamp01((width - distanceToPoint) / path.originData.pathFade);
+
+                        originLayerWeight += Mathf.Lerp(pathStrength, 0, t);
+                        destinationLayerWeight += Mathf.Lerp(pathStrength, 0, 1 - t);
+
+                        pointsSampled++;
+                        if (t <= 1) t += 2.5f / pathDist;
+                    }
+
+                    alphaMap[x, y, originLayerIndex] += originLayerWeight;
+                    alphaMap[x, y, destinationLayerIndex] += destinationLayerWeight;
+                }
+
+        _terrain.terrainData.SetAlphamaps(0, 0, alphaMap);
     }
 
     public Vector3 GetNearestSpawnPos(Vector3 vector3)
