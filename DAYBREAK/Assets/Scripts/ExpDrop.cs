@@ -15,6 +15,12 @@ public class ExpDrop : MonoBehaviour
     bool givePlayerEXP = true;
 
     public AudioClip pickupSound;
+    
+    // UI exp colors
+    private readonly Color _exp1 = new Color32(0, 220, 255, 255);
+    private readonly Color _exp2 = new Color32(4, 125, 255, 255);
+    private readonly Color _exp5 = new Color32(7, 24, 255, 255);
+    private readonly Color _exp10 = new Color32(121, 6, 255, 255);
 
     private void Update()
     {
@@ -31,8 +37,26 @@ public class ExpDrop : MonoBehaviour
                 AudioSource.PlayClipAtPoint(pickupSound, this.transform.position);
                 
                 // Spawn UI floating text
-                //GameObject expText = Instantiate(floatingExp, transform.position, floatingExp.transform.rotation) as GameObject;
-                //expText.transform.GetChild(0).GetComponent<TextMesh>().text = expAmount.ToString();
+                GameObject expText = Instantiate(floatingExp, transform.position, floatingExp.transform.rotation);
+                
+                // Change color based on amount of exp
+                switch (expAmount)
+                {
+                    case 1:
+                        expText.transform.GetChild(0).GetComponent<TextMesh>().color = _exp1;
+                        break;
+                    case 2:
+                        expText.transform.GetChild(0).GetComponent<TextMesh>().color = _exp2;
+                        break;
+                    case 5:
+                        expText.transform.GetChild(0).GetComponent<TextMesh>().color = _exp5;
+                        break;
+                    case 10:
+                        expText.transform.GetChild(0).GetComponent<TextMesh>().color = _exp10;
+                        break;
+                }
+                
+                expText.transform.GetChild(0).GetComponent<TextMesh>().text = expAmount.ToString();
             }
         }
     }

@@ -110,6 +110,7 @@ public class EnemyBase : MonoBehaviour
         
         // Spawn UI floating damage numbers
         GameObject dmgText = Instantiate(floatingDamageNum, transform.position, floatingDamageNum.transform.rotation);
+        dmgText.transform.GetChild(0).GetComponent<TextMesh>().color = Color.red;
         dmgText.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
         
         if (curHealth <= 0)

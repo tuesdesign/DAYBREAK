@@ -78,10 +78,10 @@ public class TerrainGenerator : MonoBehaviour
         _structurePosistionsAndRadii = GenerateStructures(_terrain, terrainDataObject, _terrainMap);
 
         // Create the paths
-        _paths = CreatePaths();
+        //_paths = CreatePaths();
 
         //ApplyPathHeights(_paths);
-        PaintPaths(_paths);
+        //PaintPaths(_paths);
 
         Transform[] children = gameObject.GetComponentsInChildren<Transform>();
         foreach (Transform child in children) child.tag = "Terrain";
