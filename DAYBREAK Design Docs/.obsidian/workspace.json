@@ -28,13 +28,22 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "☕Venture Creation/Team.md",
+                "file": "☕Venture Creation/Home.md",
                 "mode": "source",
+                "source": false,
                 "backlinks": true,
-                "source": false
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
               "icon": "lucide-file",
-              "title": "Team"
+              "title": "Home"
             }
           }
         ],
@@ -57,7 +66,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -182,8 +192,10 @@
   },
   "active": "f320dbd2a0014753",
   "lastOpenFiles": [
-    "☕Venture Creation/Home.md",
     "☕Venture Creation/Team.md",
+    "☕Venture Creation/Home.md",
+    "Pasted image 20250131180348.png",
+    "Untitled Kanban.md",
     "Daniel.png",
     "Alannis.png",
     "Mason.png",
@@ -201,7 +213,6 @@
     "🏠Home/Daybreak Game Design Document.md",
     "🏠Home/Project Summary.md",
     "Kanban/Kanban Items/Temp Cheese.md",
-    "Untitled Kanban.md",
     "Kanban/Kanban Board.md",
     "Kanban/Kanban Help.md",
     "Kanban/Kanban Items/Images/Temp Cheese.png",

@@ -12,6 +12,8 @@ using Unity.VisualScripting;
 using static TerrainPaths;
 using UnityEngine.Rendering.Universal;
 using System.Net;
+using System.IO;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -78,10 +80,10 @@ public class TerrainGenerator : MonoBehaviour
         _structurePosistionsAndRadii = GenerateStructures(_terrain, terrainDataObject, _terrainMap);
 
         // Create the paths
-        //_paths = CreatePaths();
+        _paths = CreatePaths();
 
         //ApplyPathHeights(_paths);
-        //PaintPaths(_paths);
+        PaintPaths(_paths);
 
         Transform[] children = gameObject.GetComponentsInChildren<Transform>();
         foreach (Transform child in children) child.tag = "Terrain";
@@ -658,6 +660,31 @@ public class TerrainGenerator : MonoBehaviour
 
                     alphaMap[x, y, originLayerIndex] += originLayerWeight;
                     alphaMap[x, y, destinationLayerIndex] += destinationLayerWeight;
+                }
+
+        foreach (KeyValuePair<Vector2Int, float> structurePosAndRad in _structurePosistionsAndRadii)
+            for (int x = structurePosAndRad.Key.x - Mathf.RoundToInt(structurePosAndRad.Value); x <= structurePosAndRad.Key.x + Mathf.RoundToInt(structurePosAndRad.Value); x++)
+                for (int y = structurePosAndRad.Key.y - Mathf.RoundToInt(structurePosAndRad.Value); y <= structurePosAndRad.Key.y + Mathf.RoundToInt(structurePosAndRad.Value); y++)
+                {
+                    if (x < 0 || x >= alphaMap.GetLength(0) || y < 0 || y >= alphaMap.GetLength(1)) continue;
+
+                    TG_PathDataObject[] pathData = _terrainMap.GetDominantBiome(structurePosAndRad.Key).pathData;
+                    TerrainLayer layer = pathData[Random.Range(0, pathData.Length)].layer;
+
+                    int layerIndex;
+
+                    if (_terrain.terrainData.terrainLayers.Contains(layer)) layerIndex = terrainLayers.IndexOf(layer);
+                    else
+                    {
+                        _terrain.terrainData.terrainLayers.Append(layer);
+                        layerIndex = terrainLayers.Count - 1;
+                    }
+
+                    float distance = Vector2.Distance(new Vector2(x, y), new Vector2(structurePosAndRad.Key.y, structurePosAndRad.Key.x));
+
+                    float pathStrength = Mathf.Clamp01((structurePosAndRad.Value - distance) / 5);
+
+                    alphaMap[x, y, layerIndex] += pathStrength;
                 }
 
         _terrain.terrainData.SetAlphamaps(0, 0, alphaMap);

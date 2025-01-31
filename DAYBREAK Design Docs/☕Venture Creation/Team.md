@@ -65,7 +65,7 @@ Gameplay Programmer
 ## Responsibilities
 Responsible for developing and refining the game's core mechanics and interactions.
 ## Experience
-...
+She has 5 years of experience working in Unity and Visual Studio.  She is excited to create fun and enjoyable experiences that are memorable.
 - C#/C++
 - Unity Engine
 - Unreal Engine

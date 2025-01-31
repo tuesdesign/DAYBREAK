@@ -16,6 +16,6 @@ MonoBehaviour:
   layer: {fileID: 8574412962073106934, guid: 82524598797afc444a741c16f8051a02, type: 2}
   pathColors:
   - {r: 1, g: 1, b: 1, a: 1}
-  pathWidth: 2.5
+  pathWidth: 5
   pathFade: 10
   controlPointPower: 0.75
