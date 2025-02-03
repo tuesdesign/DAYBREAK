@@ -9,8 +9,9 @@ namespace UI.Scripts.SettingsMenu
         [SerializeField] private float slideDuration;
         [SerializeField] private Sprite onImage;
         [SerializeField] private Sprite offImage;
-        [SerializeField] private Sprite onBgImage;
-        [SerializeField] private Sprite offBgImage;
+        
+        private readonly Color _onColor = new Color32(255, 255, 255, 255);
+        private readonly Color _offColor = new Color32(125, 125, 125, 255);
         
         private bool _isClick;
             
@@ -35,14 +36,14 @@ namespace UI.Scripts.SettingsMenu
                 LeanTween.moveLocalX(circle, -45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
                 LeanTween.scale(go, Vector3.one, hoverDuration).setIgnoreTimeScale(true);
                 circle.GetComponent<Image>().sprite = offImage;
-                background.GetComponent<Image>().sprite = offBgImage;
+                background.GetComponent<Image>().color = _offColor;
             }
             else
             {
                 LeanTween.moveLocalX(circle, 45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
                 LeanTween.scale(go, Vector3.one, hoverDuration).setIgnoreTimeScale(true);
                 circle.GetComponent<Image>().sprite = onImage;
-                background.GetComponent<Image>().sprite = onBgImage;
+                background.GetComponent<Image>().color = _onColor;
             }
         }
 

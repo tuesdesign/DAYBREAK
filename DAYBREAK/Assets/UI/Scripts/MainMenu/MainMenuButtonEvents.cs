@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace UI.Scripts.MainMenu
 {
@@ -20,6 +21,7 @@ namespace UI.Scripts.MainMenu
         public void OnPointerExit(PointerEventData eventData)
         {
             _animator.ButtonExit(gameObject);
+            EventSystem.current.SetSelectedGameObject(null);
         }
 
         public void OnPointerClick(PointerEventData eventData)

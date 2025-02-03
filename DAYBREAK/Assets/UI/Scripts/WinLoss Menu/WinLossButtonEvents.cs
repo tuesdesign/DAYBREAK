@@ -20,6 +20,7 @@ namespace UI.Scripts.WinLoss_Menu
         public void OnPointerExit(PointerEventData eventData)
         {
             _animator.ButtonExit(gameObject);
+            EventSystem.current.SetSelectedGameObject(null);
         }
 
         public void OnPointerClick(PointerEventData eventData)
