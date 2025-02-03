@@ -36,14 +36,14 @@ namespace UI.Scripts.SettingsMenu
                 LeanTween.moveLocalX(circle, -45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
                 LeanTween.scale(go, Vector3.one, hoverDuration).setIgnoreTimeScale(true);
                 circle.GetComponent<Image>().sprite = offImage;
-                background.GetComponent<Image>().color = _offColor;
+                //background.GetComponent<Image>().color = _offColor;
             }
             else
             {
                 LeanTween.moveLocalX(circle, 45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
                 LeanTween.scale(go, Vector3.one, hoverDuration).setIgnoreTimeScale(true);
                 circle.GetComponent<Image>().sprite = onImage;
-                background.GetComponent<Image>().color = _onColor;
+                //background.GetComponent<Image>().color = _onColor;
             }
         }
 

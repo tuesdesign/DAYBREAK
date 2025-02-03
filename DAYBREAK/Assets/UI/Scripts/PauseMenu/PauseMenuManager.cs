@@ -10,6 +10,7 @@ namespace UI.Scripts.PauseMenu
     {
         [SerializeField] private Canvas pauseCanvas;
         [SerializeField] private Canvas settingsCanvas;
+        [SerializeField] private Canvas upgradeMenu;
         
         [SerializeField] private GameObject resumeButton;
 
@@ -54,7 +55,7 @@ namespace UI.Scripts.PauseMenu
 
         private void PauseGame(InputAction.CallbackContext ctx)
         {
-            if (_manager.winLossScreen.enabled) return;
+            if (_manager.winLossScreen.enabled || upgradeMenu.enabled) return;
             
             _isPaused = !_isPaused;
             

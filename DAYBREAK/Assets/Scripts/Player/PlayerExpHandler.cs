@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UI.Scripts;
+using UI.Scripts.Upgrades;
 using UnityEngine;
 
 public class PlayerExpHandler : MonoBehaviour
@@ -51,10 +52,12 @@ public class PlayerExpHandler : MonoBehaviour
         _upgradeManagerMenu.PopulateMenu();
 
         playerUI.UpdateExpBar();
+        
         if (exp >= levelIncrement)
         {
             LevelUp();
         }
+        
         playerUI.UpdateExpBar();
     }
 
@@ -63,6 +66,7 @@ public class PlayerExpHandler : MonoBehaviour
         expPickUpRadius += amount;
         GetComponent<SphereCollider>().radius = expPickUpRadius + expPickUPRadMod;
     }
+    
     public void UpdageEXPMultiplier(float amount)
     {
        expMultiplier += amount;

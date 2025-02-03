@@ -273,7 +273,6 @@ public class PlayerShooting : MonoBehaviour
         
         yield return new WaitForSeconds(reloadTime + reloadTimeMod);
 
-        //reloadBar.enabled = false;
         ammoCount = maxAmmo + maxAmmoMod;
         hasAmmo = true;
         isReloading = false;
@@ -282,7 +281,7 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator ReloadTick()
     {
-        if (isReloading && ammoCount < maxAmmo)
+        if (isReloading && ammoCount < maxAmmo + maxAmmoMod)
         {
             _playerUI.UpdateAmmoDisplayAdd();
             

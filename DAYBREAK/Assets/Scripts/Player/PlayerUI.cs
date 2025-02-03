@@ -72,10 +72,10 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateAmmoDisplayRemove(int bulletsShot)
     {
-        StartCoroutine(DelayedAmmoUIUpdate(bulletsShot));
+        StartCoroutine(DelayedAmmoUIRemove(bulletsShot));
     }
 
-    private IEnumerator DelayedAmmoUIUpdate(int bulletsShot)
+    private IEnumerator DelayedAmmoUIRemove(int bulletsShot)
     {
         yield return new WaitForEndOfFrame();
 

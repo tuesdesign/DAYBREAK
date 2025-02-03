@@ -1,5 +1,6 @@
 using TMPro;
 using UI.Scripts.Misc_;
+using UI.Scripts.Upgrades;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -33,10 +34,12 @@ namespace UI.Scripts
         private bool _appliedUpgrade;
     
         private ControllerCheck _controllerCheck;
+        private LevelUpEffect _flashEffect;
 
         private void Awake()
         {
             _upgradeObject = upgradeHandler.GetComponent<UpgradeHandling>();
+            _flashEffect = GetComponent<LevelUpEffect>();
             _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
         }
         
@@ -71,6 +74,7 @@ namespace UI.Scripts
                 _controllerCheck.SetSelectedButton(upgrade1Button);
             
             upgradeMenu.enabled = true;
+            _flashEffect.flash = true;
             _appliedUpgrade = false;
             Time.timeScale = 0;
         }
@@ -96,6 +100,7 @@ namespace UI.Scripts
             }
             
             upgradeMenu.enabled = false;
+            _flashEffect.flash = false;
             Time.timeScale = 1;
             // Add Impulse force for player
         }
