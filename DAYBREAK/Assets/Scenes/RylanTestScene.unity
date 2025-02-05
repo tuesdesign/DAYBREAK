@@ -328,7 +328,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232720766}
   serializedVersion: 8
-  lengthInSec: 0.05
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -20123,8 +20123,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.75
-      minScalar: 0.5
+      scalar: 3
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -20294,7 +20294,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -20618,7 +20618,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.05
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -22714,7 +22714,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.01
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -22871,7 +22871,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 0.5
+    frequency: 1
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
@@ -25006,7 +25006,7 @@ Transform:
   m_GameObject: {fileID: 1682670604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.52, y: -0.68, z: -3.816699}
+  m_LocalPosition: {x: 5.52, y: -0.68, z: -3.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25117,7 +25117,7 @@ Transform:
   m_GameObject: {fileID: 1810341871}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9.48}
+  m_LocalPosition: {x: 0.23, y: 0, z: 9.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25217,7 +25217,7 @@ VisualEffect:
       m_Array: []
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: 11700000, guid: fbb8ec4f78145244798409bd3006d9d9, type: 2}
+      - m_Value: {fileID: 11700000, guid: 680b4949d04badb4e8966baa175a2599, type: 2}
         m_Name: SDF
         m_Overridden: 1
     m_Bool:
@@ -25607,13 +25607,13 @@ SceneRoots:
   - {fileID: 232720769}
   - {fileID: 1586333368}
   - {fileID: 855115504}
+  - {fileID: 176427685}
+  - {fileID: 2104721707}
   - {fileID: 1122318372}
   - {fileID: 1013683278}
   - {fileID: 996541114}
   - {fileID: 1682670607}
   - {fileID: 867726006}
   - {fileID: 1810341874}
-  - {fileID: 176427685}
-  - {fileID: 2104721707}
   - {fileID: 1824788042}
   - {fileID: 1411700601}
