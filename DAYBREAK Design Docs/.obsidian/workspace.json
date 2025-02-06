@@ -30,24 +30,30 @@
               "state": {
                 "file": "☕Venture Creation/Home.md",
                 "mode": "source",
-                "source": false,
                 "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
+                "source": false
               },
               "icon": "lucide-file",
               "title": "Home"
             }
+          },
+          {
+            "id": "4d785cddaf13bb08",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Design/Narrative Direction/Narrative.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Narrative"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -66,8 +72,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
-                "autoReveal": false
+                "sortOrder": "alphabetical"
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -190,42 +195,42 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "f320dbd2a0014753",
+  "active": "4d785cddaf13bb08",
   "lastOpenFiles": [
+    "🏠Home/Daybreak Game Design Document.md",
+    "Design/Game Design/Gameplay.md",
+    "Kanban/Kanban Board.md",
+    "Kanban/Kanban Help.md",
+    "Kanban/Kanban Items/Temp Cheese.md",
+    "Kanban/Kanban Items/Images/Temp Cheese.png",
+    "Design/Technical Design/TAPTICIAN.md",
+    "Design/Sound Design/ADASTRA.md",
+    "Pasted image 20250131180348.png",
+    "Rylan.png",
+    "Pasted image 20240925221407.png",
+    "Oscar.png",
+    "Mason.png",
+    "Alannis.png",
+    "Constantine.png",
+    "Daniel.png",
+    "Design/Narrative Direction/Narrative.md",
     "☕Venture Creation/Team.md",
     "☕Venture Creation/Home.md",
-    "Pasted image 20250131180348.png",
     "Untitled Kanban.md",
-    "Daniel.png",
-    "Alannis.png",
-    "Mason.png",
-    "Constantine.png",
-    "Rylan.png",
-    "Oscar.png",
-    "Pasted image 20240925221407.png",
     "☕Venture Creation",
     "🏠Home/Team.md",
     "Design/Art Direction/List to make.md",
     "Design/Art Direction/FVX Notes.md",
     "Design/Art Direction/Building Mood Board.md",
     "Design/Art Direction/Art and Visual Design.md",
-    "Design/Narrative Direction/Narrative.md",
-    "🏠Home/Daybreak Game Design Document.md",
     "🏠Home/Project Summary.md",
-    "Kanban/Kanban Items/Temp Cheese.md",
-    "Kanban/Kanban Board.md",
-    "Kanban/Kanban Help.md",
-    "Kanban/Kanban Items/Images/Temp Cheese.png",
     "Design/Game Design/Upgrades.md",
     "Design/Game Design/Proposed Upgrade Tree.md",
     "Design/Game Design/Level Generation.md",
-    "Design/Game Design/Gameplay.md",
     "Design/Art Direction/Style Guide.md",
     "Design/Art Direction/UI Notes.md",
     "List to make.md",
     "Kanban/Kanban Items/Completed Items",
-    "Design/Technical Design/TAPTICIAN.md",
-    "Design/Sound Design/ADASTRA.md",
     "Art Direction.md",
     "Design/Game Systems and Technical Design.md",
     "Untitled 1.canvas",

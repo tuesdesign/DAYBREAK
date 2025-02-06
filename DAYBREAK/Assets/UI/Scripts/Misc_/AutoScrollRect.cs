@@ -15,6 +15,7 @@ namespace UI.Scripts.Misc_
         private RectTransform _mSelectedRectTransform;
         
         public bool menuOpen;
+        public bool notesMenuOpen;
         
         private ControllerCheck _controllerCheck;
 
@@ -25,7 +26,7 @@ namespace UI.Scripts.Misc_
         
         void Update()
         {
-            if (_controllerCheck.connected && menuOpen)
+            if (_controllerCheck.connected && (menuOpen || notesMenuOpen))
                 UpdateScrollToSelected(mTemplateScrollRect, mContentRectTransform, mTemplateViewportTransform);
         }
 

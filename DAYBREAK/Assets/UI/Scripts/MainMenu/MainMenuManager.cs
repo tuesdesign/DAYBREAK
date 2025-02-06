@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UI.Scripts.Misc_;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 namespace UI.Scripts.MainMenu
 {
@@ -15,10 +15,26 @@ namespace UI.Scripts.MainMenu
         [SerializeField] private Canvas characterSelect;
         [SerializeField] private TMP_Text currentTime;
         
+        [Header("Buttons")]
         [SerializeField] private GameObject playButton;
         [SerializeField] private GameObject character1Button;
 
-        private AutoScrollRect _autoScrollRect;
+        [Header("Notes")]
+        [SerializeField] private GameObject notesScrollList;
+        [SerializeField] private GameObject notesTextBackground;
+        [SerializeField] private TMP_Text notesText;
+        
+        private bool _notesOpen;
+
+        private Dictionary<int, string> _notes = new Dictionary<int, string>()
+        {
+            { 1, "Alectrona-5 (Pre-Devouring)\nClimate: Tidally locked: one side of the planet perpetually faces the local sun, while the other is facing outward into space.\nLand-to-Ocean Ratio: 90:10 (Bodies of water are only found in a narrow strip between the two hemispheres, where the temperature is stable enough for life to persist).\nNotable Features:\nHalf: One hemisphere is an inhospitable desert, with lethal temperatures at all hours. \nAnd Half: The other hemisphere is a frozen wasteland, with permanent ice-age conditions." },
+            { 2, "Hello" },
+            { 3, "Help" },
+        };
+        
+        [SerializeField] private AutoScrollRect charAutoScrollRect;
+        [SerializeField] private AutoScrollRect notesAutoScrollRect;
         
         private ControllerCheck _controllerCheck;
         private bool _existingController;
@@ -31,7 +47,6 @@ namespace UI.Scripts.MainMenu
         
         private void Start()
         {
-            _autoScrollRect = FindObjectOfType(typeof(AutoScrollRect)) as AutoScrollRect;
             _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
         }
 
@@ -53,6 +68,47 @@ namespace UI.Scripts.MainMenu
                 _existingController = true;
             }
         }
+        
+        // Note Stuff // 
+
+        public void ToggleNotesList()
+        {
+            _notesOpen = !_notesOpen;
+
+            if (_notesOpen)
+            {
+                notesScrollList.SetActive(true);
+                LeanTween.scaleY(notesScrollList, 1, 0.3f).setIgnoreTimeScale(true);
+                notesAutoScrollRect.notesMenuOpen = true;
+            }
+            else
+            {
+                StartCoroutine(NotesClose());
+                notesAutoScrollRect.notesMenuOpen = false;
+            }
+        }
+        
+        private IEnumerator NotesClose()
+        {
+            LeanTween.scaleY(notesScrollList, 0, 0.3f).setIgnoreTimeScale(true);
+
+            yield return new WaitForSecondsRealtime(0.3f);
+            
+            notesScrollList.SetActive(true);
+        }
+
+        public void OpenNoteText(int noteNum)
+        {
+            notesTextBackground.SetActive(true);
+            notesText.text = _notes[noteNum];
+        }
+
+        public void CloseNoteText()
+        {
+            notesTextBackground.SetActive(false);
+        }
+        
+        // Character Select Stuff //
 
         public void OpenCharacterSelect()
         {
@@ -70,7 +126,7 @@ namespace UI.Scripts.MainMenu
             
             mainMenu.enabled = false;
             characterSelect.enabled = true;
-            _autoScrollRect.menuOpen = true;
+            charAutoScrollRect.menuOpen = true;
 
             if (_controllerCheck.connected)
             {
@@ -85,7 +141,7 @@ namespace UI.Scripts.MainMenu
             
             mainMenu.enabled = true;
             characterSelect.enabled = false;
-            _autoScrollRect.menuOpen = false;
+            charAutoScrollRect.menuOpen = false;
 
             if (_controllerCheck.connected)
             {
@@ -97,7 +153,7 @@ namespace UI.Scripts.MainMenu
         public void LoadScene(string sceneName)
         {
             StartCoroutine(LoadGame(sceneName));
-            _autoScrollRect.menuOpen = false;
+            charAutoScrollRect.menuOpen = false;
         }
 
         private IEnumerator LoadGame(string sceneName)
