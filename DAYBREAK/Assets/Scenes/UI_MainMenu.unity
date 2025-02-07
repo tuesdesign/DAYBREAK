@@ -540,8 +540,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -115}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -88}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &40612599
 MonoBehaviour:
@@ -587,8 +587,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -947,11 +947,7 @@ MonoBehaviour:
   currentTime: {fileID: 272453859}
   playButton: {fileID: 9593709}
   character1Button: {fileID: 2066228228}
-  notesScrollList: {fileID: 1418861434}
-  notesTextBackground: {fileID: 208375584}
-  notesText: {fileID: 1508358894}
   charAutoScrollRect: {fileID: 128781485}
-  notesAutoScrollRect: {fileID: 1418861436}
 --- !u!114 &158835549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1909,6 +1905,62 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 47.376755}
   m_SizeDelta: {x: 639.36115, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &324167865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 324167867}
+  - component: {fileID: 324167866}
+  m_Layer: 0
+  m_Name: NotesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &324167866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324167865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0f410a54f51464385259f96e9227a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteDict:
+    thisDictItem:
+    - noteNum: 1
+      noteText: hey
+    - noteNum: 2
+      noteText: hello
+    - noteNum: 3
+      noteText: help
+  notesScrollList: {fileID: 1418861434}
+  notesAutoScrollRect: {fileID: 1418861436}
+  notesTextBackground: {fileID: 208375584}
+  notesText: {fileID: 1508358894}
+--- !u!4 &324167867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324167865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &426452610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,8 +2008,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 545}
+  m_AnchoredPosition: {x: 0, y: 249.75777}
+  m_SizeDelta: {x: 40, y: 414}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &426452612
 CanvasRenderer:
@@ -1985,7 +2037,7 @@ MonoBehaviour:
     m_Top: 5
     m_Bottom: 5
   m_ChildAlignment: 1
-  m_Spacing: 5
+  m_Spacing: 4
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -2687,8 +2739,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -475}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -360}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630764228
 MonoBehaviour:
@@ -2734,8 +2786,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -2892,8 +2944,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: CloseNoteText
         m_Mode: 1
         m_Arguments:
@@ -2977,8 +3029,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -520}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -394}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &680689309
 MonoBehaviour:
@@ -3024,8 +3076,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -3695,8 +3747,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: ToggleNotesList
         m_Mode: 1
         m_Arguments:
@@ -4208,8 +4260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -340}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -258}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &968251953
 MonoBehaviour:
@@ -4255,8 +4307,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -4340,8 +4392,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -430}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -326}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &972715175
 MonoBehaviour:
@@ -4387,8 +4439,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -4472,8 +4524,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -25}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -20}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1005041988
 MonoBehaviour:
@@ -4519,8 +4571,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -5186,8 +5238,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -205}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -156}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1185282467
 MonoBehaviour:
@@ -5233,8 +5285,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -5750,7 +5802,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -35, y: 175}
-  m_SizeDelta: {x: 45, y: 250}
+  m_SizeDelta: {x: 40, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1418861436
 MonoBehaviour:
@@ -5820,7 +5872,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1003037326, guid: 62173ba7927b1734098c30a53b675293, type: 3}
+  m_Sprite: {fileID: 1482128516, guid: e25430fbc01ae2947aaba4945acb91a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6019,8 +6071,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -250}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -190}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1457313835
 MonoBehaviour:
@@ -6066,8 +6118,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -6297,8 +6349,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -295}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -224}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1503631954
 MonoBehaviour:
@@ -6344,8 +6396,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -6638,8 +6690,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -70}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -54}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1579311825
 MonoBehaviour:
@@ -6685,8 +6737,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -6986,8 +7038,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -160}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -122}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1706934625
 MonoBehaviour:
@@ -7033,8 +7085,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -7119,8 +7171,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -6}
+  m_AnchoredPosition: {x: 0, y: -0.10002899}
+  m_SizeDelta: {x: 0, y: -4.600052}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711790782
 MonoBehaviour:
@@ -7155,7 +7207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1482128516, guid: e25430fbc01ae2947aaba4945acb91a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7477,8 +7529,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -385}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 20, y: -292}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1815972651
 MonoBehaviour:
@@ -7524,8 +7576,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158835548}
-        m_TargetAssemblyTypeName: UI.Scripts.MainMenu.MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 324167866}
+        m_TargetAssemblyTypeName: UI.Scripts.Notes.NotesManager, Assembly-CSharp
         m_MethodName: OpenNoteText
         m_Mode: 3
         m_Arguments:
@@ -8612,6 +8664,7 @@ SceneRoots:
   - {fileID: 1980166305}
   - {fileID: 158835547}
   - {fileID: 1860028878}
+  - {fileID: 324167867}
   - {fileID: 1704939575}
   - {fileID: 1237743683}
   - {fileID: 1849228634}

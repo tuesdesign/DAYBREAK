@@ -45,15 +45,48 @@
               "state": {
                 "file": "Design/Narrative Direction/Narrative.md",
                 "mode": "source",
+                "source": false,
                 "backlinks": true,
-                "source": false
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Narrative"
+            }
+          },
+          {
+            "id": "f509273e92ddb88b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Design/Narrative Direction/Narrative.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
               "icon": "lucide-file",
               "title": "Narrative"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -72,7 +105,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -195,9 +229,10 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "4d785cddaf13bb08",
+  "active": "f509273e92ddb88b",
   "lastOpenFiles": [
     "🏠Home/Daybreak Game Design Document.md",
+    "Design/Narrative Direction/Narrative.md",
     "Design/Game Design/Gameplay.md",
     "Kanban/Kanban Board.md",
     "Kanban/Kanban Help.md",
@@ -213,7 +248,6 @@
     "Alannis.png",
     "Constantine.png",
     "Daniel.png",
-    "Design/Narrative Direction/Narrative.md",
     "☕Venture Creation/Team.md",
     "☕Venture Creation/Home.md",
     "Untitled Kanban.md",
