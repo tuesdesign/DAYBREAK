@@ -18,7 +18,10 @@ namespace UI.Scripts
         [SerializeField] private Canvas mainMobileUI;
         [SerializeField] private TMP_Text timeText;
         [SerializeField] private Image timerFill;
+        
+        [Header("Tutorial Items")]
         [SerializeField] private GameObject tutorialPopup;
+        [SerializeField] private TMP_Text anyKeyText;
     
         [Header("Win/Loss Screen Items")]
         [SerializeField] public Canvas winLossScreen;
@@ -64,13 +67,13 @@ namespace UI.Scripts
             if (_tutorialOpen) return;
             
             // Main Update Loop //
-                
+
             switch (_timeValue)
             {
                 case > 0 when _countdown:
                     _timeValue -= Time.deltaTime;
                     break;
-                
+
                 // Time ran out -> Player wins
                 case <= 0 when _displayEndScreen:
                     _displayEndScreen = false;

@@ -114,7 +114,9 @@ public class PlayerUI : MonoBehaviour
     // Add UI for max ammo mod count
     public void UpdateAmmoDisplay()
     {
-        for (var i = 0; i < playerShooting.maxAmmoMod; i++)
+        var tempAmmoCount = _ammoMainImages.Count;
+        
+        for (var i = 0; i < ((playerShooting.MaxAmmo + playerShooting.maxAmmoMod) - tempAmmoCount); i++)
         {
             var newUI = Instantiate(pistolAmmoPrefab, ammoDisplayHolder.transform);
             _ammoMainImages.Add(newUI.transform.GetChild(1).GetComponent<Image>());

@@ -20,5 +20,11 @@ namespace UI.Scripts.Misc_
             var eventSystem = EventSystem.current;
             eventSystem.SetSelectedGameObject(button, new BaseEventData(eventSystem));
         }
+
+        public void ClearSelection()
+        {
+            var eventSystem = EventSystem.current;
+            eventSystem.SetSelectedGameObject(null);
+        }
     }
 }

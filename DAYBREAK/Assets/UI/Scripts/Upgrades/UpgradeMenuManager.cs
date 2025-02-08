@@ -15,15 +15,12 @@ namespace UI.Scripts
     
         [Header("Upgrade 1")]
         [SerializeField] private TMP_Text descriptionText1;
-        [SerializeField] private Image image1;
     
         [Header("Upgrade 2")]
         [SerializeField] private TMP_Text descriptionText2;
-        [SerializeField] private Image image2;
     
         [Header("Upgrade 3")]
         [SerializeField] private TMP_Text descriptionText3;
-        [SerializeField] private Image image3;
     
         [SerializeField] private GameObject upgradeHandler;
         private UpgradeHandling _upgradeObject;
@@ -49,7 +46,6 @@ namespace UI.Scripts
             
             descriptionText1.text = _upgradeObject.FullupgradeList[index].upgradeName + ": " +
                                     _upgradeObject.FullupgradeList[index].description;
-            image1 = _upgradeObject.FullupgradeList[index].image;
             _upgrade1 = _upgradeObject.FullupgradeList[index];
         
             var temp1 = index;
@@ -58,7 +54,6 @@ namespace UI.Scripts
             
             descriptionText2.text = _upgradeObject.FullupgradeList[index].upgradeName + ": " +
                                     _upgradeObject.FullupgradeList[index].description;
-            image2 = _upgradeObject.FullupgradeList[index].image;
             _upgrade2 = _upgradeObject.FullupgradeList[index];
         
             var temp2 = index;
@@ -67,11 +62,12 @@ namespace UI.Scripts
             
             descriptionText3.text = _upgradeObject.FullupgradeList[index].upgradeName + ": " +
                                     _upgradeObject.FullupgradeList[index].description;
-            image3 = _upgradeObject.FullupgradeList[index].image;
             _upgrade3 = _upgradeObject.FullupgradeList[index];
             
             if (_controllerCheck.connected)
                 _controllerCheck.SetSelectedButton(upgrade1Button);
+            else
+                _controllerCheck.ClearSelection();
             
             upgradeMenu.enabled = true;
             _flashEffect.flash = true;
@@ -102,6 +98,7 @@ namespace UI.Scripts
             upgradeMenu.enabled = false;
             _flashEffect.flash = false;
             Time.timeScale = 1;
+            
             // Add Impulse force for player
         }
     }
