@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UI.Scripts;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -20,6 +21,7 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] int maxHealth = 10;
     int curHealth;
     public int shield;
+    bool hasSheild;
     [SerializeField] public float dodgeChange;
 
     bool canTakeDamage = true;
@@ -30,11 +32,16 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] float speed = 2.5f;
 
 
+    [Header("VFX")]
+    [SerializeField] GameObject dodgeEffect;
+    [SerializeField] GameObject sheildEffect;
+
     //UpgradeModifiers
-    //[HideInInspector] 
+    [HideInInspector] 
     public int maxHealthModifier = 0;
+    [HideInInspector]
     public float invincibilityTimeModifier = 0;
-    //[HideInInspector] 
+    [HideInInspector] 
     public float speedModifier = 0;
 
 
@@ -143,6 +150,7 @@ public class PlayerBase : MonoBehaviour
         if (canTakeDamage) //if the player can be damaged currently
         {
             if (dodgeChange >= Random.Range(0, 100)) { //if player's dodge chance triggers  (out of 100%)
+                
                 canTakeDamage = false;
                 StartCoroutine(InvincibilityFrames());  //player dodges for length of invincibility frames. 
             }
@@ -154,6 +162,7 @@ public class PlayerBase : MonoBehaviour
                     curHealth += shield;
                     shield = 0;
                 }
+                ToggleSheild();
             }
             else
             {
@@ -197,6 +206,27 @@ public class PlayerBase : MonoBehaviour
         }
     }
 
+    void DodgeEffect()
+    {
+        dodgeEffect.SetActive(true);
+        StartCoroutine(DodgeEffectDelay());
+    }
+
+    void ToggleSheild()
+    {
+        if (sheildEffect != null)
+        {
+            if (shield > 0)
+            {
+                sheildEffect.SetActive(true);
+            }
+            else
+            {
+                sheildEffect.SetActive(false);
+            }
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -225,5 +255,11 @@ public class PlayerBase : MonoBehaviour
     {
         yield return new WaitForSeconds(invincibilityTime);
         canTakeDamage = true;
+    }
+
+    IEnumerator DodgeEffectDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        dodgeEffect.SetActive(false);
     }
 }

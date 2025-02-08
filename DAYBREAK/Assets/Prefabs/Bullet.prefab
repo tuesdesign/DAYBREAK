@@ -190,17 +190,10 @@ MonoBehaviour:
   rb: {fileID: 6588048106972015134}
   speed: 5
   damage: 1
-  canBurn: 0
-  burnChance: 0
-  isexplosive: 0
-  explosionRange: 0
-  explosionDamage: 0
-  canFreeze: 0
-  freezeChance: 0
-  canBounce: 0
-  bounceAmount: 0
-  canPierce: 0
-  pierceAmount: 0
+  hitEffect: {fileID: 5145496469507944006, guid: 098a6980900291a41bb7e66ce156764c, type: 3}
+  burnDamage: 0
+  explosiveDamage: 0
+  explosionRaduis: 0
   enableTerrainGlueForce: 1
   glueDistance: 1
   gluePower: 10

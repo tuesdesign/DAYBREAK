@@ -18,7 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 792be8e275ab02e4196c5b9b800cee89, type: 2}
   - {fileID: 11400000, guid: af79ffe0f87f21145bdc82f609dbee08, type: 2}
   biomeSeperation: 5
-  biomePaintSeperation: 2
   structureDensity: 1
   structureEdgeBuffer: 10
   structureEdgeCurve:
@@ -51,10 +50,28 @@ MonoBehaviour:
   islandSize: 200
   islandSlope:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  islandSlopeStrength: 0.1
+  islandSlopeStrength: 0.5
   islandBorderRoughness: 0.1
   islandBorderRoughnessStrength: 0.1

@@ -11,26 +11,36 @@ public class BulletApplicationHandling : MonoBehaviour
     int burnshots;
     public float burnChance;
     public float burnTick;
+    public float burnVFX;
 
     public bool canExplode = false;
     public int shotsBetweenExplosive;
     int explosiveshots; //counter for how many shots it has been since last explosive
     public float explosionRange;
     public float explosionDamage;
+    public GameObject explosionVFX;
 
-    public bool canFreeze;
+    public bool canFreeze = false;
     public int shotsBetweenFreeze;
     public int freezeshots; //counter for how many shots it has been since last freeze
     public float freezeChance; // if it is a percentage chance to freeze, this variable starts at 0 and is  applied to the ones not automatic
     public float freezeTime;
+    public GameObject freezeVFX;
 
-    public bool canBounce;
+    public bool canPoison = false;
+    public int shotsBetweenPoison;
+    public int poisonshots; //counter for how many shots it has been since last poison
+    public float poisonChance; // if it is a percentage chance to poison, this variable starts at 0 and is  applied to the ones not automatic
+    public float poisonTime;
+    public GameObject poisonVFX;
+
+    public bool canBounce = false;
     public float bounceAmount;
 
-    public bool canPierce;
+    public bool canPierce = false;
     public int pierceAmount;
 
-    public bool castWind;
+    public bool castWind = false;
     public int shotsBetweenWind;
 
     [Header("Particles")]

@@ -11,9 +11,9 @@ public class EnemyBase : MonoBehaviour
     Transform playerPosition;
 
     float curHealth;
-    [Tooltip("damage")]
-    [SerializeField] int curdamage=2;
-    [SerializeField] float curspeed;
+    
+    int curdamage=2;
+    float curspeed;
     Vector3 movePos = Vector2.zero;
 
     [SerializeField] private GameObject floatingDamageNum;

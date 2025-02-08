@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] float damage;
+    [SerializeField] GameObject hitEffect;
 
     [Header ("Properties")]
     public int burnDamage;
@@ -71,8 +72,11 @@ public class Bullet : MonoBehaviour
             We should generaly 'destroy' the bullet when it hits any object. And only apply damage when it hits an enemy.
 
             */
+            GameObject hVFX = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(hVFX,0.5f);
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
             
+
 
             //add the connection between enemy status afflictions and the bullet handler
             if (canBurn)
