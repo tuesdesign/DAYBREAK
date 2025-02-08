@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using TMPro;
 using UI.Scripts.Misc_;
-using UI.Scripts.PauseMenu;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 namespace UI.Scripts
 {
@@ -16,6 +18,7 @@ namespace UI.Scripts
         [SerializeField] private Canvas mainMobileUI;
         [SerializeField] private TMP_Text timeText;
         [SerializeField] private Image timerFill;
+        [SerializeField] private GameObject tutorialPopup;
     
         [Header("Win/Loss Screen Items")]
         [SerializeField] public Canvas winLossScreen;
@@ -29,28 +32,39 @@ namespace UI.Scripts
         private const float StartTime = 300;
         private float _timeValue;
         private bool _countdown;
-        private bool _displayEndScreen = true;
+        private bool _tutorialOpen;
+        private bool _displayEndScreen;
         
         private ControllerCheck _controllerCheck;
+
+        private void OnEnable()
+        {
+            InputSystem.onAnyButtonPress.CallOnce(RemoveTutorialPopup);
+        }
 
         private void Awake()
         {
             // Determine which UI to display
             _activeUI = SystemInfo.deviceType == DeviceType.Handheld ? mainMobileUI : mainPCUI;
-            Time.timeScale = 1;
         }
 
         private void Start()
         {
-            _activeUI.enabled = true;
             _timeValue = StartTime;
-            _countdown = true;
-            _displayEndScreen = true;
             _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
+            
+            tutorialPopup.SetActive(true);
+            _tutorialOpen = true;
+            Time.timeScale = 0;
         }
 
         private void Update()
         {
+            // Don't update time if tutorial popup open
+            if (_tutorialOpen) return;
+            
+            // Main Update Loop //
+                
             switch (_timeValue)
             {
                 case > 0 when _countdown:
@@ -78,6 +92,19 @@ namespace UI.Scripts
 
             timeText.text = $"{minutes:00}:{seconds:00}";
             timerFill.fillAmount = timeToDisplay / StartTime;
+        }
+
+        private void RemoveTutorialPopup(InputControl control)
+        {
+            if (!_tutorialOpen) return;
+            
+            tutorialPopup.SetActive(false);
+            _activeUI.enabled = true;
+            _countdown = true;
+            _displayEndScreen = true;
+            Time.timeScale = 1;
+            
+            _tutorialOpen = false;
         }
         
         public void LoadMainMenu()

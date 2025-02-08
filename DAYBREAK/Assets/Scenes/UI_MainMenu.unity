@@ -1946,6 +1946,11 @@ MonoBehaviour:
   notesAutoScrollRect: {fileID: 1418861436}
   notesTextBackground: {fileID: 208375584}
   notesText: {fileID: 1508358894}
+  firstNoteButton: {fileID: 1005041986}
+  backButton: {fileID: 646832892}
+  noteButton: {fileID: 785305691}
+  mainButtons: {fileID: 1611591190}
+  quitButton: {fileID: 230042803}
 --- !u!4 &324167867
 Transform:
   m_ObjectHideFlags: 0
@@ -2006,10 +2011,10 @@ RectTransform:
   - {fileID: 680689308}
   m_Father: {fileID: 1711790781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 249.75777}
-  m_SizeDelta: {x: 40, y: 414}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &426452612
 CanvasRenderer:
@@ -2913,12 +2918,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 785305695}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3718,7 +3723,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 1005041988}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 1936430110}
     m_SelectOnRight: {fileID: 0}
@@ -5816,7 +5821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cda076788368c40b7048dabf67e9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 10
+  scrollSpeed: 20
   mTemplateScrollRect: {fileID: 1418861437}
   mTemplateViewportTransform: {fileID: 1418861435}
   mContentRectTransform: {fileID: 426452611}
@@ -6796,6 +6801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1611591189}
+  - component: {fileID: 1611591190}
   m_Layer: 5
   m_Name: ButtonHolder
   m_TagString: Untagged
@@ -6826,6 +6832,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 363, y: 255}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1611591190
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611591188}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1640196366
 GameObject:
   m_ObjectHideFlags: 0
@@ -7171,7 +7189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.10002899}
+  m_AnchoredPosition: {x: 0, y: -0.10003662}
   m_SizeDelta: {x: 0, y: -4.600052}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711790782
