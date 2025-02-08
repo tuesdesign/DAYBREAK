@@ -129,6 +129,7 @@ public class PlayerShooting : MonoBehaviour
                 Destroy(b, 10);
 
                 ammoCount--;
+                PlayerPrefs.SetInt("ShotsFired", PlayerPrefs.GetInt("ShotsFired") + 1);
                 
                 if (ammoCount <= 0)
                 {
@@ -162,6 +163,7 @@ public class PlayerShooting : MonoBehaviour
                     OnBulletShot?.Invoke(b);
 
                     ammoCount--;
+                    PlayerPrefs.SetInt("ShotsFired", PlayerPrefs.GetInt("ShotsFired") + 1);
                     
                     if (ammoCount <= 0)
                     {

@@ -35,6 +35,9 @@ public class PlayerExpHandler : MonoBehaviour
     public void GainEXP(int amount)
     {
         exp += Mathf.RoundToInt(amount * expMultiplier);
+        
+        PlayerPrefs.SetInt("XpEarned", PlayerPrefs.GetInt("XpEarned") + Mathf.RoundToInt(amount * expMultiplier));
+        
         playerUI.UpdateExpBar();
         if (exp >= levelIncrement)
         {

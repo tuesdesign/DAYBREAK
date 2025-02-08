@@ -20,6 +20,10 @@ namespace UI.Scripts.MainMenu
         [SerializeField] private GameObject playButton;
         [SerializeField] private GameObject character1Button;
         
+        [Header("Achievements UI")]
+        [SerializeField] private GameObject achievementCanvas;
+        [SerializeField] private GameObject achievementBackButton;
+        
         [SerializeField] private AutoScrollRect charAutoScrollRect;
         
         private NotesManager _notesManager;
@@ -55,6 +59,21 @@ namespace UI.Scripts.MainMenu
                 _existingController = true;
             }
         }
+        
+        // Achievements Page //
+
+        public void OpenAchievementsPage()
+        {
+            achievementCanvas.SetActive(true);
+            _controllerCheck.SetSelectedButton(achievementBackButton);
+        }
+
+        public void CloseAchievementsPage()
+        {
+            achievementCanvas.SetActive(false);
+            _controllerCheck.SetSelectedButton(playButton);
+        }
+        
         
         // Character Select Stuff //
 

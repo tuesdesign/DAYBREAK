@@ -58,8 +58,11 @@ public class UpgradeHandling : MonoBehaviour
         {
             return; 
         }
+        
         Debug.Log("Applying upgrade: " + upgradeToApply.upgradeName + " at level " + upgradeToApply.level);
 
+        PlayerPrefs.SetInt("UpgradesApplied", PlayerPrefs.GetInt("UpgradesApplied") + 1);
+        
         var upgradeLevel = upgradeToApply.upgradeLevels[upgradeToApply.level];
 
         if (upgradeLevel.usesBasePlayer)

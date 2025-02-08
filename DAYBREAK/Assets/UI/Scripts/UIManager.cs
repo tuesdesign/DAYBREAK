@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
+using UnityEngine.Serialization;
 
 namespace UI.Scripts
 {
@@ -32,8 +33,8 @@ namespace UI.Scripts
         
         private Canvas _activeUI;
     
-        private const float StartTime = 300;
-        private float _timeValue;
+        public const float StartTime = 300;
+        public float timeValue;
         private bool _countdown;
         private bool _tutorialOpen;
         private bool _displayEndScreen;
@@ -53,12 +54,14 @@ namespace UI.Scripts
 
         private void Start()
         {
-            _timeValue = StartTime;
+            timeValue = StartTime;
             _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
             
             tutorialPopup.SetActive(true);
             _tutorialOpen = true;
             Time.timeScale = 0;
+            
+            PlayerPrefs.SetInt("GamesPlayed", PlayerPrefs.GetInt("GamesPlayed") + 1);
         }
 
         private void Update()
@@ -68,21 +71,22 @@ namespace UI.Scripts
             
             // Main Update Loop //
 
-            switch (_timeValue)
+            switch (timeValue)
             {
                 case > 0 when _countdown:
-                    _timeValue -= Time.deltaTime;
+                    timeValue -= Time.deltaTime;
+                    PlayerPrefs.SetFloat("TotalTime", PlayerPrefs.GetFloat("TotalTime") + Time.deltaTime);
                     break;
 
                 // Time ran out -> Player wins
                 case <= 0 when _displayEndScreen:
                     _displayEndScreen = false;
-                    _timeValue = 0;
+                    timeValue = 0;
                     DisplayWinLoss(false);
                     break;
             }
 
-            DisplayTime(_timeValue);
+            DisplayTime(timeValue);
         }
     
         private void DisplayTime(float timeToDisplay)
@@ -134,7 +138,16 @@ namespace UI.Scripts
                 _controllerCheck.SetSelectedButton(shareButton);
 
             // Change win/loss text
-            winLossText.text = isLoss ? "YOU LOSE" : "YOU WIN";
+            if (isLoss)
+            {
+                winLossText.text = "YOU LOSE";
+                PlayerPrefs.SetInt("GamesLost", PlayerPrefs.GetInt("GamesLost") + 1);
+            }
+            else
+            {
+                winLossText.text = "YOU WIN";
+                PlayerPrefs.SetInt("GamesWon", PlayerPrefs.GetInt("GamesWon") + 1);
+            }
 
             // Time alive & display
             timerText.text = "You survived: " + TimeSurvived();
@@ -142,7 +155,7 @@ namespace UI.Scripts
 
         public string TimeSurvived()
         {
-            var tempTime = StartTime - _timeValue;
+            var tempTime = StartTime - timeValue;
             
             float minutes = Mathf.FloorToInt(tempTime / 60);
             float seconds = Mathf.FloorToInt(tempTime % 60);

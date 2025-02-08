@@ -147,6 +147,7 @@ public class EnemyBase : MonoBehaviour
         
         // Add to kill counter
         _pauseManager.killCounter += 1;
+        PlayerPrefs.SetInt("EnemiesKilled", PlayerPrefs.GetInt("EnemiesKilled") + 1);
         
         Destroy(this.gameObject);
     }
