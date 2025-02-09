@@ -71,6 +71,7 @@ public class UpgradeHandling : MonoBehaviour
             playerBase.speedModifier += upgradeLevel.basePlayerStats.moveSpeedIncrease;
             playerBase.invincibilityTimeModifier += upgradeLevel.basePlayerStats.invincibilityFrameMod;
             playerBase.shield += upgradeLevel.basePlayerStats.sheildMod;
+            playerBase.ToggleSheild();
             playerBase.dodgeChange += upgradeLevel.basePlayerStats.dodgeChanceMod;
         }
 
@@ -115,6 +116,11 @@ public class UpgradeHandling : MonoBehaviour
                 bulletApplication.canFreeze = upgradeLevel.bulletProperties.canFreeze;
                 bulletApplication.freezeChance = upgradeLevel.bulletProperties.freezeChance;
                 bulletApplication.shotsBetweenFreeze = upgradeLevel.bulletProperties.shotsBwteenFreeze;
+            }
+
+            if (upgradeLevel.bulletProperties.pierceAmount > 0)
+            {
+                bulletApplication.pierceAmount += upgradeLevel.bulletProperties.pierceAmount;
             }
             
         }

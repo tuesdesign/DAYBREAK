@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLevel: 10
   level: 0
   image: {fileID: 0}
-  description: 
+  description: Increase max ammo count
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 
@@ -45,14 +45,17 @@ MonoBehaviour:
       damageMod: 0
       canBurn: 0
       burnChance: 0
-      isExplosive: 0
+      shotsBetweenBurn: 0
+      canExplode: 0
       explosionRange: 0
       explosionDamage: 0
       canFreeze: 0
       freezeChance: 0
+      shotsBwteenFreeze: 0
+      canPoison: 0
+      poisonChance: 0
       canBounce: 0
       bounceAmount: 0
-      canPierce: 0
       pierceAmount: 0
   - replacePrevUpgrade: 0
     description: 
@@ -81,14 +84,17 @@ MonoBehaviour:
       damageMod: 0
       canBurn: 0
       burnChance: 0
-      isExplosive: 0
+      shotsBetweenBurn: 0
+      canExplode: 0
       explosionRange: 0
       explosionDamage: 0
       canFreeze: 0
       freezeChance: 0
+      shotsBwteenFreeze: 0
+      canPoison: 0
+      poisonChance: 0
       canBounce: 0
       bounceAmount: 0
-      canPierce: 0
       pierceAmount: 0
   - replacePrevUpgrade: 0
     description: 
@@ -117,12 +123,15 @@ MonoBehaviour:
       damageMod: 0
       canBurn: 0
       burnChance: 0
-      isExplosive: 0
+      shotsBetweenBurn: 0
+      canExplode: 0
       explosionRange: 0
       explosionDamage: 0
       canFreeze: 0
       freezeChance: 0
+      shotsBwteenFreeze: 0
+      canPoison: 0
+      poisonChance: 0
       canBounce: 0
       bounceAmount: 0
-      canPierce: 0
       pierceAmount: 0

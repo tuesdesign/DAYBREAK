@@ -47,12 +47,6 @@ public class BulletApplicationHandling : MonoBehaviour
     public GameObject burnParticles;
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnEnable()
     {
         PlayerShooting.OnBulletShot += OnBulletCreation;

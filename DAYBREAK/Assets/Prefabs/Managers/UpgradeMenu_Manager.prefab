@@ -48,11 +48,8 @@ MonoBehaviour:
   upgradeMenu: {fileID: 0}
   upgrade1Button: {fileID: 0}
   descriptionText1: {fileID: 0}
-  image1: {fileID: 0}
   descriptionText2: {fileID: 0}
-  image2: {fileID: 0}
   descriptionText3: {fileID: 0}
-  image3: {fileID: 0}
   upgradeHandler: {fileID: 7453908711207263158}
 --- !u!114 &5849699749753886229
 MonoBehaviour:
@@ -83,3 +80,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c711c70d25aa1ba4cacb62527c481e34, type: 2}
   - {fileID: 11400000, guid: 0fa053797d950f24180c15b3b30ff44b, type: 2}
   - {fileID: 11400000, guid: 50953a5fce92ae5488aef285cf4a227b, type: 2}
+  - {fileID: 11400000, guid: dca9034774e7a3f49b16592fac138096, type: 2}

@@ -85,9 +85,12 @@ public class UpgradeBaseSO : ScriptableObject
         public float freezeChance;
         public int shotsBwteenFreeze;
 
+        public bool canPoison;
+        public float poisonChance;
+
         public bool canBounce;
         public float bounceAmount;
 
-        public float pierceAmount;
+        public int pierceAmount;
     }
 }

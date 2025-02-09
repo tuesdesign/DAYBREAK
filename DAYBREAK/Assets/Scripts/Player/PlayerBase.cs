@@ -119,7 +119,7 @@ public class PlayerBase : MonoBehaviour
         //if the player is moving, play the moving animation
         _playerAnimController.isMoving = movePosition != Vector2.zero;
         _playerAnimController.moveDirection = movePosition;
-        print(movePosition);
+        //print(movePosition);
     }
 
     public void ApplyCharacterStats(PlayerSO playerStats)
@@ -151,6 +151,47 @@ public class PlayerBase : MonoBehaviour
         {
             if (dodgeChange >= Random.Range(0, 100)) { //if player's dodge chance triggers  (out of 100%)
                 
+                canTakeDamage = false;
+                StartCoroutine(InvincibilityFrames());  //player dodges for length of invincibility frames. 
+            }
+            else if (shield > 0) //checks if the player has any sheild
+            {
+                shield -= damage;
+                if (shield < 0) //if the player takes more damage than they have sheild
+                {
+                    curHealth += shield;
+                    shield = 0;
+                }
+                ToggleSheild();
+            }
+            else
+            {
+                curHealth -= damage;
+            }
+
+            if (curHealth <= 0)
+            {
+                Die();
+            }
+
+            _playerUI.UpdateHealthBar();
+            canTakeDamage = false;
+            StartCoroutine(InvincibilityFrames());
+        }
+    }
+
+    public void TakeDamage(int damage, GameObject enemy)
+    {
+        if (canTakeDamage) //if the player can be damaged currently
+        {
+            Vector3 hitDirection = transform.position - enemy.transform.position;
+            hitDirection.y = 0;
+            hitDirection.Normalize();
+
+            if (dodgeChange >= Random.Range(0, 100))
+            { //if player's dodge chance triggers  (out of 100%)
+                dodgeEffect.gameObject.SetActive(true);
+                _rb.AddForce(hitDirection * 100, ForceMode.Impulse);
                 canTakeDamage = false;
                 StartCoroutine(InvincibilityFrames());  //player dodges for length of invincibility frames. 
             }
@@ -212,7 +253,7 @@ public class PlayerBase : MonoBehaviour
         StartCoroutine(DodgeEffectDelay());
     }
 
-    void ToggleSheild()
+    public void ToggleSheild()
     {
         if (sheildEffect != null)
         {
@@ -231,7 +272,7 @@ public class PlayerBase : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage((int)collision.gameObject.GetComponent<EnemyBase>().GetDamage());
+            TakeDamage((int)collision.gameObject.GetComponent<EnemyBase>().GetDamage(), collision.gameObject);
         }
     }
 
@@ -239,7 +280,7 @@ public class PlayerBase : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") && !tickDamageActive)
         {
-            StartCoroutine(TickDamage((int)collision.gameObject.GetComponent<EnemyBase>().GetDamage()));
+            StartCoroutine(TickDamage((int)collision.gameObject.GetComponent<EnemyBase>().GetDamage(),collision.gameObject));
             tickDamageActive = true;
         }
     }
@@ -250,11 +291,19 @@ public class PlayerBase : MonoBehaviour
         
         tickDamageActive = false;
     }
+    IEnumerator TickDamage(int damage, GameObject enemy)
+    {
+        TakeDamage(damage, enemy.gameObject);
+        yield return new WaitForSeconds(.75f);
+        
+        tickDamageActive = false;
+    }
 
     IEnumerator InvincibilityFrames() //this coroutine runs for the amount of seconds that the player should be invincible for and then allows them to take damage
     {
         yield return new WaitForSeconds(invincibilityTime);
         canTakeDamage = true;
+        dodgeEffect.gameObject.SetActive(false);
     }
 
     IEnumerator DodgeEffectDelay()

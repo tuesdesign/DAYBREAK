@@ -29,6 +29,7 @@ public class Bullet : MonoBehaviour
     //bulletinformation
     bool canBurn;
     bool canFreeze;
+    bool canPoision;
     bool canbounce;
     bool canExplode;
     int explosionDamage = 2;
