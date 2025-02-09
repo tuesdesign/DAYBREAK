@@ -35,8 +35,8 @@ public class TerrainPaths
         bool intersects = (alpha >= 0 && alpha <= 1 && beta >= 0 && beta <= 1);
 
         // return the intersection point
-        if (intersects) return new IntersectionData(true, Vector3.Lerp(v1, v2, alpha), new Vector2(v4.y - v3.y, -(v4.x - v3.x)).normalized);
-        else return new IntersectionData(false, Vector3.zero, Vector3.zero);
+        if (intersects) return new IntersectionData(true, Vector3.Lerp(v1, v2, alpha), new Vector2(v4.y - v3.y, -(v4.x - v3.x)).normalized, new Path(), 0f);
+        else return new IntersectionData(false, Vector3.zero, Vector3.zero, new Path(), 0f);
     }
 
     public static IntersectionData PathToLineIntersection(Path path, Vector2 v1, Vector2 v2, float detail)
@@ -61,7 +61,7 @@ public class TerrainPaths
         }
 
         // return false if the paths don't intersect
-        return new IntersectionData(false, Vector3.zero, Vector3.zero);
+        return new IntersectionData(false, Vector3.zero, Vector3.zero, new Path(), 0f);
     }
 
     public static IntersectionData PathToPathIntersection(Path p1, Path p2, float detail)
@@ -79,14 +79,19 @@ public class TerrainPaths
 
             // return true if the path intersects the line
             IntersectionData intersectionData = PathToLineIntersection(p2, v1, v2, detail);
-            if (intersectionData.intersects) return intersectionData;
+            if (intersectionData.intersects) 
+            {
+                intersectionData.path = p2;
+                intersectionData.t = t;
+                return intersectionData;
+            }
 
             // set the start point of the next line to the end point of the current line
             v1 = v2;
         }
 
         // return false if the paths don't intersect
-        return new IntersectionData(false, Vector3.zero, Vector3.zero);
+        return new IntersectionData(false, Vector3.zero, Vector3.zero, new Path(), 0f);
     }
 
     public static IntersectionData PathToStructureIntersection(Path path, Vector3 structurePos, float strucureRadius, float detail)
@@ -97,7 +102,7 @@ public class TerrainPaths
         if (Vector3.Distance(v1, structurePos) - strucureRadius < 0)
         {
             Debug.LogWarning("Path intersects structure at start point!");
-            return new IntersectionData(true, v1, Vector3.zero);
+            return new IntersectionData(true, v1, Vector3.zero, new Path(), 0f);
         }
 
         // check if the path intersects the vector
@@ -110,13 +115,13 @@ public class TerrainPaths
 
             // return true if the path intersects the line
             if (Vector3.Distance(v2, structurePos) - strucureRadius < 0) 
-                return new IntersectionData(true, v1, (v2 - v1).normalized);
+                return new IntersectionData(true, v1, (v2 - v1).normalized, new Path(), t);
 
             // set the start point of the next line to the end point of the current line
             v1 = v2;
         }
         // return false if the paths don't intersect
-        return new IntersectionData(false, Vector3.zero, Vector3.zero);
+        return new IntersectionData(false, Vector3.zero, Vector3.zero, new Path(), 0f);
     }
 
     public struct IntersectionData
@@ -124,12 +129,16 @@ public class TerrainPaths
         public bool intersects;
         public Vector3 intersection;
         public Vector3 normal;
+        public Path path;
+        public float t;
 
-        public IntersectionData(bool intersects, Vector3 intersection, Vector3 normal)
+        public IntersectionData(bool intersects, Vector3 intersection, Vector3 normal, Path path, float t)
         {
             this.intersects = intersects;
             this.intersection = intersection;
             this.normal = normal;
+            this.path = path;
+            this.t = t;
         }
     }
 

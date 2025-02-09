@@ -662,13 +662,13 @@ public class TerrainGenerator : MonoBehaviour
                     alphaMap[x, y, destinationLayerIndex] += destinationLayerWeight;
                 }
 
-        foreach (KeyValuePair<Vector2Int, float> structurePosAndRad in _structurePosistionsAndRadii)
-            for (int x = structurePosAndRad.Key.x - Mathf.RoundToInt(structurePosAndRad.Value); x <= structurePosAndRad.Key.x + Mathf.RoundToInt(structurePosAndRad.Value); x++)
-                for (int y = structurePosAndRad.Key.y - Mathf.RoundToInt(structurePosAndRad.Value); y <= structurePosAndRad.Key.y + Mathf.RoundToInt(structurePosAndRad.Value); y++)
+        foreach (KeyValuePair<Vector2Int, float> posRad in _structurePosistionsAndRadii)
+            for (int x = posRad.Key.x - Mathf.RoundToInt(posRad.Value); x <= posRad.Key.x + Mathf.RoundToInt(posRad.Value); x++)
+                for (int y = posRad.Key.y - Mathf.RoundToInt(posRad.Value); y <= posRad.Key.y + Mathf.RoundToInt(posRad.Value); y++)
                 {
                     if (x < 0 || x >= alphaMap.GetLength(0) || y < 0 || y >= alphaMap.GetLength(1)) continue;
 
-                    TG_PathDataObject[] pathData = _terrainMap.GetDominantBiome(structurePosAndRad.Key).pathData;
+                    TG_PathDataObject[] pathData = _terrainMap.GetDominantBiome(posRad.Key).pathData;
                     TerrainLayer layer = pathData[Random.Range(0, pathData.Length)].layer;
 
                     int layerIndex;
@@ -680,11 +680,11 @@ public class TerrainGenerator : MonoBehaviour
                         layerIndex = terrainLayers.Count - 1;
                     }
 
-                    float distance = Vector2.Distance(new Vector2(x, y), new Vector2(structurePosAndRad.Key.y, structurePosAndRad.Key.x));
+                    float distance = Vector2.Distance(new Vector2(x, y), new Vector2(posRad.Key.x, posRad.Key.y));
 
-                    float pathStrength = Mathf.Clamp01((structurePosAndRad.Value - distance) / 5);
+                    float pathStrength = Mathf.Clamp01((posRad.Value - distance) / 5);
 
-                    alphaMap[x, y, layerIndex] += pathStrength;
+                    alphaMap[y, x, layerIndex] += pathStrength;
                 }
 
         _terrain.terrainData.SetAlphamaps(0, 0, alphaMap);
