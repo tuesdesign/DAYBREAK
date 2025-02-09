@@ -17,7 +17,7 @@ MonoBehaviour:
   biomes:
   - {fileID: 11400000, guid: b18f139d75be90140b5542d6443f9315, type: 2}
   - {fileID: 11400000, guid: a430f1ddbf5067e4a9ac8ab99d3779c1, type: 2}
-  biomeSeperation: 2
+  biomeSeperation: 5
   structureDensity: 1
   structureEdgeBuffer: 50
   structureEdgeCurve:

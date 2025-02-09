@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 802a997500a243743b9e4461c43a12f0, type: 3}
-  m_Name: Debug Path 1
+  m_Name: Debug Path 2
   m_EditorClassIdentifier: 
   showColors: 0
-  layer: {fileID: 8574412962073106934, guid: b58e19c7cb19f50458e6c2e45f3afbad, type: 2}
+  layer: {fileID: 8574412962073106934, guid: 82524598797afc444a741c16f8051a02, type: 2}
   pathColors:
   - {r: 1, g: 1, b: 1, a: 1}
-  pathWidth: 5
+  pathWidth: 15
   pathFade: 10
   controlPointPower: 0.75

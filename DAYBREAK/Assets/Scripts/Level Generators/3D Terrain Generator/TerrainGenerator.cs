@@ -602,6 +602,7 @@ public class TerrainGenerator : MonoBehaviour
     {
         // Get the terrain layers
         List<TerrainLayer> terrainLayers = _terrain.terrainData.terrainLayers.ToList();
+        int baseLayerCount = terrainLayers.Count;
 
         // Get the path layers
         List<TerrainLayer> pathLayers = new List<TerrainLayer>();
@@ -634,10 +635,6 @@ public class TerrainGenerator : MonoBehaviour
                     int originLayerIndex = terrainLayers.IndexOf(path.originData.layer);
                     int destinationLayerIndex = terrainLayers.IndexOf(path.destinationData.layer);
 
-                    // Initialize the layer weights
-                    float originLayerWeight = 0;
-                    float destinationLayerWeight = 0;
-
                     // Get distance to the path
                     float pathDist = Vector2.Distance(path.Start, path.End);
 
@@ -651,15 +648,18 @@ public class TerrainGenerator : MonoBehaviour
                         float width = Mathf.Lerp(path.originData.pathWidth, path.destinationData.pathWidth, t);
                         float pathStrength = Mathf.Clamp01((width - distanceToPoint) / path.originData.pathFade);
 
-                        originLayerWeight += Mathf.Lerp(pathStrength, 0, t);
-                        destinationLayerWeight += Mathf.Lerp(pathStrength, 0, 1 - t);
+                        float o = Mathf.Lerp(pathStrength, 0, t);
+                        float d = Mathf.Lerp(pathStrength, 0, 1 - t);
+
+                        if (o > alphaMap[x, y, originLayerIndex]) alphaMap[x, y, originLayerIndex] = o;
+                        if (d > alphaMap[x, y, destinationLayerIndex]) alphaMap[x, y, destinationLayerIndex] = d;
+
+                        for (int l = 0; l < baseLayerCount; l++)
+                            if (alphaMap[x, y, l] > 1 - pathStrength) alphaMap[x, y, l] = 1 - pathStrength;
 
                         pointsSampled++;
                         if (t <= 1) t += 2.5f / pathDist;
                     }
-
-                    alphaMap[x, y, originLayerIndex] += originLayerWeight;
-                    alphaMap[x, y, destinationLayerIndex] += destinationLayerWeight;
                 }
 
         foreach (KeyValuePair<Vector2Int, float> posRad in _structurePosistionsAndRadii)
@@ -669,7 +669,8 @@ public class TerrainGenerator : MonoBehaviour
                     if (x < 0 || x >= alphaMap.GetLength(0) || y < 0 || y >= alphaMap.GetLength(1)) continue;
 
                     TG_PathDataObject[] pathData = _terrainMap.GetDominantBiome(posRad.Key).pathData;
-                    TerrainLayer layer = pathData[Random.Range(0, pathData.Length)].layer;
+                    TG_PathDataObject path = pathData[Random.Range(0, pathData.Length)];
+                    TerrainLayer layer = path.layer;
 
                     int layerIndex;
 
@@ -681,10 +682,11 @@ public class TerrainGenerator : MonoBehaviour
                     }
 
                     float distance = Vector2.Distance(new Vector2(x, y), new Vector2(posRad.Key.x, posRad.Key.y));
+                    float pathStrength = Mathf.Clamp01((posRad.Value - distance) / path.pathFade);
+                    if (pathStrength > alphaMap[y, x, layerIndex]) alphaMap[y, x, layerIndex] = pathStrength;
 
-                    float pathStrength = Mathf.Clamp01((posRad.Value - distance) / 5);
-
-                    alphaMap[y, x, layerIndex] += pathStrength;
+                    for (int l = 0; l < baseLayerCount; l++)
+                        if (alphaMap[y, x, l] > 1 - pathStrength) alphaMap[y, x, l] = 1 - pathStrength;
                 }
 
         _terrain.terrainData.SetAlphamaps(0, 0, alphaMap);

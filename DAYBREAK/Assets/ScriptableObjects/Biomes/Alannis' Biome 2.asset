@@ -18,8 +18,8 @@ MonoBehaviour:
   showSelectorAF: 0
   showStructures: 0
   showStructure: 0000
-  showPaths: 0
-  showPath: 
+  showPaths: 1
+  showPath: 00
   baseTerrainLayer: {fileID: 8574412962073106934, guid: 19c64478e8294d24ebde63eb1ec74c0d, type: 2}
   biomeColors:
   - {r: 1, g: 1, b: 1, a: 1}
@@ -32,4 +32,5 @@ MonoBehaviour:
   structures:
   - {fileID: 11400000, guid: a88d2a5521fadc940a360bf879bfdf1d, type: 2}
   - {fileID: 11400000, guid: ea60d65656c420d4d94f19ef5589cfc7, type: 2}
-  paths: []
+  paths:
+  - {fileID: 11400000, guid: dbc5f171042b3914b87f17da97c30f2a, type: 2}
