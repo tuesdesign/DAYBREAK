@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6f26859569aaaf6428b423a0e0fe4306
+guid: 79940617cf0b31843b5ec39ef76ba2ad
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NoteMainButton_0
+      name: CoreButtonsSelected_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 5
-        width: 170
-        height: 148
+        x: 6
+        y: 691
+        width: 370
+        height: 322
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b99e9b91d6f666e43b0b78943fc075a0
-      internalID: -207607914
+      spriteID: 25cc2895ddb18404cb8184029ce84867
+      internalID: 1986402306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NoteMainButton_1
+      name: CoreButtonsSelected_1
       rect:
         serializedVersion: 2
-        x: 195
-        y: 15
-        width: 144
-        height: 126
+        x: 400
+        y: 691
+        width: 370
+        height: 322
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54284ff012f68cc40b974030316ed29e
-      internalID: -1411048253
+      spriteID: b4246e60998abfa44affe68fb2ed6760
+      internalID: 595219737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoreButtonsSelected_2
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 691
+        width: 370
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa00dc94e430891438095058735ccac1
+      internalID: -1078197052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoreButtonsSelected_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 347
+        width: 370
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb47e3d24e3fe134fb2779e052ad6e61
+      internalID: 1850724398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoreButtonsSelected_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 347
+        width: 370
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 697e01c0ca057da479618965e6544167
+      internalID: 1258451863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoreButtonsSelected_5
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 347
+        width: 370
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be419f6b115b0434ea0fdee0ce1e4c69
+      internalID: -900023356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoreButtonsSelected_6
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 3
+        width: 370
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774f8d34bba856347970a7272a7743ec
+      internalID: -51085671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoreButtonsSelected_7
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 3
+        width: 370
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e19a3fe3b43ba340a7810230b6b8f10
+      internalID: 294537371
       vertices: []
       indices: 
       edges: []
@@ -167,7 +293,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6271662ecdd13894b93da7ee01316af7
+    spriteID: ad4fa1cfa7d044444b5178f76c883aec
     internalID: 0
     vertices: []
     indices: 
@@ -175,8 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NoteMainButton_0: -207607914
-      NoteMainButton_1: -1411048253
+      CoreButtonsSelected_0: 1986402306
+      CoreButtonsSelected_1: 595219737
+      CoreButtonsSelected_2: -1078197052
+      CoreButtonsSelected_3: 1850724398
+      CoreButtonsSelected_4: 1258451863
+      CoreButtonsSelected_5: -900023356
+      CoreButtonsSelected_6: -51085671
+      CoreButtonsSelected_7: 294537371
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

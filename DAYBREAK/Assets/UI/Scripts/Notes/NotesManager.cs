@@ -26,7 +26,7 @@ namespace UI.Scripts.Notes
         [SerializeField] private GameObject firstNoteButton;
         [SerializeField] private GameObject backButton;
         [SerializeField] private GameObject noteButton;
-        [SerializeField] private CanvasGroup mainButtons;
+        [SerializeField] private GameObject mainButtonUI;
         [SerializeField] private GameObject quitButton;
         
         
@@ -86,7 +86,7 @@ namespace UI.Scripts.Notes
             // Change button Nav.
             _controllerCheck.SetSelectedButton(backButton);
             quitButton.GetComponent<Button>().interactable = false;
-            mainButtons.interactable = false;
+            mainButtonUI.SetActive(false); 
         }
 
         public void CloseNoteText()
@@ -96,7 +96,7 @@ namespace UI.Scripts.Notes
             // Change button Nav.
             _controllerCheck.SetSelectedButton(noteButton);
             quitButton.GetComponent<Button>().interactable = true;
-            mainButtons.interactable = true;
+            mainButtonUI.SetActive(true); 
         }
     }
     
