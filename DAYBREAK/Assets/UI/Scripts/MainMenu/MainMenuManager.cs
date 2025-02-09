@@ -12,6 +12,7 @@ namespace UI.Scripts.MainMenu
     public class MainMenuManager : MonoBehaviour
     {
         [Header("Main Menu Items")]
+        [SerializeField] private GameObject mainButtonUI;
         [SerializeField] private Canvas mainMenu;
         [SerializeField] private Canvas characterSelect;
         [SerializeField] private TMP_Text currentTime;
@@ -66,12 +67,14 @@ namespace UI.Scripts.MainMenu
         {
             achievementCanvas.SetActive(true);
             _controllerCheck.SetSelectedButton(achievementBackButton);
+            mainButtonUI.SetActive(false);
         }
 
         public void CloseAchievementsPage()
         {
             achievementCanvas.SetActive(false);
             _controllerCheck.SetSelectedButton(playButton);
+            mainButtonUI.SetActive(true);
         }
         
         

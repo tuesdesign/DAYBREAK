@@ -14,33 +14,33 @@ namespace UI.Scripts.MainMenu
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _animator.ButtonHover(gameObject);
+            //_animator.ButtonHover(gameObject);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            _animator.ButtonExit(gameObject);
+            //_animator.ButtonExit(gameObject);
             EventSystem.current.SetSelectedGameObject(null);
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            _animator.ButtonClick(gameObject);
+            //_animator.ButtonClick(gameObject);
         }
 
         public void OnSelect(BaseEventData eventData)
         {
-            _animator.ButtonHover(gameObject);
+            //_animator.ButtonHover(gameObject);
         }
 
         public void OnDeselect(BaseEventData eventData)
         {
-            _animator.ButtonExit(gameObject);
+            //_animator.ButtonExit(gameObject);
         }
 
         public void OnSubmit(BaseEventData eventData)
         {
-            _animator.ButtonClick(gameObject);
+            //_animator.ButtonClick(gameObject);
         }
     }
 }
