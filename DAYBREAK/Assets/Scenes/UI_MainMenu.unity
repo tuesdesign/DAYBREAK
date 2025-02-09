@@ -6990,7 +6990,7 @@ GameObject:
   - component: {fileID: 1231398507}
   - component: {fileID: 1231398506}
   m_Layer: 5
-  m_Name: Static_Canvas
+  m_Name: Static_Canvas [No Raycast]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
