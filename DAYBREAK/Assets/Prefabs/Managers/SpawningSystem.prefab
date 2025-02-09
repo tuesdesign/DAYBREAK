@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnGroups:
   - duration: 5
-    spawnSpeed: 0.75
+    spawnSpeed: 0.7
     enemies:
     - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
   - duration: 10
@@ -64,12 +64,12 @@ MonoBehaviour:
     - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
     - {fileID: 5392011093294169524, guid: 970c4a57aa0b3b04d84656bfd08e7e34, type: 3}
   - duration: 30
-    spawnSpeed: 3
+    spawnSpeed: 1.5
     enemies:
     - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
     - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
   - duration: 60
-    spawnSpeed: 2.5
+    spawnSpeed: 2
     enemies:
     - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
     - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
