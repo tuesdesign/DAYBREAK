@@ -14,6 +14,7 @@ public class EnemyBase : MonoBehaviour
     
     int curdamage=2;
     float curspeed;
+    float speedMod = 1;
     Vector3 movePos = Vector2.zero;
 
     [SerializeField] private GameObject floatingDamageNum;
@@ -26,6 +27,8 @@ public class EnemyBase : MonoBehaviour
     float tdTimer = 0;
     int curTickDamage = 1;
     float tickDamageDuration = 5;
+    float freezeTime = 3.5f;
+    float slowTime = 5f;
 
 
     public List<Coroutine> coroutines = new List<Coroutine>();
@@ -93,13 +96,13 @@ public class EnemyBase : MonoBehaviour
             Vector3 forward = Vector3.Cross(right, hit.normal);
 
             // Move the enemy in the direction of the player with relation to the ground
-            _rb.velocity = forward * enemySO.speed;
+            _rb.velocity = forward * enemySO.speed * speedMod;
         }
         else
         {
             // If the enemy is not on the ground, move it towards the player by adding a force
             movePos = (playerTrans.position - transform.position).normalized;
-            _rb.AddForce(movePos * enemySO.speed);
+            _rb.AddForce(movePos * enemySO.speed * speedMod);
         }
     }
 
@@ -126,12 +129,22 @@ public class EnemyBase : MonoBehaviour
         curTickDamage = damage;
 
 
-        StartCoroutine(StatusEffectTime());
+        StartCoroutine(TickDamageEffectTime());
 
         //need to make this more robust to handle multiple status effects at the same time
         //also need to add vfx and sounds to thie mix
 
         //have a coroutine dedicated for each status ailment possible and start and stop them based on each one
+    }
+
+    public void TriggerFreeze()
+    {
+        StartCoroutine(FreezeEffect());
+    }
+
+    public void TriggerSlow()
+    {
+        StartCoroutine(SlowEffect());
     }
 
     public void Die()
@@ -173,12 +186,26 @@ public class EnemyBase : MonoBehaviour
         //Gizmos.DrawLine(transform.position, transform.position + _rb.velocity);
     }
 
-    private IEnumerator StatusEffectTime()
+    private IEnumerator TickDamageEffectTime()
     {
         yield return new WaitForSeconds(tickDamageDuration);
         takeTickDamage = false;
         curTickDamage = 0;
 
         tdTimer = 0;
+    }
+
+    private IEnumerator SlowEffect()
+    {
+        speedMod = 0.5f;
+        yield return new WaitForSeconds(slowTime);
+        speedMod = 1;
+    }
+
+    private IEnumerator FreezeEffect()
+    {
+        speedMod = 0;
+        yield return new WaitForSeconds(freezeTime);
+        speedMod = 1;
     }
 }

@@ -4,47 +4,56 @@ using UnityEngine;
 
 public class BulletApplicationHandling : MonoBehaviour
 {
-    public float bulletDamageMod;
 
-    public bool canBurn = false;
-    public int shotsBetweenBurn;
+    [HideInInspector] public float bulletDamageMod;
+
+    [HideInInspector] public bool canBurn = false;
+    [HideInInspector] public int shotsBetweenBurn;
     int burnshots;
-    public float burnChance;
-    public float burnTick;
-    public float burnVFX;
+    [HideInInspector] public float burnChance;
+    [HideInInspector] public float burnTick;
+    public GameObject burnVFX;
 
-    public bool canExplode = false;
-    public int shotsBetweenExplosive;
+    [HideInInspector] public bool canExplode = false;
+    [HideInInspector] public int shotsBetweenExplosive;
     int explosiveshots; //counter for how many shots it has been since last explosive
-    public float explosionRange;
-    public float explosionDamage;
+    [HideInInspector] public float explosionRange;
+    [HideInInspector] public float explosionDamage;
     public GameObject explosionVFX;
 
-    public bool canFreeze = false;
-    public int shotsBetweenFreeze;
-    public int freezeshots; //counter for how many shots it has been since last freeze
-    public float freezeChance; // if it is a percentage chance to freeze, this variable starts at 0 and is  applied to the ones not automatic
-    public float freezeTime;
+    [HideInInspector] public bool canFreeze = false;
+    [HideInInspector] public int shotsBetweenFreeze;
+    int freezeshots; //counter for how many shots it has been since last freeze
+    [HideInInspector] public float freezeChance; // if it is a percentage chance to freeze, this variable starts at 0 and is  applied to the ones not automatic
+    [HideInInspector] public float freezeTime;
     public GameObject freezeVFX;
 
-    public bool canPoison = false;
-    public int shotsBetweenPoison;
-    public int poisonshots; //counter for how many shots it has been since last poison
-    public float poisonChance; // if it is a percentage chance to poison, this variable starts at 0 and is  applied to the ones not automatic
-    public float poisonTime;
+    [HideInInspector] public bool canSlow = false;
+    [HideInInspector] public int shotsBetweenSlow;
+    int slowshots; //counter for how many shots it has been since last slow
+    [HideInInspector] public float slowChance; // if it is a percentage chance to slow, this variable starts at 0 and is  applied to the ones not automatic
+    [HideInInspector] public float slowTime;
+    public GameObject slowVFX;
+
+    [HideInInspector] public bool canPoison = false;
+    [HideInInspector] public int shotsBetweenPoison;
+    int poisonshots; //counter for how many shots it has been since last poison
+    [HideInInspector] public float poisonChance; // if it is a percentage chance to poison, this variable starts at 0 and is  applied to the ones not automatic
+    [HideInInspector] public float poisonTime;
     public GameObject poisonVFX;
 
-    public bool canBounce = false;
-    public float bounceAmount;
+    [HideInInspector] public bool canBounce = false;
+    [HideInInspector] public float bounceAmount;
 
-    public bool canPierce = false;
-    public int pierceAmount;
+    [HideInInspector] public bool canPierce = false;
+    [HideInInspector] public int pierceAmount;
 
-    public bool castWind = false;
-    public int shotsBetweenWind;
+    [HideInInspector] public bool castWind = false;
+    [HideInInspector] public int shotsBetweenWind;
 
     [Header("Particles")]
     public GameObject burnParticles;
+    public GameObject explosionParticles;
 
 
     private void OnEnable()
@@ -74,37 +83,70 @@ public class BulletApplicationHandling : MonoBehaviour
             if (burnshots >= shotsBetweenBurn)
             {
                 bullet.CanBurn = true;
-                burnshots--;
+                burnshots -= shotsBetweenBurn;
                 //apply vfx to bullet
             }
-            else
+            else if (Random.Range(0, 100) >= burnChance)
             {
-                if (Random.Range(0, 100) >= burnChance)
-                {
                     bullet.CanBurn = true;
                     //apply vfx to bullet
-                }
             }
             burnshots++;
+        }
+
+        if (canPoison)
+        {
+            if (poisonshots >= shotsBetweenPoison)
+            {
+                bullet.CanPoision = true;
+                poisonshots -= shotsBetweenPoison;
+                //apply vfx to bullet
+            }
+            else if(Random.Range(0, 100) <= poisonChance)
+            {
+                bullet.CanBurn = true;
+            }
+            poisonshots++;
         }
 
         if (canFreeze)
         {
             //applies the stat to the bullet 
+            if (freezeshots >= shotsBetweenFreeze)
+            {
+                bullet.CanFreeze = true;
+                freezeshots -= shotsBetweenFreeze;
+                //apply vfx to bullet
+
+            }
+            else if (Random.Range(0, 100) <= freezeChance)
+            {
+                bullet.CanFreeze= true;
+            }
+            freezeshots++;
+        }
+
+        if (canSlow)
+        {
+            //applies the stat to the bullet 
+            if (slowshots >= shotsBetweenSlow)
+            {
+                bullet.CanSlow = true;
+                slowshots -= shotsBetweenSlow;
+                //apply vfx to bullet
+
+            }
+            else if (Random.Range(0, 100) <= slowChance)
+            {
+                bullet.CanSlow = true;
+            }
+            slowshots++;
         }
         if (pierceAmount > 0) {
             bullet.PeirceAmount = pierceAmount;
         }
 
         if (canExplode)
-        {
-
-        }
-    }
-
-    public void BulletHit()
-    {
-        if (canFreeze && shotsBetweenFreeze > 0)
         {
 
         }

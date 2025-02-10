@@ -29,6 +29,7 @@ public class Bullet : MonoBehaviour
     //bulletinformation
     bool canBurn;
     bool canFreeze;
+    bool canSlow;
     bool canPoision;
     bool canbounce;
     bool canExplode;
@@ -41,6 +42,8 @@ public class Bullet : MonoBehaviour
     public int PeirceAmount { get => peirceAmount; set => peirceAmount = value; }
     public float Damage { get => damage; set => damage = value; }
     public bool CanExplode { get => canExplode; set => canExplode = value; }
+    public bool CanPoision { get => canPoision; set => canPoision = value; }
+    public bool CanSlow { get => canSlow; set => canSlow = value; }
 
     void Awake()
     {
@@ -82,6 +85,11 @@ public class Bullet : MonoBehaviour
             //add the connection between enemy status afflictions and the bullet handler
             if (canBurn)
             {
+                enemy.TickDamageClaculation(2);
+            }
+
+            if (canPoision)
+            {
                 enemy.TickDamageClaculation(1);
             }
 
@@ -93,21 +101,25 @@ public class Bullet : MonoBehaviour
             
             if (canFreeze)
             {
-
+                enemy.TriggerFreeze();
             }
-
+            
+            if (canSlow)
+            {
+                enemy.TriggerSlow();
+            }
 
             if (peirceAmount <= 0)
             {
-                
+                collision.gameObject.GetComponent<EnemyBase>().TakeDamage(damage);
+                Destroy(this.gameObject);
             }
             else
             {
                 peirceAmount--;
             }
 
-            collision.gameObject.GetComponent<EnemyBase>().TakeDamage(damage);
-            Destroy(this.gameObject);
+            
 
             /*
             Instead of Destroying the bullet, we should use object pooling.

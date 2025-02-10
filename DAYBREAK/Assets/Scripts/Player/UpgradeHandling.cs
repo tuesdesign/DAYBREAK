@@ -104,6 +104,13 @@ public class UpgradeHandling : MonoBehaviour
                 bulletApplication.shotsBetweenBurn = upgradeLevel.bulletProperties.shotsBetweenBurn;
             }
 
+            if (upgradeLevel.bulletProperties.canPoison)
+            {
+                bulletApplication.canPoison = upgradeLevel.bulletProperties.canPoison;
+                bulletApplication.poisonChance = upgradeLevel.bulletProperties.poisonChance;
+                bulletApplication.shotsBetweenPoison = upgradeLevel.bulletProperties.shotsBetweenPoison;
+            }
+
             if (upgradeLevel.bulletProperties.canExplode)
             {
                 bulletApplication.canExplode = upgradeLevel.bulletProperties.canExplode;
@@ -116,6 +123,13 @@ public class UpgradeHandling : MonoBehaviour
                 bulletApplication.canFreeze = upgradeLevel.bulletProperties.canFreeze;
                 bulletApplication.freezeChance = upgradeLevel.bulletProperties.freezeChance;
                 bulletApplication.shotsBetweenFreeze = upgradeLevel.bulletProperties.shotsBwteenFreeze;
+            } 
+
+            if (upgradeLevel.bulletProperties.canSlow)
+            {
+                bulletApplication.canSlow = upgradeLevel.bulletProperties.canSlow;
+                bulletApplication.slowChance = upgradeLevel.bulletProperties.slowChance;
+                bulletApplication.shotsBetweenSlow = upgradeLevel.bulletProperties.shotsBwteenSlow;
             }
 
             if (upgradeLevel.bulletProperties.pierceAmount > 0)

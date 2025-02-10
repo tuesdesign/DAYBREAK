@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c861ab157cb4c89438e8ccc64066d283, type: 3}
   m_Name: Enemy2Stats
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 6
   maxHealth: 3
-  damage: 2
+  damage: 3
   expDrop: {fileID: 2111892433035516840, guid: 5516d7da66d7f6c489022bbcd5019c85, type: 3}
   altExpDrop: {fileID: 0}
   expDropChance: 100

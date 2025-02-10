@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Enemy4Stats
   m_EditorClassIdentifier: 
   speed: 2
-  maxHealth: 5
-  damage: 3
+  maxHealth: 8
+  damage: 4
   expDrop: {fileID: 843171442062548451, guid: 3bf399f821b4f9c40862c41310c06aaa, type: 3}
   altExpDrop: {fileID: 0}
   expDropChance: 100

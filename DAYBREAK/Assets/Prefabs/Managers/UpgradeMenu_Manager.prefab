@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5886276761192655567}
   - component: {fileID: 7156083395473279835}
   - component: {fileID: 5849699749753886229}
+  - component: {fileID: 9186022765286216948}
   m_Layer: 0
   m_Name: UpgradeMenu_Manager
   m_TagString: Untagged
@@ -79,5 +80,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8ecd3a75372703546bb7d03a94a4e5fd, type: 2}
   - {fileID: 11400000, guid: c711c70d25aa1ba4cacb62527c481e34, type: 2}
   - {fileID: 11400000, guid: 0fa053797d950f24180c15b3b30ff44b, type: 2}
-  - {fileID: 11400000, guid: 50953a5fce92ae5488aef285cf4a227b, type: 2}
   - {fileID: 11400000, guid: dca9034774e7a3f49b16592fac138096, type: 2}
+  - {fileID: 11400000, guid: 50953a5fce92ae5488aef285cf4a227b, type: 2}
+  - {fileID: 11400000, guid: a35dc963909699149940d505c4ebc5e0, type: 2}
+  - {fileID: 11400000, guid: e75a5145b5981784484b269f2b0ff428, type: 2}
+  - {fileID: 11400000, guid: 3e620f4fd40c42c4a84cd37e442bc05d, type: 2}
+--- !u!114 &9186022765286216948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453908711207263158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70eb303efe4fc974fb844bbc40ea2968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expBar: {fileID: 0}
+  flash: 0
