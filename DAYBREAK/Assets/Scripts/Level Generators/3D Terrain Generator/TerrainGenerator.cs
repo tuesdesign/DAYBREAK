@@ -10,10 +10,6 @@ using Path = TerrainPaths.Path;
 using BiomeData = TG_BiomeDataObject.BiomeData;
 using Unity.VisualScripting;
 using static TerrainPaths;
-using UnityEngine.Rendering.Universal;
-using System.Net;
-using System.IO;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TerrainGenerator : MonoBehaviour
 {
