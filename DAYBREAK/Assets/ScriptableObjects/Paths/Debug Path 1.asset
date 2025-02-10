@@ -18,4 +18,4 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   pathWidth: 12.5
   pathFade: 10
-  controlPointPower: 0.75
+  controlPointPower: 2.5

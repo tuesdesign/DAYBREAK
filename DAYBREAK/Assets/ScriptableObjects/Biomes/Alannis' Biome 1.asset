@@ -28,7 +28,7 @@ MonoBehaviour:
     frequency: 0
   selectorAF:
   - amplitude: 15
-    frequency: 0.001
+    frequency: 0.005
   structures:
   - {fileID: 11400000, guid: f161cd9428454734f93d1b93dc0b948f, type: 2}
   - {fileID: 11400000, guid: 478cfdfe6b5cd2e42a5f204acc387f24, type: 2}

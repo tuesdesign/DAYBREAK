@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 792be8e275ab02e4196c5b9b800cee89, type: 2}
   - {fileID: 11400000, guid: af79ffe0f87f21145bdc82f609dbee08, type: 2}
   biomeSeperation: 5
-  structureDensity: 1
+  structureDensity: 0.5
   structureEdgeBuffer: 10
   structureEdgeCurve:
     serializedVersion: 2
@@ -44,7 +44,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  structureSeperationBuffer: 25
+  structureSeperationBuffer: 50
   structureElevationAboveWater: 0
   waterLevel: 0
   islandSize: 200

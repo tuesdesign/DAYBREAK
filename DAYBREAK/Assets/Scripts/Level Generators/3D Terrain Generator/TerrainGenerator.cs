@@ -412,7 +412,7 @@ public class TerrainGenerator : MonoBehaviour
                 if (structure.Key == originStructure.Key || structure.Key == destinationStructure.Key) continue;
 
                 // check if the path intersects with the structure
-                IntersectionData intersectionData = PathToStructureIntersection(newPath, new Vector3(structure.Key.x, structure.Key.y), structure.Value, 0.1f);
+                IntersectionData intersectionData = PathToStructureIntersection(newPath, new Vector3(structure.Key.x, structure.Key.y), structure.Value + terrainDataObject.structureSeperationBuffer, 0.1f);
 
                 if (intersectionData.intersects)
                 {
