@@ -42,6 +42,9 @@ namespace UI.Scripts.MainMenu
         private void Start()
         {
             currentTime.text = DateTime.Now.ToLongDateString();
+
+            MenuStateManager.Instance.forcedExit = true;
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.MainMenuState);
         }
         
         // Character Select Page //

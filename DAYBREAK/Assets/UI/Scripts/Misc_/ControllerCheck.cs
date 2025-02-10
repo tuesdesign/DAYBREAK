@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Layouts;
 
 namespace UI.Scripts.Misc_
 {
@@ -17,6 +18,9 @@ namespace UI.Scripts.Misc_
                 Instance = this;
             
             DontDestroyOnLoad(gameObject);
+
+            if (Gamepad.all.Count > 0)
+                controllerConnected = true;
             
             InputSystem.onDeviceChange += OnDeviceChange;
         }

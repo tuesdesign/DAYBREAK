@@ -55,7 +55,6 @@ namespace UI.Scripts.Upgrades
                                     _upgradeObject.FullupgradeList[index].description;
             _upgrade3 = _upgradeObject.FullupgradeList[index];
             
-            //upgradeMenu.enabled = true;
             _flashEffect.flash = true;
             _appliedUpgrade = false;
             

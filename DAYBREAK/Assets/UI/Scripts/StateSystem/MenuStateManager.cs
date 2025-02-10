@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MenuStateManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class MenuStateManager : MonoBehaviour
     public WinLossState WinLossState = new WinLossState();
 
 
-    private bool _forcedExit;
+    public bool forcedExit;
     
     public static MenuStateManager Instance { get; private set; }
     
@@ -47,18 +48,18 @@ public class MenuStateManager : MonoBehaviour
 
     public void SetMenuState(MenuBaseState state)
     {
-        if (!_forcedExit)
+        if (!forcedExit)
             CurrentState.ExitState(this);
         
         CurrentState = state;
         state.EnterState(this);
 
-        _forcedExit = false;
+        forcedExit = false;
     }
 
     public void ForceExitState()
     {
-        _forcedExit = true;
+        forcedExit = true;
         CurrentState.ExitState(this);
     }
 }

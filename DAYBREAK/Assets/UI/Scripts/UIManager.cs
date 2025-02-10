@@ -165,6 +165,8 @@ namespace UI.Scripts
         public void ReloadScene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
         }
         
         public void CopyText()
