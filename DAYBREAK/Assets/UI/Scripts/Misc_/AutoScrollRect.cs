@@ -14,19 +14,9 @@ namespace UI.Scripts.Misc_
 
         private RectTransform _mSelectedRectTransform;
         
-        public bool menuOpen;
-        public bool notesMenuOpen;
-        
-        private ControllerCheck _controllerCheck;
-
-        private void Start()
-        {
-            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
-        }
-        
         void Update()
         {
-            if (_controllerCheck.connected && (menuOpen || notesMenuOpen))
+            if (ControllerCheck.Instance.controllerConnected)
                 UpdateScrollToSelected(mTemplateScrollRect, mContentRectTransform, mTemplateViewportTransform);
         }
 

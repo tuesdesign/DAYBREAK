@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UI.Scripts.Misc_;
 using UI.Scripts.Notes;
@@ -12,123 +11,89 @@ namespace UI.Scripts.MainMenu
     public class MainMenuManager : MonoBehaviour
     {
         [Header("Main Menu Items")]
-        [SerializeField] private GameObject mainButtonUI;
-        [SerializeField] private Canvas mainMenu;
-        [SerializeField] private Canvas characterSelect;
         [SerializeField] private TMP_Text currentTime;
         
-        [Header("Buttons")]
-        [SerializeField] private GameObject playButton;
-        [SerializeField] private GameObject character1Button;
-        
-        [Header("Achievements UI")]
-        [SerializeField] private GameObject achievementCanvas;
-        [SerializeField] private GameObject achievementBackButton;
-        
-        [SerializeField] private AutoScrollRect charAutoScrollRect;
-        
         private NotesManager _notesManager;
-        private ControllerCheck _controllerCheck;
-        private bool _existingController;
 
+        [Header("Canvases")] 
+        [SerializeField] public GameObject mainMenu;
+        [SerializeField] public GameObject settingsMenu;
+        [SerializeField] public GameObject achievementsMenu;
+        [SerializeField] public GameObject notesMenu;
+        [SerializeField] public GameObject characterSelect;
+        
+        [Header("Primary Buttons")] 
+        [SerializeField] public GameObject mainMenuPrimary;
+        [SerializeField] public GameObject settingsMenuPrimary;
+        [SerializeField] public GameObject achievementsMenuPrimary;
+        [SerializeField] public GameObject notesMenuPrimary;
+        [SerializeField] public GameObject characterSelectPrimary;
+
+        public static MainMenuManager Instance { get; private set; }
+    
         private void Awake()
         {
-            mainMenu.enabled = true;
-            characterSelect.enabled = false;
+            if (Instance != null && Instance != this)
+                Destroy(this);
+            else
+                Instance = this;
         }
         
         private void Start()
         {
-            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
-        }
-
-        private void Update()
-        {
             currentTime.text = DateTime.Now.ToLongDateString();
-            
-            if (_existingController) return;
-            
-            if (mainMenu.enabled && _controllerCheck.connected)
-            {
-                _controllerCheck.SetSelectedButton(playButton);
-                _existingController = true;
-            }
-                
-            if (characterSelect.enabled && _controllerCheck.connected)
-            {
-                _controllerCheck.SetSelectedButton(character1Button);
-                _existingController = true;
-            }
         }
+        
+        // Character Select Page //
+
+        public void OpenCharacterSelect()
+        {
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.CharacterSelectState);
+        }
+        
+        public void CloseCharacterSelect()
+        {
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.MainMenuState);
+        }
+        
         
         // Achievements Page //
 
         public void OpenAchievementsPage()
         {
-            achievementCanvas.SetActive(true);
-            _controllerCheck.SetSelectedButton(achievementBackButton);
-            mainButtonUI.SetActive(false);
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.AchievementsState);
         }
 
         public void CloseAchievementsPage()
         {
-            achievementCanvas.SetActive(false);
-            _controllerCheck.SetSelectedButton(playButton);
-            mainButtonUI.SetActive(true);
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.MainMenuState);
         }
         
         
-        // Character Select Stuff //
-
-        public void OpenCharacterSelect()
+        // Settings Stuff //
+        
+        public void OpenSettings()
         {
-            StartCoroutine(CharacterSelectOpen());
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.MainSettingsState);
         }
         
-        public void CloseCharacterSelect()
+        public void CloseSettings()
         {
-            StartCoroutine(CharacterSelectClose());
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.MainMenuState);
         }
 
-        private IEnumerator CharacterSelectOpen()
-        {
-            yield return new WaitForSecondsRealtime(0.2f);
-            
-            mainMenu.enabled = false;
-            characterSelect.enabled = true;
-            charAutoScrollRect.menuOpen = true;
-
-            if (_controllerCheck.connected)
-            {
-                _controllerCheck.SetSelectedButton(character1Button);
-                _existingController = true;
-            }
-        }
         
-        private IEnumerator CharacterSelectClose()
-        {
-            yield return new WaitForSecondsRealtime(0.2f);
-            
-            mainMenu.enabled = true;
-            characterSelect.enabled = false;
-            charAutoScrollRect.menuOpen = false;
-
-            if (_controllerCheck.connected)
-            {
-                _controllerCheck.SetSelectedButton(playButton);
-                _existingController = true;
-            }
-        }
     
         public void LoadScene(string sceneName)
         {
             StartCoroutine(LoadGame(sceneName));
-            charAutoScrollRect.menuOpen = false;
         }
 
         private IEnumerator LoadGame(string sceneName)
         {
-            yield return new WaitForSecondsRealtime(0.2f);
+            MenuStateManager.Instance.ForceExitState();
+            
+            yield return new WaitForEndOfFrame();
             SceneManager.LoadScene(sceneName);
         }
 

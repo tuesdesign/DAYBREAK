@@ -1,18 +1,11 @@
 using TMPro;
-using UI.Scripts.Misc_;
-using UI.Scripts.Upgrades;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
-using UnityEngine.EventSystems;
 
-namespace UI.Scripts
+namespace UI.Scripts.Upgrades
 {
     public class UpgradeManagerMenu : MonoBehaviour
     {
-        [SerializeField] private Canvas upgradeMenu;
-        [SerializeField] private GameObject upgrade1Button;
-    
         [Header("Upgrade 1")]
         [SerializeField] private TMP_Text descriptionText1;
     
@@ -30,14 +23,12 @@ namespace UI.Scripts
         private UpgradeBaseSO _upgrade3;
         private bool _appliedUpgrade;
     
-        private ControllerCheck _controllerCheck;
         private LevelUpEffect _flashEffect;
 
         private void Awake()
         {
             _upgradeObject = upgradeHandler.GetComponent<UpgradeHandling>();
             _flashEffect = GetComponent<LevelUpEffect>();
-            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
         }
         
         public void PopulateMenu()
@@ -64,14 +55,12 @@ namespace UI.Scripts
                                     _upgradeObject.FullupgradeList[index].description;
             _upgrade3 = _upgradeObject.FullupgradeList[index];
             
-            if (_controllerCheck.connected)
-                _controllerCheck.SetSelectedButton(upgrade1Button);
-            else
-                _controllerCheck.ClearSelection();
-            
-            upgradeMenu.enabled = true;
+            //upgradeMenu.enabled = true;
             _flashEffect.flash = true;
             _appliedUpgrade = false;
+            
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.UpgradeState);
+            
             Time.timeScale = 0;
         }
 
@@ -95,7 +84,7 @@ namespace UI.Scripts
                 _appliedUpgrade = true;
             }
             
-            upgradeMenu.enabled = false;
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
             _flashEffect.flash = false;
             Time.timeScale = 1;
             

@@ -10,9 +10,6 @@ namespace UI.Scripts.SettingsMenu
         [SerializeField] private Sprite onImage;
         [SerializeField] private Sprite offImage;
         
-        private readonly Color _onColor = new Color32(255, 255, 255, 255);
-        private readonly Color _offColor = new Color32(125, 125, 125, 255);
-        
         private bool _isClick;
             
         public void ButtonHover(GameObject go)
@@ -36,14 +33,12 @@ namespace UI.Scripts.SettingsMenu
                 LeanTween.moveLocalX(circle, -45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
                 LeanTween.scale(go, Vector3.one, hoverDuration).setIgnoreTimeScale(true);
                 circle.GetComponent<Image>().sprite = offImage;
-                //background.GetComponent<Image>().color = _offColor;
             }
             else
             {
                 LeanTween.moveLocalX(circle, 45.0f, slideDuration).setEaseOutBounce().setOnComplete(ResetClick).setIgnoreTimeScale(true);
                 LeanTween.scale(go, Vector3.one, hoverDuration).setIgnoreTimeScale(true);
                 circle.GetComponent<Image>().sprite = onImage;
-                //background.GetComponent<Image>().color = _onColor;
             }
         }
 

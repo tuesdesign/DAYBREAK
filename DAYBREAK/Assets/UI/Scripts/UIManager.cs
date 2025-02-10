@@ -1,61 +1,67 @@
-using System;
 using System.Collections;
 using TMPro;
 using UI.Scripts.Misc_;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-using UnityEngine.Serialization;
 
 namespace UI.Scripts
 {
     public class UIManager : MonoBehaviour
     {
         [Header("Main UI Items")]
-        [SerializeField] private Canvas mainPCUI;
-        [SerializeField] private Canvas mainMobileUI;
         [SerializeField] private TMP_Text timeText;
         [SerializeField] private Image timerFill;
         
         [Header("Tutorial Items")]
         [SerializeField] private GameObject tutorialPopup;
-        [SerializeField] private TMP_Text anyKeyText;
     
         [Header("Win/Loss Screen Items")]
-        [SerializeField] public Canvas winLossScreen;
         [SerializeField] private TMP_Text winLossText;
         [SerializeField] private TMP_Text timerText;
-        [SerializeField] private GameObject shareButton;
         [SerializeField] private GameObject copiedText;
         
-        private Canvas _activeUI;
+        [Header("Canvases")] 
+        [SerializeField] public GameObject gameplayUI;
+        [SerializeField] public GameObject upgradeMenu;
+        [SerializeField] public GameObject pauseMenu;
+        [SerializeField] public GameObject settingsMenu;
+        [SerializeField] public GameObject winLossMenu;
+        
+        [Header("Primary Buttons")]
+        [SerializeField] public GameObject upgradeMenuPrimary;
+        [SerializeField] public GameObject pauseMenuPrimary;
+        [SerializeField] public GameObject settingsMenuPrimary;
+        [SerializeField] public GameObject winLossMenuPrimary;
     
         public const float StartTime = 300;
-        public float timeValue;
+        private float _timeValue;
         private bool _countdown;
         private bool _tutorialOpen;
         private bool _displayEndScreen;
         
-        private ControllerCheck _controllerCheck;
-
+        public static UIManager Instance { get; private set; }
+    
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+                Destroy(this);
+            else
+                Instance = this;
+            
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
+        }
+        
         private void OnEnable()
         {
             InputSystem.onAnyButtonPress.CallOnce(RemoveTutorialPopup);
         }
 
-        private void Awake()
-        {
-            // Determine which UI to display
-            _activeUI = SystemInfo.deviceType == DeviceType.Handheld ? mainMobileUI : mainPCUI;
-        }
-
         private void Start()
         {
-            timeValue = StartTime;
-            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
+            _timeValue = StartTime;
             
             tutorialPopup.SetActive(true);
             _tutorialOpen = true;
@@ -71,22 +77,22 @@ namespace UI.Scripts
             
             // Main Update Loop //
 
-            switch (timeValue)
+            switch (_timeValue)
             {
                 case > 0 when _countdown:
-                    timeValue -= Time.deltaTime;
+                    _timeValue -= Time.deltaTime;
                     PlayerPrefs.SetFloat("TotalTime", PlayerPrefs.GetFloat("TotalTime") + Time.deltaTime);
                     break;
 
                 // Time ran out -> Player wins
                 case <= 0 when _displayEndScreen:
                     _displayEndScreen = false;
-                    timeValue = 0;
+                    _timeValue = 0;
                     DisplayWinLoss(false);
                     break;
             }
 
-            DisplayTime(timeValue);
+            DisplayTime(_timeValue);
         }
     
         private void DisplayTime(float timeToDisplay)
@@ -106,37 +112,23 @@ namespace UI.Scripts
             if (!_tutorialOpen) return;
             
             tutorialPopup.SetActive(false);
-            _activeUI.enabled = true;
             _countdown = true;
             _displayEndScreen = true;
             Time.timeScale = 1;
             
             _tutorialOpen = false;
         }
-        
-        public void LoadMainMenu()
-        {
-            SceneManager.LoadScene("UI_MainMenu");
-        }
-        
-        public void ReloadScene()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
 
+        // Win Loss Screen //
+        
         public void DisplayWinLoss(bool isLoss)
         {
             // Pause game
             Time.timeScale = 0;
             _countdown = false;
-        
-            // Display end screen
-            _activeUI.enabled = false;
-            winLossScreen.enabled = true;
-            
-            if (_controllerCheck.connected)
-                _controllerCheck.SetSelectedButton(shareButton);
 
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.WinLossState);
+            
             // Change win/loss text
             if (isLoss)
             {
@@ -155,7 +147,7 @@ namespace UI.Scripts
 
         public string TimeSurvived()
         {
-            var tempTime = StartTime - timeValue;
+            var tempTime = StartTime - _timeValue;
             
             float minutes = Mathf.FloorToInt(tempTime / 60);
             float seconds = Mathf.FloorToInt(tempTime % 60);
@@ -163,6 +155,18 @@ namespace UI.Scripts
             return $"{minutes:00}:{seconds:00}";
         }
 
+        // Win Loss Buttons //
+        
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene("UI_MainMenu");
+        }
+        
+        public void ReloadScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        
         public void CopyText()
         {
             UniClipboard.SetText("I survived " + TimeSurvived() + " in Daybreak today!");

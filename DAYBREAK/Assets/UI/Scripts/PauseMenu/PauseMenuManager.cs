@@ -8,12 +8,6 @@ namespace UI.Scripts.PauseMenu
 {
     public class PauseMenuManager : MonoBehaviour
     {
-        [SerializeField] private Canvas pauseCanvas;
-        [SerializeField] private Canvas settingsCanvas;
-        [SerializeField] private Canvas upgradeMenu;
-        
-        [SerializeField] private GameObject resumeButton;
-
         [SerializeField] private TMP_Text timeValueText;
         [SerializeField] private TMP_Text killValueText;
         
@@ -21,16 +15,13 @@ namespace UI.Scripts.PauseMenu
         private InputAction _pauseMenu;
         
         private bool _isPaused;
+        private bool _inSettings;
         public int killCounter;
         
-        private PauseMenuAnimator _animator;
         private UIManager _manager;
-        private ControllerCheck _controllerCheck;
 
         private void Start()
         {
-            _animator = FindObjectOfType(typeof(PauseMenuAnimator)) as PauseMenuAnimator;
-            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
             _manager = FindObjectOfType(typeof(UIManager)) as UIManager;
             killCounter = 0;
         }
@@ -55,7 +46,7 @@ namespace UI.Scripts.PauseMenu
 
         private void PauseGame(InputAction.CallbackContext ctx)
         {
-            if (_manager.winLossScreen.enabled || upgradeMenu.enabled) return;
+            if (MenuStateManager.Instance.CurrentState == MenuStateManager.Instance.WinLossState || MenuStateManager.Instance.CurrentState == MenuStateManager.Instance.UpgradeState) return;
             
             _isPaused = !_isPaused;
             
@@ -64,7 +55,7 @@ namespace UI.Scripts.PauseMenu
                 case true:
                     ActivateMenu();
                     break;
-                case false when !_animator.inSettings:
+                case false when !_inSettings:
                     DeactivateMenu();
                     break;
             }
@@ -78,19 +69,27 @@ namespace UI.Scripts.PauseMenu
             killValueText.text = killCounter.ToString();
             timeValueText.text = _manager.TimeSurvived();
             
-            pauseCanvas.enabled = true;
-            settingsCanvas.enabled = true;
-
-            if (_controllerCheck.connected)
-                _controllerCheck.SetSelectedButton(resumeButton);
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.PauseState);
         }
 
         private void DeactivateMenu()
         {
             Time.timeScale = 1;
             AudioListener.pause = false;
-            pauseCanvas.enabled = false;
-            settingsCanvas.enabled = false;
+            
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
+        }
+        
+        public void OpenSettings()
+        {
+            _inSettings = true;
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplaySettingsState);
+        }
+        
+        public void CloseSettings()
+        {
+            _inSettings = false;
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.PauseState);
         }
     
         public void LoadMainMenu()

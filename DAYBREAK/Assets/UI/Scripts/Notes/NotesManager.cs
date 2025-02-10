@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UI.Scripts.Misc_;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace UI.Scripts.Notes
@@ -19,25 +18,17 @@ namespace UI.Scripts.Notes
         [SerializeField] private AutoScrollRect notesAutoScrollRect;
         
         [Header("Text Field")]
-        [SerializeField] private GameObject notesTextBackground;
         [SerializeField] private TMP_Text notesText;
 
         [Header("Misc.")]
         [SerializeField] private GameObject firstNoteButton;
-        [SerializeField] private GameObject backButton;
         [SerializeField] private GameObject noteButton;
-        [SerializeField] private GameObject mainButtonUI;
-        [SerializeField] private GameObject quitButton;
-        
         
         private bool _notesOpen;
-        
-        private ControllerCheck _controllerCheck;
         
         private void Start()
         {
             notes = noteDict.ToDictionary();
-            _controllerCheck = FindObjectOfType(typeof(ControllerCheck)) as ControllerCheck;
         }
         
         // Open/Close Note List //
@@ -50,7 +41,6 @@ namespace UI.Scripts.Notes
             {
                 notesScrollList.SetActive(true);
                 LeanTween.scaleY(notesScrollList, 1, 0.3f).setIgnoreTimeScale(true);
-                notesAutoScrollRect.notesMenuOpen = true;
 
                 var nav = noteButton.GetComponent<Button>().navigation;
                 nav.selectOnUp = firstNoteButton.GetComponent<Button>();
@@ -59,7 +49,6 @@ namespace UI.Scripts.Notes
             else
             {
                 StartCoroutine(NotesClose());
-                notesAutoScrollRect.notesMenuOpen = false;
                 
                 var nav = noteButton.GetComponent<Button>().navigation;
                 nav.selectOnUp = null;
@@ -80,23 +69,13 @@ namespace UI.Scripts.Notes
         
         public void OpenNoteText(int noteNum)
         {
-            notesTextBackground.SetActive(true);
             notesText.text = notes[noteNum];
-            
-            // Change button Nav.
-            _controllerCheck.SetSelectedButton(backButton);
-            quitButton.GetComponent<Button>().interactable = false;
-            mainButtonUI.SetActive(false); 
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.NotesState);
         }
 
         public void CloseNoteText()
         {
-            notesTextBackground.SetActive(false);
-            
-            // Change button Nav.
-            _controllerCheck.SetSelectedButton(noteButton);
-            quitButton.GetComponent<Button>().interactable = true;
-            mainButtonUI.SetActive(true); 
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.MainMenuState);
         }
     }
     

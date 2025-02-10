@@ -1,30 +1,50 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace UI.Scripts.Misc_
 {
     public class ControllerCheck : MonoBehaviour
     {
-        public bool connected;
+        public bool controllerConnected;
+        
+        public static ControllerCheck Instance { get; private set; }
 
-        private void Update()
+        private void Awake()
         {
-            var controllers = Gamepad.all.Count;
-                
-            connected = controllers != 0;
+            if (Instance != null && Instance != this)
+                Destroy(this);
+            else
+                Instance = this;
+            
+            DontDestroyOnLoad(gameObject);
+            
+            InputSystem.onDeviceChange += OnDeviceChange;
         }
 
-        public void SetSelectedButton(GameObject button)
+        void OnDestroy()
         {
-            var eventSystem = EventSystem.current;
-            eventSystem.SetSelectedGameObject(button, new BaseEventData(eventSystem));
+            InputSystem.onDeviceChange -= OnDeviceChange;
         }
 
-        public void ClearSelection()
+        private void OnDeviceChange(InputDevice device, InputDeviceChange change)
         {
-            var eventSystem = EventSystem.current;
-            eventSystem.SetSelectedGameObject(null);
+            switch (change)
+            {
+                case InputDeviceChange.Added:
+                    controllerConnected = true;
+                    break;
+                case InputDeviceChange.Disconnected:
+                    controllerConnected = false;
+                    break;
+                case InputDeviceChange.Reconnected:
+                    controllerConnected = true;
+                    break;
+                default:
+                    // See InputDeviceChange reference for other event types.
+                    break;
+            }
+            
+            MenuStateManager.Instance.UpdateState();
         }
     }
 }
