@@ -2,13 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using UnityEngine.Windows;
 using Random = UnityEngine.Random;
 using MoreMountains.Feedbacks;
-using Lofelt.NiceVibrations;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -129,6 +125,7 @@ public class PlayerShooting : MonoBehaviour
                 GameObject b = Instantiate(bulletType, shootPosition.position, Quaternion.identity);
                 b.GetComponent<Rigidbody>().velocity = (new Vector3(inputDirection.x, 0, inputDirection.y)).normalized * bulletSpeed;
                 _player.PlayFeedbacks();
+                //HapticPatterns.PlayEmphasis(1.0f, 0.0f);
 
                 OnBulletShot?.Invoke(b);
 
