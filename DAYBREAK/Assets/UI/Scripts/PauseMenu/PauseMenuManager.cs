@@ -63,8 +63,9 @@ namespace UI.Scripts.PauseMenu
 
         private void ActivateMenu()
         {
+            GameObject.Find("ada_track_alex1").GetComponent<AdastraDemoTrackControlsAlexTrack1>().WindDown(); // absolutely hideous function call, replace plz
             Time.timeScale = 0;
-            AudioListener.pause = true;
+            //AudioListener.pause = true;
 
             killValueText.text = killCounter.ToString();
             timeValueText.text = _manager.TimeSurvived();
@@ -75,7 +76,8 @@ namespace UI.Scripts.PauseMenu
         private void DeactivateMenu()
         {
             Time.timeScale = 1;
-            AudioListener.pause = false;
+            GameObject.Find("ada_track_alex1").GetComponent<AdastraDemoTrackControlsAlexTrack1>().WindUp(); // absolutely hideous function call, replace plz
+            //AudioListener.pause = false;
             
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
         }

@@ -59,7 +59,7 @@ namespace UI.Scripts.Upgrades
             _appliedUpgrade = false;
             
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.UpgradeState);
-            
+            GameObject.Find("ada_track_alex1").GetComponent<AdastraDemoTrackControlsAlexTrack1>().WindDown(); // absolutely hideous function call, replace plz
             Time.timeScale = 0;
         }
 
@@ -86,6 +86,7 @@ namespace UI.Scripts.Upgrades
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
             _flashEffect.flash = false;
             Time.timeScale = 1;
+            GameObject.Find("ada_track_alex1").GetComponent<AdastraDemoTrackControlsAlexTrack1>().WindUp(); // absolutely hideous function call, replace plz
             
             // Add Impulse force for player
         }
