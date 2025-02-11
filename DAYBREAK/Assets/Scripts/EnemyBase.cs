@@ -31,6 +31,11 @@ public class EnemyBase : MonoBehaviour
     float slowTime = 5f;
 
 
+    public GameObject fireVFX;
+    public GameObject freezeVFX;
+    public GameObject slowVFX;
+    public GameObject poisonVFX;
+
     public List<Coroutine> coroutines = new List<Coroutine>();
     
     
@@ -139,11 +144,19 @@ public class EnemyBase : MonoBehaviour
 
     public void TriggerFreeze()
     {
+        if (freezeVFX)
+        {
+            freezeVFX.SetActive(true);
+        }
         StartCoroutine(FreezeEffect());
     }
 
     public void TriggerSlow()
     {
+        if (slowVFX)
+        {
+            slowVFX.SetActive(true );
+        }
         StartCoroutine(SlowEffect());
     }
 
@@ -199,6 +212,7 @@ public class EnemyBase : MonoBehaviour
     {
         speedMod = 0.5f;
         yield return new WaitForSeconds(slowTime);
+        slowVFX.SetActive(false);
         speedMod = 1;
     }
 
@@ -206,6 +220,7 @@ public class EnemyBase : MonoBehaviour
     {
         speedMod = 0;
         yield return new WaitForSeconds(freezeTime);
+        freezeVFX.SetActive(false);
         speedMod = 1;
     }
 }
