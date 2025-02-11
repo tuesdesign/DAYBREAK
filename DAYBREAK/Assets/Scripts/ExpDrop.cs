@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UI.Scripts.Upgrades;
 using UnityEngine;
 using UnityEngine.UI;
+using MoreMountains.Feedbacks;
 
 public class ExpDrop : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class ExpDrop : MonoBehaviour
     bool givePlayerEXP = true;
 
     public AudioClip pickupSound;
-    
+    public MMF_Player MMF_Player;
+
     // UI exp colors
     private readonly Color _exp1 = new Color32(0, 220, 255, 255);
     private readonly Color _exp2 = new Color32(4, 125, 255, 255);
@@ -29,7 +31,13 @@ public class ExpDrop : MonoBehaviour
     {
         _flashEffect = FindObjectOfType<LevelUpEffect>();
     }
-    
+
+    private void OnEnable()
+    {
+        MMF_Player = GetComponentInChildren<MMF_Player>();
+        MMF_Player.Initialization();
+    }
+
     private void Update()
     {
         if (moveToPlayer)
@@ -80,6 +88,8 @@ public class ExpDrop : MonoBehaviour
         {
             player = other.gameObject;
             moveToPlayer = true;
+            
+            MMF_Player.PlayFeedbacks();
         }
     }
 }

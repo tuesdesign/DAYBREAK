@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 using Random = UnityEngine.Random;
+using MoreMountains.Feedbacks;
+using Lofelt.NiceVibrations;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -67,9 +69,12 @@ public class PlayerShooting : MonoBehaviour
     public int BulletsPerShot { get => bulletsPerShot; set => bulletsPerShot = value; }
     public float BulletSpread { get => bulletSpread; set => bulletSpread = value; }
 
+    MMF_Player _player;
     private void Awake()
     {
         ammoCount = maxAmmo;
+        _player = GetComponent<MMF_Player>();
+        _player.Initialization();
     }
 
     // Start is called before the first frame update
@@ -123,7 +128,8 @@ public class PlayerShooting : MonoBehaviour
 
                 GameObject b = Instantiate(bulletType, shootPosition.position, Quaternion.identity);
                 b.GetComponent<Rigidbody>().velocity = (new Vector3(inputDirection.x, 0, inputDirection.y)).normalized * bulletSpeed;
-                
+                _player.PlayFeedbacks();
+
                 OnBulletShot?.Invoke(b);
 
                 Destroy(b, 10);
