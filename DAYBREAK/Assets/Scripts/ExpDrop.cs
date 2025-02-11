@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI.Scripts.Upgrades;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,13 @@ public class ExpDrop : MonoBehaviour
     private readonly Color _exp5 = new Color32(7, 24, 255, 255);
     private readonly Color _exp10 = new Color32(121, 6, 255, 255);
 
+    private LevelUpEffect _flashEffect;
+    
+    private void Awake()
+    {
+        _flashEffect = FindObjectOfType<LevelUpEffect>();
+    }
+    
     private void Update()
     {
         if (moveToPlayer)
@@ -36,23 +44,28 @@ public class ExpDrop : MonoBehaviour
 
                 AudioSource.PlayClipAtPoint(pickupSound, this.transform.position);
                 
-                // Spawn UI floating text
+                // Spawn UI floating text + pulse EXP bar
                 GameObject expText = Instantiate(floatingExp, transform.position, floatingExp.transform.rotation);
+                
                 
                 // Change color based on amount of exp
                 switch (expAmount)
                 {
                     case 1:
                         expText.transform.GetChild(0).GetComponent<TextMesh>().color = _exp1;
+                        _flashEffect.PulseColor(Color.white, _exp1);
                         break;
                     case 2:
                         expText.transform.GetChild(0).GetComponent<TextMesh>().color = _exp2;
+                        _flashEffect.PulseColor(Color.white, _exp2);
                         break;
                     case 5:
                         expText.transform.GetChild(0).GetComponent<TextMesh>().color = _exp5;
+                        _flashEffect.PulseColor(Color.white, _exp5);
                         break;
                     case 10:
                         expText.transform.GetChild(0).GetComponent<TextMesh>().color = _exp10;
+                        _flashEffect.PulseColor(Color.white, _exp10);
                         break;
                 }
                 
