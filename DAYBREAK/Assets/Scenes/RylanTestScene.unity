@@ -24790,7 +24790,7 @@ Transform:
   m_GameObject: {fileID: 1411700598}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 12.07, y: -2.15, z: -0.29}
+  m_LocalPosition: {x: 12.07, y: -2.52, z: -0.725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25106,7 +25106,7 @@ VisualEffect:
       m_Array: []
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: 11700000, guid: 680b4949d04badb4e8966baa175a2599, type: 2}
+      - m_Value: {fileID: 11700000, guid: e013ea83251411f4aa55d8ad43ca1106, type: 2}
         m_Name: SDF
         m_Overridden: 1
     m_Bool:
