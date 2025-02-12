@@ -166,7 +166,8 @@ namespace UI.Scripts
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             
-            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
+            MenuStateManager.Instance.ForceExitState();
+            //MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
         }
         
         public void CopyText()
