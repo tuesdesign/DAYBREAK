@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using TMPro;
-using UI.Scripts.Misc_;
 using UI.Scripts.Notes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +11,7 @@ namespace UI.Scripts.MainMenu
     {
         [Header("Main Menu Items")]
         [SerializeField] private TMP_Text currentTime;
+        [SerializeField] private GameObject loadingText;
         
         private NotesManager _notesManager;
 
@@ -45,6 +45,8 @@ namespace UI.Scripts.MainMenu
 
             MenuStateManager.Instance.forcedExit = true;
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.MainMenuState);
+
+            loadingText.SetActive(false);
         }
         
         // Character Select Page //
@@ -95,6 +97,7 @@ namespace UI.Scripts.MainMenu
         private IEnumerator LoadGame(string sceneName)
         {
             MenuStateManager.Instance.ForceExitState();
+            loadingText.SetActive(true);
             
             yield return new WaitForEndOfFrame();
             SceneManager.LoadScene(sceneName);

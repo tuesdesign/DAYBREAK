@@ -5,7 +5,9 @@ public class MenuStateManager : MonoBehaviour
 {
     // Current state
     public MenuBaseState CurrentState;
-
+    public bool forcedExit;
+    
+    
     // All possible states
     public AchievementsState AchievementsState = new AchievementsState();
     public CharacterSelectState CharacterSelectState = new CharacterSelectState();
@@ -17,9 +19,7 @@ public class MenuStateManager : MonoBehaviour
     public PauseState PauseState = new PauseState();
     public UpgradeState UpgradeState = new UpgradeState();
     public WinLossState WinLossState = new WinLossState();
-
-
-    public bool forcedExit;
+    
     
     public static MenuStateManager Instance { get; private set; }
     

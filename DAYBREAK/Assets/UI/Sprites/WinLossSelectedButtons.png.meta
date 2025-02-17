@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 6c2d6faf69ec9f1448fa7fb1a79126b2
+guid: 8762f15b58b3f3a49b2b3eb9e92f5be6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -123,22 +123,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WinLoss_0
+      name: WinLossSelectedButtons_0
       rect:
         serializedVersion: 2
-        x: 96
-        y: 179
-        width: 457
-        height: 640
+        x: 4
+        y: 3
+        width: 370
+        height: 322
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97d2b4e44d787014780114e864634ed9
-      internalID: -953706444
+      spriteID: 5b5fc7e234b44c540a3dc76864171927
+      internalID: -1265502812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WinLossSelectedButtons_1
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 3
+        width: 370
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2167289072f15384b9c48627be1a926b
+      internalID: -904205791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WinLossSelectedButtons_2
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 3
+        width: 370
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f59b9d1da8ed0e49be245fa8b66db1e
+      internalID: 1767584080
       vertices: []
       indices: 
       edges: []
@@ -146,7 +188,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c28a910d9fafe9140b280ceb14f39e8e
+    spriteID: f839bcd9b4fab4944a2e813dc2091dc7
     internalID: 0
     vertices: []
     indices: 
@@ -154,7 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WinLoss_0: -953706444
+      WinLossSelectedButtons_0: -1265502812
+      WinLossSelectedButtons_1: -904205791
+      WinLossSelectedButtons_2: 1767584080
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

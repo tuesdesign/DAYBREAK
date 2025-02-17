@@ -13,8 +13,9 @@ public class PlayerUI : MonoBehaviour
     [Tooltip("This is the health bar.")] [SerializeField]
     Slider healthBar1;
 
-    [Tooltip("This is the exp bar.")] [SerializeField]
-    Slider expBar;
+    [Tooltip("This is the exp bar.")] 
+    [SerializeField] Slider expBar;
+    [SerializeField] Slider backgroundExpBar;
 
     [Tooltip("The text bar to describe how much ammo the player has in comparison to their max ammo")] [SerializeField]
     TMP_Text ammoTextBar;
@@ -43,6 +44,8 @@ public class PlayerUI : MonoBehaviour
         
         expBar.maxValue = playerExpHandler.LevelIncrement;
         expBar.value = playerExpHandler.Exp;
+        backgroundExpBar.maxValue = playerExpHandler.LevelIncrement;
+        backgroundExpBar.value = playerExpHandler.Exp;
     }
     
     public void UpdateHealthBar()
@@ -128,18 +131,28 @@ public class PlayerUI : MonoBehaviour
     public void UpdateExpBar()
     {
         expBar.maxValue = playerExpHandler.LevelIncrement;
+        backgroundExpBar.maxValue = playerExpHandler.LevelIncrement;
         StartCoroutine(AnimateExpBar());
     }
 
     private IEnumerator AnimateExpBar()
     {
+        backgroundExpBar.value = playerExpHandler.Exp;
+        
         var animTime = 0f;
-
-        while (animTime < 1.0f)
+        var targetValue = playerExpHandler.Exp;
+        
+        while (animTime <= 1.5f)
         {
+            if (targetValue != playerExpHandler.Exp)
+            {
+                targetValue = playerExpHandler.Exp;
+                animTime = 0;
+            }
+            
             animTime += Time.deltaTime;
-            var lerpValue = animTime / 1.0f;
-            expBar.value = Mathf.Lerp(expBar.value, playerExpHandler.Exp, lerpValue);
+            var lerpValue = animTime / 1.5f;
+            expBar.value = Mathf.Lerp(expBar.value, targetValue, lerpValue);
             yield return null;
         }
     }
