@@ -1,11 +1,12 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MenuStateManager : MonoBehaviour
 {
     // Current state
     public MenuBaseState CurrentState;
     public bool forcedExit;
+    
+    public bool isMobile;
     
     
     // All possible states

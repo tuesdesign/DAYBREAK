@@ -46,6 +46,11 @@ namespace UI.Scripts.PauseMenu
 
         private void PauseGame(InputAction.CallbackContext ctx)
         {
+            Pause();
+        }
+
+        public void Pause()
+        {
             if (MenuStateManager.Instance.CurrentState == MenuStateManager.Instance.WinLossState || MenuStateManager.Instance.CurrentState == MenuStateManager.Instance.UpgradeState) return;
             
             _isPaused = !_isPaused;

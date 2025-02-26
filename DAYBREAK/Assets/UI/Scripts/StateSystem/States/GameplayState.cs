@@ -8,11 +8,11 @@ public class GameplayState : MenuBaseState
     public override void EnterState(MenuStateManager menu)
     {
         _menuCanvas = UIManager.Instance.gameplayUI;
-
-        if (UIManager.Instance.isMobile)
-            UIManager.Instance.mobileSpecificUI.SetActive(true);
         
         _menuCanvas.SetActive(true);
+
+        if (menu.isMobile)
+            UIManager.Instance.mobileSpecificUI.SetActive(true);
     }
 
     public override void UpdateState(MenuStateManager menu) { }
@@ -20,5 +20,8 @@ public class GameplayState : MenuBaseState
     public override void ExitState(MenuStateManager menu)
     {
         _menuCanvas.SetActive(false);
+        
+        if (menu.isMobile)
+            UIManager.Instance.mobileSpecificUI.SetActive(false);
     }
 }

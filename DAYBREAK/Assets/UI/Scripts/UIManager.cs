@@ -44,8 +44,6 @@ namespace UI.Scripts
         private bool _countdown;
         private bool _tutorialOpen;
         private bool _displayEndScreen;
-
-        public bool isMobile;
         
         public static UIManager Instance { get; private set; }
     
@@ -57,10 +55,6 @@ namespace UI.Scripts
                 Instance = this;
 
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
-            
-            // Check is user is on Mobile
-            if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-                isMobile = true;
         }
         
         private void OnEnable()
