@@ -8,6 +8,9 @@ public class GameplayState : MenuBaseState
     public override void EnterState(MenuStateManager menu)
     {
         _menuCanvas = UIManager.Instance.gameplayUI;
+
+        if (UIManager.Instance.isMobile)
+            UIManager.Instance.mobileSpecificUI.SetActive(true);
         
         _menuCanvas.SetActive(true);
     }

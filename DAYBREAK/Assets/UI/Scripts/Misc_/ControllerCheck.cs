@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Layouts;
 
 namespace UI.Scripts.Misc_
 {
     public class ControllerCheck : MonoBehaviour
     {
         public bool controllerConnected;
+        private bool _lostFocus;
         
         public static ControllerCheck Instance { get; private set; }
 
@@ -23,11 +23,31 @@ namespace UI.Scripts.Misc_
                 controllerConnected = true;
             
             InputSystem.onDeviceChange += OnDeviceChange;
+            
+            Cursor.visible = controllerConnected != true;
+            Cursor.lockState = controllerConnected ? CursorLockMode.Locked : CursorLockMode.None;
         }
 
         void OnDestroy()
         {
             InputSystem.onDeviceChange -= OnDeviceChange;
+        }
+
+        private void Update()
+        {
+            if (!Application.isFocused)
+                _lostFocus = true;
+
+            if (Application.isFocused && _lostFocus)
+            {
+                if (Gamepad.all.Count > 0)
+                    controllerConnected = true;
+            
+                Cursor.visible = controllerConnected != true;
+                Cursor.lockState = controllerConnected ? CursorLockMode.Locked : CursorLockMode.None;
+
+                _lostFocus = false;
+            }
         }
 
         private void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -47,6 +67,9 @@ namespace UI.Scripts.Misc_
                     // See InputDeviceChange reference for other event types.
                     break;
             }
+            
+            Cursor.visible = controllerConnected != true;
+            Cursor.lockState = controllerConnected ? CursorLockMode.Locked : CursorLockMode.None;
             
             MenuStateManager.Instance.UpdateState();
         }

@@ -35,12 +35,17 @@ namespace UI.Scripts
         [SerializeField] public GameObject pauseMenuPrimary;
         [SerializeField] public GameObject settingsMenuPrimary;
         [SerializeField] public GameObject winLossMenuPrimary;
+
+        [Header("Mobile Stuff")] 
+        [SerializeField] public GameObject mobileSpecificUI;
     
         public const float StartTime = 300;
         private float _timeValue;
         private bool _countdown;
         private bool _tutorialOpen;
         private bool _displayEndScreen;
+
+        public bool isMobile;
         
         public static UIManager Instance { get; private set; }
     
@@ -50,8 +55,12 @@ namespace UI.Scripts
                 Destroy(this);
             else
                 Instance = this;
-            
+
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
+            
+            // Check is user is on Mobile
+            if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+                isMobile = true;
         }
         
         private void OnEnable()
