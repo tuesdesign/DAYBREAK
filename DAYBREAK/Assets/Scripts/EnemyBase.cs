@@ -81,18 +81,6 @@ public class EnemyBase : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f, LayerMask.GetMask("Terrain")))
         {
-            /*
-
-             If the normal is too steap we can add a sliding mechanic that will push enemies down slopes
-                        if (hit.normal.y < 0.7f)
-                        {
-                            Vector3 slide = new Vector3(hit.normal.x, 0, hit.normal.z);
-                            _rb.velocity = slide * speed;
-                            return;
-                        }
-
-             */
-
             // Get the direction to the player, disregard the y axis
             Vector3 direction = movePos = new Vector3(playerTrans.position.x - transform.position.x, 0, playerTrans.position.z - transform.position.z).normalized;
 
@@ -103,11 +91,9 @@ public class EnemyBase : MonoBehaviour
             // Move the enemy in the direction of the player with relation to the ground
             _rb.velocity = forward * enemySO.speed * speedMod;
         }
-        else
+        else if (Physics.Raycast(transform.position + Vector3.up * 100, Vector3.down, out hit, 200f, LayerMask.GetMask("Terrain")))
         {
-            // If the enemy is not on the ground, move it towards the player by adding a force
-            movePos = (playerTrans.position - transform.position).normalized;
-            _rb.AddForce(movePos * enemySO.speed * speedMod);
+            _rb.position = hit.point + Vector3.up;
         }
     }
 

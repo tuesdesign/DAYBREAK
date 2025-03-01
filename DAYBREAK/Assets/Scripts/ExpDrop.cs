@@ -36,6 +36,11 @@ public class ExpDrop : MonoBehaviour
     {
         MMF_Player = GetComponentInChildren<MMF_Player>();
         MMF_Player.Initialization();
+
+        if (Physics.Raycast(transform.position + Vector3.up * 100, Vector3.down, out RaycastHit hit, 200f, LayerMask.GetMask("Terrain")))
+        {
+            transform.position = hit.point + Vector3.up;
+        }
     }
 
     private void Update()

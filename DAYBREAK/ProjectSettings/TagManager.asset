@@ -9,6 +9,7 @@ TagManager:
   - EXP
   - Terrain
   - PrimaryButton
+  - Water
   layers:
   - Default
   - TransparentFX

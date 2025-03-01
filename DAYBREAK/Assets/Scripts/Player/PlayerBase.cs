@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UI.Scripts;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
@@ -40,7 +41,8 @@ public class PlayerBase : MonoBehaviour
     [HideInInspector] 
     public float speedModifier = 0;
 
-
+    Transform water;
+    bool isTakeingWaterDamage = false;
 
     public int CurHealth { get => curHealth; set => curHealth = value; }
     public int MaxHealth { get => maxHealth; set => maxHealth = value; }
@@ -68,6 +70,8 @@ public class PlayerBase : MonoBehaviour
         transform.position = FindObjectOfType<TerrainGenerator>().GetNearestSpawnPos(Vector3.zero);
 
         _uiManager = (UIManager)FindObjectOfType(typeof(UIManager));
+
+        water = GameObject.FindGameObjectWithTag("Water").transform;
     }
 
 
@@ -78,23 +82,9 @@ public class PlayerBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        //Vector3 movement = new Vector3(movePosition.x, 0f, movePosition.y).normalized * speed; //normal movement (non iso)
-
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f, LayerMask.GetMask("Terrain")))
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hit, 2f, LayerMask.GetMask("Terrain")))
         {
-            /*
-
-             If the normal is too steap we can add a sliding mechanic that will push the player down slopes
-                        if (hit.normal.y < 0.7f)
-                        {
-                            Vector3 slide = new Vector3(hit.normal.x, 0, hit.normal.z);
-                            _rb.velocity = slide * speed;
-                            return;
-                        }
-
-             */
-
             // Get the direction, disregard the y axis
             Vector3 direction = new Vector3(movePosition.x - movePosition.y, 0f, movePosition.x + movePosition.y).normalized; //iso movement 
 
@@ -105,17 +95,17 @@ public class PlayerBase : MonoBehaviour
             // Move the player with relation to the ground
             _rb.velocity = forward * (speed + speedModifier);
         }
-        else
+        else if (Physics.Raycast(transform.position + Vector3.up * 100, Vector3.down, out hit, 200f, LayerMask.GetMask("Terrain")))
         {
-            // If the player is not on the ground, move it towards the player by adding a force
-            Vector3 movement = new Vector3(movePosition.x - movePosition.y, 0f, movePosition.x + movePosition.y).normalized * speed; //iso movement 
-            _rb.AddForce(movement);
+            _rb.position = hit.point + Vector3.up;
         }
 
         //if the player is moving, play the moving animation
         _playerAnimController.isMoving = movePosition != Vector2.zero;
         _playerAnimController.moveDirection = movePosition;
-        //print(movePosition);
+
+        if (transform.position.y < water.position.y && !isTakeingWaterDamage) StartCoroutine(WaterKillTimer());
+        if (transform.position.y > water.position.y) isTakeingWaterDamage = false;
     }
 
     public void ApplyCharacterStats(PlayerSO playerStats)
@@ -280,6 +270,7 @@ public class PlayerBase : MonoBehaviour
             tickDamageActive = true;
         }
     }
+
     IEnumerator TickDamage(int damage)
     {
         TakeDamage(damage);
@@ -306,5 +297,16 @@ public class PlayerBase : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         dodgeEffect.SetActive(false);
+    }
+
+    IEnumerator WaterKillTimer() 
+    {
+        isTakeingWaterDamage = true;
+        while (isTakeingWaterDamage)
+        {
+            yield return new WaitForSeconds(1f);
+            if (isTakeingWaterDamage) TakeDamage(1);
+            else break;
+        }
     }
 }

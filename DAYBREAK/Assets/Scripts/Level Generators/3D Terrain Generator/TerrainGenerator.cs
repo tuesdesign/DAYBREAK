@@ -644,8 +644,8 @@ public class TerrainGenerator : MonoBehaviour
                         float width = Mathf.Lerp(path.originData.pathWidth, path.destinationData.pathWidth, t);
                         float pathStrength = Mathf.Clamp01((width - distanceToPoint) / path.originData.pathFade);
 
-                        float o = Mathf.Lerp(pathStrength, 0, t);
-                        float d = Mathf.Lerp(pathStrength, 0, 1 - t);
+                        float o = Mathf.Lerp(pathStrength, 0, 1);
+                        float d = Mathf.Lerp(pathStrength, 0, 1 - 1);
 
                         if (o > alphaMap[x, y, originLayerIndex]) alphaMap[x, y, originLayerIndex] = o;
                         if (d > alphaMap[x, y, destinationLayerIndex]) alphaMap[x, y, destinationLayerIndex] = d;
@@ -654,13 +654,13 @@ public class TerrainGenerator : MonoBehaviour
                             if (alphaMap[x, y, l] > 1 - pathStrength) alphaMap[x, y, l] = 1 - pathStrength;
 
                         pointsSampled++;
-                        if (t <= 1) t += 2.5f / pathDist;
+                        if (t <= 1) t += 5f / pathDist;
                     }
                 }
 
         foreach (KeyValuePair<Vector2Int, float> posRad in _structurePosistionsAndRadii)
-            for (int x = posRad.Key.x - Mathf.RoundToInt(posRad.Value); x <= posRad.Key.x + Mathf.RoundToInt(posRad.Value); x++)
-                for (int y = posRad.Key.y - Mathf.RoundToInt(posRad.Value); y <= posRad.Key.y + Mathf.RoundToInt(posRad.Value); y++)
+            for (int x = posRad.Key.x - Mathf.RoundToInt(posRad.Value + 10f); x <= posRad.Key.x + Mathf.RoundToInt(posRad.Value + 10f); x++)
+                for (int y = posRad.Key.y - Mathf.RoundToInt(posRad.Value + 10f); y <= posRad.Key.y + Mathf.RoundToInt(posRad.Value + 10f); y++)
                 {
                     if (x < 0 || x >= alphaMap.GetLength(0) || y < 0 || y >= alphaMap.GetLength(1)) continue;
 
@@ -678,7 +678,7 @@ public class TerrainGenerator : MonoBehaviour
                     }
 
                     float distance = Vector2.Distance(new Vector2(x, y), new Vector2(posRad.Key.x, posRad.Key.y));
-                    float pathStrength = Mathf.Clamp01((posRad.Value - distance) / path.pathFade);
+                    float pathStrength = Mathf.Clamp01((posRad.Value + 10f - distance) / path.pathFade);
                     if (pathStrength > alphaMap[y, x, layerIndex]) alphaMap[y, x, layerIndex] = pathStrength;
 
                     for (int l = 0; l < baseLayerCount; l++)
@@ -782,6 +782,7 @@ public class TerrainGenerator : MonoBehaviour
         }
 
         // draw the paths
+        if (_paths != null)
         foreach (Path path in _paths)
         {
             Handles.color = Color.cyan;

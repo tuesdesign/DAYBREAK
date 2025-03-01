@@ -16,7 +16,7 @@ MonoBehaviour:
   showAFs: 1
   showTerrainAF: 1
   showSelectorAF: 1
-  showStructures: 0
+  showStructures: 1
   showStructure: 0000
   showPaths: 1
   showPath: 00
@@ -24,7 +24,7 @@ MonoBehaviour:
   biomeColors:
   - {r: 0, g: 0, b: 0, a: 0}
   terrainAF:
-  - amplitude: 100
+  - amplitude: 50
     frequency: 0.0025
   selectorAF:
   - amplitude: 15

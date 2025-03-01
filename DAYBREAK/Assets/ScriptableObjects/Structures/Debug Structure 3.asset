@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 7510159459844304910, guid: cb424580ac93c3b4e84a603bc7434f15, type: 3}
   offestY: 10
-  radius: 30
+  radius: 20
