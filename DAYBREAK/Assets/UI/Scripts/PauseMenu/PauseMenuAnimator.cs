@@ -12,7 +12,7 @@ namespace UI.Scripts.PauseMenu
         public void ButtonHover(GameObject go)
         {
             if (!_isClick)
-                LeanTween.scale(go, new Vector3(0.9f, 0.9f, 0.9f), hoverDuration).setIgnoreTimeScale(true);
+                LeanTween.scale(go, new Vector3(1.1f, 1.1f, 1.1f), hoverDuration).setIgnoreTimeScale(true);
         }
         
         public void ButtonExit(GameObject go)

@@ -126,10 +126,10 @@ TextureImporter:
       name: PauseButtons_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 3
-        width: 370
-        height: 322
+        x: 34
+        y: 28
+        width: 314
+        height: 274
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53445350332a5bd41a6cefcb681a7146
-      internalID: 986881913
+      spriteID: e6fd68129c2d7b9449e52b2d7fd33d3c
+      internalID: 705069420
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23e64d374d4b4dd42964ceda9b7564b3
-      internalID: 1873617917
+      spriteID: 8ad4a856f3ca46b49a82f81009fa3b5a
+      internalID: -179341206
       vertices: []
       indices: 
       edges: []
@@ -167,7 +167,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8bb78c0f458d46146ae42f3ba37b1c3f
+    spriteID: 22b301c355c739a45890ff6ea27a60ce
     internalID: 0
     vertices: []
     indices: 
@@ -175,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PauseButtons_0: 986881913
-      PauseButtons_1: 1873617917
+      PauseButtons_0: 705069420
+      PauseButtons_1: -179341206
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
