@@ -16,6 +16,7 @@ namespace UI.Scripts.SettingsMenu
         [SerializeField] private GameObject circleImage;
         [SerializeField] private GameObject backgroundImage;
         [SerializeField] private string settingPlayerPref;
+        [SerializeField] private bool isSlider;
         
         private SettingState _settingState;
         private int _settingInt;
@@ -35,17 +36,21 @@ namespace UI.Scripts.SettingsMenu
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (isSlider) return;
             _animator.ButtonHover(gameObject);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            if (isSlider) return;
             _animator.ButtonExit(gameObject);
             EventSystem.current.SetSelectedGameObject(null);
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (isSlider) return;
+            
             switch (_settingState)
             {
                 case SettingState.On:
@@ -61,16 +66,22 @@ namespace UI.Scripts.SettingsMenu
         
         public void OnSelect(BaseEventData eventData)
         {
+            if (isSlider) return;
+            
             _animator.ButtonHover(gameObject);
         }
 
         public void OnDeselect(BaseEventData eventData)
         {
+            if (isSlider) return;
+            
             _animator.ButtonExit(gameObject);
         }
 
         public void OnSubmit(BaseEventData eventData)
         {
+            if (isSlider) return;
+            
             switch (_settingState)
             {
                 case SettingState.On:
@@ -86,6 +97,12 @@ namespace UI.Scripts.SettingsMenu
 
         private void UpdateButton()
         {
+            if (isSlider)
+            {
+                GetComponent<Slider>().value = PlayerPrefs.GetFloat(settingPlayerPref);
+                return;
+            }
+            
             switch (_settingInt)
             {
                 case 0:

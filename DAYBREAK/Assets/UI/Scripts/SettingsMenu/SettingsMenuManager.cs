@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Scripts.SettingsMenu
 {
@@ -7,31 +7,23 @@ namespace UI.Scripts.SettingsMenu
     {
         private void Start()
         {
-            PlayerPrefs.GetInt("ToggleMusic", 1);
-            PlayerPrefs.GetInt("ToggleSfx", 1);
+            PlayerPrefs.GetFloat("ToggleMusic", 1.0f);
+            PlayerPrefs.GetFloat("ToggleSfx", 1.0f);
             PlayerPrefs.GetInt("ToggleTwinStick", 1);
             PlayerPrefs.GetInt("ToggleVibration", 1);
             PlayerPrefs.GetInt("ToggleNotif", 1);
         }
 
-        public void ToggleMusic()
+        public void ToggleMusic(Slider slider)
         {
-            if (PlayerPrefs.GetInt("ToggleMusic") == 0)
-                PlayerPrefs.SetInt("ToggleMusic", 1);
-            
-            else if (PlayerPrefs.GetInt("ToggleMusic") == 1)
-                PlayerPrefs.SetInt("ToggleMusic", 0);
+            PlayerPrefs.SetFloat("ToggleMusic", slider.value);
             
             PlayerPrefs.Save();
         }
         
-        public void ToggleSfx()
+        public void ToggleSfx(Slider slider)
         {
-            if (PlayerPrefs.GetInt("ToggleSfx") == 0)
-                PlayerPrefs.SetInt("ToggleSfx", 1);
-            
-            else if (PlayerPrefs.GetInt("ToggleSfx") == 1)
-                PlayerPrefs.SetInt("ToggleSfx", 0);
+            PlayerPrefs.SetFloat("ToggleSfx", slider.value);
             
             PlayerPrefs.Save();
         }
