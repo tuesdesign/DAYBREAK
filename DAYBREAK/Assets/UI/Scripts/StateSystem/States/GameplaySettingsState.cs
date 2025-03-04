@@ -19,7 +19,8 @@ public class GameplaySettingsState : MenuBaseState
 
     public override void UpdateState(MenuStateManager menu)
     {
-        EventSystem.current.SetSelectedGameObject(ControllerCheck.Instance.controllerConnected ? _mainButton : null);
+        if (!MenuStateManager.Instance.isMobile)
+            EventSystem.current.SetSelectedGameObject(ControllerCheck.Instance.controllerConnected ? _mainButton : null);
     }
 
     public override void ExitState(MenuStateManager menu)

@@ -83,7 +83,7 @@ public class PlayerShooting : MonoBehaviour
         canShoot = true;
         
         reloadBar = FindObjectOfType<Canvas>();
-
+        
         if (twinStick)
         {
             _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();

@@ -1,9 +1,19 @@
+using System;
 using UnityEngine;
 
 namespace UI.Scripts.SettingsMenu
 {
     public class SettingsMenuManager : MonoBehaviour
     {
+        private void Start()
+        {
+            PlayerPrefs.GetInt("ToggleMusic", 1);
+            PlayerPrefs.GetInt("ToggleSfx", 1);
+            PlayerPrefs.GetInt("ToggleTwinStick", 1);
+            PlayerPrefs.GetInt("ToggleVibration", 1);
+            PlayerPrefs.GetInt("ToggleNotif", 1);
+        }
+
         public void ToggleMusic()
         {
             if (PlayerPrefs.GetInt("ToggleMusic") == 0)
@@ -11,6 +21,8 @@ namespace UI.Scripts.SettingsMenu
             
             else if (PlayerPrefs.GetInt("ToggleMusic") == 1)
                 PlayerPrefs.SetInt("ToggleMusic", 0);
+            
+            PlayerPrefs.Save();
         }
         
         public void ToggleSfx()
@@ -20,6 +32,19 @@ namespace UI.Scripts.SettingsMenu
             
             else if (PlayerPrefs.GetInt("ToggleSfx") == 1)
                 PlayerPrefs.SetInt("ToggleSfx", 0);
+            
+            PlayerPrefs.Save();
+        }
+        
+        public void ToggleTwinStick()
+        {
+            if (PlayerPrefs.GetInt("ToggleTwinStick") == 0)
+                PlayerPrefs.SetInt("ToggleTwinStick", 1);
+            
+            else if (PlayerPrefs.GetInt("ToggleTwinStick") == 1)
+                PlayerPrefs.SetInt("ToggleTwinStick", 0);
+            
+            PlayerPrefs.Save();
         }
         
         public void ToggleVibration()
@@ -29,6 +54,8 @@ namespace UI.Scripts.SettingsMenu
             
             else if (PlayerPrefs.GetInt("ToggleVibration") == 1)
                 PlayerPrefs.SetInt("ToggleVibration", 0);
+            
+            PlayerPrefs.Save();
         }
         
         public void ToggleNotif()
@@ -38,15 +65,8 @@ namespace UI.Scripts.SettingsMenu
             
             else if (PlayerPrefs.GetInt("ToggleNotif") == 1)
                 PlayerPrefs.SetInt("ToggleNotif", 0);
-        }
-        
-        public void ToggleMouseAim()
-        {
-            if (PlayerPrefs.GetInt("MouseAim") == 0)
-                PlayerPrefs.SetInt("MouseAim", 1);
             
-            else if (PlayerPrefs.GetInt("MouseAim") == 1)
-                PlayerPrefs.SetInt("MouseAim", 0);
+            PlayerPrefs.Save();
         }
     }
 }
