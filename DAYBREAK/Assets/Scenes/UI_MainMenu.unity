@@ -15748,7 +15748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forcedExit: 0
-  isMobile: 0
+  isMobile: 1
 --- !u!1 &1875993307
 GameObject:
   m_ObjectHideFlags: 0

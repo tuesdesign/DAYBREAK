@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 using MoreMountains.Feedbacks;
+using UnityEditor.Rendering;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -124,7 +125,12 @@ public class PlayerShooting : MonoBehaviour
 
                 GameObject b = Instantiate(bulletType, shootPosition.position, Quaternion.identity);
                 b.GetComponent<Rigidbody>().velocity = (new Vector3(inputDirection.x, 0, inputDirection.y)).normalized * bulletSpeed;
-                _player.PlayFeedbacks();
+
+                if (PlayerPrefs.GetInt("ToggleVibration") == 1)
+                {
+                    _player.PlayFeedbacks();
+                }
+                    
                 //HapticPatterns.PlayEmphasis(1.0f, 0.0f);
 
                 OnBulletShot?.Invoke(b);

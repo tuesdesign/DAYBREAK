@@ -190,17 +190,6 @@ public partial class @PlayerIA: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bd7cb749-a2f3-4579-b40d-61dada6b09a1"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a04fee55-c370-4d09-b14e-adf97059382d"",
                     ""path"": ""<Joystick>/trigger"",
                     ""interactions"": """",

@@ -94,7 +94,8 @@ public class ExpDrop : MonoBehaviour
             player = other.gameObject;
             moveToPlayer = true;
             
-            MMF_Player.PlayFeedbacks();
+            if (PlayerPrefs.GetInt("ToggleVibration") == 1)
+                MMF_Player.PlayFeedbacks();
         }
     }
 }
