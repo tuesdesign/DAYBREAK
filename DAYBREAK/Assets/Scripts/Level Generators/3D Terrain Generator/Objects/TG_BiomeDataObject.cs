@@ -16,6 +16,9 @@ public class TG_BiomeDataObject : ScriptableObject
 
     public bool showPaths;
     public bool[] showPath;
+
+    public bool showFoliage;
+    public bool[] showFoliageObj;
 #endif
 
     public TerrainLayer baseTerrainLayer;
@@ -26,6 +29,7 @@ public class TG_BiomeDataObject : ScriptableObject
 
     public TG_StructureDataObject[] structures;
     public TG_PathDataObject[] paths;
+    public TG_Foliage[] foliage;
 
     public struct BiomeData
     {
@@ -35,8 +39,9 @@ public class TG_BiomeDataObject : ScriptableObject
         public AmpsAndFreq[] selectorAF;
         public TG_StructureDataObject[] structures;
         public TG_PathDataObject[] pathData;
+        public TG_Foliage[] foliage;
 
-        public BiomeData(TerrainLayer baseTerrainLayer, Color[] biomeColors, AmpsAndFreq[] terrainAF, AmpsAndFreq[] selectorAF, TG_StructureDataObject[] structures, TG_PathDataObject[] paths)
+        public BiomeData(TerrainLayer baseTerrainLayer, Color[] biomeColors, AmpsAndFreq[] terrainAF, AmpsAndFreq[] selectorAF, TG_StructureDataObject[] structures, TG_PathDataObject[] paths, TG_Foliage[] foliage)
         {
             this.baseTerrainLayer = baseTerrainLayer;
             this.biomeColors = biomeColors;
@@ -44,6 +49,7 @@ public class TG_BiomeDataObject : ScriptableObject
             this.selectorAF = selectorAF;
             this.structures = structures;
             this.pathData = paths;
+            this.foliage = foliage;
         }
 
         public BiomeData(TG_BiomeDataObject obj)
@@ -54,6 +60,7 @@ public class TG_BiomeDataObject : ScriptableObject
             this.selectorAF = obj.selectorAF;
             this.structures = obj.structures;
             this.pathData = obj.paths;
+            this.foliage = obj.foliage;
         }
     }
 }

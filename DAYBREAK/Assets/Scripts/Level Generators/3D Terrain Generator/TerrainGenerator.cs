@@ -16,6 +16,7 @@ public class TerrainGenerator : MonoBehaviour
     Terrain _terrain;
     TerrainMap _terrainMap;
     public string _seed;
+    public GameObject _waterObj;
 
     [SerializeField] public TG_TerrainDataObject terrainDataObject;
 
@@ -27,6 +28,12 @@ public class TerrainGenerator : MonoBehaviour
     private Dictionary<Vector2Int, float> _structurePosistionsAndRadii = new Dictionary<Vector2Int, float>();
 
     private Path[] _paths;
+
+    float[,] _heightMap;
+    float _maxHeight;
+    float _minHeight;
+
+    float[,,] _alphaMap;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +55,13 @@ public class TerrainGenerator : MonoBehaviour
 
         // Create the terrain object
         _terrain = CreateNewTerrain(terrainDataObject);
+
+        if (_waterObj != null)
+        {
+            Vector3 waterPos = _terrain.transform.position + Vector3.up * terrainDataObject.waterLevel;
+            waterPos += new Vector3(_terrain.terrainData.size.x / 2, 0, _terrain.terrainData.size.z / 2);
+            Instantiate(_waterObj, waterPos, Quaternion.identity, _terrain.transform);
+        }
 
         // Set the seed. CRY CONSTANTINE! COPE!
         int newSeed;
@@ -80,6 +94,8 @@ public class TerrainGenerator : MonoBehaviour
 
         //ApplyPathHeights(_paths);
         PaintPaths(_paths);
+
+        PlaceFoliage(terrainDataObject);
 
         Transform[] children = gameObject.GetComponentsInChildren<Transform>();
         foreach (Transform child in children) child.tag = "Terrain";
@@ -181,8 +197,9 @@ public class TerrainGenerator : MonoBehaviour
         weightMap = Float3Powerize(weightMap, data.biomeSeperation);
 
         // Create the height map
-        float[,] heightMap = new float[data.mapSize.x, data.mapSize.y];
-        float maxHeight = 0, minHeight = 0;
+        _heightMap = new float[data.mapSize.x, data.mapSize.y];
+        _maxHeight = 0;
+        _minHeight = 0;
 
         // Generate the biome height map
         for (int x = 0; x < data.mapSize.x; x++)
@@ -205,11 +222,11 @@ public class TerrainGenerator : MonoBehaviour
                 height = Mathf.Lerp(height, 0, terrainDataObject.islandSlope.Evaluate(Mathf.Clamp(dist - terrainDataObject.islandSize - Mathf.PerlinNoise((x + mapOffsets[0].x) / terrainDataObject.islandBorderRoughness, (y + mapOffsets[0].y) / terrainDataObject.islandBorderRoughness) * terrainDataObject.islandBorderRoughnessStrength, 0, Mathf.Infinity) / terrainDataObject.islandSlopeStrength));
 
                 // update the max and min height
-                if (height > maxHeight) maxHeight = height;
-                if (height < minHeight) minHeight = height;
+                if (height > _maxHeight) _maxHeight = height;
+                if (height < _minHeight) _minHeight = height;
 
                 // apply the height to the heightMap
-                heightMap[x, y] = height;
+                _heightMap[x, y] = height;
             }
 
         // lower the terrain to the lowest point
@@ -217,13 +234,13 @@ public class TerrainGenerator : MonoBehaviour
         {
             for (int y = 0; y < data.mapSize.y; y++)
             {
-                heightMap[x, y] -= minHeight;
-                heightMap[x, y] /= maxHeight - minHeight;
+                _heightMap[x, y] -= _minHeight;
+                _heightMap[x, y] /= _maxHeight - _minHeight;
             }
         }
 
         // return the terrain map
-        return new TerrainMap(heightMap, maxHeight - minHeight, biomes, weightMap);
+        return new TerrainMap(_heightMap, _maxHeight - _minHeight, biomes, weightMap);
     }
 
     private void ApplyTerrainMap(Terrain terrain, TG_TerrainDataObject data, TerrainMap map)
@@ -706,6 +723,27 @@ public class TerrainGenerator : MonoBehaviour
 
         // Return the nearest spawn position
         return new Vector3(x, y + 1f, z) + _terrain.transform.position;
+    }
+
+    private void PlaceFoliage(TG_TerrainDataObject data)
+    {
+        for (int x = 0; x < data.mapSize.x; x++)
+            for (int y = 0; y < data.mapSize.y; y++)
+            {
+                BiomeData dominantBiome = _terrainMap.GetDominantBiome(new Vector2Int(x, y));
+                foreach (TG_Foliage foliage in dominantBiome.foliage)
+                {
+                    float threshold = Mathf.RoundToInt(data.mapSize.x * data.mapSize.y * (1/foliage.density) * 0.0001f);
+
+                    if (Random.Range(0, threshold) <= 1)
+                    {
+                        Vector3 temp = TerrainToWorld(new Vector3Int(x, y));
+                        Vector3 pos = new Vector3(temp.y, _terrain.terrainData.GetHeight(y, x), temp.x);
+                        if (pos.y < data.waterLevel) continue;
+                        foliage.InstanceFolliage(pos, _terrain.transform);
+                    }
+                }
+            }
     }
 
     // Convert world position to terrain position

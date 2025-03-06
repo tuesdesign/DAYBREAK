@@ -41,8 +41,9 @@ public class PlayerBase : MonoBehaviour
     [HideInInspector] 
     public float speedModifier = 0;
 
-    Transform water;
     bool isTakeingWaterDamage = false;
+
+    float waterLevel = 0;
 
     public int CurHealth { get => curHealth; set => curHealth = value; }
     public int MaxHealth { get => maxHealth; set => maxHealth = value; }
@@ -71,7 +72,7 @@ public class PlayerBase : MonoBehaviour
 
         _uiManager = (UIManager)FindObjectOfType(typeof(UIManager));
 
-        water = GameObject.FindGameObjectWithTag("Water").transform;
+        waterLevel = FindObjectOfType<TerrainGenerator>().terrainDataObject.waterLevel;
     }
 
 
@@ -104,8 +105,8 @@ public class PlayerBase : MonoBehaviour
         _playerAnimController.isMoving = movePosition != Vector2.zero;
         _playerAnimController.moveDirection = movePosition;
 
-        if (transform.position.y < water.position.y && !isTakeingWaterDamage) StartCoroutine(WaterKillTimer());
-        if (transform.position.y > water.position.y) isTakeingWaterDamage = false;
+        if (transform.position.y < waterLevel && !isTakeingWaterDamage) StartCoroutine(WaterKillTimer());
+        if (transform.position.y > waterLevel) isTakeingWaterDamage = false;
     }
 
     public void ApplyCharacterStats(PlayerSO playerStats)

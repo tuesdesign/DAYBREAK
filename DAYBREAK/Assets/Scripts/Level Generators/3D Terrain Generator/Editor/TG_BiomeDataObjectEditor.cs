@@ -13,6 +13,7 @@ public class TG_BiomeDataObjectEditor : Editor
 
     SerializedProperty structures;
     SerializedProperty paths;
+    SerializedProperty foliage;
 
     private void OnEnable()
     {
@@ -22,6 +23,7 @@ public class TG_BiomeDataObjectEditor : Editor
         selectorAF = serializedObject.FindProperty("selectorAF");
         structures = serializedObject.FindProperty("structures");
         paths = serializedObject.FindProperty("paths");
+        foliage = serializedObject.FindProperty("foliage");
     }
 
     public override void OnInspectorGUI()
@@ -206,6 +208,64 @@ public class TG_BiomeDataObjectEditor : Editor
             else
             {
                 EditorGUILayout.LabelField("No Paths Added!");
+            }
+
+            EditorGUI.indentLevel--;
+        }
+
+        EditorGUILayout.BeginHorizontal();
+        biomeData.showFoliage = EditorGUILayout.Foldout(biomeData.showFoliage, "Foliage");
+        foliage.arraySize = (int)Mathf.Clamp(EditorGUILayout.IntField(foliage.arraySize), 0, Mathf.Infinity);
+        EditorGUILayout.EndHorizontal();
+
+        if (biomeData.showFoliageObj.Length != foliage.arraySize)
+        {
+            bool[] newarray = new bool[foliage.arraySize];
+            for (int i = 0; i < foliage.arraySize; i++) newarray[i] = (i < biomeData.showFoliageObj.Length - 1) ? biomeData.showFoliageObj[i] : false;
+
+            biomeData.showFoliageObj = new bool[foliage.arraySize];
+            for (int i = 0; i < biomeData.showFoliageObj.Length; i++) biomeData.showFoliageObj[i] = newarray[i];
+        }
+
+        if (biomeData.showFoliage)
+        {
+            EditorGUI.indentLevel++;
+
+            if (foliage.arraySize > 0)
+            {
+                for (int i = 0; i < foliage.arraySize; i++)
+                {
+                    EditorGUILayout.Space(2f);
+
+                    TG_PathDataObject foliageObj = foliage.GetArrayElementAtIndex(i).objectReferenceValue as TG_PathDataObject;
+
+                    EditorGUILayout.BeginHorizontal();
+                    biomeData.showFoliageObj[i] = EditorGUILayout.Foldout(biomeData.showFoliageObj[i], foliageObj == null ? "Foliage " + (i + 1) : foliageObj.name);
+                    foliage.GetArrayElementAtIndex(i).objectReferenceValue = EditorGUILayout.ObjectField(foliage.GetArrayElementAtIndex(i).objectReferenceValue, typeof(TG_Foliage), false);
+                    EditorGUILayout.EndHorizontal();
+
+                    if (biomeData.showFoliageObj[i])
+                    {
+                        EditorGUI.indentLevel++;
+
+                        if (foliage.GetArrayElementAtIndex(i).objectReferenceValue)
+                        {
+                            EditorGUILayout.Space(2f);
+                            Editor pathEditor = CreateEditor(foliage.GetArrayElementAtIndex(i).objectReferenceValue);
+                            pathEditor.OnInspectorGUI();
+                        }
+                        else
+                        {
+                            EditorGUILayout.LabelField("No Foliage Data Added!");
+                        }
+
+                        EditorGUI.indentLevel--;
+                    }
+                }
+            }
+            else
+            {
+                EditorGUILayout.LabelField("No Foliage Added!");
             }
 
             EditorGUI.indentLevel--;

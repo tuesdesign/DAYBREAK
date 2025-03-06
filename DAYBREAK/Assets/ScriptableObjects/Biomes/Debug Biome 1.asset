@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Debug Biome 1
   m_EditorClassIdentifier: 
   showColors: 0
-  showAFs: 1
+  showAFs: 0
   showTerrainAF: 1
   showSelectorAF: 1
   showStructures: 1
   showStructure: 0000
-  showPaths: 1
+  showPaths: 0
   showPath: 00
+  showFoliage: 1
+  showFoliageObj: 00
   baseTerrainLayer: {fileID: 8574412962073106934, guid: 328c778709857ca4b9735f1b5f005904, type: 2}
   biomeColors:
   - {r: 0, g: 0, b: 0, a: 0}
@@ -34,3 +36,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 478cfdfe6b5cd2e42a5f204acc387f24, type: 2}
   paths:
   - {fileID: 11400000, guid: dbc5f171042b3914b87f17da97c30f2a, type: 2}
+  foliage:
+  - {fileID: 11400000, guid: 5814bb23cbbb0cb499d31b6f0ca2f770, type: 2}

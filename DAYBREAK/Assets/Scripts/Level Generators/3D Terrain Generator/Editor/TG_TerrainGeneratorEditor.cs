@@ -7,6 +7,7 @@ public class TerrainGeneratorEditor : Editor
     SerializedProperty terrainDataObject;
     SerializedProperty terrainSeed;
     SerializedProperty terrainMaterial;
+    SerializedProperty water;
 
     Editor terrainDataObjectEditor;
 
@@ -19,6 +20,7 @@ public class TerrainGeneratorEditor : Editor
 
         terrainSeed = serializedObject.FindProperty("_seed");
         terrainMaterial = serializedObject.FindProperty("terrainMaterial");
+        water = serializedObject.FindProperty("_waterObj");
     }
 
     public override void OnInspectorGUI()
@@ -68,6 +70,7 @@ public class TerrainGeneratorEditor : Editor
 
             terrainDataObjectEditor.OnInspectorGUI();
             terrainMaterial.objectReferenceValue = EditorGUILayout.ObjectField("Terrain Material", terrainMaterial.objectReferenceValue, typeof(Material), false);
+            water.objectReferenceValue = EditorGUILayout.ObjectField("Water Object", water.objectReferenceValue, typeof(GameObject), false);
             EditorGUILayout.Space();
 
             EditorGUI.indentLevel--;

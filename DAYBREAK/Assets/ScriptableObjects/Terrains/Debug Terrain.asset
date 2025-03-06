@@ -46,7 +46,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   structureSeperationBuffer: 25
   structureElevationAboveWater: 2
-  waterLevel: 0
+  waterLevel: 5
   islandSize: 120
   islandSlope:
     serializedVersion: 2
