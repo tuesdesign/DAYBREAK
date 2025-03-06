@@ -198,7 +198,34 @@ public class PlayerShooting : MonoBehaviour
     void ToggleTwinstick()
     {
         twinStick = !twinStick;
+
+        if (playerShootActions != null)
+        {
+            playerShootActions.performed -= ctx => aimPosition = ctx.ReadValue<Vector2>();
+            playerShootActions.started -= ctx => StartShooting();
+            playerShootActions.canceled -= ctx => StopShooting();
+        }
+
+        if (twinStick)
+        {
+            _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();
+            _playerInputActions.Game.Fire.started += ctx => StartShooting();
+            _playerInputActions.Game.Fire.canceled += ctx => StopShooting();
+
+            playerShootActions = _playerInputActions.Game.Fire;
+        }
+        else
+        {
+            _playerInputActions.Game.Move.performed += ctx => movePosition = ctx.ReadValue<Vector2>();
+            _playerInputActions.Game.Move.started += ctx => StartShooting();
+            _playerInputActions.Game.Move.canceled += ctx => StopShooting();
+
+            playerShootActions = _playerInputActions.Game.Move;
+        }
+
     }
+
+
 
     void PlaySoundEffect(List<AudioClip> soundList)
     {

@@ -1707,7 +1707,7 @@
     "m_ShaderOutputName": "Edge2",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 0.20000000298023225,
+        "x": 0.009999999776482582,
         "y": 1.0,
         "z": 1.0,
         "w": 1.0
@@ -1867,9 +1867,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.47844743728637698,
+        "r": 0.3069181442260742,
         "g": 0.0,
-        "b": 1.0,
+        "b": 0.6415094137191773,
         "a": 0.0
     },
     "isMainColor": false,
