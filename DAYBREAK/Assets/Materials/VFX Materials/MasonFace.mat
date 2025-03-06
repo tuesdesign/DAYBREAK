@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8194559865266911959
+--- !u!114 &-9172382841532620784
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,9 +20,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HeightTest2
-  m_Shader: {fileID: -6465566751694194690, guid: 4b69f37250fefb64080541853cbbe6b5, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: 4b69f37250fefb64080541853cbbe6b5, type: 3}
+  m_Name: MasonFace
+  m_Shader: {fileID: -6465566751694194690, guid: 61b3fee40baa61a4ca75bcb4a41ed1fd, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 61b3fee40baa61a4ca75bcb4a41ed1fd, type: 3}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -38,12 +38,6 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Amplitude: 0.42
-    - _Edge_Blend: 0.123
-    - _Effect_Radius: 7.3
-    - _Frequency: 0.18
     - _QueueControl: 0
-    - _Ripple_Density: 1.59
-    m_Colors:
-    - _RippleOrigin: {r: 0, g: 1, b: 0, a: 0}
+    m_Colors: []
   m_BuildTextureStacks: []
