@@ -24,8 +24,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - _Amplitude: 1.35
+    - _Edge_Blend: 0.788
+    - _Effect_Radius: 13.7
+    - _Frequency: 0.22
+    - _QueueControl: 0
+    - _Ripple_Density: 0.27
+    m_Colors:
+    - _RippleOrigin: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1807592443095873981
 MonoBehaviour:
