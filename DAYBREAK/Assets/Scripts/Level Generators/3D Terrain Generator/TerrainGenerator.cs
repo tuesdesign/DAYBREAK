@@ -733,6 +733,25 @@ public class TerrainGenerator : MonoBehaviour
                 BiomeData dominantBiome = _terrainMap.GetDominantBiome(new Vector2Int(x, y));
                 foreach (TG_Foliage foliage in dominantBiome.foliage)
                 {
+                    int grassLayerIndex = _terrain.terrainData.terrainLayers.ToList().IndexOf(dominantBiome.baseTerrainLayer);
+                    bool skip = false;
+
+                    float[,,] alphaMap = _terrain.terrainData.GetAlphamaps(y, x, 1, 1);
+                    float power = alphaMap[0, 0, grassLayerIndex];
+
+                    for (int i = 0; i < alphaMap.GetLength(2); i++)
+                    {
+                        if (i == grassLayerIndex) continue;
+
+                        if (alphaMap[0, 0, i] > power)
+                        {
+                            skip = true;
+                            break;
+                        }
+                    }
+
+                    if (skip) continue;
+
                     float threshold = Mathf.RoundToInt(data.mapSize.x * data.mapSize.y * (1/foliage.density) * 0.0001f);
 
                     if (Random.Range(0, threshold) <= 1)
