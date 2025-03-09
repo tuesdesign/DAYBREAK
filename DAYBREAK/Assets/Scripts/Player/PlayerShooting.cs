@@ -18,7 +18,7 @@ public class PlayerShooting : MonoBehaviour
 
     [Tooltip("Where the bullets should spawn from the player")]
     [SerializeField] Transform shootPosition;
-    [Tooltip("should you use twinstick controls \n if on it uses left and right analog sticks \n if off it only uses the move direction")]
+    [Tooltip("Should you use twinstick controls \n if on it uses left and right analog sticks \n if off it only uses the move direction")]
     [SerializeField] bool twinStick = true;
 
     [Tooltip("The time in seconds between shots")]
@@ -67,6 +67,8 @@ public class PlayerShooting : MonoBehaviour
     public float BulletSpread { get => bulletSpread; set => bulletSpread = value; }
 
     MMF_Player _player;
+    
+    
     private void Awake()
     {
         ammoCount = maxAmmo;
@@ -85,7 +87,7 @@ public class PlayerShooting : MonoBehaviour
         
         reloadBar = FindObjectOfType<Canvas>();
         
-        if (twinStick)
+        /*if (twinStick)
         {
             _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();
             _playerInputActions.Game.Fire.started += ctx => StartShooting();
@@ -100,7 +102,9 @@ public class PlayerShooting : MonoBehaviour
             _playerInputActions.Game.Move.canceled += ctx => StopShooting();
 
             playerShootActions = _playerInputActions.Game.Move;
-        }
+        }*/
+        
+        CheckTwinstick();
     }
 
     private void OnDisable()
@@ -195,10 +199,10 @@ public class PlayerShooting : MonoBehaviour
         _playerUI.UpdateAmmoDisplayRemove(bulletsPerShot);
     }
 
-    void ToggleTwinstick()
+    public void CheckTwinstick()
     {
-        twinStick = !twinStick;
-
+        //twinStick = !twinStick;
+        
         if (playerShootActions != null)
         {
             playerShootActions.performed -= ctx => aimPosition = ctx.ReadValue<Vector2>();
@@ -206,7 +210,7 @@ public class PlayerShooting : MonoBehaviour
             playerShootActions.canceled -= ctx => StopShooting();
         }
 
-        if (twinStick)
+        if (PlayerPrefs.GetInt("ToggleTwinStick") == 1)
         {
             _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();
             _playerInputActions.Game.Fire.started += ctx => StartShooting();
@@ -222,10 +226,7 @@ public class PlayerShooting : MonoBehaviour
 
             playerShootActions = _playerInputActions.Game.Move;
         }
-
     }
-
-
 
     void PlaySoundEffect(List<AudioClip> soundList)
     {

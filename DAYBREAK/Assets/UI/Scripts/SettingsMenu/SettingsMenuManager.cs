@@ -5,6 +5,8 @@ namespace UI.Scripts.SettingsMenu
 {
     public class SettingsMenuManager : MonoBehaviour
     {
+        private PlayerShooting _playerShooting;
+        
         private void Start()
         {
             PlayerPrefs.GetFloat("ToggleMusic", 1.0f);
@@ -12,6 +14,8 @@ namespace UI.Scripts.SettingsMenu
             PlayerPrefs.GetInt("ToggleTwinStick", 1);
             PlayerPrefs.GetInt("ToggleVibration", 1);
             PlayerPrefs.GetInt("ToggleNotif", 1);
+
+            _playerShooting = FindObjectOfType<PlayerShooting>();
         }
 
         public void ToggleMusic(Slider slider)
@@ -37,6 +41,9 @@ namespace UI.Scripts.SettingsMenu
                 PlayerPrefs.SetInt("ToggleTwinStick", 0);
             
             PlayerPrefs.Save();
+            
+            if (_playerShooting != null)
+                _playerShooting.CheckTwinstick();
         }
         
         public void ToggleVibration()

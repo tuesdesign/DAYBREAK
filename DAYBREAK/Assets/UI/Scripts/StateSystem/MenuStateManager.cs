@@ -46,8 +46,6 @@ public class MenuStateManager : MonoBehaviour
     public void UpdateState()
     {
         CurrentState.UpdateState(this);
-        
-        //EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void SetMenuState(MenuBaseState state)
