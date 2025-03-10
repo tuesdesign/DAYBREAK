@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar1: {fileID: 0}
   expBar: {fileID: 0}
+  backgroundExpBar: {fileID: 0}
   ammoTextBar: {fileID: 0}
   pistolAmmoPrefab: {fileID: 0}
   ammoDisplayHolder: {fileID: 0}
@@ -658,15 +659,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000027008355
+      value: -0.026323905
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.052819252
+      value: 0.048939895
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.036477566
+      value: 0.046185493
       objectReference: {fileID: 0}
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: near clip plane

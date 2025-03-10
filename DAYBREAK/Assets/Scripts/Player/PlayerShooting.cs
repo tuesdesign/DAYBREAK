@@ -147,6 +147,7 @@ public class PlayerShooting : MonoBehaviour
                 if (ammoCount <= 0)
                 {
                     hasAmmo = false;
+                    //HapticPatterns.PlayEmphasis(1.0f, 0.0f);
                     StartCoroutine(ReloadTiming());
                 }
 
@@ -180,6 +181,7 @@ public class PlayerShooting : MonoBehaviour
                     
                     if (ammoCount <= 0)
                     {
+                        //HapticPatterns.PlayEmphasis(1.0f, 0.0f);
                         ammoCount = 0;
                         hasAmmo = false;
                         StartCoroutine(ReloadTiming());
@@ -205,26 +207,30 @@ public class PlayerShooting : MonoBehaviour
         
         if (playerShootActions != null)
         {
-            playerShootActions.performed -= ctx => aimPosition = ctx.ReadValue<Vector2>();
+            playerShootActions.Disable();
+            
             playerShootActions.started -= ctx => StartShooting();
             playerShootActions.canceled -= ctx => StopShooting();
         }
 
         if (PlayerPrefs.GetInt("ToggleTwinStick") == 1)
         {
-            _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();
-            _playerInputActions.Game.Fire.started += ctx => StartShooting();
-            _playerInputActions.Game.Fire.canceled += ctx => StopShooting();
-
+            
             playerShootActions = _playerInputActions.Game.Fire;
+            playerShootActions.Enable();
+
+            playerShootActions.started += ctx => StartShooting();
+            playerShootActions.canceled += ctx => StopShooting();
         }
         else
         {
-            _playerInputActions.Game.Move.performed += ctx => movePosition = ctx.ReadValue<Vector2>();
-            _playerInputActions.Game.Move.started += ctx => StartShooting();
-            _playerInputActions.Game.Move.canceled += ctx => StopShooting();
-
             playerShootActions = _playerInputActions.Game.Move;
+            playerShootActions.Enable();
+
+            playerShootActions.started += ctx => StartShooting();
+            playerShootActions.canceled += ctx => StopShooting();
+
+            
         }
     }
 

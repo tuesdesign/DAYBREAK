@@ -155,6 +155,11 @@ public class EnemyBase : MonoBehaviour
                 GameObject exp = Instantiate(enemySO.expDrop, this.transform);
                 exp.transform.parent = this.transform.parent;
             }
+            else if (enemySO.altExpDrop != null) 
+            {
+                GameObject exp = Instantiate(enemySO.altExpDrop, this.transform);
+                exp.transform.parent = this.transform.parent;
+            }
         }
         
         // Add to kill counter

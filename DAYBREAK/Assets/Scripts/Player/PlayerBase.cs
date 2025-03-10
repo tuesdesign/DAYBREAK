@@ -12,7 +12,6 @@ public class PlayerBase : MonoBehaviour
     PlayerShooting _playerShooting;
     DigiAnimController _playerAnimController;
 
-    Vector2 aimPosition = Vector2.zero;
     Vector2 movePosition = Vector2.zero;
 
     [SerializeField] int maxHealth = 10;
