@@ -11,6 +11,7 @@ public class PlayerShooting : MonoBehaviour
 {
     PlayerIA _playerInputActions;
     private InputAction playerShootActions;
+    private DigiAnimController _playerAnimController;
 
     PlayerUI _playerUI;
     Vector2 aimPosition = Vector2.up;
@@ -74,6 +75,7 @@ public class PlayerShooting : MonoBehaviour
         ammoCount = maxAmmo;
         _player = GetComponent<MMF_Player>();
         _player.Initialization();
+        _playerAnimController = GetComponentInChildren<DigiAnimController>();
     }
 
     // Start is called before the first frame update
@@ -274,6 +276,7 @@ public class PlayerShooting : MonoBehaviour
         if (shootingCoroutine == null)
         {
             shootingCoroutine = StartCoroutine(ShootContinuously());
+            _playerAnimController.isShooting = true;
         }
     }
 
@@ -283,6 +286,7 @@ public class PlayerShooting : MonoBehaviour
         {
             StopCoroutine(shootingCoroutine);
             shootingCoroutine = null;
+            _playerAnimController.isShooting = false;
         }
     }
 
