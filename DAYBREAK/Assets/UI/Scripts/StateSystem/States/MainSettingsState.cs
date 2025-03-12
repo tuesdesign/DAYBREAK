@@ -32,6 +32,5 @@ public class MainSettingsState : MenuBaseState
     private void Close()
     {
         _menuCanvas.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(null);
     }
 }
