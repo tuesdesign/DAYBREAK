@@ -7,12 +7,12 @@ public class MainMenuState : MenuBaseState
 {
     private GameObject _menuCanvas;
     private GameObject _mainButton;
-    
+
     public override void EnterState(MenuStateManager menu)
     {
         _menuCanvas = MainMenuManager.Instance.mainMenu;
         _mainButton = MainMenuManager.Instance.mainMenuPrimary;
-        
+
         _menuCanvas.SetActive(true);
         UpdateState(MenuStateManager.Instance);
     }
@@ -20,7 +20,10 @@ public class MainMenuState : MenuBaseState
     public override void UpdateState(MenuStateManager menu)
     {
         if (!MenuStateManager.Instance.isMobile)
+        {
+            Debug.Log(ControllerCheck.Instance.controllerConnected);
             EventSystem.current.SetSelectedGameObject(ControllerCheck.Instance.controllerConnected ? _mainButton : null);
+        }
     }
 
     public override void ExitState(MenuStateManager menu)
