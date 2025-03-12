@@ -14,6 +14,7 @@ namespace UI.Scripts
         [Header("Main UI Items")]
         [SerializeField] private TMP_Text timeText;
         [SerializeField] private Image timerFill;
+        [SerializeField] public TMP_Text levelText;
         
         [Header("Tutorial Items")]
         [SerializeField] private GameObject tutorialPopup;

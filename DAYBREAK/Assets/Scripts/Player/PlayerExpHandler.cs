@@ -52,6 +52,8 @@ public class PlayerExpHandler : MonoBehaviour
         level++;
         levelIncrement += 10 + ((int)(level/5)*2);
 
+        UIManager.Instance.levelText.text = level.ToString();
+        
         // INSERT A CALL TO SPAWN THE UPGRADE MENU AND PAUSE THE TIME  (ALSO ENSURE THAT AFTER SELECTING THE UPGRADE MENU THAT TIME REVERTS)
         _upgradeManagerMenu.PopulateMenu();
 
