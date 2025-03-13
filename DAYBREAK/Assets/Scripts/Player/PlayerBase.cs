@@ -10,7 +10,7 @@ public class PlayerBase : MonoBehaviour
     PlayerIA _playerInputActions;
     PlayerUI _playerUI;
     PlayerShooting _playerShooting;
-    DigiAnimController _playerAnimController;
+    CharacterAnimController _playerAnimController;
 
     Vector2 movePosition = Vector2.zero;
 
@@ -55,7 +55,7 @@ public class PlayerBase : MonoBehaviour
         _playerInputActions = new PlayerIA();
         _playerInputActions.Enable();
         _rb = GetComponent<Rigidbody>();
-        _playerAnimController = GetComponentInChildren<DigiAnimController>();
+        _playerAnimController = GetComponentInChildren<CharacterAnimController>();
 
         _playerUI = GetComponent<PlayerUI>();
         _playerShooting = GetComponent<PlayerShooting>();

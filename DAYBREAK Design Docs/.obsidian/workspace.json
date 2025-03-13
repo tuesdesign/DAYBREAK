@@ -67,7 +67,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design/Narrative Direction/Narrative.md",
+                "file": "☕Venture Creation/Team.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -82,7 +82,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Narrative"
+              "title": "Team"
             }
           }
         ],
@@ -231,8 +231,9 @@
   },
   "active": "f509273e92ddb88b",
   "lastOpenFiles": [
-    "🏠Home/Daybreak Game Design Document.md",
+    "☕Venture Creation/Home.md",
     "Design/Narrative Direction/Narrative.md",
+    "🏠Home/Daybreak Game Design Document.md",
     "Design/Game Design/Gameplay.md",
     "Kanban/Kanban Board.md",
     "Kanban/Kanban Help.md",
@@ -249,7 +250,6 @@
     "Constantine.png",
     "Daniel.png",
     "☕Venture Creation/Team.md",
-    "☕Venture Creation/Home.md",
     "Untitled Kanban.md",
     "☕Venture Creation",
     "🏠Home/Team.md",

@@ -11,7 +11,7 @@ public class PlayerShooting : MonoBehaviour
 {
     PlayerIA _playerInputActions;
     private InputAction playerShootActions;
-    private DigiAnimController _playerAnimController;
+    private CharacterAnimController _playerAnimController;
 
     PlayerUI _playerUI;
     Vector2 aimPosition = Vector2.up;
@@ -75,7 +75,7 @@ public class PlayerShooting : MonoBehaviour
         ammoCount = maxAmmo;
         _player = GetComponent<MMF_Player>();
         _player.Initialization();
-        _playerAnimController = GetComponentInChildren<DigiAnimController>();
+        _playerAnimController = GetComponentInChildren<CharacterAnimController>();
     }
 
     // Start is called before the first frame update
