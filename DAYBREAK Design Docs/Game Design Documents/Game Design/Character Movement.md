@@ -1,0 +1,5 @@
+Characters move by setting their velocity in the direction of a given input. In the player's case, it is their control device's input. For enemies and AI, a simple vector in a desired move direction.
+
+Because we are using 3D terrain, we need to adjust the direction of the velocity relative to the incline the character is moving. To do this, we use a 'Physics.Raycast' call to collect the normal of the ground below the character. Then, by taking the cross products of the character's right and forward directions with the normal direction of the ground, we get the adjusted directions that conform to the terrain. 
+# What if characters fall under the map?
+If the aforementioned 'Physics.Raycast' does not detect ground below the player within a specific range, a longer 'Physics.Raycast' is called to find the ground. It is cast from high above the character's position down towards the terrain object, obtaining the 'hit.point' and applying the position of the character's transform.
