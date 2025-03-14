@@ -1,53 +1,20 @@
 {
   "main": {
-    "id": "a39f3d65e03365a2",
+    "id": "141f3c0a749eef61",
     "type": "split",
     "children": [
       {
-        "id": "8c6b813f0706c963",
+        "id": "173bb13287252c0f",
         "type": "tabs",
         "children": [
           {
-            "id": "c5b7dfe186127307",
+            "id": "6ad647c88a229406",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Our Team.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-<<<<<<< Updated upstream
-              "title": "Narrative"
-            }
-          },
-          {
-            "id": "f509273e92ddb88b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "☕Venture Creation/Team.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Team"
-=======
-              "title": "Our Team"
->>>>>>> Stashed changes
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -56,32 +23,33 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "9413e4b30ce94b88",
+    "id": "35f4940fb31b02c5",
     "type": "split",
     "children": [
       {
-        "id": "e303871e0bd63408",
+        "id": "7957abdada35e79c",
         "type": "tabs",
         "children": [
           {
-            "id": "98995b386dc0de11",
+            "id": "dd2d95440eb31216",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "adbac6708895cbc7",
+            "id": "422b11999028a407",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Venture_Creation",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +61,7 @@
             }
           },
           {
-            "id": "8b7da601fbb5dea6",
+            "id": "eb88d26bfd6ac18a",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -106,23 +74,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 297.5
+    "width": 300
   },
   "right": {
-    "id": "6101de04bf8111b6",
+    "id": "ff55738faf34634d",
     "type": "split",
     "children": [
       {
-        "id": "a08f0a77996c1d83",
+        "id": "3f1394f130aee257",
         "type": "tabs",
         "children": [
           {
-            "id": "daee6abe2aeec0d2",
+            "id": "bd9d2058517221fc",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Art Direction/List to make.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,53 +99,56 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for List to make"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "168fbc4207646774",
+            "id": "19ad9f023ca0fbcc",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Art Direction/List to make.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from List to make"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "01c179c2e1311136",
+            "id": "c9d9090f06fb58c9",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
             }
           },
           {
-            "id": "2df89a9a5a34bfd7",
+            "id": "21abdc89d4723b79",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Art Direction/List to make.md"
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of List to make"
+              "title": "Outline"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 300,
     "collapsed": true
   },
   "left-ribbon": {
@@ -193,80 +163,9 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "c5b7dfe186127307",
+  "active": "6ad647c88a229406",
   "lastOpenFiles": [
-<<<<<<< Updated upstream
-    "☕Venture Creation/Team.md",
-    "☕Venture Creation/Home.md",
-    "Design/Narrative Direction/Narrative.md",
-    "🏠Home/Daybreak Game Design Document.md",
-    "Design/Game Design/Gameplay.md",
-    "Kanban/Kanban Board.md",
-    "Kanban/Kanban Help.md",
-    "Kanban/Kanban Items/Temp Cheese.md",
-    "Kanban/Kanban Items/Images/Temp Cheese.png",
-    "Design/Technical Design/TAPTICIAN.md",
-    "Design/Sound Design/ADASTRA.md",
-    "Pasted image 20250131180348.png",
-    "Rylan.png",
-    "Pasted image 20240925221407.png",
-    "Oscar.png",
-    "Mason.png",
-    "Alannis.png",
-    "Constantine.png",
-    "Daniel.png",
-    "Untitled Kanban.md",
-    "☕Venture Creation",
-=======
-    "Daybreak.md",
-    "sortspec.md",
-    "Our Team.md",
-    "_templates/sortspec.md",
-    "_templates",
-    "_assets/Team Headshots/Rylan.png~",
-    "_assets/Team Headshots/Rylan.png",
-    "_assets/Team Headshots/Oscar.png~",
-    "_assets/Team Headshots/Oscar.png",
-    "_assets/Team Headshots/Mason.png~",
-    "_assets/Team Headshots/Mason.png",
-    "_assets/Team Headshots/Lilian.png",
-    "_assets/Team Headshots/Headshots.kra~",
-    "_assets/Team Headshots/Headshots.kra",
-    "☕Venture Creation/Home.md",
-    "_assets/Team Headshots/Daniel.png~",
-    "_assets/Team Headshots/Gavin.png",
-    "_assets/Team Headshots/Constantine.png",
-    "_assets/Team Headshots/Constantine.png~",
-    "_assets/Team Headshots/Daniel.png",
-    "_assets/Team Headshots/Alannis.png~",
-    "_assets/Team Headshots/Alannis.png",
-    "_assets/Statistics/RoguelikeGameMarketVMR.png",
-    "_assets/Reference Material/20MinutesTillDawn.png",
-    "_assets/PDFs/Daybreak.pdf",
-    "Venture Creation/Home.md",
-    "Kanban Board.md",
-    "Game Design Documents/Game Design/Upgrades/Upgrades.md",
-    "Game Design Documents/Game Design/Upgrades/Proposed Upgrade Tree.md",
-    "Game Design Documents/Game Design/Terrain Generation/Level Generation.md",
-    "Game Design Documents/Art Direction/VFX/VFX Notes.md",
     "Game Design Documents/Art Direction/VFX/TODO.md",
-    "Game Design Documents/Art Direction/Structrues/Structure Information.md",
-    "Game Design Documents/Art Direction/Structrues/Refference Board.canvas",
-    "Game Design Documents/Sound Design/ADASTRA.md",
-    "Game Design Documents/Technical Design/TAPTICIAN.md",
-    "Game Design Documents/Game Design/sortspec.md",
-    "Game Design Documents/Game Design/Gameplay loops.md",
-    "Game Design Documents/Game Design/Character Movement.md",
-    "Game Design Documents/Narrative Direction/Narrative.md",
-    "Game Design Documents/Art Direction/Style Guide.md",
-    "Game Design Documents/Art Direction/sortspec.md",
->>>>>>> Stashed changes
-    "🏠Home/Team.md",
-    "🏠Home/Project Summary.md",
-    "🏠Home/Daybreak Game Design Document.md",
-    "☕Venture Creation/Team.md",
-    "Kanban/Kanban Items/Temp Cheese.md",
-    "Untitled 1.canvas",
-    "Untitled 2.canvas"
+    "Game Design Documents/Art Direction/VFX/VFX Notes.md"
   ]
 }
