@@ -14,6 +14,7 @@ namespace UI.Scripts.SettingsMenu
             PlayerPrefs.GetInt("ToggleTwinStick", 1);
             PlayerPrefs.GetInt("ToggleVibration", 1);
             PlayerPrefs.GetInt("ToggleNotif", 1);
+            PlayerPrefs.GetInt("MouseAim", 1);
 
             _playerShooting = FindObjectOfType<PlayerShooting>();
         }
@@ -64,6 +65,17 @@ namespace UI.Scripts.SettingsMenu
             
             else if (PlayerPrefs.GetInt("ToggleNotif") == 1)
                 PlayerPrefs.SetInt("ToggleNotif", 0);
+            
+            PlayerPrefs.Save();
+        }
+        
+        public void ToggleMouseAim()
+        {
+            if (PlayerPrefs.GetInt("MouseAim") == 0)
+                PlayerPrefs.SetInt("MouseAim", 1);
+            
+            else if (PlayerPrefs.GetInt("MouseAim") == 1)
+                PlayerPrefs.SetInt("MouseAim", 0);
             
             PlayerPrefs.Save();
         }

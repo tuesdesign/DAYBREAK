@@ -28,10 +28,25 @@ namespace UI.Scripts.Misc_
             if (selected == null)
                 return;
             
-            if (selected.transform.parent != contentRectTransform.transform)
+            if (selected.transform.parent != contentRectTransform.transform && selected.transform.parent.transform.parent != contentRectTransform.transform)
                 return;
 
-            _mSelectedRectTransform = selected.GetComponent<RectTransform>();
+            
+            if (selected.transform.parent == contentRectTransform.transform)
+            {
+                Debug.Log("Hey");
+                _mSelectedRectTransform = selected.GetComponent<RectTransform>();
+            }
+                
+            
+            else if (selected.transform.parent.transform.parent == contentRectTransform.transform)
+            {
+                Debug.Log("Hello");
+                _mSelectedRectTransform = selected.transform.parent.GetComponent<RectTransform>();
+            }
+            
+
+            
 
             // Math stuff
             var selectedDifference = viewportRectTransform.localPosition - _mSelectedRectTransform.localPosition;
