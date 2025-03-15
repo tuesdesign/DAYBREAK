@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy Black
-  m_Shader: {fileID: -6465566751694194690, guid: 3999e99144291f44bb3c2a373cb62705, type: 3}
-  m_Parent: {fileID: 2100000, guid: 822b4c701732d214e84bc6d43291dab9, type: 2}
+  m_Name: Enemy Red
+  m_Shader: {fileID: -6465566751694194690, guid: 7fb7980ecf25aa74e9638a8eaea7c9d4, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 7fb7980ecf25aa74e9638a8eaea7c9d4, type: 3}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -26,7 +26,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _QueueControl: 0
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 0.93207544, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3287301556473082632
 MonoBehaviour:

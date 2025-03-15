@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy Purple
-  m_Shader: {fileID: -6465566751694194690, guid: 752195907f4762b43aae2f2b65c019d6, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: 752195907f4762b43aae2f2b65c019d6, type: 3}
+  m_Name: Enemy Orange
+  m_Shader: {fileID: -6465566751694194690, guid: 7fb7980ecf25aa74e9638a8eaea7c9d4, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 7fb7980ecf25aa74e9638a8eaea7c9d4, type: 3}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -26,9 +26,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _QueueControl: 0
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 1, g: 0.5182636, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &3287301556473082632
+--- !u!114 &3083781885338895564
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

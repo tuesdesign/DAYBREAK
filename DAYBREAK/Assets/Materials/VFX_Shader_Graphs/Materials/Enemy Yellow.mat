@@ -21,8 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enemy Yellow
-  m_Shader: {fileID: -6465566751694194690, guid: b288f4fc78847ff4fa9e7e183a7c6078, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: b288f4fc78847ff4fa9e7e183a7c6078, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 7fb7980ecf25aa74e9638a8eaea7c9d4, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 7fb7980ecf25aa74e9638a8eaea7c9d4, type: 3}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -39,5 +39,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _QueueControl: 0
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 1, g: 0.8337502, b: 0, a: 0}
   m_BuildTextureStacks: []
