@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
+  m_Name: Note21
+  m_EditorClassIdentifier: 
+  lorePieceName: 
+  loreInformation: "Calypsis-4  \u25CF Climate: Tropical, with intense humidity and
+    frequent superstorms.  \u25CF Land-to-Ocean Ratio: 40:60 (island chains interspersed
+    with shallow oceans).  \u25CF Notable Features: Enormous, bioluminescent flora
+    and fauna; the storms are electrically  charged with particles that disrupt long-range
+    communication."
+  image: {fileID: 0}
+  unlocked: 0

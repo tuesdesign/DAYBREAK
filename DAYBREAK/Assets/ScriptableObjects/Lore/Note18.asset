@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
+  m_Name: Note18
+  m_EditorClassIdentifier: 
+  lorePieceName: 
+  loreInformation: "And so it was decreed that the heresy of materiation be named
+    unto all but the Forefather, that  the children of Apollo might remember the
+    cost of reaching beyond the heavens, and that the  order of the world might yet
+    be preserved.  For unto humanity was given the bounty of the stars, yet not the
+    power to shape them; and unto  the children of Apollo was given the gift of life,
+    yet not to summon it. And this shall be the law,  unto the last hour, so sayeth
+    the \u2018Father.   End document  (Investigating operative\u2019s note: This
+    is the fourth squatter call we\u2019ve had in 3 \u201Cdays\u201D, if you can 
+    call them that anymore. And each call we\u2019ve had, we\u2019ve found folks
+    like this: religious nutjobs,  spouting crap about how we have to repent or some
+    bull. Seems like the Devouring brought all  the wackos outta the woodwork.)"
+  image: {fileID: 0}
+  unlocked: 0

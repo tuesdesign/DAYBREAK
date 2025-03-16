@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
+  m_Name: Note6
+  m_EditorClassIdentifier: 
+  lorePieceName: 
+  loreInformation: 'Temporal Stabilizers: These devices resemble metal stakes topped
+    with eternally  spinning gyroscopes. When placed in a circle, the stabilizers
+    track and preserve the  previous 5 minutes, keeping the interior safely contained
+    in a time loop until ideal  external conditions have been met. Previously a medical
+    technology designed to keep  critically injured patients alive, the stabilizers
+    were not intended for long-term use. The  prospect of reliving the same moments
+    in perpetuity has begun to take its toll on the  survivors.\'
+  image: {fileID: 0}
+  unlocked: 0

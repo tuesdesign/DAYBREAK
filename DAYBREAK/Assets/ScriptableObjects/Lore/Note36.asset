@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
+  m_Name: Note36
+  m_EditorClassIdentifier: 
+  lorePieceName: 
+  loreInformation: "Alectrona-5 (Pre-Devouring)  \u25CF Climate: Tidally locked:
+    one side of the planet perpetually faces the local sun, while the  other is facing
+    outward into space.  \u25CF Land-to-Ocean Ratio: 90:10 (Bodies of water are only
+    found in a narrow strip between  the two hemispheres, where the temperature is
+    stable enough for life to persist).  \u25CF Notable Features:  \u25CB Half: One
+    hemisphere is an inhospitable desert, with lethal temperatures at all  hours.  
+    \u25CB And Half: The other hemisphere is a frozen wasteland, with permanent ice-age 
+    conditions."
+  image: {fileID: 0}
+  unlocked: 0

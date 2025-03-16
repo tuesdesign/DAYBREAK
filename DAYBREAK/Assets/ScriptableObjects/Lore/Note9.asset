@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
+  m_Name: Note9
+  m_EditorClassIdentifier: 
+  lorePieceName: 
+  loreInformation: "The Power Structure of OSOC: Departments and Divisions  Beneath
+    the Pentarch Council, OSOC operates through specialized departments, each with
+    its  subdivisions. These departments ensure the organization's core responsibilities
+    are met.  Department of Materiation Oversight (DMO)  \u25CF Mission: To regulate
+    materiation practices and maintain harmony across infinite  timelines.  \u25CF
+    Divisions:  1. Materiation Licensing Authority: Grants licenses to individuals
+    and  organizations for lawful use of materiation technology.  2. Materiation
+    Monitoring Bureau: Tracks every instance of materiation, ensuring  compliance
+    with OSOC laws.  3. Anomaly Retrieval Unit: Investigates cases of overuse or
+    dangerous materiation."
+  image: {fileID: 0}
+  unlocked: 0

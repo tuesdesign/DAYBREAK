@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
+  m_Name: Note15
+  m_EditorClassIdentifier: 
+  lorePieceName: 
+  loreInformation: Yet the wise among them trembled, and they screamed unto the foolish,
+    saying, "This thing is not  for the children of men! For to summon creation from
+    the formless deep is to unbind the law set  down since the dawn of time!"  And
+    the prophets of old rose from among the people and spoke, saying, "Woe unto you,
+    for you  have reached your hand beyond the stars and have seized that which is
+    not given. In your hunger,  you have drawn forth life from the shadowed depths,
+    and in so doing, you have made the world  to tremble."  And they did declare
+    unto them, saying, "This heresy shall be a burden unto all the generations to 
+    come, for what was done in haste shall echo forever. The ichor of the lost shall
+    rise like smoke  from the chasm, and those who dwell in the spaces between shall
+    cry out."
+  image: {fileID: 0}
+  unlocked: 0

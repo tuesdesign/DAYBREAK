@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
+  m_Name: Note14
+  m_EditorClassIdentifier: 
+  lorePieceName: 
+  loreInformation: "Unlabeled Scripture:  This collection of handwritten documents
+    was retrieved from a damaged FOREFATHER  warehouse. Squatters had taken residence
+    inside, in an effort to weather the effects of the  Devouring on the body. FOREFATHER
+    operatives were dispatched to relocate the residents.  Begin document  And it
+    came to pass in the days of plenty, when Apollo\u2019s progeny sought to subdue
+    all need and  want, that they did reach into the firmament and drew forth a new
+    thing, which they called  Materiation.  And they said among themselves, \"Behold,
+    we have harnessed the hidden things, and what we  desire, we may now summon from
+    the void, as the gods who sit above the heavens.\""
+  image: {fileID: 0}
+  unlocked: 0

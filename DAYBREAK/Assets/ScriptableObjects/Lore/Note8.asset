@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
+  m_Name: Note8
+  m_EditorClassIdentifier: 
+  lorePieceName: 
+  loreInformation: "The Power Structure of OSOC: \u25CF Roles:  \u25CB Oversee the
+    long-term survival and stability of the timestream.  \u25CB Approve or deny interventions
+    of extreme scale, such as timeline management  and materiations of the ultimate
+    necessity.  \u25CB Maintain and protect the Absolute Chronology, OSOC\u2019s
+    master record of all  timelines and universal events.  \u25CB Appoint Directors
+    for the major departments and resolve interdepartmental  disputes.  \u25CF Structure: 
+    \u25CB Pentarch-I: Responsible for moderating council discussions.  \u25CB Pentarch-II:
+    Oversees temporal integrity and the enforcement of causality.  \u25CB Pentarch-III:
+    Manages materiation policy, resource allocation, and economic  stability across
+    the federation.  \u25CB Pentarch-IV: Responsible for safeguarding against cosmic
+    and temporal threats.  \u25CB Pentarch-V: Ensures OSOC's philosophical and ethical
+    compass remains intact.  \u25CF Secrecy Measures:  \u25CB Their physical appearances
+    and true voices are hidden, even from their closest  aides, through advanced
+    masking technologies and proxy representatives."
+  image: {fileID: 0}
+  unlocked: 0

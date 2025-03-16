@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
+  m_Name: Note3
+  m_EditorClassIdentifier: 
+  lorePieceName: 
+  loreInformation: 'The Devouring (Entity). An amorphous mass of jet-black, ethereal
+    ichor. Salvaged  recordings have picked up noises akin to fearful whispers and
+    pained moans. It is  stronger than you. It is faster than you. There is more
+    of it than there is of us. If you  encounter it outside of FOREFATHER territory,
+    pray it kills you swiftly. '
+  image: {fileID: 0}
+  unlocked: 0
