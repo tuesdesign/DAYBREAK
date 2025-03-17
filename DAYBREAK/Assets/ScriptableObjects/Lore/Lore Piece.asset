@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95989559cde59fd4b8c68048581a8b47, type: 3}
-  m_Name: BaseChara
+  m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
+  m_Name: Lore Piece
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  speed: 2.5
-  maxammo: 6
-  bulletspeed: 10
-  bulletType: {fileID: 2895593067169026987, guid: 341566cbe871ac14b8244a3ae203b3a7, type: 3}
-  reloadTime: 0.75
-  shootDelay: 0.5
+  lorePieceName: 
+  loreInformation: 
+  image: {fileID: 0}
+  unlocked: 0

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 using MoreMountains.Feedbacks;
 using UnityEditor.Rendering;
+using Unity.VisualScripting;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -14,13 +15,21 @@ public class PlayerShooting : MonoBehaviour
     private CharacterAnimController _playerAnimController;
 
     PlayerUI _playerUI;
-    Vector2 aimPosition = Vector2.up;
+    
     Vector2 movePosition = Vector2.up;
 
     [Tooltip("Where the bullets should spawn from the player")]
     [SerializeField] Transform shootPosition;
+
+
+    [SerializeField] Transform shootVisualizer;
+    [SerializeField] float visualizerDistance = 2f;
+
     [Tooltip("Should you use twinstick controls \n if on it uses left and right analog sticks \n if off it only uses the move direction")]
     [SerializeField] bool twinStick = true;
+    [SerializeField] bool mouseAim = true;
+    Vector2 aimPosition;
+
 
     [Tooltip("The time in seconds between shots")]
     [SerializeField] float shootDelay = 0.5f;
@@ -89,33 +98,32 @@ public class PlayerShooting : MonoBehaviour
         
         reloadBar = FindObjectOfType<Canvas>();
         
-        /*if (twinStick)
-        {
-            _playerInputActions.Game.Fire.performed += ctx => aimPosition = ctx.ReadValue<Vector2>();
-            _playerInputActions.Game.Fire.started += ctx => StartShooting();
-            _playerInputActions.Game.Fire.canceled += ctx => StopShooting();
-
-            playerShootActions = _playerInputActions.Game.Fire;
-        }
-        else
-        {
-            _playerInputActions.Game.Move.performed += ctx => movePosition = ctx.ReadValue<Vector2>();
-            _playerInputActions.Game.Move.started += ctx => StartShooting();
-            _playerInputActions.Game.Move.canceled += ctx => StopShooting();
-
-            playerShootActions = _playerInputActions.Game.Move;
-        }*/
-        
+                
         CheckTwinstick();
+        CheckMouseAim();
     }
 
     private void OnDisable()
     {
         _playerInputActions.Disable();
     }
-    
+
     private void Shoot()
     {
+        Vector2 inputDirection;
+        if (mouseAim)
+        {
+            MouseShooting();
+            inputDirection = aimPosition;
+        }
+        else
+        {
+            inputDirection = playerShootActions.ReadValue<Vector2>();
+            
+        }
+        inputDirection = ConvertToIsometric(inputDirection);
+
+        AimVisualizer(inputDirection);
         if (canShoot && hasAmmo) //if can shoot and has ammo
         {
             PlaySoundEffect(shootSounds);
@@ -123,8 +131,6 @@ public class PlayerShooting : MonoBehaviour
             float angleStep = bulletsPerShot > 1 ? bulletSpread / (bulletsPerShot - 1) : 0;
             float startingAngle = -bulletSpread / 2;
 
-            Vector2 inputDirection = playerShootActions.ReadValue<Vector2>();
-            inputDirection = ConvertToIsometric(inputDirection);
             
             if (bulletsPerShot == 1)
             {
@@ -203,6 +209,23 @@ public class PlayerShooting : MonoBehaviour
         _playerUI.UpdateAmmoDisplayRemove(bulletsPerShot);
     }
 
+    void MouseShooting()
+    {
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+
+            Vector3 hitPosition = hit.point;
+            Debug.DrawLine(shootPosition.position, hitPosition, Color.red);
+
+            aimPosition = new Vector2(hitPosition.x - transform.position.x, hitPosition.y - transform.position.y).normalized;
+        }
+    }
+
     public void CheckTwinstick()
     {
         //twinStick = !twinStick;
@@ -234,6 +257,37 @@ public class PlayerShooting : MonoBehaviour
 
             
         }
+    }
+
+    public void CheckMouseAim()
+    {
+        if (mouseAim)
+        {
+            playerShootActions.Disable();
+            StartShooting();
+            
+        }
+        else
+        {
+            StopShooting();
+            playerShootActions.Enable();
+        }
+
+    }
+
+    void AimVisualizer(Vector2 aimDir)
+    {
+        
+        if (aimDir.sqrMagnitude > 0.01f) 
+        {
+            aimDir.Normalize(); 
+
+
+            float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
+            Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * visualizerDistance;
+            shootVisualizer.position = shootPosition.position + offset;
+        }
+
     }
 
     void PlaySoundEffect(List<AudioClip> soundList)
