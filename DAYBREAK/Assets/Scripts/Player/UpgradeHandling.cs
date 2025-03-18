@@ -54,10 +54,10 @@ public class UpgradeHandling : MonoBehaviour
 
     public void ApplyUpgrade(UpgradeBaseSO upgradeToApply)
     {
-        if (upgradeToApply == null || upgradeToApply.level < 0 || upgradeToApply.level >= upgradeToApply.maxLevel)
-        {
-            return; 
-        }
+        //if (upgradeToApply == null || upgradeToApply.level < 0 || upgradeToApply.level >= upgradeToApply.maxLevel)
+        //{
+        //    return; //used if the upgrade is at its max or any errors in the lvel occur
+        //}
         
         Debug.Log("Applying upgrade: " + upgradeToApply.upgradeName + " at level " + upgradeToApply.level);
 
@@ -95,40 +95,40 @@ public class UpgradeHandling : MonoBehaviour
         if (upgradeLevel.usesbulletPropersties)
         {
             //i cry
-            bulletApplication.bulletDamageMod = upgradeLevel.bulletProperties.damageMod;
+            bulletApplication.bulletDamageMod += upgradeLevel.bulletProperties.damageMod;
 
             if (upgradeLevel.bulletProperties.canBurn)
             {
                 bulletApplication.canBurn = upgradeLevel.bulletProperties.canBurn;
-                bulletApplication.burnChance = upgradeLevel.bulletProperties.burnChance;
+                bulletApplication.burnChance += upgradeLevel.bulletProperties.burnChance;
                 bulletApplication.shotsBetweenBurn = upgradeLevel.bulletProperties.shotsBetweenBurn;
             }
 
             if (upgradeLevel.bulletProperties.canPoison)
             {
                 bulletApplication.canPoison = upgradeLevel.bulletProperties.canPoison;
-                bulletApplication.poisonChance = upgradeLevel.bulletProperties.poisonChance;
+                bulletApplication.poisonChance += upgradeLevel.bulletProperties.poisonChance;
                 bulletApplication.shotsBetweenPoison = upgradeLevel.bulletProperties.shotsBetweenPoison;
             }
 
             if (upgradeLevel.bulletProperties.canExplode)
             {
                 bulletApplication.canExplode = upgradeLevel.bulletProperties.canExplode;
-                bulletApplication.explosionRange = upgradeLevel.bulletProperties.explosionRange;
+                bulletApplication.explosionRange += upgradeLevel.bulletProperties.explosionRange;
                 bulletApplication.explosionDamage = upgradeLevel.bulletProperties.explosionDamage;
             }
 
             if (upgradeLevel.bulletProperties.canFreeze)
             {
                 bulletApplication.canFreeze = upgradeLevel.bulletProperties.canFreeze;
-                bulletApplication.freezeChance = upgradeLevel.bulletProperties.freezeChance;
+                bulletApplication.freezeChance += upgradeLevel.bulletProperties.freezeChance;
                 bulletApplication.shotsBetweenFreeze = upgradeLevel.bulletProperties.shotsBwteenFreeze;
             } 
 
             if (upgradeLevel.bulletProperties.canSlow)
             {
                 bulletApplication.canSlow = upgradeLevel.bulletProperties.canSlow;
-                bulletApplication.slowChance = upgradeLevel.bulletProperties.slowChance;
+                bulletApplication.slowChance += upgradeLevel.bulletProperties.slowChance;
                 bulletApplication.shotsBetweenSlow = upgradeLevel.bulletProperties.shotsBwteenSlow;
             }
 
