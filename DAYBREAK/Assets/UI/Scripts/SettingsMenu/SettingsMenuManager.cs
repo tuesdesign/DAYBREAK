@@ -78,6 +78,9 @@ namespace UI.Scripts.SettingsMenu
                 PlayerPrefs.SetInt("MouseAim", 0);
             
             PlayerPrefs.Save();
+            
+            if (_playerShooting != null)
+                _playerShooting.CheckMouseAim();
         }
     }
 }

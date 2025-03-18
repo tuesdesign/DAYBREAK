@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
 
 [CreateAssetMenu(fileName = "Character", menuName = "ScriptableObjects/Character", order = 1)]
 public class PlayerSO : ScriptableObject

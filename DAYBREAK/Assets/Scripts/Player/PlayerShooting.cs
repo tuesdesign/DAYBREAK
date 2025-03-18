@@ -98,7 +98,6 @@ public class PlayerShooting : MonoBehaviour
         
         reloadBar = FindObjectOfType<Canvas>();
         
-                
         CheckTwinstick();
         CheckMouseAim();
     }
@@ -228,8 +227,6 @@ public class PlayerShooting : MonoBehaviour
 
     public void CheckTwinstick()
     {
-        //twinStick = !twinStick;
-        
         if (playerShootActions != null)
         {
             playerShootActions.Disable();
@@ -240,7 +237,6 @@ public class PlayerShooting : MonoBehaviour
 
         if (PlayerPrefs.GetInt("ToggleTwinStick") == 1)
         {
-            
             playerShootActions = _playerInputActions.Game.Fire;
             playerShootActions.Enable();
 
@@ -254,14 +250,12 @@ public class PlayerShooting : MonoBehaviour
 
             playerShootActions.started += ctx => StartShooting();
             playerShootActions.canceled += ctx => StopShooting();
-
-            
         }
     }
 
     public void CheckMouseAim()
     {
-        if (mouseAim)
+        /*if (mouseAim)
         {
             playerShootActions.Disable();
             StartShooting();
@@ -271,8 +265,21 @@ public class PlayerShooting : MonoBehaviour
         {
             StopShooting();
             playerShootActions.Enable();
+        }*/
+        
+        
+        if (PlayerPrefs.GetInt("MouseAim") == 1)
+        {
+            playerShootActions.Disable();
+            StartShooting();
+            mouseAim = true;
         }
-
+        else
+        {
+            StopShooting();
+            playerShootActions.Enable();
+            mouseAim = false;
+        }
     }
 
     void AimVisualizer(Vector2 aimDir)
