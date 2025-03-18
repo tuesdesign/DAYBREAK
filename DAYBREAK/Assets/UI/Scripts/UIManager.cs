@@ -23,6 +23,9 @@ namespace UI.Scripts
         [SerializeField] private TMP_Text winLossText;
         [SerializeField] private TMP_Text timerText;
         [SerializeField] private GameObject copiedText;
+        [SerializeField] private GameObject winLossBackground;
+        [SerializeField] private Sprite winBackground;
+        [SerializeField] private Sprite lossBackground;
         
         [Header("Canvases")] 
         [SerializeField] public GameObject gameplayUI;
@@ -130,17 +133,19 @@ namespace UI.Scripts
             // Pause game
             Time.timeScale = 0;
             _countdown = false;
-
+            
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.WinLossState);
             
             // Change win/loss text
             if (isLoss)
             {
+                winLossBackground.GetComponent<Image>().sprite = lossBackground;
                 winLossText.text = "YOU LOSE";
                 PlayerPrefs.SetInt("GamesLost", PlayerPrefs.GetInt("GamesLost") + 1);
             }
             else
             {
+                winLossBackground.GetComponent<Image>().sprite = winBackground;
                 winLossText.text = "YOU WIN";
                 PlayerPrefs.SetInt("GamesWon", PlayerPrefs.GetInt("GamesWon") + 1);
             }
@@ -171,7 +176,6 @@ namespace UI.Scripts
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             
             MenuStateManager.Instance.ForceExitState();
-            //MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
         }
         
         public void CopyText()
