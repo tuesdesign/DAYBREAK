@@ -1,5 +1,6 @@
 using UI.Scripts.MainMenu;
 using UI.Scripts.Misc_;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,16 +15,21 @@ public class MainMenuState : MenuBaseState
         _mainButton = MainMenuManager.Instance.mainMenuPrimary;
 
         _menuCanvas.SetActive(true);
+
+        if (MenuStateManager.Instance.isMobile)
+        {
+            MainMenuManager.Instance.mobileTitleObject.SetActive(true);
+            MainMenuManager.Instance.pcTitleObject.SetActive(false);
+            MainMenuManager.Instance.quitButton.SetActive(false);
+        }
+        
         UpdateState(MenuStateManager.Instance);
     }
 
     public override void UpdateState(MenuStateManager menu)
     {
         if (!MenuStateManager.Instance.isMobile)
-        {
-            Debug.Log(ControllerCheck.Instance.controllerConnected);
             EventSystem.current.SetSelectedGameObject(ControllerCheck.Instance.controllerConnected ? _mainButton : null);
-        }
     }
 
     public override void ExitState(MenuStateManager menu)
