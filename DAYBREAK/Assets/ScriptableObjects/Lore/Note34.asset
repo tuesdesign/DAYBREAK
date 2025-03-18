@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note34
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 34
   loreInformation: " Coeus-3  \u25CF Climate: Temperate, with localized weather controls
     maintaining comfortable conditions  across most regions.  \u25CF Land-to-Ocean
     Ratio: 95:5 (nearly the entire planet is urbanized, with oceans reduced  to heavily

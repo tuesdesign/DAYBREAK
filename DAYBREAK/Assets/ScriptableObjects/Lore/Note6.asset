@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note6
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 6
   loreInformation: 'Temporal Stabilizers: These devices resemble metal stakes topped
     with eternally  spinning gyroscopes. When placed in a circle, the stabilizers
     track and preserve the  previous 5 minutes, keeping the interior safely contained

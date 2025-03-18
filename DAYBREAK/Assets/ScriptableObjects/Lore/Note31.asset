@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note31
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 31
   loreInformation: "Glacivor-11  \u25CF Climate: Ice age conditions with constant
     blizzards.  \u25CF Land-to-Ocean Ratio: 80:20 (frozen tundras and oceans trapped
     under sheets of ice).  \u25CF Notable Features: Deep blue fissures in the ice

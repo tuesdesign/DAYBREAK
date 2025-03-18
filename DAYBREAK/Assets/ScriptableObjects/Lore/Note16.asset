@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note16
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 16
   loreInformation: 'For the Forefather did set forth their commandment from the beginning,
     that no man should bind  the stones and stars to his own bidding. And in the
     halls of their wisdom, they decreed the  bounds of matter and the seasons of

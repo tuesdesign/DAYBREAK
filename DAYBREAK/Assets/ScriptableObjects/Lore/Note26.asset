@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note26
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 26
   loreInformation: "Solanus-3  \u25CF Climate: Temperate with large swaths of rolling
     grasslands and forests.  \u25CF Land-to-Ocean Ratio: 55:45 (interconnected continents
     and shallow seas).  \u25CF Notable Features: Periodic solar flares from a nearby

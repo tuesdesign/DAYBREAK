@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note11
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 11
   loreInformation: "The Power Structure of OSOC: The Enforcement Branch: FOREFATHER 
     FOREFATHER acts as OSOC\u2019s militarized and investigative arm, tasked with
     high-stakes  missions and covert operations. It operates independently but within

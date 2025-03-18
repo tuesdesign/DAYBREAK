@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note19
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 19
   loreInformation: "\u25CF Climate: Perpetual twilight, with skies saturated in purples
     and golds due to a thick,  refractive atmosphere.  \u25CF Land-to-Ocean Ratio:
     70:30 (large, labyrinthine continents with sparse oceans).  \u25CF Notable Features:

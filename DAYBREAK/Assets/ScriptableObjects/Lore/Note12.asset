@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note12
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 12
   loreInformation: "The Power Structure of OSOC: Regional Branches  OSOC divides
     the galaxy into sectors, each with its own governing Regionate, who oversees 
     compliance and local adaptations of universal laws.  \u25CF Role:  \u25CB Implement

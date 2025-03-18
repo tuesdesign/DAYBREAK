@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note27
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 27
   loreInformation: "Zephyrus-6  \u25CF Climate: Windswept plains with frequent tornadoes
     and cyclonic storms.  \u25CF Land-to-Ocean Ratio: 65:35 (rugged terrain dominated
     by high plateaus and chasms).  \u25CF Notable Features: The winds generate harmonic

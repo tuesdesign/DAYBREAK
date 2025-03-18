@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note24
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 24
   loreInformation: "Oceionis-10  \u25CF Climate: Temperate oceanic, with mild, rainy
     weather year-round.  \u25CF Land-to-Ocean Ratio: 10:90 (only small archipelagos
     dot the vast oceans).  \u25CF Notable Features: A perpetual underwater current

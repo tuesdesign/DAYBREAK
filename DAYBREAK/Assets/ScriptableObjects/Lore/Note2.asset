@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note2
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 2
   loreInformation: "The Devouring (Event). Widely regarded among the survivors of
     humanity as the end of  time. A topic of much debate, some speculate it to be
     a manifestation of humanity\u2019s  dependence on materiation. Others believe

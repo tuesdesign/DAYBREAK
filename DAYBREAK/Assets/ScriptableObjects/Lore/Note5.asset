@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note5
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 5
   loreInformation: 'FOREFATHER. The de-facto military and investigative branch of
     OSOC. Founded by  one Persistence Beck, in an effort to instill preventive measures
     within OSOC regarding  realized and potential risks regarding materiation and

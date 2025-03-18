@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note25
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 25
   loreInformation: "Umbraxis-8  \u25CF Climate: Perpetual overcast with constant
     rain and occasional hailstorms.  \u25CF Land-to-Ocean Ratio: 60:40 (vast plateaus
     bordered by deep fjords).  \u25CF Notable Features: Shadow-like entities that

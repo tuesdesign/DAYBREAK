@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note1
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 1
   loreInformation: "Materiation. Allows people to \u201Ccraft\u201D items through
     temporal probing. Once a  replacement to traditional manufacturing practices,
     it has since been outlawed for public  use following the Devouring. Now, materiation

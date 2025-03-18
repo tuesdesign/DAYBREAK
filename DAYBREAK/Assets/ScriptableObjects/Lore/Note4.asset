@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note4
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 4
   loreInformation: "OSOC. Order of Stellar and Omniversal Continuity. The governing
     body of the  known universe, and the many branch timelines therein. Ironically,
     its origins have been  long lost, a result of early mankind\u2019s inferior technology

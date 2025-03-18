@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note35
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 35
   loreInformation: "Apollo-3 (formerly Earth)  \u25CF Climate: Varied, with restored
     ecosystems ranging from lush forests to desert expanses.  \u25CF Land-to-Ocean
     Ratio: 30:70 (oceans have been preserved to reflect their ancient state,  while

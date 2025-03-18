@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note10
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 10
   loreInformation: 'The Power Structure of OSOC: The Directorates  Each department
     is led by a Director, appointed by the Council. These Directors form the  Executive
     Directorate, which executes day-to-day operations and reports directly to the 

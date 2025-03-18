@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note20
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 20
   loreInformation: "\u25CF Climate: Frozen tundra, with year-round sub-zero temperatures. 
     \u25CF Land-to-Ocean Ratio: 90:10 (a single, sprawling supercontinent with minimal
     liquid  water).  \u25CF Notable Features: Massive auroras that span the entire

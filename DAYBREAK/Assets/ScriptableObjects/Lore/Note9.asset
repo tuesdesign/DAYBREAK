@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note9
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 9
   loreInformation: "The Power Structure of OSOC: Departments and Divisions  Beneath
     the Pentarch Council, OSOC operates through specialized departments, each with
     its  subdivisions. These departments ensure the organization's core responsibilities

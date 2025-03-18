@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note7
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 7
   loreInformation: "The Power Structure of OSOC: The Pentarch Council  At the apex
     of OSOC's structure lies the Pentarch Council, a five-member body that holds 
     ultimate authority over all of OSOC\u2019s actions and policies. Their identities

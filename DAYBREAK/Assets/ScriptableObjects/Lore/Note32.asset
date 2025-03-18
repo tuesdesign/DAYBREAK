@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note32
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 32
   loreInformation: "Ecliptaris-10  \u25CF Climate: Constant eclipses from its three
     moons, creating long cycles of twilight.  \u25CF Land-to-Ocean Ratio: 30:70 (volcanic
     islands surrounded by vast, dark seas).  \u25CF Notable Features: Phosphorescent

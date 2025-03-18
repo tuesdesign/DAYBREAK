@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note21
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 21
   loreInformation: "Calypsis-4  \u25CF Climate: Tropical, with intense humidity and
     frequent superstorms.  \u25CF Land-to-Ocean Ratio: 40:60 (island chains interspersed
     with shallow oceans).  \u25CF Notable Features: Enormous, bioluminescent flora

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note3
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 3
   loreInformation: 'The Devouring (Entity). An amorphous mass of jet-black, ethereal
     ichor. Salvaged  recordings have picked up noises akin to fearful whispers and
     pained moans. It is  stronger than you. It is faster than you. There is more

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note8
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 8
   loreInformation: "The Power Structure of OSOC: \u25CF Roles:  \u25CB Oversee the
     long-term survival and stability of the timestream.  \u25CB Approve or deny interventions
     of extreme scale, such as timeline management  and materiations of the ultimate

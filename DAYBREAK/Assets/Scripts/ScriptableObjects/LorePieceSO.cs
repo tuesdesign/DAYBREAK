@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class LorePieceSO : ScriptableObject
 {
     public string lorePieceName;
+    public int loreNum;
     public string loreInformation;
     public Sprite image;
     public bool unlocked = false;

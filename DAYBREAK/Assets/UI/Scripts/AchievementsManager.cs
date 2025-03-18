@@ -18,9 +18,9 @@ namespace UI.Scripts
             float minutes = Mathf.FloorToInt(PlayerPrefs.GetFloat("TotalTime") / 60);
             float seconds = Mathf.FloorToInt(PlayerPrefs.GetFloat("TotalTime") % 60);
             
-            valuesText.text = PlayerPrefs.GetInt("GamesWon") + "<br>"
+            valuesText.text = PlayerPrefs.GetInt("GamesPlayed") + "<br>"
+                            + PlayerPrefs.GetInt("GamesWon") + "<br>"
                             + PlayerPrefs.GetInt("GamesLost") + "<br>"
-                            + PlayerPrefs.GetInt("GamesPlayed") + "<br>"
                             + $"{minutes:00}:{seconds:00}" + "<br>"
                             + PlayerPrefs.GetInt("EnemiesKilled") + "<br>"
                             + PlayerPrefs.GetInt("EnemyStatusKills") + "<br>"

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Note13
   m_EditorClassIdentifier: 
   lorePieceName: 
+  loreNum: 13
   loreInformation: "The Power Structure of OSOC: The Assembly of Member Worlds  The
     Assembly is a forum where representatives from OSOC member worlds gather to voice 
     concerns, propose policies, and debate temporal ethics. While the Pentarch Council
