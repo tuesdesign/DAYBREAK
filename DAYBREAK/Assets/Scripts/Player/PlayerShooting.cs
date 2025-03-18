@@ -29,6 +29,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] bool twinStick = true;
     [SerializeField] bool mouseAim = true;
     Vector2 aimPosition;
+    [SerializeField]  Camera cam;
 
 
     [Tooltip("The time in seconds between shots")]
@@ -114,14 +115,15 @@ public class PlayerShooting : MonoBehaviour
         {
             MouseShooting();
             inputDirection = aimPosition;
+            //inputDirection = MouseConvertToIsometric(inputDirection);
         }
         else
         {
             inputDirection = playerShootActions.ReadValue<Vector2>();
-            
-        }
-        inputDirection = ConvertToIsometric(inputDirection);
+            inputDirection = ConvertToIsometric(inputDirection);
 
+        }
+        
         AimVisualizer(inputDirection);
         if (canShoot && hasAmmo) //if can shoot and has ammo
         {
@@ -210,18 +212,20 @@ public class PlayerShooting : MonoBehaviour
 
     void MouseShooting()
     {
-        Vector2 mousePosition = Mouse.current.position.ReadValue();
-
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        //Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Vector2 mousePosition = Pointer.current.position.ReadValue();
+   
+        Ray ray = cam.ScreenPointToRay(mousePosition);
         RaycastHit hit;
+        //Vector2 offset = new Vector2(0, -47);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hit))
         {
 
             Vector3 hitPosition = hit.point;
-            Debug.DrawLine(shootPosition.position, hitPosition, Color.red);
+            Debug.DrawLine(shootPosition.position, hitPosition, Color.red,0.1f,true);
 
-            aimPosition = new Vector2(hitPosition.x - transform.position.x, hitPosition.y - transform.position.y).normalized;
+            aimPosition = new Vector2((hitPosition.x - shootPosition.transform.position.x), (hitPosition.z - shootPosition.transform.position.z));
         }
     }
 
@@ -255,19 +259,19 @@ public class PlayerShooting : MonoBehaviour
 
     public void CheckMouseAim()
     {
-        /*if (mouseAim)
-        {
-            playerShootActions.Disable();
-            StartShooting();
-            
-        }
-        else
-        {
-            StopShooting();
-            playerShootActions.Enable();
-        }*/
-        
-        
+        //if (mouseAim)
+        //{
+        //    playerShootActions.Disable();
+        //    StartShooting();
+
+        //}
+        //else
+        //{
+        //    StopShooting();
+        //    playerShootActions.Enable();
+        //}
+
+
         if (PlayerPrefs.GetInt("MouseAim") == 1)
         {
             playerShootActions.Disable();
@@ -326,6 +330,22 @@ public class PlayerShooting : MonoBehaviour
         // Apply the isometric transformation
         float isoX = vector.x * cos45 - vector.y * sin45;
         float isoY = vector.x * sin45 + vector.y * cos45;
+
+        return new Vector2(isoX, isoY);
+    }
+
+    public static Vector2 MouseConvertToIsometric(Vector2 vector)
+    {
+
+        float cos45 = Mathf.Sqrt(2) / 2; // Approx 0.707
+        float sin45 = Mathf.Sqrt(2) / 2; // Approx 0.707
+
+        float coscalc = Mathf.Cos(30f * Mathf.Deg2Rad); 
+        float sincalc = Mathf.Sin(30f * Mathf.Deg2Rad);
+
+        // Apply the isometric transformation
+        float isoX = vector.x * coscalc - vector.y * sincalc;
+        float isoY = vector.x * sincalc + vector.y * coscalc;
 
         return new Vector2(isoX, isoY);
     }
