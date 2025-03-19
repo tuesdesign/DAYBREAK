@@ -27,6 +27,10 @@ namespace UI.Scripts
         [SerializeField] private Sprite winBackground;
         [SerializeField] private Sprite lossBackground;
         
+        [Header("PC/Mobile Differences")]
+        [SerializeField] public GameObject mouseAimButton;
+        [SerializeField] public GameObject notifButton;
+        
         [Header("Canvases")] 
         [SerializeField] public GameObject gameplayUI;
         [SerializeField] public GameObject upgradeMenu;

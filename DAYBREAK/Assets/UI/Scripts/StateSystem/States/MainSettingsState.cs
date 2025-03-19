@@ -15,6 +15,18 @@ public class MainSettingsState : MenuBaseState
         
         _menuCanvas.SetActive(true);
         LeanTween.scale(_menuCanvas.gameObject.transform.GetChild(0).gameObject, Vector3.one, 0.2f).setIgnoreTimeScale(true);
+        
+        if (MenuStateManager.Instance.isMobile)
+        {
+            MainMenuManager.Instance.mouseAimButton.SetActive(false);
+            MainMenuManager.Instance.notifButton.SetActive(true);
+        }
+        else
+        {
+            MainMenuManager.Instance.mouseAimButton.SetActive(true);
+            MainMenuManager.Instance.notifButton.SetActive(false);
+        }
+        
         UpdateState(MenuStateManager.Instance);
     }
     

@@ -17,6 +17,8 @@ namespace UI.Scripts.MainMenu
         [SerializeField] public GameObject pcTitleObject;
         [SerializeField] public GameObject mobileTitleObject;
         [SerializeField] public GameObject quitButton;
+        [SerializeField] public GameObject mouseAimButton;
+        [SerializeField] public GameObject notifButton;
         
         [Header("Canvases")] 
         [SerializeField] public GameObject mainMenu;
