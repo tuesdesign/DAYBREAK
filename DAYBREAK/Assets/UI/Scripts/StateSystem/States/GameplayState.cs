@@ -1,4 +1,5 @@
 using UI.Scripts;
+using UI.Scripts.Misc_;
 using UnityEngine;
 
 public class GameplayState : MenuBaseState
@@ -13,6 +14,12 @@ public class GameplayState : MenuBaseState
 
         if (menu.isMobile)
             UIManager.Instance.mobileSpecificUI.SetActive(true);
+        
+        if (PlayerPrefs.GetInt("MouseAim") == 0)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public override void UpdateState(MenuStateManager menu) { }
@@ -20,6 +27,9 @@ public class GameplayState : MenuBaseState
     public override void ExitState(MenuStateManager menu)
     {
         _menuCanvas.SetActive(false);
+        
+        Cursor.visible = ControllerCheck.Instance.controllerConnected != true;
+        Cursor.lockState = ControllerCheck.Instance.controllerConnected ? CursorLockMode.Locked : CursorLockMode.None;
         
         if (menu.isMobile)
             UIManager.Instance.mobileSpecificUI.SetActive(false);

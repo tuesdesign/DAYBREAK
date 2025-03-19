@@ -16,6 +16,11 @@ namespace UI.Scripts
         [SerializeField] private Image timerFill;
         [SerializeField] public TMP_Text levelText;
         
+        [Header("Upgrade Screen Items")]
+        [SerializeField] public Button upgrade1;
+        [SerializeField] public Button upgrade2;
+        [SerializeField] public Button upgrade3;
+        
         [Header("Tutorial Items")]
         [SerializeField] private GameObject tutorialPopup;
     

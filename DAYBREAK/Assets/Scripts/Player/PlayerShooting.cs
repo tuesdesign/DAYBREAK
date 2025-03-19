@@ -120,7 +120,6 @@ public class PlayerShooting : MonoBehaviour
         {
             inputDirection = playerShootActions.ReadValue<Vector2>();
             inputDirection = ConvertToIsometric(inputDirection);
-
         }
         
         AimVisualizer(inputDirection);
@@ -218,7 +217,6 @@ public class PlayerShooting : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-
             Vector3 hitPosition = hit.point;
             Debug.DrawLine(shootPosition.position, hitPosition, Color.red,0.1f,true);
 
@@ -256,19 +254,6 @@ public class PlayerShooting : MonoBehaviour
 
     public void CheckMouseAim()
     {
-        //if (mouseAim)
-        //{
-        //    playerShootActions.Disable();
-        //    StartShooting();
-
-        //}
-        //else
-        //{
-        //    StopShooting();
-        //    playerShootActions.Enable();
-        //}
-
-
         if (PlayerPrefs.GetInt("MouseAim") == 1)
         {
             playerShootActions.Disable();
@@ -285,17 +270,14 @@ public class PlayerShooting : MonoBehaviour
 
     void AimVisualizer(Vector2 aimDir)
     {
-        
         if (aimDir.sqrMagnitude > 0.01f) 
         {
             aimDir.Normalize(); 
-
-
+            
             float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
             Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * visualizerDistance;
             shootVisualizer.position = shootPosition.position + offset;
         }
-
     }
 
     void PlaySoundEffect(List<AudioClip> soundList)

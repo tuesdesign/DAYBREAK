@@ -20,8 +20,25 @@ public class UpgradeState : MenuBaseState
 
     public override void UpdateState(MenuStateManager menu)
     {
-        if (!MenuStateManager.Instance.isMobile)
-            EventSystem.current.SetSelectedGameObject(ControllerCheck.Instance.controllerConnected ? _mainButton : null);
+        switch (MenuStateManager.Instance.isMobile)
+        {
+            case false:
+                EventSystem.current.SetSelectedGameObject(ControllerCheck.Instance.controllerConnected ? _mainButton : null);
+                break;
+            case true:
+                var cb = UIManager.Instance.upgrade1.colors;
+                cb.normalColor = Color.white;
+                UIManager.Instance.upgrade1.colors = cb;
+                
+                cb = UIManager.Instance.upgrade2.colors;
+                cb.normalColor = Color.white;
+                UIManager.Instance.upgrade2.colors = cb;
+                
+                cb = UIManager.Instance.upgrade3.colors;
+                cb.normalColor = Color.white;
+                UIManager.Instance.upgrade3.colors = cb;
+                break;
+        }
     }
 
     public override void ExitState(MenuStateManager menu)

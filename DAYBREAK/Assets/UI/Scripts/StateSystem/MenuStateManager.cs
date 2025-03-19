@@ -41,6 +41,12 @@ public class MenuStateManager : MonoBehaviour
         CurrentState = MainMenuState;
         
         CurrentState.EnterState(this);
+
+        if (isMobile)
+        {
+            PlayerPrefs.SetInt("MouseAim", 0);
+            PlayerPrefs.Save();
+        }
     }
 
     public void UpdateState()
