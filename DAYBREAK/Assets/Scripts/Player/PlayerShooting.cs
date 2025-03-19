@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 using MoreMountains.Feedbacks;
-using UnityEditor.Rendering;
-using Unity.VisualScripting;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -28,7 +26,7 @@ public class PlayerShooting : MonoBehaviour
     [Tooltip("Should you use twinstick controls \n if on it uses left and right analog sticks \n if off it only uses the move direction")]
     [SerializeField] bool twinStick = true;
     [SerializeField] bool mouseAim = true;
-    Vector2 aimPosition;
+    public Vector2 aimPosition;
     [SerializeField]  Camera cam;
 
 
@@ -79,6 +77,8 @@ public class PlayerShooting : MonoBehaviour
 
     MMF_Player _player;
     
+    public Vector2 inputDirection;
+    
     
     private void Awake()
     {
@@ -110,15 +110,18 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shoot()
     {
-        Vector2 inputDirection;
         if (mouseAim)
         {
             MouseShooting();
             inputDirection = aimPosition;
         }
-        else
+        else if (!MenuStateManager.Instance.isMobile)
         {
             inputDirection = playerShootActions.ReadValue<Vector2>();
+            inputDirection = ConvertToIsometric(inputDirection);
+        }
+        else if (MenuStateManager.Instance.isMobile)
+        {
             inputDirection = ConvertToIsometric(inputDirection);
         }
         
@@ -315,7 +318,7 @@ public class PlayerShooting : MonoBehaviour
 
     private Coroutine shootingCoroutine;
 
-    private void StartShooting()
+    public void StartShooting()
     {
         if (shootingCoroutine == null)
         {
@@ -324,7 +327,7 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    private void StopShooting()
+    public void StopShooting()
     {
         if (shootingCoroutine != null)
         {

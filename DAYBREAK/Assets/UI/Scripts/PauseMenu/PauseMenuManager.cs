@@ -24,6 +24,8 @@ namespace UI.Scripts.PauseMenu
         {
             _manager = FindObjectOfType(typeof(UIManager)) as UIManager;
             killCounter = 0;
+
+            _isPaused = false;
         }
         
         private void OnEnable()

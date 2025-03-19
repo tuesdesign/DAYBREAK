@@ -13,8 +13,10 @@ public class GameplayState : MenuBaseState
         _menuCanvas.SetActive(true);
 
         if (menu.isMobile)
-            UIManager.Instance.mobileSpecificUI.SetActive(true);
-        
+        {
+            UIManager.Instance.touchCanvas.SetActive(true);
+        }
+
         if (PlayerPrefs.GetInt("MouseAim") == 0)
         {
             Cursor.visible = false;
@@ -32,6 +34,9 @@ public class GameplayState : MenuBaseState
         Cursor.lockState = ControllerCheck.Instance.controllerConnected ? CursorLockMode.Locked : CursorLockMode.None;
         
         if (menu.isMobile)
-            UIManager.Instance.mobileSpecificUI.SetActive(false);
+        {
+            //UIManager.Instance.mobileSpecificUI.SetActive(false);
+            UIManager.Instance.touchCanvas.SetActive(false);
+        }
     }
 }

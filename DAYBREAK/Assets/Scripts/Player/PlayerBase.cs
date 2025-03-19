@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UI.Scripts;
-using Unity.VisualScripting;
+using UI.Scripts.Joysticks;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
+using ETouch = UnityEngine.InputSystem.EnhancedTouch;
+using Random = UnityEngine.Random;
 
 public class PlayerBase : MonoBehaviour
 {
@@ -27,10 +30,10 @@ public class PlayerBase : MonoBehaviour
     [Tooltip("The player's movement speed")]
     [SerializeField] float speed = 2.5f;
 
-    [SerializeField] Animator animator;
+    [SerializeField] private Animator animator;
 
     [Header("VFX")]
-    [SerializeField] GameObject dodgeEffect;
+    [SerializeField] private GameObject dodgeEffect;
     [SerializeField] GameObject sheildEffect;
 
     //UpgradeModifiers
@@ -50,10 +53,122 @@ public class PlayerBase : MonoBehaviour
     
     private UIManager _uiManager;
 
+    [Header("Joystick Stuff")] 
+    [SerializeField] private Vector2 joystickSize = new Vector2(300, 300);
+    [SerializeField] private FloatingJoystick moveJoystick;
+    [SerializeField] private FloatingJoystick shootJoystick;
+    private Finger _movementFinger;
+    private Finger _aimFinger;
+
+    private void OnEnable()
+    {
+        if (MenuStateManager.Instance.isMobile)
+        {
+            EnhancedTouchSupport.Enable();
+            ETouch.Touch.onFingerDown += HandleFingerDown;
+            ETouch.Touch.onFingerUp += HandleLoseFinger;
+            ETouch.Touch.onFingerMove += HandleFingerMove;
+        }
+    }
+
+    private void HandleFingerDown(Finger touchedFinger)
+    {
+        if (_aimFinger == null && touchedFinger.screenPosition.x > Screen.width / 2f && touchedFinger.screenPosition.y <= Screen.height - 200)
+        {
+            _aimFinger = touchedFinger;
+            _playerShooting.inputDirection = Vector2.zero;
+            shootJoystick.gameObject.SetActive(true);
+            shootJoystick.rectTransform.sizeDelta = joystickSize;
+            shootJoystick.rectTransform.anchoredPosition = ClampStartPosition(touchedFinger.screenPosition);
+            _playerShooting.StartShooting();
+        }
+        else if (_movementFinger == null && touchedFinger.screenPosition.x < Screen.width / 2f && touchedFinger.screenPosition.y <= Screen.height - 200)
+        {
+            _movementFinger = touchedFinger;
+            movePosition = Vector2.zero;
+            moveJoystick.gameObject.SetActive(true);
+            moveJoystick.rectTransform.sizeDelta = joystickSize;
+            moveJoystick.rectTransform.anchoredPosition = ClampStartPosition(touchedFinger.screenPosition);
+        }
+    }
+
+    private void HandleLoseFinger(Finger lostFinger)
+    {
+        if (lostFinger == _movementFinger)
+        {
+            _movementFinger = null;
+            moveJoystick.knob.anchoredPosition = Vector2.zero;
+            moveJoystick.gameObject.SetActive(false);
+            movePosition = Vector2.zero;
+        }
+        else if (lostFinger == _aimFinger)
+        {
+            _aimFinger = null;
+            shootJoystick.knob.anchoredPosition = Vector2.zero;
+            shootJoystick.gameObject.SetActive(false);
+            _playerShooting.inputDirection = Vector2.zero;
+            _playerShooting.StopShooting();
+        }
+    }
+
+    private void HandleFingerMove(Finger movedFinger)
+    {
+        if (movedFinger == _movementFinger)
+        {
+            Vector2 knobPos;
+            float maxMovement = joystickSize.x / 2f;
+            ETouch.Touch currentTouch = movedFinger.currentTouch;
+
+            if (Vector2.Distance(currentTouch.screenPosition, moveJoystick.rectTransform.anchoredPosition) > maxMovement)
+            {
+                knobPos = (currentTouch.screenPosition - moveJoystick.rectTransform.anchoredPosition).normalized * maxMovement;
+            }
+            else
+            {
+                knobPos = currentTouch.screenPosition - moveJoystick.rectTransform.anchoredPosition;
+            }
+
+            moveJoystick.knob.anchoredPosition = knobPos;
+            movePosition = knobPos / maxMovement;
+        }
+        else if (movedFinger == _aimFinger)
+        {
+            Vector2 knobPos;
+            float maxMovement = joystickSize.x / 2f;
+            ETouch.Touch currentTouch = movedFinger.currentTouch;
+
+            if (Vector2.Distance(currentTouch.screenPosition, shootJoystick.rectTransform.anchoredPosition) > maxMovement)
+            {
+                knobPos = (currentTouch.screenPosition - shootJoystick.rectTransform.anchoredPosition).normalized * maxMovement;
+            }
+            else
+            {
+                knobPos = currentTouch.screenPosition - shootJoystick.rectTransform.anchoredPosition;
+            }
+
+            shootJoystick.knob.anchoredPosition = knobPos;
+            _playerShooting.inputDirection = knobPos / maxMovement;
+        }
+    }
+
+    private Vector2 ClampStartPosition(Vector2 startPosition)
+    {
+        if (startPosition.x < joystickSize.x / 2)
+            startPosition.x = joystickSize.x / 2;
+        
+        if (startPosition.y < joystickSize.y / 2)
+            startPosition.y = joystickSize.y / 2;
+        
+        else if (startPosition.y > Screen.height - joystickSize.y / 2)
+            startPosition.y = Screen.height - joystickSize.y / 2;
+
+        return startPosition;
+    }
+
+
     // Start is called before the first frame update
     void Awake()
     {
-
         _playerInputActions = new PlayerIA();
         _playerInputActions.Enable();
         _rb = GetComponent<Rigidbody>();
@@ -80,6 +195,14 @@ public class PlayerBase : MonoBehaviour
     private void OnDisable()
     {
         _playerInputActions.Disable();
+
+        if (MenuStateManager.Instance.isMobile)
+        {
+            ETouch.Touch.onFingerDown -= HandleFingerDown;
+            ETouch.Touch.onFingerUp -= HandleLoseFinger;
+            ETouch.Touch.onFingerMove -= HandleFingerMove;
+            EnhancedTouchSupport.Disable();
+        }
     }
 
     private void FixedUpdate()

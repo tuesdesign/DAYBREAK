@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using UI.Scripts.Misc_;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -51,6 +50,7 @@ namespace UI.Scripts
 
         [Header("Mobile Stuff")] 
         [SerializeField] public GameObject mobileSpecificUI;
+        [SerializeField] public GameObject touchCanvas;
     
         public const float StartTime = 300;
         private float _timeValue;
@@ -66,8 +66,6 @@ namespace UI.Scripts
                 Destroy(this);
             else
                 Instance = this;
-
-            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
         }
         
         private void OnEnable()
@@ -77,6 +75,8 @@ namespace UI.Scripts
 
         private void Start()
         {
+            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
+            
             _timeValue = StartTime;
             
             tutorialPopup.SetActive(true);
