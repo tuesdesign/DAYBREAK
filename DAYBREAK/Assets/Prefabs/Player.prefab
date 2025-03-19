@@ -899,6 +899,7 @@ MonoBehaviour:
   shield: 0
   dodgeChange: 0
   speed: 10
+  animator: {fileID: 4329908724845342925}
   dodgeEffect: {fileID: 8575297834219849304}
   sheildEffect: {fileID: 2829412636821186895}
   maxHealthModifier: 0
@@ -963,6 +964,7 @@ MonoBehaviour:
   visualizerDistance: 4
   twinStick: 1
   mouseAim: 1
+  cam: {fileID: 5537037119600467455}
   shootDelay: 0.4
   bulletType: {fileID: 2895593067169026987, guid: 341566cbe871ac14b8244a3ae203b3a7, type: 3}
   bulletSpeed: 75
@@ -1569,6 +1571,11 @@ Camera:
 --- !u!4 &3565054714270688828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7303396614074331432, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
+  m_PrefabInstance: {fileID: 6062828995108362004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &5537037119600467455 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1798342755243477739, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
   m_PrefabInstance: {fileID: 6062828995108362004}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &9177196369598239021 stripped

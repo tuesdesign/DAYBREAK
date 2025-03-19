@@ -4,21 +4,11 @@ using UnityEngine;
 
 public class CharacterChanger : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    PlayerBase playerBase;
+    UpgradeHandling upgradeHandling;
     public void ChangeCharacter(PlayerSO character)
     {
-
+        playerBase.ApplyCharacterStats(character);
+        upgradeHandling.ApplyUpgrade(character.baseUpgradables);   
     }
 }

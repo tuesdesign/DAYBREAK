@@ -27,6 +27,7 @@ public class PlayerBase : MonoBehaviour
     [Tooltip("The player's movement speed")]
     [SerializeField] float speed = 2.5f;
 
+    [SerializeField] Animator animator;
 
     [Header("VFX")]
     [SerializeField] GameObject dodgeEffect;
@@ -52,6 +53,7 @@ public class PlayerBase : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+
         _playerInputActions = new PlayerIA();
         _playerInputActions.Enable();
         _rb = GetComponent<Rigidbody>();
@@ -112,6 +114,8 @@ public class PlayerBase : MonoBehaviour
     {
         maxHealth = playerStats.maxHealth;
         speed = playerStats.speed;
+
+        animator.runtimeAnimatorController = playerStats.controller;
 
         //sets player shooting stats
         _playerShooting.MaxAmmo = playerStats.maxammo;

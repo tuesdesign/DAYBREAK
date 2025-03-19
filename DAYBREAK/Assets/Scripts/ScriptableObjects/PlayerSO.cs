@@ -18,4 +18,5 @@ public class PlayerSO : ScriptableObject
 
     [Header("Visuals and Animation")]
     public RuntimeAnimatorController controller;
+    public UpgradeBaseSO baseUpgradables;
 }
