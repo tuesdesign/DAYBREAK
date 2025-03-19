@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Anna
   m_EditorClassIdentifier: 
   maxHealth: 15
-  speed: 2.5
+  speed: 10
   maxammo: 12
-  bulletspeed: 6
-  bulletType: {fileID: 0}
+  bulletspeed: 60
+  bulletType: {fileID: 2895593067169026987, guid: 76519aa5953edcc4da4da8364d8fd4f1, type: 3}
   reloadTime: 0.75
   shootDelay: 0.75
   controller: {fileID: 9100000, guid: 9fb3d030f92da234a8eb9f251605c05b, type: 2}
+  baseUpgradables: {fileID: 11400000, guid: 772fcd81fc88f3341b3b215857af0c8d, type: 2}

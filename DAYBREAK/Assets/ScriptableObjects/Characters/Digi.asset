@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Digi
   m_EditorClassIdentifier: 
   maxHealth: 10
-  speed: 2.5
+  speed: 11
   maxammo: 6
-  bulletspeed: 10
+  bulletspeed: 75
   bulletType: {fileID: 2895593067169026987, guid: 341566cbe871ac14b8244a3ae203b3a7, type: 3}
   reloadTime: 0.75
-  shootDelay: 0.5
+  shootDelay: 0.4
   controller: {fileID: 9100000, guid: 8f23bbdaf1f0aab4684bdf5a51bc6fde, type: 2}
+  baseUpgradables: {fileID: 11400000, guid: c9063827ff3516643bd0861a59606443, type: 2}

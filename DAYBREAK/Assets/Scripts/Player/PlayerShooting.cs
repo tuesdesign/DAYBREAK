@@ -21,7 +21,7 @@ public class PlayerShooting : MonoBehaviour
 
 
     [SerializeField] Transform shootVisualizer;
-    [SerializeField] float visualizerDistance = 2f;
+    [SerializeField] float visualizerDistance = 3f;
 
     [Tooltip("Should you use twinstick controls \n if on it uses left and right analog sticks \n if off it only uses the move direction")]
     [SerializeField] bool twinStick = true;
