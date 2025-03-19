@@ -16,7 +16,8 @@ namespace UI.Scripts.MainMenu
         [Header("PC/Mobile Differences")]
         [SerializeField] public GameObject pcTitleObject;
         [SerializeField] public GameObject mobileTitleObject;
-        [SerializeField] public GameObject quitButton;
+        [SerializeField] public GameObject pcButtons;
+        [SerializeField] public GameObject mobileButtons;
         [SerializeField] public GameObject mouseAimButton;
         [SerializeField] public GameObject notifButton;
         

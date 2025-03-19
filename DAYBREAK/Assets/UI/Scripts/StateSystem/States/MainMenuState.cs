@@ -20,7 +20,9 @@ public class MainMenuState : MenuBaseState
         {
             MainMenuManager.Instance.mobileTitleObject.SetActive(true);
             MainMenuManager.Instance.pcTitleObject.SetActive(false);
-            MainMenuManager.Instance.quitButton.SetActive(false);
+            
+            MainMenuManager.Instance.pcButtons.SetActive(false);
+            MainMenuManager.Instance.mobileButtons.SetActive(true);
         }
         
         UpdateState(MenuStateManager.Instance);
