@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using TMPro;
-using UI.Scripts.Notes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,11 +9,15 @@ namespace UI.Scripts.MainMenu
     public class MainMenuManager : MonoBehaviour
     {
         [Header("Main Menu Items")]
-        [SerializeField] private TMP_Text currentTime;
+        [SerializeField] private TMP_Text currentTimePC;
+        [SerializeField] private TMP_Text currentTimeMobile;
         [SerializeField] private GameObject loadingText;
-        
-        private NotesManager _notesManager;
 
+        [Header("PC/Mobile Differences")]
+        [SerializeField] public GameObject pcTitleObject;
+        [SerializeField] public GameObject mobileTitleObject;
+        [SerializeField] public GameObject quitButton;
+        
         [Header("Canvases")] 
         [SerializeField] public GameObject mainMenu;
         [SerializeField] public GameObject settingsMenu;
@@ -41,7 +44,8 @@ namespace UI.Scripts.MainMenu
         
         private void Start()
         {
-            currentTime.text = DateTime.Now.ToLongDateString();
+            currentTimePC.text = DateTime.Now.ToLongDateString();
+            currentTimeMobile.text = DateTime.Now.ToLongDateString();
 
             MenuStateManager.Instance.forcedExit = true;
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.MainMenuState);
