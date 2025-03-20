@@ -56,12 +56,6 @@ public class Bullet : MonoBehaviour
         if (enableTerrainGlueForce) GlueBulletToTerrain();
     }
 
-
-    void CheckHitStatusAffliction()
-    {
-
-    }
-
     void GlueBulletToTerrain()
     {
         if (Physics.Raycast(rb.position, Vector3.down, out RaycastHit hit, glueDistance * 3, LayerMask.GetMask("Terrain")))
@@ -80,7 +74,6 @@ public class Bullet : MonoBehaviour
             Destroy(hVFX,0.5f);
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
             
-
 
             //add the connection between enemy status afflictions and the bullet handler
             if (canBurn)
@@ -133,6 +126,11 @@ public class Bullet : MonoBehaviour
 
             ~ AAAAAA i think i can do pooling - Alannis
             */
+        }
+        
+        if (collision.gameObject.tag == "Destructible")
+        {
+            collision.gameObject.GetComponent<DamagableObjects>().TakeDamage(damage);
         }
         
     }

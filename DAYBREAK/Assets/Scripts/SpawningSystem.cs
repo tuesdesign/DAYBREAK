@@ -60,6 +60,18 @@ public class SpawningSystem : MonoBehaviour
         // Randomly select a direction around the player
         Vector3 randomDirection = Random.onUnitSphere;
         randomDirection.y = 0; // Keep the enemy on the same plane as the player
+        randomDirection.Normalize();
+
+        if (randomDirection.x == 0)
+        {
+            randomDirection.x = 1;
+        }
+
+        if (randomDirection.y == 0)
+        {
+            randomDirection.y = 1;
+        }
+        
 
         // Calculate the spawn position based on the player's position and the chosen direction
         //Vector3 spawnPosition = terrainGenerator ? terrainGenerator.GetNearestSpawnPos(pTransform.position + randomDirection * spawnDistance) : pTransform.position + randomDirection * spawnDistance;
