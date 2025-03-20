@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": true,
   "showOrphans": true,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "path:\"Design/Game Design\"  ",
@@ -61,5 +61,5 @@
   "linkStrength": 0.741164241164241,
   "linkDistance": 30,
   "scale": 0.7132754626224542,
-  "close": false
+  "close": true
 }
