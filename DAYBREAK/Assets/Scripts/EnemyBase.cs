@@ -30,7 +30,8 @@ public class EnemyBase : MonoBehaviour
     float freezeTime = 3.5f;
     float slowTime = 5f;
 
-
+    public bool onFire;
+    
     public GameObject fireVFX;
     public GameObject freezeVFX;
     public GameObject slowVFX;
@@ -119,9 +120,12 @@ public class EnemyBase : MonoBehaviour
         takeTickDamage = true;
         curTickDamage = damage;
 
-
+        if (fireVFX)
+        {
+            fireVFX.SetActive(true);
+        }
         StartCoroutine(TickDamageEffectTime());
-
+        
         //need to make this more robust to handle multiple status effects at the same time
         //also need to add vfx and sounds to thie mix
 
@@ -193,6 +197,8 @@ public class EnemyBase : MonoBehaviour
     private IEnumerator TickDamageEffectTime()
     {
         yield return new WaitForSeconds(tickDamageDuration);
+        fireVFX.SetActive(false);
+
         takeTickDamage = false;
         curTickDamage = 0;
 

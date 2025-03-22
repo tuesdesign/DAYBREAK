@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1977952045822979601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1300264120007393499}
+  - component: {fileID: 8650723822930975693}
+  m_Layer: 0
+  m_Name: BulletApplicationHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1300264120007393499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977952045822979601}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.565773, y: 27.98586, z: 16.349134}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8650723822930975693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977952045822979601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def017c92d5e6cb46aaf3e7b714f12b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletDamageMod: 0
+  canBurn: 0
+  shotsBetweenBurn: 0
+  burnChance: 0
+  burnTick: 0
+  burnVFX: {fileID: 2968479881673296490, guid: f7addb2c8ec2b534c8940bc53f7ffe34, type: 3}
+  canExplode: 0
+  shotsBetweenExplosive: 0
+  explosionRange: 0
+  explosionDamage: 0
+  explosionVFX: {fileID: 0}
+  canFreeze: 0
+  shotsBetweenFreeze: 0
+  freezeChance: 0
+  freezeTime: 0
+  freezeVFX: {fileID: 8905774327500605420, guid: 5f93494a0cabe434ebee43c64580a215, type: 3}
+  canSlow: 0
+  shotsBetweenSlow: 0
+  slowChance: 0
+  slowTime: 0
+  slowVFX: {fileID: 4775648168465445226, guid: 47fe600febf516745b44d3bd688423b9, type: 3}
+  canPoison: 0
+  shotsBetweenPoison: 0
+  poisonChance: 0
+  poisonTime: 0
+  poisonVFX: {fileID: 7207510696166534364, guid: ac43ba1971442db42960319e8325c9c3, type: 3}
+  canBounce: 0
+  bounceAmount: 0
+  canPierce: 0
+  pierceAmount: 0
+  castWind: 0
+  shotsBetweenWind: 0
+  burnParticles: {fileID: 2968479881673296490, guid: f7addb2c8ec2b534c8940bc53f7ffe34, type: 3}
+  freezeParticles: {fileID: 0}
+  slowParticles: {fileID: 0}
+  poisonParticles: {fileID: 0}
+  explosionParticles: {fileID: 6933657180369242518, guid: 975887e4f8bfc694980bdd17b70af470, type: 3}

@@ -53,6 +53,9 @@ public class BulletApplicationHandling : MonoBehaviour
 
     [Header("Particles")]
     public GameObject burnParticles;
+    public GameObject freezeParticles;
+    public GameObject slowParticles;
+    public GameObject poisonParticles;
     public GameObject explosionParticles;
 
 
@@ -85,11 +88,13 @@ public class BulletApplicationHandling : MonoBehaviour
                 bullet.CanBurn = true;
                 burnshots -= shotsBetweenBurn;
                 //apply vfx to bullet
+                GameObject v = Instantiate(burnParticles,bullet.transform);
             }
-            else if (Random.Range(0, 100) >= burnChance)
+            else if (Random.Range(0, 100) <= burnChance)
             {
                     bullet.CanBurn = true;
-                    //apply vfx to bullet
+                //apply vfx to bullet
+                GameObject v = Instantiate(burnParticles, bullet.transform);
             }
             burnshots++;
         }
@@ -99,7 +104,7 @@ public class BulletApplicationHandling : MonoBehaviour
             if (poisonshots >= shotsBetweenPoison)
             {
                 bullet.CanPoision = true;
-                poisonshots -= shotsBetweenPoison;
+                                poisonshots -= shotsBetweenPoison;
                 //apply vfx to bullet
             }
             else if(Random.Range(0, 100) <= poisonChance)
@@ -116,12 +121,14 @@ public class BulletApplicationHandling : MonoBehaviour
             {
                 bullet.CanFreeze = true;
                 freezeshots -= shotsBetweenFreeze;
+                //GameObject v = Instantiate(freezeParticles, bullet.transform);
                 //apply vfx to bullet
 
             }
             else if (Random.Range(0, 100) <= freezeChance)
             {
                 bullet.CanFreeze= true;
+                //GameObject v = Instantiate(freezeParticles, bullet.transform);
             }
             freezeshots++;
         }
