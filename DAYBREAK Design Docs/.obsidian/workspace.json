@@ -11,10 +11,24 @@
             "id": "6ad647c88a229406",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Game Design Documents/Art Direction/Structrues/Structure Information.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Structure Information"
             }
           },
           {
@@ -90,8 +104,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -174,6 +187,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "custom-sort:Toggle custom sorting": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -185,15 +199,22 @@
   },
   "active": "6ad647c88a229406",
   "lastOpenFiles": [
+    "Game Design Documents/Art Direction/Structrues/Refference Board.canvas",
+    "Game Design Documents/Art Direction/Style Guide.md",
+    "Game Design Documents/Art Direction/sortspec.md",
+    "Game Design Documents/Game Design/sortspec.md",
+    "Game Design Documents/Game Design/Character Movement.md",
+    "Game Design Documents/Game Design/Gameplay loops.md",
+    "Daybreak.md",
+    "Our Team.md",
+    "HAHAHA.md",
+    "Untitled.canvas",
     "Game Design Documents/Narrative Direction/Narrative.md",
     "Game Design Documents/Art Direction/VFX/VFX Notes.md",
     "Kanban Board.md",
-    "HAHAHA.md",
     "Venture Creation/Home.md",
-    "Daybreak.md",
     "_assets/PDFs/Daybreak Extras-1.pdf",
     "_assets/PDFs/Daybreak.pdf",
-    "Game Design Documents/Art Direction/Structrues/Refference Board.canvas",
     "Game Design Documents/Art Direction/Structrues/Structure Information.md",
     "Game Design Documents/Art Direction/VFX/TODO.md"
   ]
