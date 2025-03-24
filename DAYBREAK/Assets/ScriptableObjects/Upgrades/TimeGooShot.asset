@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLevel: 1
   level: 0
   image: {fileID: 0}
-  description: Goo Every 3 Shots, slowing the enemy
+  description: Goo Every 3 Shots<br>Slows enemy
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 

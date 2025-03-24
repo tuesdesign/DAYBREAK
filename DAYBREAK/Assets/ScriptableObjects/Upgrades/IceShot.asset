@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3fe4eefeb98f847b40af3fdd0db4ad, type: 3}
   m_Name: IceShot
   m_EditorClassIdentifier: 
-  upgradeName: IceShot
+  upgradeName: Ice Shot
   maxLevel: 1
   level: 0
   image: {fileID: 0}
-  description: Ice Every 3 Shots, freezing the enemy
+  description: Ice Every 3 Shots<br>Freezes enemy
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 
