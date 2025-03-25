@@ -11,7 +11,7 @@ XP orb pickup
 - [x] Ice particle/effect on bullet - for when the bullet shoots ice/frozen effects I want some icicle effect on it, this should also trail a lil 
 - [x] Flame effect on enemies - for when the enemy is on fire, i want fire particles coming off of the creature
 - [x] Ice effect on enemies - when enemies are frozen i want there to be ice particles on them (as well as an ice block on them but will have to see if that's a particle or model, if you can make a chunky block of ice around a material that would be stunning) 
-- [ ] Chrono Gloop on bullets - Think of a slime that is on the bullets, very gloopy and only slightly translucent.  
-- [ ] Chrono gloop on enemies- Think of a slime effect on enemies that gloops down toward the ground 
+- [x] Chrono Gloop on bullets - Think of a slime that is on the bullets, very gloopy and only slightly translucent.  
+- [x] Chrono gloop on enemies- Think of a slime effect on enemies that gloops down toward the ground 
 - [ ] Chrono gloop trail - a ground effect of this gloop that enemies can step in.
 - [ ] EXP Pick up particles - a simple sparkle effect and pulsing glow effect to make it more obvious that the player is to pick them up
