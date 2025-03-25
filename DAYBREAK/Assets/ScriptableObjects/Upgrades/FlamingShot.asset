@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3fe4eefeb98f847b40af3fdd0db4ad, type: 3}
   m_Name: FlamingShot
   m_EditorClassIdentifier: 
-  upgradeName: FlamingShot
+  upgradeName: Flaming Shot
   maxLevel: 1
   level: 0
   image: {fileID: 0}
-  description: Burning Shot Every 3 Shots, causes  tick damage
+  description: Burning Shot Every 3 Shots<br>Tick damage +
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 
@@ -52,6 +52,12 @@ MonoBehaviour:
       canFreeze: 0
       freezeChance: 0
       shotsBwteenFreeze: 0
+      canSlow: 0
+      slowChance: 0
+      shotsBwteenSlow: 0
+      canPoison: 0
+      poisonChance: 0
+      shotsBetweenPoison: 0
       canBounce: 0
       bounceAmount: 0
       pierceAmount: 0

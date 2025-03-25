@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLevel: 1
   level: 0
   image: {fileID: 0}
-  description: Poison Every 3 Shots, causes  tick damage
+  description: Poison Every 3 Shots<br>Tick damage +
   upgradeLevels:
   - replacePrevUpgrade: 0
     description: 
