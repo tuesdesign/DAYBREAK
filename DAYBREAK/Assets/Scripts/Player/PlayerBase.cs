@@ -147,10 +147,11 @@ public class PlayerBase : MonoBehaviour
             Vector2 knobPos;
             float maxMovement = joystickSize.x / 2f;
             ETouch.Touch currentTouch = movedFinger.currentTouch;
-
+            
             if (Vector2.Distance(currentTouch.screenPosition, moveJoystick.rectTransform.anchoredPosition) > maxMovement)
             {
                 knobPos = (currentTouch.screenPosition - moveJoystick.rectTransform.anchoredPosition).normalized * maxMovement;
+                
             }
             else
             {
