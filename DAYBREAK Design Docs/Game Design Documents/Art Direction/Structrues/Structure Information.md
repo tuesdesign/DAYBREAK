@@ -1,0 +1,3 @@
+The goal is to create small encampments with one or two buildings, some planters, antennas, and wire fences. These can be arranged in a circular area to fit with the terrain generator's capabilities. A great example of this are the Points of Interest in helldivers 2. Small areas that contain 2 - 3 structures and a core focus like a collectable or interactable element. 
+
+Fences will act as barriers between the player and the enemies for a time while also acting as a sort of hinderance as well. Players can either hide behind them, get trapped behind them, or destroy them to by pass them. Enemies over time will also be able to destroy the fences.

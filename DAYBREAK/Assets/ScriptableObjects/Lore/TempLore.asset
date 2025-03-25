@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: TempLore
   m_EditorClassIdentifier: 
-  lorePieceName: 
-  loreNum: 0
+  lorePieceName: Hi
+  loreNum: 99
   loreInformation: 
-  image: {fileID: 0}
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

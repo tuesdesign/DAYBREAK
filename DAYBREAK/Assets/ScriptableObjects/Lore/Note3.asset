@@ -14,10 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 3
-  loreInformation: 'The Devouring (Entity). An amorphous mass of jet-black, ethereal
-    ichor. Salvaged  recordings have picked up noises akin to fearful whispers and
-    pained moans. It is  stronger than you. It is faster than you. There is more
-    of it than there is of us. If you  encounter it outside of FOREFATHER territory,
-    pray it kills you swiftly. '
+  loreInformation: Information
   image: {fileID: 0}
   unlocked: 0
