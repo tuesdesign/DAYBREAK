@@ -110,7 +110,11 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shoot()
     {
-        if (mouseAim)
+        if (MenuStateManager.Instance.isMobile)
+        {
+            inputDirection = ConvertToIsometric(inputDirection);
+        }
+        else if (mouseAim)
         {
             MouseShooting();
             inputDirection = aimPosition;
@@ -120,10 +124,8 @@ public class PlayerShooting : MonoBehaviour
             inputDirection = playerShootActions.ReadValue<Vector2>();
             inputDirection = ConvertToIsometric(inputDirection);
         }
-        else if (MenuStateManager.Instance.isMobile)
-        {
-            inputDirection = ConvertToIsometric(inputDirection);
-        }
+        
+        
         
         AimVisualizer(inputDirection);
         if (canShoot && hasAmmo) //if can shoot and has ammo

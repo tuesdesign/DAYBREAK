@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UI.Scripts;
@@ -6,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 using Random = UnityEngine.Random;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class PlayerBase : MonoBehaviour
 {
@@ -63,7 +65,9 @@ public class PlayerBase : MonoBehaviour
     private Finger _movementFinger;
     private Finger _aimFinger;
     private Finger _singleFinger;
-
+    private int _trackedFingerId1 = -1;
+    private int _trackedFingerId2 = -1;
+    
     private void OnEnable()
     {
         if (MenuStateManager.Instance.isMobile)
@@ -101,7 +105,8 @@ public class PlayerBase : MonoBehaviour
                 shootJoystick.rectTransform.anchoredPosition = ClampStartPosition(touchedFinger.screenPosition);
                 _playerShooting.StartShooting();
             }
-            else if (_movementFinger == null && touchedFinger.screenPosition.x < Screen.width / 2f && touchedFinger.screenPosition.y <= Screen.height - 200)
+            
+            if (_movementFinger == null && touchedFinger.screenPosition.x < Screen.width / 2f && touchedFinger.screenPosition.y <= Screen.height - 200)
             {
                 _movementFinger = touchedFinger;
                 movePosition = Vector2.zero;
@@ -121,7 +126,8 @@ public class PlayerBase : MonoBehaviour
             moveJoystick.gameObject.SetActive(false);
             movePosition = Vector2.zero;
         }
-        else if (lostFinger == _aimFinger)
+        
+        if (lostFinger == _aimFinger)
         {
             _aimFinger = null;
             shootJoystick.knob.anchoredPosition = Vector2.zero;
@@ -129,7 +135,8 @@ public class PlayerBase : MonoBehaviour
             _playerShooting.inputDirection = Vector2.zero;
             _playerShooting.StopShooting();
         }
-        else if (lostFinger == _singleFinger)
+        
+        if (lostFinger == _singleFinger)
         {
             _singleFinger = null;
             moveJoystick.knob.anchoredPosition = Vector2.zero;
