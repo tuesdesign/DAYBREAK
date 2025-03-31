@@ -11,12 +11,24 @@
             "id": "6ad647c88a229406",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "_assets/Reference Material/1x.webp"
+                "file": "Game Design Documents/Art Direction/Structrues/Structure Information.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
-              "icon": "lucide-image",
-              "title": "1x"
+              "icon": "lucide-file",
+              "title": "Structure Information"
             }
           },
           {
@@ -185,8 +197,12 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "dd2d95440eb31216",
+  "active": "6ad647c88a229406",
   "lastOpenFiles": [
+    "Game Design Documents/Art Direction/Structrues/Refference Board.canvas",
+    "Game Design Documents/Art Direction/Structrues/Structure Information.md",
+    "Venture Creation/Home.md",
+    "_assets/Reference Material/1x.webp",
     "_assets/Reference Material/Pasted image 20250328132303.png",
     "_assets/Reference Material/Pasted image 20250325150659.jpg",
     "_assets/Reference Material/Pasted image 20250325150537.jpg",
@@ -194,14 +210,10 @@
     "_assets/Reference Material/Helldivers2_Tips_And_Tricks_(2).webp",
     "_assets/Reference Material/Helldivers_2_-_Loot_Beams.webp",
     "Our Team.md",
-    "Game Design Documents/Art Direction/Structrues/Structure Information.md",
-    "Game Design Documents/Art Direction/Structrues/Refference Board.canvas",
     "Game Design Documents/Art Direction/VFX/TODO.md",
     "_assets/Reference Material/Pasted image 20250325151136.jpg",
     "_assets/Reference Material/Pasted image 20250325151114.jpg",
     "_assets/Reference Material/Pasted image 20250325151058.png",
-    "_assets/Reference Material/Pasted image 20250325150741.jpg",
-    "_assets/Reference Material/1x.webp",
     "sortspec.md",
     "Daybreak.md",
     "Game Design Documents/Narrative Direction/Narrative.md",
@@ -214,7 +226,6 @@
     "Untitled.canvas",
     "Game Design Documents/Art Direction/VFX/VFX Notes.md",
     "Kanban Board.md",
-    "Venture Creation/Home.md",
     "_assets/PDFs/Daybreak Extras-1.pdf",
     "_assets/PDFs/Daybreak.pdf"
   ]
