@@ -126,7 +126,7 @@ Material:
     - _EnvironmentReflections: 1
     - _Exposure: 1
     - _FoamAmount: 1
-    - _FoamScale: 50
+    - _FoamScale: 350
     - _FoamSpeed: 0.01
     - _FoamStrength: 1
     - _GlossMapScale: 0
