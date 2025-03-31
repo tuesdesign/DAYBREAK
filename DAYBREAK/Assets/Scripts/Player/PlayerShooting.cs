@@ -112,7 +112,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (MenuStateManager.Instance.isMobile)
         {
-            inputDirection = ConvertToIsometric(inputDirection);
+            //inputDirection = ConvertToIsometric(inputDirection);
         }
         else if (mouseAim)
         {
@@ -215,7 +215,7 @@ public class PlayerShooting : MonoBehaviour
 
     void MouseShooting()
     {
-        Vector2 mousePosition = Pointer.current.position.ReadValue();
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
    
         Ray ray = cam.ScreenPointToRay(mousePosition);
         RaycastHit hit;
@@ -304,12 +304,8 @@ public class PlayerShooting : MonoBehaviour
 
     public static Vector2 ConvertToIsometric(Vector2 vector)
     {
-        
         float cos45 = Mathf.Sqrt(2) / 2; // Approx 0.707
         float sin45 = Mathf.Sqrt(2) / 2; // Approx 0.707
-
-        float cos32 = Mathf.Cos(32f * Mathf.Deg2Rad); // Cosine of 35 degrees
-        float sin32 = Mathf.Sin(32f * Mathf.Deg2Rad);
 
         // Apply the isometric transformation
         float isoX = vector.x * cos45 - vector.y * sin45;

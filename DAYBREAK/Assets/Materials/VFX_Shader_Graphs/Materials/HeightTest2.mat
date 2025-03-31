@@ -39,11 +39,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 0.42
-    - _Edge_Blend: 0.123
-    - _Effect_Radius: 7.3
-    - _Frequency: 0.18
+    - _Edge_Blend: 0.9
+    - _Effect_Radius: 5
+    - _Frequency: 0.5
     - _QueueControl: 0
-    - _Ripple_Density: 1.59
+    - _Ripple_Density: 5.34
     m_Colors:
     - _RippleOrigin: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
