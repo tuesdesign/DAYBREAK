@@ -95,6 +95,142 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
         MainOrganSource.volume = MainOrganVolume;
     }
 
+    public void PauseImmediately()
+    {
+        GuitarSource.Pause();
+        StringPulseSource.Pause();
+        CowbellSource.Pause();
+        RideSource.Pause();
+        BassSource.Pause();
+        ChoirSource.Pause();
+        FranticPluckSource.Pause();
+        GlitchOrganSource.Pause();
+        IntroSource.Pause();
+        LeadSource.Pause();
+        MainOrganSource.Pause();
+    }
+
+    public void UnpauseImmediately()
+    {
+        GuitarSource.UnPause();
+        StringPulseSource.UnPause();
+        CowbellSource.UnPause();
+        RideSource.UnPause();
+        BassSource.UnPause();
+        ChoirSource.UnPause();
+        FranticPluckSource.UnPause();
+        GlitchOrganSource.UnPause();
+        IntroSource.UnPause();
+        LeadSource.UnPause();
+        MainOrganSource.UnPause();
+    }
+
+    public float rewindTime = 0.15f;
+
+    public void Rewind()
+    {
+        GuitarSource.time = Mathf.Max(0, GuitarSource.time - rewindTime);
+        StringPulseSource.time = Mathf.Max(0, StringPulseSource.time - rewindTime);
+        CowbellSource.time = Mathf.Max(0, CowbellSource.time - rewindTime);
+        RideSource.time = Mathf.Max(0, RideSource.time - rewindTime);
+        BassSource.time = Mathf.Max(0, BassSource.time - rewindTime);
+        ChoirSource.time = Mathf.Max(0, ChoirSource.time - rewindTime);
+        FranticPluckSource.time = Mathf.Max(0, FranticPluckSource.time - rewindTime);
+        GlitchOrganSource.time = Mathf.Max(0, GlitchOrganSource.time - rewindTime);
+        IntroSource.time = Mathf.Max(0, IntroSource.time - rewindTime);
+        LeadSource.time = Mathf.Max(0, LeadSource.time - rewindTime);
+        MainOrganSource.time = Mathf.Max(0, MainOrganSource.time - rewindTime);
+    }
+
+    public float WindDownTime = 0.15f;
+    public float WindUpTime = 0.15f;
+
+    bool wind = false;
+    public void ToggleWindEffect()
+    {
+        if (wind)
+        {
+            WindDown();
+        }
+        else
+        {
+            WindUp();
+        }
+        wind = !wind;
+    }
+
+    public void WindDown()
+    {
+        StartCoroutine(WindDownCoroutine());
+    }
+
+    public void WindUp()
+    {
+        StartCoroutine(WindUpCoroutine());
+    }
+
+    private IEnumerator WindDownCoroutine()
+    {
+        if (DEBUG) { Debug.Log("<color=teal>ADA: </color><color=green>Effect 'slowdown' START</color>"); } // DEBUG message
+        // over the course of WindDownTime, reduce pitch to 0, using only realtime fuctions to avoid issues with 0 time scale
+        float startTime = Time.realtimeSinceStartup;
+        float endTime = startTime + WindDownTime;
+        float startPitch = GuitarSource.pitch;
+        float v = 1f;
+        while (Time.realtimeSinceStartup < endTime)
+        {
+            float t = (Time.realtimeSinceStartup - startTime) / WindDownTime;
+            v = Mathf.Lerp(startPitch, 0, t);
+            GuitarSource.pitch = v;
+            StringPulseSource.pitch = v;
+            CowbellSource.pitch = v;
+            RideSource.pitch = v;
+            BassSource.pitch = v;
+            ChoirSource.pitch = v;
+            FranticPluckSource.pitch = v;
+            GlitchOrganSource.pitch = v;
+            IntroSource.pitch = v;
+            LeadSource.pitch = v;
+            MainOrganSource.pitch = v;
+            //Add additional channels here...
+            yield return null;
+        }
+        //pause immediately
+        PauseImmediately();
+    }
+
+    private IEnumerator WindUpCoroutine()
+    {
+        // rewind
+        //Rewind();
+        // unpause, then over the course of WindUpTime, increase pitch to 1
+        UnpauseImmediately();
+        float startTime = Time.realtimeSinceStartup;
+        float endTime = startTime + WindUpTime;
+        float startPitch = GuitarSource.pitch;
+        float v = 0f;
+        while (Time.realtimeSinceStartup < endTime)
+        {
+            float t = (Time.realtimeSinceStartup - startTime) / WindUpTime;
+            v = Mathf.Lerp(startPitch, 1, t);
+            GuitarSource.pitch = v;
+            StringPulseSource.pitch = v;
+            CowbellSource.pitch = v;
+            RideSource.pitch = v;
+            BassSource.pitch = v;
+            ChoirSource.pitch = v;
+            FranticPluckSource.pitch = v;
+            GlitchOrganSource.pitch = v;
+            IntroSource.pitch = v;
+            LeadSource.pitch = v;
+            MainOrganSource.pitch = v;
+            //Add additional channels here...
+            yield return null;
+        }
+
+        if (DEBUG) { Debug.Log("<color=teal>ADA: </color><color=green>Effect 'slowdown' END</color>"); } // DEBUG message
+    }
+
     void Update()
     {
         // Guitar (Add 0.1 for every Level, clamp at 0-1)
