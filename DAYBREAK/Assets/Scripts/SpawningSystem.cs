@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility.Simple_Scripts;
 
 public class SpawningSystem : MonoBehaviour
 {
@@ -23,8 +24,15 @@ public class SpawningSystem : MonoBehaviour
     float spawnTimer = 0;
     float stageTimer = 0;
     Transform playerTransform;
+
+    SsObjectPool oPooler;
     
     [SerializeField] TerrainGenerator terrainGenerator;
+
+   void Awake()
+    {
+        oPooler = FindObjectOfType<SsObjectPool>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +87,10 @@ public class SpawningSystem : MonoBehaviour
         Vector3 spawnPosition = pTransform.position + (randomDirection * spawnDistance);
 
         // Spawn the enemy at the calculated position with no rotation
-        Instantiate(sEnemy, spawnPosition, Quaternion.identity);
+        //Instantiate(sEnemy, spawnPosition, Quaternion.identity);
+        oPooler.GetObject("Enemy",sEnemy, spawnPosition, Quaternion.identity);
+
+
 
     }
 }

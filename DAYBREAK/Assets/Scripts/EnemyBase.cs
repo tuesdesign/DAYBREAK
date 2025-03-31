@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UI.Scripts;
 using UI.Scripts.PauseMenu;
 using UnityEngine;
+using Utility.Simple_Scripts;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -42,11 +43,17 @@ public class EnemyBase : MonoBehaviour
     
     Transform playerTrans;
 
-    //public float GetDamage { get => damage; set => damage = value; }
 
-    
+    //public float GetDamage { get => damage; set => damage = value; }
+    SsObjectPool oPooler;
+
     private PauseMenuManager _pauseManager;
-    
+
+    void Awake()
+    {
+        oPooler = FindObjectOfType<SsObjectPool>();
+    }
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -169,8 +176,9 @@ public class EnemyBase : MonoBehaviour
         // Add to kill counter
         _pauseManager.killCounter += 1;
         PlayerPrefs.SetInt("EnemiesKilled", PlayerPrefs.GetInt("EnemiesKilled") + 1);
-        
-        Destroy(this.gameObject);
+
+        //Destroy(this.gameObject);
+        oPooler.PoolObject("Enemy", this.gameObject);
     }
 
     public int GetDamage()

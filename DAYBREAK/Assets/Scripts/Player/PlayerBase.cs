@@ -299,8 +299,8 @@ public class PlayerBase : MonoBehaviour
         _playerAnimController.isMoving = movePosition != Vector2.zero;
         _playerAnimController.moveDirection = movePosition;
 
-        AdastraTrackControlsDarkDescent.Instance.PlayerMoving = (movePosition != Vector2.zero);
-        AdastraTrackControlsBloodMoon.Instance.PlayerMoving = (movePosition != Vector2.zero);
+        //AdastraTrackControlsDarkDescent.Instance.PlayerMoving = (movePosition != Vector2.zero);
+        //AdastraTrackControlsBloodMoon.Instance.PlayerMoving = (movePosition != Vector2.zero);
 
         if (transform.position.y < waterLevel && !isTakeingWaterDamage) StartCoroutine(WaterKillTimer());
         if (transform.position.y > waterLevel) isTakeingWaterDamage = false;
