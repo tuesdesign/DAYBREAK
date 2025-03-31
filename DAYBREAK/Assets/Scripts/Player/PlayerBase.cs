@@ -184,7 +184,8 @@ public class PlayerBase : MonoBehaviour
             }
 
             shootJoystick.knob.anchoredPosition = knobPos;
-            _playerShooting.inputDirection = knobPos / maxMovement;
+            _playerShooting.inputDirection = ConvertToIsometric(knobPos / maxMovement);
+            Debug.Log(ConvertToIsometric(knobPos / maxMovement));
         }
         else if (movedFinger == _singleFinger)
         {
@@ -203,7 +204,7 @@ public class PlayerBase : MonoBehaviour
 
             moveJoystick.knob.anchoredPosition = knobPos;
             movePosition = knobPos / maxMovement;
-            _playerShooting.inputDirection = knobPos / maxMovement;
+            _playerShooting.inputDirection = ConvertToIsometric(knobPos / maxMovement);
         }
     }
 
@@ -219,6 +220,18 @@ public class PlayerBase : MonoBehaviour
             startPosition.y = Screen.height - joystickSize.y / 2;
 
         return startPosition;
+    }
+    
+    private static Vector2 ConvertToIsometric(Vector2 vector)
+    {
+        float cos45 = Mathf.Sqrt(2) / 2; // Approx 0.707
+        float sin45 = Mathf.Sqrt(2) / 2; // Approx 0.707
+
+        // Apply the isometric transformation
+        float isoX = vector.x * cos45 - vector.y * sin45;
+        float isoY = vector.x * sin45 + vector.y * cos45;
+
+        return new Vector2(isoX, isoY);
     }
 
     // JOYSTICKS END //
@@ -286,6 +299,9 @@ public class PlayerBase : MonoBehaviour
         _playerAnimController.isMoving = movePosition != Vector2.zero;
         _playerAnimController.moveDirection = movePosition;
 
+        AdastraTrackControlsDarkDescent.Instance.PlayerMoving = (movePosition != Vector2.zero);
+        AdastraTrackControlsBloodMoon.Instance.PlayerMoving = (movePosition != Vector2.zero);
+
         if (transform.position.y < waterLevel && !isTakeingWaterDamage) StartCoroutine(WaterKillTimer());
         if (transform.position.y > waterLevel) isTakeingWaterDamage = false;
     }
@@ -313,6 +329,9 @@ public class PlayerBase : MonoBehaviour
             curHealth = maxHealth + maxHealthModifier;
         }
         _playerUI.UpdateHealthBar();
+
+        AdastraTrackControlsDarkDescent.Instance.PlayerHealth = curHealth;
+        AdastraTrackControlsBloodMoon.Instance.PlayerHealth = curHealth;
     }
 
     public void TakeDamage(int damage)
@@ -344,6 +363,9 @@ public class PlayerBase : MonoBehaviour
                 Die();
             }
 
+            AdastraTrackControlsDarkDescent.Instance.PlayerHealth = curHealth;
+            AdastraTrackControlsBloodMoon.Instance.PlayerHealth = curHealth;
+            
             _playerUI.UpdateHealthBar();
             canTakeDamage = false;
             StartCoroutine(InvincibilityFrames());
@@ -384,7 +406,10 @@ public class PlayerBase : MonoBehaviour
             {
                 Die();
             }
-
+            
+            AdastraTrackControlsDarkDescent.Instance.PlayerHealth = curHealth;
+            AdastraTrackControlsBloodMoon.Instance.PlayerHealth = curHealth;
+            
             _playerUI.UpdateHealthBar();
             canTakeDamage = false;
             StartCoroutine(InvincibilityFrames());

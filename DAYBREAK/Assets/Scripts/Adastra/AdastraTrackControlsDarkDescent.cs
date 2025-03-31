@@ -44,6 +44,8 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
     public bool PlayerMoving = false;
     public int BulletsOnScreen = 0;
     
+    
+    public static AdastraTrackControlsDarkDescent Instance { get; private set; }
 
     // Start is called before the first frame update
     private void Awake()
@@ -60,6 +62,14 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
         IntroSource = FindAudioSource("Intro Drums"); // keep at 1
         LeadSource = FindAudioSource("Lead Pluck"); // Keep at 1
         MainOrganSource = FindAudioSource("Main Organ"); // increase by 0.1 each time a bullet is fired
+        
+        
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+        
+        DontDestroyOnLoad(this.gameObject);
     }
     public AudioSource FindAudioSource(string name)
     {
