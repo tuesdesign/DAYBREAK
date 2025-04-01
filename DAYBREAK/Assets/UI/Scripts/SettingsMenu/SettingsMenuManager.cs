@@ -25,10 +25,32 @@ namespace UI.Scripts.SettingsMenu
             
             PlayerPrefs.Save();
         }
+
+        public void MinMaxMusic()
+        {
+            if (PlayerPrefs.GetFloat("ToggleMusic") == 0)
+                PlayerPrefs.SetFloat("ToggleMusic", 1);
+            
+            else if (PlayerPrefs.GetFloat("ToggleMusic") == 1)
+                PlayerPrefs.SetFloat("ToggleMusic", 0);
+            
+            PlayerPrefs.Save();
+        }
         
         public void ToggleSfx(Slider slider)
         {
             PlayerPrefs.SetFloat("ToggleSfx", slider.value);
+            
+            PlayerPrefs.Save();
+        }
+
+        public void MinMaxSfx()
+        {
+            if (PlayerPrefs.GetFloat("ToggleSfx") == 0)
+                PlayerPrefs.SetFloat("ToggleSfx", 1);
+            
+            else if (PlayerPrefs.GetFloat("ToggleSfx") == 1)
+                PlayerPrefs.SetFloat("ToggleSfx", 0);
             
             PlayerPrefs.Save();
         }

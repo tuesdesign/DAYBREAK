@@ -31,25 +31,22 @@ namespace UI.Scripts
         [SerializeField] private Sprite winBackground;
         [SerializeField] private Sprite lossBackground;
         
-        [Header("PC/Mobile Differences")]
-        [SerializeField] public GameObject mouseAimButton;
-        [SerializeField] public GameObject notifButton;
-        
         [Header("Canvases")] 
         [SerializeField] public GameObject gameplayUI;
         [SerializeField] public GameObject upgradeMenu;
         [SerializeField] public GameObject pauseMenu;
-        [SerializeField] public GameObject settingsMenu;
+        [SerializeField] public GameObject pcSettingsMenu;
+        [SerializeField] public GameObject mobileSettingsMenu;
         [SerializeField] public GameObject winLossMenu;
         
         [Header("Primary Buttons")]
         [SerializeField] public GameObject upgradeMenuPrimary;
         [SerializeField] public GameObject pauseMenuPrimary;
-        [SerializeField] public GameObject settingsMenuPrimary;
+        [SerializeField] public GameObject pcSettingsMenuPrimary;
+        [SerializeField] public GameObject mobileSettingsMenuPrimary;
         [SerializeField] public GameObject winLossMenuPrimary;
 
         [Header("Mobile Stuff")] 
-        [SerializeField] public GameObject mobileSpecificUI;
         [SerializeField] public GameObject touchCanvas;
     
         public const float StartTime = 300;

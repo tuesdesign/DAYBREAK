@@ -4108,9 +4108,9 @@ RectTransform:
   - {fileID: 1542463369}
   m_Father: {fileID: 1546021817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 304, y: -289.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 608, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &442033970
@@ -4401,9 +4401,9 @@ RectTransform:
   - {fileID: 1336630760}
   m_Father: {fileID: 1546021817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 304, y: -529.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 608, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507243086
@@ -9396,7 +9396,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1860028880}
         m_TargetAssemblyTypeName: UI.Scripts.SettingsMenu.SettingsMenuManager, Assembly-CSharp
-        m_MethodName: ToggleMusic
+        m_MethodName: MinMaxMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10865,7 +10865,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1860028880}
         m_TargetAssemblyTypeName: UI.Scripts.SettingsMenu.SettingsMenuManager, Assembly-CSharp
-        m_MethodName: ToggleSfx
+        m_MethodName: MinMaxSfx
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11903,9 +11903,9 @@ RectTransform:
   - {fileID: 71767573}
   m_Father: {fileID: 1546021817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 304, y: -409.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 608, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1319184352
@@ -14805,9 +14805,9 @@ RectTransform:
   - {fileID: 647210458}
   m_Father: {fileID: 1546021817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 304, y: -169.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 608, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1640753412
@@ -15359,7 +15359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1704939572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15842,9 +15842,9 @@ RectTransform:
   - {fileID: 983344877}
   m_Father: {fileID: 1546021817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 304, y: -49.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 608, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1730197482

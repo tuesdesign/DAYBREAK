@@ -10,22 +10,19 @@ public class GameplaySettingsState : MenuBaseState
     
     public override void EnterState(MenuStateManager menu)
     {
-        _menuCanvas = UIManager.Instance.settingsMenu;
-        _mainButton = UIManager.Instance.settingsMenuPrimary;
-        
-        _menuCanvas.SetActive(true);
-        LeanTween.scale(_menuCanvas.gameObject.transform.GetChild(1).gameObject, Vector3.one, 0.2f).setIgnoreTimeScale(true);
-        
         if (MenuStateManager.Instance.isMobile)
         {
-            UIManager.Instance.mouseAimButton.SetActive(false);
-            UIManager.Instance.notifButton.SetActive(true);
+            _menuCanvas = UIManager.Instance.mobileSettingsMenu;
+            _mainButton = UIManager.Instance.mobileSettingsMenuPrimary;
         }
         else
         {
-            UIManager.Instance.mouseAimButton.SetActive(true);
-            UIManager.Instance.notifButton.SetActive(false);
+            _menuCanvas = UIManager.Instance.pcSettingsMenu;
+            _mainButton = UIManager.Instance.pcSettingsMenuPrimary;
         }
+        
+        _menuCanvas.SetActive(true);
+        LeanTween.scale(_menuCanvas.gameObject.transform.GetChild(1).gameObject, Vector3.one, 0.2f).setIgnoreTimeScale(true);
         
         UpdateState(MenuStateManager.Instance);
     }
