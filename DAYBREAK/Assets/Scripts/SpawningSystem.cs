@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility.Simple_Scripts;
 
 public class SpawningSystem : MonoBehaviour
 {
@@ -79,7 +80,8 @@ public class SpawningSystem : MonoBehaviour
         Vector3 spawnPosition = pTransform.position + (randomDirection * spawnDistance);
 
         // Spawn the enemy at the calculated position with no rotation
-        Instantiate(sEnemy, spawnPosition, Quaternion.identity);
+        //Instantiate(sEnemy, spawnPosition, Quaternion.identity);
+        SsObjectPool.GetObject(sEnemy.GetComponent<EnemyBase>().enemySO.name,sEnemy, spawnPosition, Quaternion.identity);
 
     }
 }
