@@ -42,17 +42,8 @@ public class EnemyBase : MonoBehaviour
     
     
     Transform playerTrans;
-
-
-    //public float GetDamage { get => damage; set => damage = value; }
-    SsObjectPool oPooler;
-
+    
     private PauseMenuManager _pauseManager;
-
-    void Awake()
-    {
-        oPooler = FindObjectOfType<SsObjectPool>();
-    }
 
     void Start()
     {
@@ -178,7 +169,7 @@ public class EnemyBase : MonoBehaviour
         PlayerPrefs.SetInt("EnemiesKilled", PlayerPrefs.GetInt("EnemiesKilled") + 1);
 
         //Destroy(this.gameObject);
-        oPooler.PoolObject("Enemy", this.gameObject);
+        SsObjectPool.PoolObject("Enemy", this.gameObject);
     }
 
     public int GetDamage()

@@ -10,13 +10,25 @@ namespace Utility.Simple_Scripts
     /// <summary>
     /// Create easily managed and sorted object pools.
     /// </summary>
-    public class SsObjectPool : MonoBehaviour
+    public static class SsObjectPool
     {
-        private Dictionary<string, Queue<GameObject>> OBJECT_POOLS = new Dictionary<string, Queue<GameObject>>(); // a dictionary to sort and track objects in their respective object pools
-        private const string PARENT_POOL_NAME = "SsObjectPools"; // the name of the object pool parent
-        private const string POOL_PREFIX = "SsObjectPool_"; // the prefix to sub object pools to be paired with object IDs
-        private Transform _objectPoolParent; // stores the reference to the object pool parent
-        
+        private static readonly Dictionary<string, ObjectPool> ObjectPools = new Dictionary<string, ObjectPool>(); // a dictionary to sort and track objects in their respective object pools
+        private const string _parentPoolName = "SsObjectPools"; // the name of the object pool parent
+        private const string _poolPrefix = "SsObjectPool_"; // the prefix to sub object pools to be paired with object IDs
+        private static Transform _objectPoolParent; // stores the reference to the object pool parent
+
+        private struct ObjectPool
+        {
+            public readonly Queue<GameObject> Queue;
+            public readonly Transform Parent;
+
+            public ObjectPool(Queue<GameObject> queue, Transform parent)
+            {
+                Queue = queue;
+                Parent = parent;
+            }
+        }
+
         #region Pool Management
 
         /// <summary>
@@ -24,18 +36,22 @@ namespace Utility.Simple_Scripts
         /// </summary>
         /// <param name="id">The ID of the object pool.</param>
         /// <returns>The Transform of the newly created object pool.</returns>
-        private Transform CreatePool(string id)
+        private static ObjectPool CreatePool(string id)
         {
             // check if pool already exists with the specified id
-            if (OBJECT_POOLS.ContainsKey(id)) return GetPool(id);
-            
+            if (ObjectPools.ContainsKey(id)) return GetPool(id);
+
             // ensure object pool parent exists
-            if (!_objectPoolParent) _objectPoolParent = this.transform;
-            
+            if (!_objectPoolParent) _objectPoolParent = new GameObject(_parentPoolName).transform;
+
             // create object pool
-            var transform = new GameObject(POOL_PREFIX + id).transform;
-            transform.SetParent(_objectPoolParent);
-            return transform;
+            var parent = new GameObject(_poolPrefix + id).transform;
+            parent.SetParent(_objectPoolParent);
+
+            var pool = new ObjectPool(new Queue<GameObject>(), parent);
+            ObjectPools.Add(id, pool);
+
+            return pool;
         }
 
         /// <summary>
@@ -43,86 +59,75 @@ namespace Utility.Simple_Scripts
         /// </summary>
         /// <param name="id">The ID of the object pool.</param>
         /// <returns>The transform of the retrieved object pool.</returns>
-        private Transform GetPool(string id)
-        {
-            // ensure object pool parent exists
-            if (!_objectPoolParent) _objectPoolParent = new GameObject(PARENT_POOL_NAME).transform;
+        private static ObjectPool GetPool(string id) =>
+            ObjectPools.TryGetValue(id, value: out var pool) ? pool : CreatePool(id);
 
-            // get object pool
-            var pool = _objectPoolParent.Find(POOL_PREFIX + id);
-            return pool ? pool : CreatePool(id);
-        }
-        
         /// <summary>
         /// Flushes the objects in the specified object pool queue.
         /// </summary>
         /// <param name="pool">The specified object pool.</param>
         [Obsolete("Use FlushObjectPool(string id) instead. Using the id will allow for pool management.")]
-        private void FlushObjectPool(Queue<GameObject> pool)
+        private static void FlushObjectPool(Queue<GameObject> pool)
         {
             // destroy all pooled objects
             while (pool.Count > 0)
                 Object.Destroy(pool.Dequeue());
         }
-        
+
         // Suppresses warning for Obsolete method
-        #pragma warning disable 0618
-        
+#pragma warning disable 0618
+
         /// <summary>
         /// Flushes the object pool of the specified id.
         /// </summary>
         /// <param name="id">The ID of the object pool.</param>
         /// <returns>whether the operation was a success.</returns>
-        public bool FlushObjectPool(string id)
+        public static void FlushObjectPool(string id)
         {
             // check if object pool exists
-            if (!OBJECT_POOLS.TryGetValue(id, out var pool)) return false;
-            
-            // flush object pool
-            FlushObjectPool(pool);
-            
-            // remove object pool from the dictionary
-            OBJECT_POOLS.Remove(id);
+            if (!ObjectPools.TryGetValue(id, out var pool)) return;
 
-            // flush successful
-            return true;
+            // flush object pool
+            FlushObjectPool(pool.Queue);
+
+            // remove object pool from the dictionary
+            ObjectPools.Remove(id);
         }
-        
+
         /// <summary>
         /// Flushes all object pools.
         /// </summary>
-        public void FlushObjectPools()
+        public static void FlushObjectPools()
         {
             // flush all object pools
-            foreach (var pool in OBJECT_POOLS)
-                FlushObjectPool(pool.Value);
+            foreach (var pool in ObjectPools)
+                FlushObjectPool(pool.Value.Queue);
 
             // clear object pool dictionary
-            OBJECT_POOLS.Clear();
+            ObjectPools.Clear();
         }
 
-        #pragma warning restore 0618
-        
+#pragma warning restore 0618
+
         /// <summary>
         /// Destroys all objects associated with the object pool.
         /// </summary>
         /// <param name="id">The ID of the object pool.</param>
-        public void DestroyPool(string id)
+        public static void DestroyPool(string id)
         {
             // flush object pool
             FlushObjectPool(id);
-            
+
             // destroy object pool parent
             Object.Destroy(_objectPoolParent.Find(id).gameObject);
-            
         }
-        
+
         [Tooltip("Destroys all objects associated with all object pools.")]
-        public void DestroyObjectPools()
+        public static void DestroyObjectPools()
         {
             // flush all object pools
             FlushObjectPools();
-            
+
             // destroy object pool parent
             Object.Destroy(_objectPoolParent);
         }
@@ -136,50 +141,50 @@ namespace Utility.Simple_Scripts
         /// </summary>
         /// <param name="id">The string ID of the object you are pooling.</param>
         /// <param name="obj">The object you are trying to pool.</param>
-        public void PoolObject(string id, GameObject obj)
+        public static void PoolObject(string id, GameObject obj)
         {
             // enqueue GameObjects to existing Object Pool if it exists
-            if (OBJECT_POOLS.TryGetValue(id, out var value))
+            if (ObjectPools.TryGetValue(id, out var value))
             {
                 // enqueue object to pool
-                value.Enqueue(obj);
+                value.Queue.Enqueue(obj);
 
                 // set object parent to object pool parent
-                obj.transform.SetParent(GetPool(id));
+                obj.transform.SetParent(GetPool(id).Parent);
             }
 
             // else create new Object Pool
-            else obj.transform.SetParent(CreatePool(id));
-            
+            else obj.transform.SetParent(CreatePool(id).Parent);
+
             // deactivate object
             obj.SetActive(false);
         }
-        
+
         /// <summary>
         /// Retrieves an object from the specified object pool.
         /// </summary>
         /// <param name="id">The string ID of the pooled object you are retrieving.</param>
         /// <param name="prefab">A prefab of the object you are trying to retrieve to be instantiated if the pool is empty.</param>
         /// <returns>An object from the specified pool or a new instance.</returns>
-        public GameObject GetObject(string id, GameObject prefab)
+        public static GameObject GetObject(string id, GameObject prefab)
         {
             // try dequeuing from prefab object pool
-            if (OBJECT_POOLS.TryGetValue(id, out var pool))
+            if (ObjectPools.TryGetValue(id, out var pool))
             {
-                if (!pool.TryDequeue(out var obj)) 
+                if (!pool.Queue.TryDequeue(out var obj))
                     return Object.Instantiate(prefab);
-                
+
                 obj.SetActive(true);
                 return obj;
             }
 
             // create a new Object Pool and create an object by refference
-            else OBJECT_POOLS.Add(id, new Queue<GameObject>());
+            CreatePool(id);
 
             // if no objects are pooled, create a new instance.
             return Object.Instantiate(prefab);
         }
-        
+
         /// <summary>
         /// Retrieves an object from the specified object pool, while also allowing you to set its basic transforms.
         /// </summary>
@@ -188,7 +193,7 @@ namespace Utility.Simple_Scripts
         /// <param name="position">The position to set the object to when it is retrieved or instantiated.</param>
         /// <param name="rotation">The rotation to set the object to when it is retrieved or instantiated.</param>
         /// <returns>An object from the specified pool or a new instance.</returns>
-        public GameObject GetObject(string id, GameObject prefab, Vector3 position, Quaternion rotation)
+        public static GameObject GetObject(string id, GameObject prefab, Vector3 position, Quaternion rotation)
         {
             var obj = GetObject(id, prefab);
             obj.transform.position = position;
@@ -205,7 +210,8 @@ namespace Utility.Simple_Scripts
         /// <param name="rotation">The rotation to set the object to when it is retrieved or instantiated.</param>
         /// <param name="parent">A transform to set the parent of the retrieved or instantiated object.</param>
         /// <returns>An object from the specified pool or a new instance.</returns>
-        public GameObject GetObject(string id, GameObject prefab, Vector3 position, Quaternion rotation, Transform parent)
+        public static GameObject GetObject(string id, GameObject prefab, Vector3 position, Quaternion rotation,
+            Transform parent)
         {
             var obj = GetObject(id, prefab, position, rotation);
             obj.transform.SetParent(parent);
