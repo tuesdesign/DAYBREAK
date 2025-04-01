@@ -18,19 +18,19 @@ namespace UI.Scripts.MainMenu
         [SerializeField] public GameObject mobileTitleObject;
         [SerializeField] public GameObject pcButtons;
         [SerializeField] public GameObject mobileButtons;
-        [SerializeField] public GameObject mouseAimButton;
-        [SerializeField] public GameObject notifButton;
         
         [Header("Canvases")] 
         [SerializeField] public GameObject mainMenu;
-        [SerializeField] public GameObject settingsMenu;
+        [SerializeField] public GameObject pcSettingsMenu;
+        [SerializeField] public GameObject mobileSettingsMenu;
         [SerializeField] public GameObject achievementsMenu;
         [SerializeField] public GameObject notesMenu;
         [SerializeField] public GameObject characterSelect;
         
         [Header("Primary Buttons")] 
         [SerializeField] public GameObject mainMenuPrimary;
-        [SerializeField] public GameObject settingsMenuPrimary;
+        [SerializeField] public GameObject pcSettingsMenuPrimary;
+        [SerializeField] public GameObject mobileSettingsMenuPrimary;
         [SerializeField] public GameObject achievementsMenuPrimary;
         [SerializeField] public GameObject notesMenuPrimary;
         [SerializeField] public GameObject characterSelectPrimary;

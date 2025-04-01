@@ -10,22 +10,19 @@ public class MainSettingsState : MenuBaseState
     
     public override void EnterState(MenuStateManager menu)
     {
-        _menuCanvas = MainMenuManager.Instance.settingsMenu;
-        _mainButton = MainMenuManager.Instance.settingsMenuPrimary;
-        
-        _menuCanvas.SetActive(true);
-        LeanTween.scale(_menuCanvas.gameObject.transform.GetChild(0).gameObject, Vector3.one, 0.2f).setIgnoreTimeScale(true);
-        
         if (MenuStateManager.Instance.isMobile)
         {
-            MainMenuManager.Instance.mouseAimButton.SetActive(false);
-            MainMenuManager.Instance.notifButton.SetActive(true);
+            _menuCanvas = MainMenuManager.Instance.mobileSettingsMenu;
+            _mainButton = MainMenuManager.Instance.mobileSettingsMenuPrimary;
         }
         else
         {
-            MainMenuManager.Instance.mouseAimButton.SetActive(true);
-            MainMenuManager.Instance.notifButton.SetActive(false);
+            _menuCanvas = MainMenuManager.Instance.pcSettingsMenu;
+            _mainButton = MainMenuManager.Instance.pcSettingsMenuPrimary;
         }
+        
+        _menuCanvas.SetActive(true);
+        LeanTween.scale(_menuCanvas.gameObject.transform.GetChild(0).gameObject, Vector3.one, 0.2f).setIgnoreTimeScale(true);
         
         UpdateState(MenuStateManager.Instance);
     }
