@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UI.Scripts;
 using UI.Scripts.PauseMenu;
 using UnityEngine;
+using Utility.Simple_Scripts;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -170,7 +171,8 @@ public class EnemyBase : MonoBehaviour
         _pauseManager.killCounter += 1;
         PlayerPrefs.SetInt("EnemiesKilled", PlayerPrefs.GetInt("EnemiesKilled") + 1);
         
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        SsObjectPool.PoolObject(enemySO.name, this.gameObject);
     }
 
     public int GetDamage()
