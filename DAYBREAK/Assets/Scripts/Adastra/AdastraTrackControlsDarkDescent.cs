@@ -43,9 +43,9 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
     public float PlayerHealth = 1;
     public bool PlayerMoving = false;
     public int BulletsOnScreen = 0;
+
+    public float MASTER_VOLUME = 1f;
     
-    
-    public static AdastraTrackControlsDarkDescent Instance { get; private set; }
 
     // Start is called before the first frame update
     private void Awake()
@@ -62,14 +62,6 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
         IntroSource = FindAudioSource("Intro Drums"); // keep at 1
         LeadSource = FindAudioSource("Lead Pluck"); // Keep at 1
         MainOrganSource = FindAudioSource("Main Organ"); // increase by 0.1 each time a bullet is fired
-        
-        
-        if (Instance != null && Instance != this)
-            Destroy(this);
-        else
-            Instance = this;
-        
-        DontDestroyOnLoad(this.gameObject);
     }
     public AudioSource FindAudioSource(string name)
     {
@@ -244,37 +236,37 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
     void Update()
     {
         // Guitar (Add 0.1 for every Level, clamp at 0-1)
-        GuitarVolume = Mathf.Clamp((0.1f * Level), 0, 1);
+        GuitarVolume = Mathf.Clamp((0.1f * Level), 0, 1) * MASTER_VOLUME;
 
         // String Pulse (1 minus Player health percentage, clamp at 0-1)
-        StringPulseVolume = Mathf.Clamp(1 - PlayerHealth, 0, 1);
+        StringPulseVolume = Mathf.Clamp(1 - PlayerHealth, 0, 1) * MASTER_VOLUME;
 
         // Cowbell (0 if stationary, 1 if moving)
-        CowbellVolume = PlayerMoving ? 1 : 0;
+        CowbellVolume = PlayerMoving ? 1 : 0 * MASTER_VOLUME;
 
         // Ride (Reduce if stationary, increase if moving)
-        RideVolume = PlayerMoving ? Mathf.Min(1, RideVolume + 0.001f) : Mathf.Max(0, RideVolume - 0.001f);
+        RideVolume = PlayerMoving ? Mathf.Min(1, RideVolume + 0.001f) : Mathf.Max(0, RideVolume - 0.001f) * MASTER_VOLUME;
 
         // Bass (Keep at 1)
-        BassVolume = 1;
+        BassVolume = 1 * MASTER_VOLUME;
 
         // Choir (Increase if stationary, reduce if moving (slowly))
-        ChoirVolume = PlayerMoving ? Mathf.Max(0, ChoirVolume - 0.001f) : Mathf.Min(1, ChoirVolume + 0.001f);
+        ChoirVolume = PlayerMoving ? Mathf.Max(0, ChoirVolume - 0.001f) : Mathf.Min(1, ChoirVolume + 0.001f) * MASTER_VOLUME;
 
         // Frantic Pluck (Keep at 1)
-        FranticPluckVolume = 1;
+        FranticPluckVolume = 1 * MASTER_VOLUME;
 
         // Glitch Organ (increase by 0.2 for every bullet on screen, clamp at 0-1)
-        GlitchOrganVolume = Mathf.Clamp(0.2f * BulletsOnScreen, 0, 1);
+        GlitchOrganVolume = Mathf.Clamp(0.2f * BulletsOnScreen, 0, 1) * MASTER_VOLUME;
 
         // Intro Drums (keep at 1)
-        IntroVolume = 1;
+        IntroVolume = 1 * MASTER_VOLUME;
 
         // Lead Pluck (Keep at 1)
-        LeadVolume = 1;
+        LeadVolume = 1 * MASTER_VOLUME;
 
         // Main Organ (increase by 0.1 each bullet, clamp at 0-1)
-        MainOrganVolume = Mathf.Clamp(0.1f * BulletsOnScreen, 0, 1);
+        MainOrganVolume = Mathf.Clamp(0.1f * BulletsOnScreen, 0, 1) * MASTER_VOLUME;
     }
 
     public void SetLevel(int level)
@@ -294,5 +286,8 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
         BulletsOnScreen = bullets;
     }
 
-
+    public void SetMasterVolume(float volume)
+    {
+        MASTER_VOLUME = volume;
+    }
 }

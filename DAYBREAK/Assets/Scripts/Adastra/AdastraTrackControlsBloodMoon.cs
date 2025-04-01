@@ -34,14 +34,13 @@ public class AdastraTrackControlsBloodMoon : MonoBehaviour
     [Range(0.0f, 1.0f)] public float OrganPadVolume = 0;
     [Range(0.0f, 1.0f)] public float StringsVolume = 0;
     
-    public int Level = 0;
+    public int level = 0;
     public float PlayerHealth = 1f;
     public bool PlayerMoving = false;
     public int BulletsOnScreen = 0;
 
-    
-    public static AdastraTrackControlsBloodMoon Instance { get; private set; }
-    
+    public float MASTER_VOLUME = 1f;
+
     public AudioSource FindAudioSource(string name)
     {
         Transform child = transform.Find(name);
@@ -74,13 +73,6 @@ public class AdastraTrackControlsBloodMoon : MonoBehaviour
         Hihat = FindAudioSource("Hihat");
         OrganPad = FindAudioSource("Organ Pad");
         Strings = FindAudioSource("Strings");
-        
-        if (Instance != null && Instance != this)
-            Destroy(this);
-        else
-            Instance = this;
-        
-        DontDestroyOnLoad(this.gameObject);
     }
 
     // Start is called before the first frame update
@@ -256,18 +248,53 @@ public class AdastraTrackControlsBloodMoon : MonoBehaviour
     void Update()
     {
         // Crash
+        //CrashVolume = 1 * MASTER_VOLUME;
         // GlitchDrums
+        //GlitchDrumsVolume = 1 * MASTER_VOLUME;
         // CleanDrums
+        //CleanDrumsVolume = 1 * MASTER_VOLUME;
         // ClaveRide
+        //ClaveRideVolume = 1 * MASTER_VOLUME;
         // MelodyA
+        //MelodyAVolume = 1 * MASTER_VOLUME;
         // MelodyB
+        //MelodyBVolume = 1 * MASTER_VOLUME;
         // MelodyC
+        //MelodyCVolume = 1 * MASTER_VOLUME;
         // BackupOrgan
+        //BackupOrganVolume = 1 * MASTER_VOLUME;
         // Bass
+        //BassVolume = 1 * MASTER_VOLUME;
         // ElectronicPad
+        //ElectronicPadVolume = 1 * MASTER_VOLUME;
         // Hihat
+        //HihatVolume = 1 * MASTER_VOLUME;
         // OrganPad
+        //OrganPadVolume = 1 * MASTER_VOLUME;
         // Strings
+        //StringsVolume = 1 * MASTER_VOLUME;
+    }
+
+    public void SetLevel(int level)
+    {
+        Level = level;
+    }
+    public void SetPlayerHealth(float health)
+    {
+        PlayerHealth = health;
+    }
+    public void SetPlayerMoving(bool moving)
+    {
+        PlayerMoving = moving;
+    }
+    public void SetBulletsOnScreen(int bullets)
+    {
+        BulletsOnScreen = bullets;
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        MASTER_VOLUME = volume;
     }
 
 }
