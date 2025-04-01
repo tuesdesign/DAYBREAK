@@ -22,7 +22,7 @@ public class GameplaySettingsState : MenuBaseState
         }
         
         _menuCanvas.SetActive(true);
-        LeanTween.scale(_menuCanvas.gameObject.transform.GetChild(1).gameObject, Vector3.one, 0.2f).setIgnoreTimeScale(true);
+        LeanTween.scale(_menuCanvas.gameObject.transform.GetChild(0).gameObject, Vector3.one, 0.2f).setIgnoreTimeScale(true);
         
         UpdateState(MenuStateManager.Instance);
     }
@@ -35,7 +35,7 @@ public class GameplaySettingsState : MenuBaseState
 
     public override void ExitState(MenuStateManager menu)
     {
-        LeanTween.scale(_menuCanvas.gameObject.transform.GetChild(1).gameObject, Vector3.zero, 0.2f).setOnComplete(Close).setIgnoreTimeScale(true);
+        LeanTween.scale(_menuCanvas.gameObject.transform.GetChild(0).gameObject, Vector3.zero, 0.2f).setOnComplete(Close).setIgnoreTimeScale(true);
     }
 
     private void Close()
