@@ -17,7 +17,7 @@ MonoBehaviour:
   showTerrainAF: 1
   showSelectorAF: 1
   showStructures: 1
-  showStructure: 
+  showStructure: 00
   showPaths: 0
   showPath: 00
   showFoliage: 1
@@ -31,7 +31,8 @@ MonoBehaviour:
   selectorAF:
   - amplitude: 15
     frequency: 0.0025
-  structures: []
+  structures:
+  - {fileID: 11400000, guid: a88d2a5521fadc940a360bf879bfdf1d, type: 2}
   paths:
   - {fileID: 11400000, guid: dbc5f171042b3914b87f17da97c30f2a, type: 2}
   foliage:

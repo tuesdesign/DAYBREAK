@@ -299,11 +299,11 @@ public class PlayerBase : MonoBehaviour
         _playerAnimController.isMoving = movePosition != Vector2.zero;
         _playerAnimController.moveDirection = movePosition;
 
-        if (AdastraTrackControlsBloodMoon.Instance != null)
+        /*if (AdastraTrackControlsBloodMoon.Instance != null)
             AdastraTrackControlsBloodMoon.Instance.PlayerMoving = (movePosition != Vector2.zero);
         
         if (AdastraTrackControlsDarkDescent.Instance != null) 
-            AdastraTrackControlsDarkDescent.Instance.PlayerMoving = (movePosition != Vector2.zero);
+            AdastraTrackControlsDarkDescent.Instance.PlayerMoving = (movePosition != Vector2.zero);*/
         
 
         if (transform.position.y < waterLevel && !isTakeingWaterDamage) StartCoroutine(WaterKillTimer());
@@ -334,11 +334,11 @@ public class PlayerBase : MonoBehaviour
         }
         _playerUI.UpdateHealthBar();
         
-        if (AdastraTrackControlsBloodMoon.Instance != null)
+        /*if (AdastraTrackControlsBloodMoon.Instance != null)
             AdastraTrackControlsBloodMoon.Instance.PlayerHealth = curHealth;
         
         if (AdastraTrackControlsDarkDescent.Instance != null) 
-            AdastraTrackControlsDarkDescent.Instance.PlayerHealth = curHealth;
+            AdastraTrackControlsDarkDescent.Instance.PlayerHealth = curHealth;*/
     }
 
     public void TakeDamage(int damage)
@@ -370,11 +370,11 @@ public class PlayerBase : MonoBehaviour
                 Die();
             }
 
-            if (AdastraTrackControlsBloodMoon.Instance != null)
+            /*if (AdastraTrackControlsBloodMoon.Instance != null)
                 AdastraTrackControlsBloodMoon.Instance.PlayerHealth = curHealth;
         
             if (AdastraTrackControlsDarkDescent.Instance != null) 
-                AdastraTrackControlsDarkDescent.Instance.PlayerHealth = curHealth;
+                AdastraTrackControlsDarkDescent.Instance.PlayerHealth = curHealth;*/
             
             _playerUI.UpdateHealthBar();
             canTakeDamage = false;
@@ -417,11 +417,11 @@ public class PlayerBase : MonoBehaviour
                 Die();
             }
             
-            if (AdastraTrackControlsBloodMoon.Instance != null)
+            /*if (AdastraTrackControlsBloodMoon.Instance != null)
                 AdastraTrackControlsBloodMoon.Instance.PlayerHealth = curHealth;
         
             if (AdastraTrackControlsDarkDescent.Instance != null) 
-                AdastraTrackControlsDarkDescent.Instance.PlayerHealth = curHealth;
+                AdastraTrackControlsDarkDescent.Instance.PlayerHealth = curHealth;*/
             
             _playerUI.UpdateHealthBar();
             canTakeDamage = false;

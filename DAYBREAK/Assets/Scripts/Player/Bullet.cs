@@ -111,21 +111,6 @@ public class Bullet : MonoBehaviour
             {
                 peirceAmount--;
             }
-
-            
-
-            /*
-            Instead of Destroying the bullet, we should use object pooling.
-            What we want to do is create a queue of bullets that are not in use.
-            When a bullet is fired, we take the first bullet in the queue and set it to active. Setting its position and velocity.
-            When the bullet hits an enemy or is 'destroyed', we set it to inactive and add it to the queue.
-            We should only need to Instanciate new bullets if the queue is empty.
-
-            If you need help with this, let me know. I can help you with it.
-            - Dan <3
-
-            ~ AAAAAA i think i can do pooling - Alannis
-            */
         }
         
         if (collision.gameObject.tag == "Destructible")
@@ -133,6 +118,9 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<DamagableObjects>().TakeDamage(damage);
         }
         
+        // Destroys bullets if they hit a wall
+        if (collision.contacts[0].normal.y < 0.5f)
+            Destroy(gameObject);
     }
 
     private void OnDrawGizmos()

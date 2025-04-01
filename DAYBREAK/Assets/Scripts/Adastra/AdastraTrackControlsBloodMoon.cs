@@ -277,7 +277,7 @@ public class AdastraTrackControlsBloodMoon : MonoBehaviour
 
     public void SetLevel(int level)
     {
-        Level = level;
+        //Level = level;
     }
     public void SetPlayerHealth(float health)
     {

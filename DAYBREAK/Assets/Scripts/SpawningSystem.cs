@@ -72,7 +72,6 @@ public class SpawningSystem : MonoBehaviour
         {
             randomDirection.y = 1;
         }
-        
 
         // Calculate the spawn position based on the player's position and the chosen direction
         //Vector3 spawnPosition = terrainGenerator ? terrainGenerator.GetNearestSpawnPos(pTransform.position + randomDirection * spawnDistance) : pTransform.position + randomDirection * spawnDistance;
@@ -81,7 +80,7 @@ public class SpawningSystem : MonoBehaviour
 
         // Spawn the enemy at the calculated position with no rotation
         //Instantiate(sEnemy, spawnPosition, Quaternion.identity);
-        SsObjectPool.GetObject(sEnemy.GetComponent<EnemyBase>().enemySO.name,sEnemy, spawnPosition, Quaternion.identity);
+        SsObjectPool.GetObject(sEnemy.name, sEnemy, spawnPosition, Quaternion.identity);
 
     }
 }
