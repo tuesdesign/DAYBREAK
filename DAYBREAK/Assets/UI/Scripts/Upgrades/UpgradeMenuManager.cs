@@ -62,7 +62,13 @@ namespace UI.Scripts.Upgrades
             _appliedUpgrade = false;
             
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.UpgradeState);
-            GameObject.Find("ada_track_alex1").GetComponent<AdastraDemoTrackControlsAlexTrack1>().WindDown(); // absolutely hideous function call, replace plz
+            
+            if (AdastraTrackControlsBloodMoon.Instance != null)
+                AdastraTrackControlsBloodMoon.Instance.WindDown();
+        
+            if (AdastraTrackControlsDarkDescent.Instance != null) 
+                AdastraTrackControlsDarkDescent.Instance.WindDown();
+            
             Time.timeScale = 0;
         }
 
@@ -89,7 +95,12 @@ namespace UI.Scripts.Upgrades
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
             _flashEffect.flash = false;
             Time.timeScale = 1;
-            GameObject.Find("ada_track_alex1").GetComponent<AdastraDemoTrackControlsAlexTrack1>().WindUp(); // absolutely hideous function call, replace plz
+            
+            if (AdastraTrackControlsBloodMoon.Instance != null)
+                AdastraTrackControlsBloodMoon.Instance.WindUp();
+        
+            if (AdastraTrackControlsDarkDescent.Instance != null) 
+                AdastraTrackControlsDarkDescent.Instance.WindUp();
             
             // Add Impulse force for player
         }

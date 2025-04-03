@@ -70,9 +70,13 @@ namespace UI.Scripts.PauseMenu
 
         private void ActivateMenu()
         {
-            GameObject.Find("ada_track_alex1").GetComponent<AdastraDemoTrackControlsAlexTrack1>().WindDown(); // absolutely hideous function call, replace plz
+            if (AdastraTrackControlsBloodMoon.Instance != null)
+                AdastraTrackControlsBloodMoon.Instance.WindDown();
+        
+            if (AdastraTrackControlsDarkDescent.Instance != null) 
+                AdastraTrackControlsDarkDescent.Instance.WindDown();
+            
             Time.timeScale = 0;
-            //AudioListener.pause = true;
 
             killValueText.text = killCounter.ToString();
             timeValueText.text = _manager.TimeSurvived();
@@ -83,8 +87,12 @@ namespace UI.Scripts.PauseMenu
         private void DeactivateMenu()
         {
             Time.timeScale = 1;
-            GameObject.Find("ada_track_alex1").GetComponent<AdastraDemoTrackControlsAlexTrack1>().WindUp(); // absolutely hideous function call, replace plz
-            //AudioListener.pause = false;
+            
+            if (AdastraTrackControlsBloodMoon.Instance != null)
+                AdastraTrackControlsBloodMoon.Instance.WindUp();
+        
+            if (AdastraTrackControlsDarkDescent.Instance != null) 
+                AdastraTrackControlsDarkDescent.Instance.WindUp();
             
             MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.GameplayState);
         }

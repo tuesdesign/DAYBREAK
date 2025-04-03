@@ -54,6 +54,7 @@ namespace UI.Scripts.SettingsMenu
                 if (AdastraTrackControlsDarkDescent.Instance != null) 
                     AdastraTrackControlsDarkDescent.Instance.MASTER_VOLUME = 0;
             }
+            Debug.Log(PlayerPrefs.GetFloat("ToggleMusic"));
             
             PlayerPrefs.Save();
         }

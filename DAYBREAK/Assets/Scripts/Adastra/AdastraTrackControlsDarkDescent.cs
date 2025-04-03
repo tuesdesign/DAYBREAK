@@ -251,10 +251,10 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
         StringPulseVolume = Mathf.Clamp(1 - PlayerHealth, 0, 1) * MASTER_VOLUME;
 
         // Cowbell (0 if stationary, 1 if moving)
-        CowbellVolume = PlayerMoving ? 1 : 0 * MASTER_VOLUME;
+        CowbellVolume = (PlayerMoving ? 1 : 0) * MASTER_VOLUME;
 
         // Ride (Reduce if stationary, increase if moving)
-        RideVolume = PlayerMoving ? Mathf.Min(1, RideVolume + 0.001f) : Mathf.Max(0, RideVolume - 0.001f) * MASTER_VOLUME;
+        RideVolume = (PlayerMoving ? Mathf.Min(1, RideVolume + 0.001f) : Mathf.Max(0, RideVolume - 0.001f)) * MASTER_VOLUME;
 
         // Bass (Keep at 1)
         BassVolume = 1 * MASTER_VOLUME;
