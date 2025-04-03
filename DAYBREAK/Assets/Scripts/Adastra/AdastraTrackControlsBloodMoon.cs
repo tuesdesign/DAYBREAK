@@ -34,13 +34,15 @@ public class AdastraTrackControlsBloodMoon : MonoBehaviour
     [Range(0.0f, 1.0f)] public float OrganPadVolume = 0;
     [Range(0.0f, 1.0f)] public float StringsVolume = 0;
     
-    public int level = 0;
+    public int Level = 0;
     public float PlayerHealth = 1f;
     public bool PlayerMoving = false;
     public int BulletsOnScreen = 0;
 
     public float MASTER_VOLUME = 1f;
 
+    public static AdastraTrackControlsBloodMoon Instance { get; private set; }
+    
     public AudioSource FindAudioSource(string name)
     {
         Transform child = transform.Find(name);
@@ -73,12 +75,13 @@ public class AdastraTrackControlsBloodMoon : MonoBehaviour
         Hihat = FindAudioSource("Hihat");
         OrganPad = FindAudioSource("Organ Pad");
         Strings = FindAudioSource("Strings");
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+
+        MASTER_VOLUME = PlayerPrefs.GetFloat("ToggleMusic");
     }
 
     // Update is called once per frame

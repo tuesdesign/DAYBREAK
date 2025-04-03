@@ -54,11 +54,11 @@ public class PlayerExpHandler : MonoBehaviour
 
         UIManager.Instance.levelText.text = level.ToString();
         
-        /*if (AdastraTrackControlsBloodMoon.Instance != null)
+        if (AdastraTrackControlsBloodMoon.Instance != null)
             AdastraTrackControlsBloodMoon.Instance.Level += 1;
         
         if (AdastraTrackControlsDarkDescent.Instance != null) 
-            AdastraTrackControlsDarkDescent.Instance.Level += 1;*/
+            AdastraTrackControlsDarkDescent.Instance.Level += 1;
         
         // INSERT A CALL TO SPAWN THE UPGRADE MENU AND PAUSE THE TIME  (ALSO ENSURE THAT AFTER SELECTING THE UPGRADE MENU THAT TIME REVERTS)
         _upgradeManagerMenu.PopulateMenu();

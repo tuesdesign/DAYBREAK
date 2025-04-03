@@ -46,6 +46,7 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
 
     public float MASTER_VOLUME = 1f;
     
+    public static AdastraTrackControlsDarkDescent Instance { get; private set; }
 
     // Start is called before the first frame update
     private void Awake()
@@ -62,7 +63,15 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
         IntroSource = FindAudioSource("Intro Drums"); // keep at 1
         LeadSource = FindAudioSource("Lead Pluck"); // Keep at 1
         MainOrganSource = FindAudioSource("Main Organ"); // increase by 0.1 each time a bullet is fired
+        
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+        
+        MASTER_VOLUME = PlayerPrefs.GetFloat("ToggleMusic");
     }
+    
     public AudioSource FindAudioSource(string name)
     {
         Transform child = transform.Find(name);
