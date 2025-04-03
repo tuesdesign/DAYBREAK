@@ -36,7 +36,7 @@ namespace UI.Scripts.Upgrades
         
         public void PopulateMenu()
         {
-            var index = Random.Range(0, _upgradeObject.FullupgradeList.Count - 1);
+            var index = Random.Range(0, _upgradeObject.FullupgradeList.Count);
 
             titleText1.text = _upgradeObject.FullupgradeList[index].upgradeName;
             descriptionText1.text = _upgradeObject.FullupgradeList[index].description;

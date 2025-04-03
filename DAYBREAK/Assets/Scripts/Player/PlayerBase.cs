@@ -65,8 +65,6 @@ public class PlayerBase : MonoBehaviour
     private Finger _movementFinger;
     private Finger _aimFinger;
     private Finger _singleFinger;
-    private int _trackedFingerId1 = -1;
-    private int _trackedFingerId2 = -1;
     
     private void OnEnable()
     {
