@@ -251,31 +251,96 @@ public class AdastraTrackControlsBloodMoon : MonoBehaviour
     void Update()
     {
         // Crash
-        //CrashVolume = 1 * MASTER_VOLUME;
+        // increase by 0.2 for each bullet on screen (0-1)
+        CrashVolume = Mathf.Clamp01(BulletsOnScreen * 0.2f) * MASTER_VOLUME; 
+        
         // GlitchDrums
-        //GlitchDrumsVolume = 1 * MASTER_VOLUME;
+        // approach 1 as player health approaches 0
+        GlitchDrumsVolume = Mathf.Clamp01(1 - PlayerHealth) * MASTER_VOLUME;
+        
         // CleanDrums
-        //CleanDrumsVolume = 1 * MASTER_VOLUME;
+        // approach 1 as player health approaches 1
+        CleanDrumsVolume = Mathf.Clamp01(PlayerHealth) * MASTER_VOLUME;
+        
+
         // ClaveRide
-        //ClaveRideVolume = 1 * MASTER_VOLUME;
+        // increase when player is moving, decrease when player is not moving
+        if (PlayerMoving)
+        {
+            ClaveRideVolume = Mathf.Clamp01(ClaveRideVolume + Time.deltaTime) * MASTER_VOLUME;
+        }
+        else
+        {
+            ClaveRideVolume = Mathf.Clamp01(ClaveRideVolume - Time.deltaTime) * MASTER_VOLUME;
+        }
+
         // MelodyA
-        //MelodyAVolume = 1 * MASTER_VOLUME;
+        // increase when player is moving, decrease when player is not moving
+        if (PlayerMoving)
+        {
+            MelodyAVolume = Mathf.Clamp01(MelodyAVolume + Time.deltaTime/3) * MASTER_VOLUME;
+        }
+        else
+        {
+            MelodyAVolume = Mathf.Clamp01(MelodyAVolume - Time.deltaTime/3) * MASTER_VOLUME;
+        }
         // MelodyB
-        //MelodyBVolume = 1 * MASTER_VOLUME;
+        // increase when player is moving, decrease when player is not moving
+        if (PlayerMoving)
+        {
+            MelodyBVolume = Mathf.Clamp01(MelodyBVolume + Time.deltaTime/3) * MASTER_VOLUME;
+        }
+        else
+        {
+            MelodyBVolume = Mathf.Clamp01(MelodyBVolume - Time.deltaTime/3) * MASTER_VOLUME;
+        }
         // MelodyC
-        //MelodyCVolume = 1 * MASTER_VOLUME;
+        // increase when player is moving, decrease when player is not moving
+        if (PlayerMoving)
+        {
+            MelodyCVolume = Mathf.Clamp01(MelodyCVolume + Time.deltaTime/3) * MASTER_VOLUME;
+        }
+        else
+        {
+            MelodyCVolume = Mathf.Clamp01(MelodyCVolume - Time.deltaTime/3) * MASTER_VOLUME;
+        }
         // BackupOrgan
-        //BackupOrganVolume = 1 * MASTER_VOLUME;
+        // set to 1
+        BackupOrganVolume = 1 * MASTER_VOLUME;
+
         // Bass
-        //BassVolume = 1 * MASTER_VOLUME;
+        // decrease when player is moving, increase when player is not moving
+        if (PlayerMoving)
+        {
+            BassVolume = Mathf.Clamp01(BassVolume - Time.deltaTime/15) * MASTER_VOLUME;
+        }
+        else
+        {
+            BassVolume = Mathf.Clamp01(BassVolume + Time.deltaTime/3) * MASTER_VOLUME;
+        }
+        
         // ElectronicPad
-        //ElectronicPadVolume = 1 * MASTER_VOLUME;
+        // increase by 0.1 for each level (0-1)
+        ElectronicPadVolume = Mathf.Clamp01(Level * 0.1f) * MASTER_VOLUME;
+        
         // Hihat
-        //HihatVolume = 1 * MASTER_VOLUME;
+        // increase when player is moving, decrease when player is not moving (slow)
+        if (PlayerMoving)
+        {
+            HihatVolume = Mathf.Clamp01(HihatVolume + Time.deltaTime/10) * MASTER_VOLUME;
+        }
+        else
+        {
+            HihatVolume = Mathf.Clamp01(HihatVolume - Time.deltaTime) * MASTER_VOLUME;
+        }
+
         // OrganPad
-        //OrganPadVolume = 1 * MASTER_VOLUME;
+        // increase by 0.1 for each level (0-1)
+        OrganPadVolume = Mathf.Clamp01(Level * 0.1f) * MASTER_VOLUME;
+
         // Strings
-        //StringsVolume = 1 * MASTER_VOLUME;
+        // approach 1 as player health approaches 0
+        StringsVolume = Mathf.Clamp01(1 - PlayerHealth) * MASTER_VOLUME;
     }
 
     public void SetLevel(int level)
