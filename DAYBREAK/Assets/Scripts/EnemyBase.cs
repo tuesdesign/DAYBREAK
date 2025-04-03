@@ -171,8 +171,8 @@ public class EnemyBase : MonoBehaviour
         _pauseManager.killCounter += 1;
         PlayerPrefs.SetInt("EnemiesKilled", PlayerPrefs.GetInt("EnemiesKilled") + 1);
         
-        //Destroy(this.gameObject);
-        SsObjectPool.PoolObject(enemySO.name, this.gameObject);
+        Destroy(this.gameObject);
+        //SsObjectPool.PoolObject(enemySO.name, this.gameObject);
     }
 
     public int GetDamage()

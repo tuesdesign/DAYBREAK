@@ -126,7 +126,7 @@ Material:
     - _EnvironmentReflections: 1
     - _Exposure: 1
     - _FoamAmount: 1
-    - _FoamScale: 350
+    - _FoamScale: 454.96
     - _FoamSpeed: 0.01
     - _FoamStrength: 1
     - _GlossMapScale: 0
@@ -164,7 +164,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Cloud_Movement: {r: 1, g: 1, b: 0, a: 0}
     - _Cloud_Step: {r: 13, g: 17, b: 0, a: 0}
-    - _Color: {r: 0.21350001, g: 0.20841667, b: 0.244, a: 0.5529412}
+    - _Color: {r: 0.05025507, g: 0.14532882, b: 0.48427665, a: 0.5529412}
     - _DistortionDirection: {r: 0.25, g: 0, b: 0, a: 0}
     - _DistortionStrength: {r: 0.05, g: 0.05, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

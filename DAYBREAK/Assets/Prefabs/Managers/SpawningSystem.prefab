@@ -76,21 +76,13 @@ MonoBehaviour:
     - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
     - {fileID: 5392011093294169524, guid: 970c4a57aa0b3b04d84656bfd08e7e34, type: 3}
   - duration: 20
-    spawnSpeed: 2
+    spawnSpeed: 1
     enemies:
     - {fileID: 5392011093294169524, guid: 970c4a57aa0b3b04d84656bfd08e7e34, type: 3}
     - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
     - {fileID: 5392011093294169524, guid: 1562a638c3c926b4aa338b23deabe496, type: 3}
   - duration: 10
-    spawnSpeed: 1
-    enemies:
-    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
-    - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
-    - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
-    - {fileID: 5392011093294169524, guid: 1562a638c3c926b4aa338b23deabe496, type: 3}
-    - {fileID: 5392011093294169524, guid: 02d720debd0ed984d90aee0959002e02, type: 3}
-  - duration: 60
-    spawnSpeed: 2
+    spawnSpeed: 0.8
     enemies:
     - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
     - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
@@ -100,12 +92,20 @@ MonoBehaviour:
   - duration: 60
     spawnSpeed: 1
     enemies:
+    - {fileID: 5392011093294169524, guid: 2eb4742c25ab2044f84cbe34d80e5da2, type: 3}
     - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
     - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
     - {fileID: 5392011093294169524, guid: 1562a638c3c926b4aa338b23deabe496, type: 3}
     - {fileID: 5392011093294169524, guid: 02d720debd0ed984d90aee0959002e02, type: 3}
   - duration: 60
     spawnSpeed: 0.5
+    enemies:
+    - {fileID: 5392011093294169524, guid: 102f372fa23c8c94ab2024dfd7717e13, type: 3}
+    - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
+    - {fileID: 5392011093294169524, guid: 1562a638c3c926b4aa338b23deabe496, type: 3}
+    - {fileID: 5392011093294169524, guid: 02d720debd0ed984d90aee0959002e02, type: 3}
+  - duration: 60
+    spawnSpeed: 0.3
     enemies:
     - {fileID: 2760922430439001262, guid: ecfaa9a8ffb2ac546a92f783014073ab, type: 3}
     - {fileID: 5392011093294169524, guid: 1562a638c3c926b4aa338b23deabe496, type: 3}
