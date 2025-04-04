@@ -245,6 +245,20 @@ public class AdastraTrackControlsBloodMoon : MonoBehaviour
             yield return null;
         }
 
+            Crash.pitch = 1;
+            GlitchDrums.pitch = 1;
+            CleanDrums.pitch = 1;
+            ClaveRide.pitch = 1;
+            MelodyA.pitch = 1;
+            MelodyB.pitch = 1;
+            MelodyC.pitch = 1;
+            BackupOrgan.pitch = 1;
+            Bass.pitch = 1;
+            ElectronicPad.pitch = 1;
+            Hihat.pitch = 1;
+            OrganPad.pitch = 1;
+            Strings.pitch = 1;
+
         if (DEBUG) { Debug.Log("<color=teal>ADA: </color><color=green>Effect 'slowdown' END</color>"); } // DEBUG message
     }
 

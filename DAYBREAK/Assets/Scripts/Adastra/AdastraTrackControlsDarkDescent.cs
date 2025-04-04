@@ -239,6 +239,18 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
             yield return null;
         }
 
+            GuitarSource.pitch = 1;
+            StringPulseSource.pitch = 1;
+            CowbellSource.pitch = 1;
+            RideSource.pitch = 1;
+            BassSource.pitch = 1;
+            ChoirSource.pitch = 1;
+            FranticPluckSource.pitch = 1;
+            GlitchOrganSource.pitch = 1;
+            IntroSource.pitch = 1;
+            LeadSource.pitch = 1;
+            MainOrganSource.pitch = 1;
+
         if (DEBUG) { Debug.Log("<color=teal>ADA: </color><color=green>Effect 'slowdown' END</color>"); } // DEBUG message
     }
 

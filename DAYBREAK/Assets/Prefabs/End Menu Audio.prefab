@@ -48,6 +48,8 @@ MonoBehaviour:
   Track: {fileID: 8300000, guid: 8e93b5d954be7d944b9c97de3b698864, type: 3}
   Source: {fileID: 6594848224140385256}
   Volume: 1
+  IsEnd: 1
+  savedVol: 1
 --- !u!82 &6594848224140385256
 AudioSource:
   m_ObjectHideFlags: 0
