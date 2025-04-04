@@ -27,9 +27,9 @@ public class Bullet : MonoBehaviour
     Vector3 glueCast;
 
     public AudioClip burnSFX;
-    publicAudioClip freezeSFX;
-    publicAudioClip slowSFX;
-    publicAudioClip poisonSFX;
+    public AudioClip freezeSFX;
+    public AudioClip slowSFX;
+    public AudioClip poisonSFX;
 
     //bulletinformation
     bool canBurn;

@@ -197,6 +197,10 @@ MonoBehaviour:
   enableTerrainGlueForce: 1
   glueDistance: 1
   gluePower: 10
+  burnSFX: {fileID: 8300000, guid: d0b5fa9f5c30c4849a7163238f8e2810, type: 3}
+  freezeSFX: {fileID: 8300000, guid: d5213964f87d49f46b783ee38a770723, type: 3}
+  slowSFX: {fileID: 0}
+  poisonSFX: {fileID: 0}
 --- !u!54 &6588048106972015134
 Rigidbody:
   m_ObjectHideFlags: 0

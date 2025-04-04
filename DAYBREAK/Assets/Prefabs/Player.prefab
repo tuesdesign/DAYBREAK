@@ -105,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355655181877688982}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11352878, y: 0.882288, z: 0.27408296, w: 0.3654556}
+  m_LocalRotation: {x: -0.1135287, y: 0.882288, z: 0.274083, w: 0.36545557}
   m_LocalPosition: {x: 0, y: 1.65, z: 0}
   m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
   m_ConstrainProportionsScale: 0
@@ -902,6 +902,8 @@ MonoBehaviour:
   animator: {fileID: 4329908724845342925}
   dodgeEffect: {fileID: 8575297834219849304}
   sheildEffect: {fileID: 2829412636821186895}
+  sheildUpSound: {fileID: 8300000, guid: c2ae898f782deb148bd41da2dcb09820, type: 3}
+  sheildDownSound: {fileID: 8300000, guid: cb578750b33b02f4f89f4ff0ab9cb11d, type: 3}
   maxHealthModifier: 0
   invincibilityTimeModifier: 0.25
   speedModifier: 0

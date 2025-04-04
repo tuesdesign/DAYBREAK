@@ -38,8 +38,8 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] private GameObject dodgeEffect;
     [SerializeField] GameObject sheildEffect;
 
-    [SerializeField] AudioClip sheildUpSound;
-    [SerializeField] AudioClip sheildownSound;
+    [SerializeField] public AudioClip sheildUpSound;
+    [SerializeField] public AudioClip sheildDownSound;
 
 
     //UpgradeModifiers
@@ -53,9 +53,6 @@ public class PlayerBase : MonoBehaviour
     bool isTakeingWaterDamage = false;
 
     float waterLevel = 0;
-
-    public AudioClip sheildUpSound;
-    public AudioClip sheildownSound;
 
     public int CurHealth { get => curHealth; set => curHealth = value; }
     public int MaxHealth { get => maxHealth; set => maxHealth = value; }
