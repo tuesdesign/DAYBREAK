@@ -17,17 +17,21 @@ namespace Adastra
 
         private void Start()
         {
-            int temp = Random.Range(0, musicTracks.Count);
-        
-            switch (temp)
-            {
-                case 0:
-                    musicTracks[0].SetActive(true);
-                    break;
-                case 1:
-                    musicTracks[1].SetActive(true);
-                    break;
-            }
+            int seed = System.DateTime.Now.Millisecond;
+            Random.InitState(seed);
+            int temp = Random.Range(0,2);
+           
+            musicTracks[temp].SetActive(true);
+
+            //switch (temp)
+            //{
+            //    case 0:
+            //        musicTracks[0].SetActive(true);
+            //        break;
+            //    case 1:
+            //        musicTracks[1].SetActive(true);
+            //        break;
+            //}
         }
     }
 }
