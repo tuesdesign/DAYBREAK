@@ -250,6 +250,7 @@ public class AdastraTrackControlsBloodMoon : MonoBehaviour
 
     void Update()
     {
+        BulletsOnScreen = GameObject.FindGameObjectsWithTag("Bullet").Length;
         // Crash
         // increase by 0.2 for each bullet on screen (0-1)
         CrashVolume = Mathf.Clamp01(BulletsOnScreen * 0.2f) * MASTER_VOLUME; 

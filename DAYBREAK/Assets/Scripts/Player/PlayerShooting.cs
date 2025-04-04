@@ -151,7 +151,7 @@ public class PlayerShooting : MonoBehaviour
 
                 OnBulletShot?.Invoke(b);
 
-                Destroy(b, 10);
+                //Destroy(b, 10);
 
                 ammoCount--;
                 PlayerPrefs.SetInt("ShotsFired", PlayerPrefs.GetInt("ShotsFired") + 1);
@@ -184,7 +184,7 @@ public class PlayerShooting : MonoBehaviour
                     b.transform.forward = rb.velocity.normalized;
 
                     // Destroy bullet after 10 seconds
-                    Destroy(b, 10);
+                    //Destroy(b, 10);
 
                     OnBulletShot?.Invoke(b);
 

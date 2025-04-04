@@ -244,8 +244,10 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
 
     void Update()
     {
-        // Guitar (Add 0.1 for every Level, clamp at 0-1)
-        GuitarVolume = Mathf.Clamp((0.1f * Level), 0, 1) * MASTER_VOLUME;
+        BulletsOnScreen = GameObject.FindGameObjectsWithTag("Bullet").Length;
+
+       // Guitar (Add 0.1 for every Level, clamp at 0-1)
+       GuitarVolume = Mathf.Clamp((0.1f * Level), 0, 1) * MASTER_VOLUME;
 
         // String Pulse (1 minus Player health percentage, clamp at 0-1)
         StringPulseVolume = Mathf.Clamp(1 - PlayerHealth, 0, 1) * MASTER_VOLUME;

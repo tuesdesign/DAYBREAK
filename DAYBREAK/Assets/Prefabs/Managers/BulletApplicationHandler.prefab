@@ -59,12 +59,12 @@ MonoBehaviour:
   shotsBetweenFreeze: 0
   freezeChance: 0
   freezeTime: 0
-  freezeVFX: {fileID: 8905774327500605420, guid: 5f93494a0cabe434ebee43c64580a215, type: 3}
+  freezeVFX: {fileID: 4964535491511100379, guid: e345679c99d184f45be647fbfa32b1de, type: 3}
   canSlow: 0
   shotsBetweenSlow: 0
   slowChance: 0
   slowTime: 0
-  slowVFX: {fileID: 4775648168465445226, guid: 47fe600febf516745b44d3bd688423b9, type: 3}
+  slowVFX: {fileID: 1036340632586076636, guid: bc9ebeab95c666b43bf42bd74813107c, type: 3}
   canPoison: 0
   shotsBetweenPoison: 0
   poisonChance: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   castWind: 0
   shotsBetweenWind: 0
   burnParticles: {fileID: 2968479881673296490, guid: f7addb2c8ec2b534c8940bc53f7ffe34, type: 3}
-  freezeParticles: {fileID: 0}
-  slowParticles: {fileID: 0}
+  freezeParticles: {fileID: 4964535491511100379, guid: e345679c99d184f45be647fbfa32b1de, type: 3}
+  slowParticles: {fileID: 1036340632586076636, guid: bc9ebeab95c666b43bf42bd74813107c, type: 3}
   poisonParticles: {fileID: 0}
   explosionParticles: {fileID: 6933657180369242518, guid: 975887e4f8bfc694980bdd17b70af470, type: 3}

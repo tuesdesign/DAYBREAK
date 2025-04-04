@@ -26,6 +26,11 @@ public class Bullet : MonoBehaviour
     Vector3 glueForce;
     Vector3 glueCast;
 
+    public AudioClip burnSFX;
+    publicAudioClip freezeSFX;
+    publicAudioClip slowSFX;
+    publicAudioClip poisonSFX;
+
     //bulletinformation
     bool canBurn;
     bool canFreeze;
@@ -49,6 +54,7 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         bulletHandling = FindObjectOfType<BulletApplicationHandling>();
+        Destroy(this.gameObject, 4);
     }
 
     void FixedUpdate()
@@ -79,6 +85,8 @@ public class Bullet : MonoBehaviour
             if (canBurn)
             {
                 enemy.TickDamageClaculation(2);
+                AudioSource.PlayClipAtPoint(burnSFX,transform.position);
+                
             }
 
             if (canPoision)
@@ -95,11 +103,13 @@ public class Bullet : MonoBehaviour
             if (canFreeze)
             {
                 enemy.TriggerFreeze();
+                AudioSource.PlayClipAtPoint(freezeSFX, transform.position);
             }
             
             if (canSlow)
             {
                 enemy.TriggerSlow();
+
             }
 
             if (peirceAmount <= 0)
@@ -132,3 +142,5 @@ public class Bullet : MonoBehaviour
         Gizmos.DrawLine(rb.position, glueCast);
     }
 }
+
+

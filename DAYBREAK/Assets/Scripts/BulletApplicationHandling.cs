@@ -89,6 +89,7 @@ public class BulletApplicationHandling : MonoBehaviour
                 burnshots -= shotsBetweenBurn;
                 //apply vfx to bullet
                 GameObject v = Instantiate(burnParticles,bullet.transform);
+
             }
             else if (Random.Range(0, 100) <= burnChance)
             {
@@ -104,7 +105,7 @@ public class BulletApplicationHandling : MonoBehaviour
             if (poisonshots >= shotsBetweenPoison)
             {
                 bullet.CanPoision = true;
-                                poisonshots -= shotsBetweenPoison;
+                poisonshots -= shotsBetweenPoison;
                 //apply vfx to bullet
             }
             else if(Random.Range(0, 100) <= poisonChance)
@@ -121,14 +122,15 @@ public class BulletApplicationHandling : MonoBehaviour
             {
                 bullet.CanFreeze = true;
                 freezeshots -= shotsBetweenFreeze;
-                //GameObject v = Instantiate(freezeParticles, bullet.transform);
+                GameObject v = Instantiate(slowVFX, bullet.transform);
                 //apply vfx to bullet
 
             }
             else if (Random.Range(0, 100) <= freezeChance)
             {
                 bullet.CanFreeze= true;
-                //GameObject v = Instantiate(freezeParticles, bullet.transform);
+                GameObject v = Instantiate(freezeParticles, bullet.transform);
+                
             }
             freezeshots++;
         }
@@ -141,11 +143,12 @@ public class BulletApplicationHandling : MonoBehaviour
                 bullet.CanSlow = true;
                 slowshots -= shotsBetweenSlow;
                 //apply vfx to bullet
-
+                GameObject v = Instantiate(slowParticles, bullet.transform);
             }
             else if (Random.Range(0, 100) <= slowChance)
             {
                 bullet.CanSlow = true;
+                GameObject v = Instantiate(slowParticles, bullet.transform);
             }
             slowshots++;
         }
