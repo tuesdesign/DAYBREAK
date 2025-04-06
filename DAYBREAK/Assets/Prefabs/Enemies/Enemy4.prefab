@@ -34,10 +34,10 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1650305077503714931}
   - {fileID: 1767441514057816570}
   - {fileID: 7537505793254590221}
   - {fileID: 7571327242692456165}
+  - {fileID: 4703629270202155819}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2313999043885260404
@@ -109,7 +109,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -133,7 +133,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a60b7e183a0e074489628110eac4a2ad, type: 3}
   - {fileID: 8300000, guid: c7e030577ec10e04885bf3528e8520ab, type: 3}
   timeBetweenTicks: 1
-  fireVFX: {fileID: 3749725489785707652}
+  onFire: 0
+  fireVFX: {fileID: 0}
   freezeVFX: {fileID: 2413877044852188340}
   slowVFX: {fileID: 3473858447039982329}
   poisonVFX: {fileID: 0}
@@ -163,7 +164,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1001 &3741526192445853367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -312,14 +313,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a847eaaaf6a79d48a4b9cf229dad260, type: 3}
---- !u!4 &1650305077503714931 stripped
+--- !u!4 &4703629270202155819 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3304667494241161254, guid: 4a847eaaaf6a79d48a4b9cf229dad260, type: 3}
-  m_PrefabInstance: {fileID: 4268152590378186325}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3749725489785707652 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1094996335557356241, guid: 4a847eaaaf6a79d48a4b9cf229dad260, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8826250206633801086, guid: 4a847eaaaf6a79d48a4b9cf229dad260, type: 3}
   m_PrefabInstance: {fileID: 4268152590378186325}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4723906773729377574

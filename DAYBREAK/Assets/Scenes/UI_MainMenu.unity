@@ -17545,7 +17545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forcedExit: 0
-  isMobile: 1
+  isMobile: 0
 --- !u!114 &1870241718
 MonoBehaviour:
   m_ObjectHideFlags: 0

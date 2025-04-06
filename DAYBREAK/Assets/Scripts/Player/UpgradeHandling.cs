@@ -54,12 +54,17 @@ public class UpgradeHandling : MonoBehaviour
 
     public void ApplyUpgrade(UpgradeBaseSO upgradeToApply)
     {
+
+        if (upgradeToApply == null || upgradeToApply.upgradeLevels[0] == null)
+        {
+            return;
+        }
         //if (upgradeToApply == null || upgradeToApply.level < 0 || upgradeToApply.level >= upgradeToApply.maxLevel)
         //{
         //    return; //used if the upgrade is at its max or any errors in the lvel occur
         //}
         
-        Debug.Log("Applying upgrade: " + upgradeToApply.upgradeName + " at level " + upgradeToApply.level);
+        //Debug.Log("Applying upgrade: " + upgradeToApply.upgradeName + " at level " + upgradeToApply.level);
 
         PlayerPrefs.SetInt("UpgradesApplied", PlayerPrefs.GetInt("UpgradesApplied") + 1);
         

@@ -68,9 +68,9 @@ public class SpawningSystem : MonoBehaviour
             randomDirection.x = 1;
         }
 
-        if (randomDirection.y == 0)
+        if (randomDirection.z == 0)
         {
-            randomDirection.y = 1;
+            randomDirection.z = 1;
         }
 
         // Calculate the spawn position based on the player's position and the chosen direction

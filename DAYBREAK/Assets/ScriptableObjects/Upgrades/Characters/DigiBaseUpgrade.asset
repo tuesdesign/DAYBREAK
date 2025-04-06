@@ -17,4 +17,47 @@ MonoBehaviour:
   level: 0
   image: {fileID: 0}
   description: 
-  upgradeLevels: []
+  upgradeLevels:
+  - replacePrevUpgrade: 0
+    description: 
+    usesBasePlayer: 0
+    basePlayerStats:
+      maxHealthModifier: 0
+      healsOnApply: 0
+      moveSpeedIncrease: 0
+      sheildMod: 0
+      dodgeChanceMod: 0
+      invincibilityFrameMod: 0
+    usesExp: 0
+    expStats:
+      expPickUPRadMod: 0
+      expMultiplier: 0
+    usesShooting: 0
+    playerShooting:
+      bulletSpeedModifier: 0
+      shootDelayModifier: 0
+      maxAmmoModifier: 0
+      reloadTimeModifier: 0
+      bulletsPerShotModifier: 0
+      bulletSpreadModifier: 0
+    usesbulletPropersties: 0
+    bulletProperties:
+      damageMod: 0
+      canBurn: 0
+      burnChance: 0
+      shotsBetweenBurn: 0
+      canExplode: 0
+      explosionRange: 0
+      explosionDamage: 0
+      canFreeze: 0
+      freezeChance: 0
+      shotsBwteenFreeze: 0
+      canSlow: 0
+      slowChance: 0
+      shotsBwteenSlow: 0
+      canPoison: 0
+      poisonChance: 0
+      shotsBetweenPoison: 0
+      canBounce: 0
+      bounceAmount: 0
+      pierceAmount: 0

@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: expAmount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3192078661431503286, guid: c9c1db8678d7dba45a5df04c36f2c07b, type: 3}
+      propertyPath: m_Intensity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6486925566787783258, guid: c9c1db8678d7dba45a5df04c36f2c07b, type: 3}
       propertyPath: m_Name
       value: Exp5 Variant

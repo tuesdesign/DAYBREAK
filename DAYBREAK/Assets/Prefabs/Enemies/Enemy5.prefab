@@ -34,10 +34,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8276134605936133656}
   - {fileID: 7571327242692456165}
   - {fileID: 8161251573508916998}
   - {fileID: 6232761203502025662}
+  - {fileID: 2700777468343771968}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2313999043885260404
@@ -109,7 +109,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -133,7 +133,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a60b7e183a0e074489628110eac4a2ad, type: 3}
   - {fileID: 8300000, guid: c7e030577ec10e04885bf3528e8520ab, type: 3}
   timeBetweenTicks: 1
-  fireVFX: {fileID: 5779244622872214767}
+  onFire: 0
+  fireVFX: {fileID: 0}
   freezeVFX: {fileID: 5240626201865452104}
   slowVFX: {fileID: 1067407011584304714}
   poisonVFX: {fileID: 0}
@@ -163,7 +164,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1001 &4723906773729377574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,13 +470,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a847eaaaf6a79d48a4b9cf229dad260, type: 3}
---- !u!1 &5779244622872214767 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1094996335557356241, guid: 4a847eaaaf6a79d48a4b9cf229dad260, type: 3}
-  m_PrefabInstance: {fileID: 6847218561793021502}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8276134605936133656 stripped
+--- !u!4 &2700777468343771968 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3304667494241161254, guid: 4a847eaaaf6a79d48a4b9cf229dad260, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8826250206633801086, guid: 4a847eaaaf6a79d48a4b9cf229dad260, type: 3}
   m_PrefabInstance: {fileID: 6847218561793021502}
   m_PrefabAsset: {fileID: 0}
