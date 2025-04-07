@@ -11,6 +11,7 @@ public class TG_Foliage : ScriptableObject
     public Vector3 rotationLimit;
     public float minScale = 1;
     public float maxScale = 1;
+    public float heightOffset = 0;
 
     [Tooltip("foliageDensity of 1 will yield 1 instance of foliage per 10 x 10 map size")] public float density = 1;
 
@@ -46,7 +47,7 @@ public class TG_Foliage : ScriptableObject
 
         GameObject instance = Instantiate(prefab, pos, rotation, parent);
         instance.transform.localScale = Vector3.one * Random.Range(minScale, maxScale);
-        instance.transform.localPosition += Vector3.up * instance.transform.localScale.y / 2;
+        instance.transform.localPosition += (Vector3.up * instance.transform.localScale.y / 2) - Vector3.up * heightOffset;
         instance.GetComponent<Renderer>().material = materials[Random.Range(0, materials.Length)];
     }
 

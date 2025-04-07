@@ -375,7 +375,7 @@ public class TerrainGenerator : MonoBehaviour
             GameObject structureObj = Instantiate(structure.obj);
             structureObj.transform.parent = terrain.transform;
             structureObj.transform.localPosition = sPos + new Vector3(0, structure.offestY, 0);
-            structureObj.transform.rotation = Quaternion.Euler(0, 0, 0);
+            structureObj.transform.rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
 
             structurePosistionsAndRadii.Add(sMapLocal, structure.radius);
         }

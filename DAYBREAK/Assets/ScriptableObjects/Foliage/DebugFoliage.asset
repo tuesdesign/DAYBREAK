@@ -18,6 +18,7 @@ MonoBehaviour:
   rotationLimit: {x: 0, y: 15, z: 0}
   minScale: 0.5
   maxScale: 2
+  heightOffset: 1
   density: 1
   materials:
   - {fileID: 2100000, guid: 02e4ea1440e3dfd4991de96364720da1, type: 2}

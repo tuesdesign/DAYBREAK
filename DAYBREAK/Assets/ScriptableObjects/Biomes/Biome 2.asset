@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Biome 2
   m_EditorClassIdentifier: 
   showColors: 0
-  showAFs: 1
+  showAFs: 0
   showTerrainAF: 1
   showSelectorAF: 1
-  showStructures: 0
-  showStructure: 
+  showStructures: 1
+  showStructure: 0000
   showPaths: 1
   showPath: 00
-  showFoliage: 0
-  showFoliageObj: 
+  showFoliage: 1
+  showFoliageObj: 00
   baseTerrainLayer: {fileID: 8574412962073106934, guid: 19c64478e8294d24ebde63eb1ec74c0d, type: 2}
   biomeColors:
   - {r: 0, g: 0, b: 0, a: 0}
@@ -31,7 +31,10 @@ MonoBehaviour:
   selectorAF:
   - amplitude: 15
     frequency: 0.0025
-  structures: []
+  structures:
+  - {fileID: 11400000, guid: a88d2a5521fadc940a360bf879bfdf1d, type: 2}
+  - {fileID: 11400000, guid: 4282e48de0ee09940b5616ff02682108, type: 2}
   paths:
   - {fileID: 11400000, guid: dbc5f171042b3914b87f17da97c30f2a, type: 2}
-  foliage: []
+  foliage:
+  - {fileID: 11400000, guid: e0b2fc07066ab764eace9784183331df, type: 2}
