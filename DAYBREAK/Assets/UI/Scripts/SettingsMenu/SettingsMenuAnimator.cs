@@ -18,7 +18,7 @@ namespace UI.Scripts.SettingsMenu
             if (!_isClick)
             {
                 LeanTween.scale(go, new Vector3(0.95f, 0.95f, 0.95f), hoverDuration).setIgnoreTimeScale(true);
-                SoundFXManager.Instance.PlaySoundFXClip(MenuStateManager.Instance.hoverSoundClip, transform, 1f);
+                SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.hoverSoundClip, transform, 1f);
             }
         }
             
@@ -31,7 +31,7 @@ namespace UI.Scripts.SettingsMenu
         public void ButtonClick(GameObject go, GameObject circle, GameObject background, bool slideLeft)
         {
             _isClick = true;
-            SoundFXManager.Instance.PlaySoundFXClip(MenuStateManager.Instance.smallSelectSoundClip, transform, 1f);
+            SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.smallSelectSoundClip, transform, 1f);
 
             if (slideLeft)
             {

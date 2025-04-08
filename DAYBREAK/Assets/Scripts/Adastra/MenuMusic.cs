@@ -21,7 +21,7 @@ public class MenuMusic : MonoBehaviour
 
     void start()
     {
-        Volume = PlayerPrefs.GetFloat("ToggleMusic", 1f);
+        Volume = PlayerPrefs.GetFloat("ToggleMusic");
     }
     
     // Update is called once per frame

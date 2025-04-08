@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace UI.Scripts.SettingsMenu
 {
     public class SettingsMenuManager : MonoBehaviour
     {
+        [SerializeField] private AudioMixer audioMixer;
+        
         private PlayerShooting _playerShooting;
         
         private void Start()
@@ -34,19 +37,10 @@ namespace UI.Scripts.SettingsMenu
 
         public void MinMaxMusic()
         {
-            if (PlayerPrefs.GetFloat("ToggleMusic") == 0)
+            if (PlayerPrefs.GetFloat("ToggleMusic") == 1f)
             {
-                PlayerPrefs.SetFloat("ToggleMusic", 1);
-                
-                if (AdastraTrackControlsBloodMoon.Instance != null)
-                    AdastraTrackControlsBloodMoon.Instance.MASTER_VOLUME = 1;
-        
-                if (AdastraTrackControlsDarkDescent.Instance != null) 
-                    AdastraTrackControlsDarkDescent.Instance.MASTER_VOLUME = 1;
-            }
-            else if (PlayerPrefs.GetFloat("ToggleMusic") == 1)
-            {
-                PlayerPrefs.SetFloat("ToggleMusic", 0);
+                PlayerPrefs.SetFloat("ToggleMusic", 0.0001f);
+                audioMixer.SetFloat("MusicVolume", -80);
                 
                 if (AdastraTrackControlsBloodMoon.Instance != null)
                     AdastraTrackControlsBloodMoon.Instance.MASTER_VOLUME = 0;
@@ -54,7 +48,17 @@ namespace UI.Scripts.SettingsMenu
                 if (AdastraTrackControlsDarkDescent.Instance != null) 
                     AdastraTrackControlsDarkDescent.Instance.MASTER_VOLUME = 0;
             }
-            Debug.Log(PlayerPrefs.GetFloat("ToggleMusic"));
+            else
+            {
+                PlayerPrefs.SetFloat("ToggleMusic", 1);
+                audioMixer.SetFloat("MusicVolume", 0);
+                
+                if (AdastraTrackControlsBloodMoon.Instance != null)
+                    AdastraTrackControlsBloodMoon.Instance.MASTER_VOLUME = 1;
+        
+                if (AdastraTrackControlsDarkDescent.Instance != null) 
+                    AdastraTrackControlsDarkDescent.Instance.MASTER_VOLUME = 1;
+            }
             
             PlayerPrefs.Save();
         }
@@ -68,11 +72,16 @@ namespace UI.Scripts.SettingsMenu
 
         public void MinMaxSfx()
         {
-            if (PlayerPrefs.GetFloat("ToggleSfx") == 0)
+            if (PlayerPrefs.GetFloat("ToggleSfx") == 1f)
+            {
+                PlayerPrefs.SetFloat("ToggleSfx", 0.0001f);
+                audioMixer.SetFloat("SfxVolume", -80);
+            }
+            else
+            {
                 PlayerPrefs.SetFloat("ToggleSfx", 1);
-            
-            else if (PlayerPrefs.GetFloat("ToggleSfx") == 1)
-                PlayerPrefs.SetFloat("ToggleSfx", 0);
+                audioMixer.SetFloat("SfxVolume", 0);
+            }
             
             PlayerPrefs.Save();
         }

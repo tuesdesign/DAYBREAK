@@ -22,11 +22,6 @@ public class MenuStateManager : MonoBehaviour
     public PauseState PauseState = new PauseState();
     public UpgradeState UpgradeState = new UpgradeState();
     public WinLossState WinLossState = new WinLossState();
-
-    [Header("Sound FX")] 
-    [SerializeField] public AudioClip hoverSoundClip;
-    [SerializeField] public AudioClip smallSelectSoundClip;
-    [SerializeField] public AudioClip largeSelectSoundClip;
     
     public static MenuStateManager Instance { get; private set; }
     

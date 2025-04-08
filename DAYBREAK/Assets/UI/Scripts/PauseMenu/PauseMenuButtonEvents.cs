@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,6 +16,8 @@ namespace UI.Scripts.PauseMenu
         public void OnPointerEnter(PointerEventData eventData)
         {
             _animator.ButtonHover(gameObject);
+            
+            SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.hoverSoundClip, transform, 1f);
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -25,11 +28,15 @@ namespace UI.Scripts.PauseMenu
         public void OnPointerClick(PointerEventData eventData)
         {
             _animator.ButtonClick(gameObject);
+            
+            SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.smallSelectSoundClip, transform, 1f);
         }
         
         public void OnSelect(BaseEventData eventData)
         {
             _animator.ButtonHover(gameObject);
+            
+            SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.hoverSoundClip, transform, 1f);
         }
 
         public void OnDeselect(BaseEventData eventData)
@@ -40,6 +47,8 @@ namespace UI.Scripts.PauseMenu
         public void OnSubmit(BaseEventData eventData)
         {
             _animator.ButtonClick(gameObject);
+            
+            SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.smallSelectSoundClip, transform, 1f);
         }
     }
 }

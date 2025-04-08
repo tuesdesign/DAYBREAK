@@ -9473,18 +9473,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 629797059}
-        m_TargetAssemblyTypeName: Audio.SoundMixerManager, Assembly-CSharp
-        m_MethodName: ToggleMusicVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1044730422
 GameObject:
   m_ObjectHideFlags: 0
@@ -10946,18 +10934,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1860028880}
         m_TargetAssemblyTypeName: UI.Scripts.SettingsMenu.SettingsMenuManager, Assembly-CSharp
         m_MethodName: MinMaxSfx
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 629797059}
-        m_TargetAssemblyTypeName: Audio.SoundMixerManager, Assembly-CSharp
-        m_MethodName: ToggleSoundFXVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17616,6 +17592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed03cbd33b098c4faa75eda11f1e9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
 --- !u!1 &1870241715
 GameObject:
   m_ObjectHideFlags: 0
@@ -17663,7 +17640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forcedExit: 0
-  isMobile: 1
+  isMobile: 0
   hoverSoundClip: {fileID: 8300000, guid: eb73624a2aa4c2f4a979c64bbdb2fec4, type: 3}
   smallSelectSoundClip: {fileID: 8300000, guid: 481a121deb6ac5444aa666b27b1764ab, type: 3}
   largeSelectSoundClip: {fileID: 8300000, guid: 28a01617a0ad27840931274295c17b07, type: 3}

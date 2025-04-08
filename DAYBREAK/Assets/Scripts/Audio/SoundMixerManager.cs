@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -7,6 +8,13 @@ namespace Audio
     {
         [SerializeField] private AudioMixer audioMixer;
         private float _sfxVolume, _musicVolume;
+
+        private void Start()
+        {
+            audioMixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("ToggleMusic")) * 20f);
+            audioMixer.SetFloat("SfxVolume", Mathf.Log10(PlayerPrefs.GetFloat("ToggleSfx")) * 20f);
+        }
+
         public void SetMusicVolume(float level)
         {
             audioMixer.SetFloat("MusicVolume", Mathf.Log10(level) * 20f);
