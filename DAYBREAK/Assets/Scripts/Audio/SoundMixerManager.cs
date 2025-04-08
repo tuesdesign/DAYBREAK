@@ -17,12 +17,12 @@ namespace Audio
 
         public void SetMusicVolume(float level)
         {
-            audioMixer.SetFloat("MusicVolume", Mathf.Log10(level) * 20f);
+            audioMixer.SetFloat("MusicVolume", Mathf.Log10(level) * 20);
         }
         
         public void SetSoundFXVolume(float level)
         {
-            audioMixer.SetFloat("SfxVolume", Mathf.Log10(level) * 20f);
+            audioMixer.SetFloat("SfxVolume", Mathf.Log10(level) * 20);
         }
         
         public void ToggleMusicVolume()

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using UI.Scripts;
 using UI.Scripts.Joysticks;
 using Unity.VisualScripting;
@@ -38,10 +39,6 @@ public class PlayerBase : MonoBehaviour
     [Header("VFX")]
     [SerializeField] private GameObject dodgeEffect;
     [SerializeField] GameObject sheildEffect;
-
-    [SerializeField] public AudioClip sheildUpSound;
-    [SerializeField] public AudioClip sheildDownSound;
-
 
     //UpgradeModifiers
     [HideInInspector] 
@@ -470,12 +467,12 @@ public class PlayerBase : MonoBehaviour
             if (shield > 0)
             {
                 sheildEffect.SetActive(true);
-                AudioSource.PlayClipAtPoint(sheildUpSound, transform.position);
+                SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.shieldUpSfx, transform, 1f);
             }
             else
             {
                 sheildEffect.SetActive(false);
-                AudioSource.PlayClipAtPoint(sheildDownSound, transform.position);
+                SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.shieldDownSfx, transform, 1f);
             }
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using UI.Scripts.Upgrades;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,6 @@ public class ExpDrop : MonoBehaviour
     GameObject player;
     bool givePlayerEXP = true;
 
-    public AudioClip pickupSound;
     public MMF_Player MMF_Player;
 
     // UI exp colors
@@ -55,7 +55,7 @@ public class ExpDrop : MonoBehaviour
                 Destroy(gameObject, .01f);
                 givePlayerEXP = false;
 
-                AudioSource.PlayClipAtPoint(pickupSound, this.transform.position);
+                SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.pickupSound, transform, 1f);
                 
                 // Spawn UI floating text + pulse EXP bar
                 GameObject expText = Instantiate(floatingExp, transform.position, floatingExp.transform.rotation);

@@ -268,6 +268,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891faabd1de72d1458a5901e4cb68f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &21376916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 21376918}
+  - component: {fileID: 21376917}
+  m_Layer: 0
+  m_Name: AudioClipManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &21376917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21376916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11421562878001459b7b55f6913c3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSoundClip: {fileID: 8300000, guid: eb73624a2aa4c2f4a979c64bbdb2fec4, type: 3}
+  smallSelectSoundClip: {fileID: 8300000, guid: 481a121deb6ac5444aa666b27b1764ab, type: 3}
+  largeSelectSoundClip: {fileID: 8300000, guid: 28a01617a0ad27840931274295c17b07, type: 3}
+  hurtSounds:
+  - {fileID: 8300000, guid: d397d227199083c478fc948b4f771426, type: 3}
+  - {fileID: 8300000, guid: 9251b01af7728d649a48d222a7fa61cd, type: 3}
+  - {fileID: 8300000, guid: 814c7429e17dfdb459648d52ab98cabb, type: 3}
+  - {fileID: 8300000, guid: 6b468d55058209440b960a8df083fcf7, type: 3}
+  - {fileID: 8300000, guid: a60b7e183a0e074489628110eac4a2ad, type: 3}
+  - {fileID: 8300000, guid: c7e030577ec10e04885bf3528e8520ab, type: 3}
+  pickupSound: {fileID: 8300000, guid: e1f4f3ac7156696459372d81faaf519e, type: 3}
+  burnSfx: {fileID: 8300000, guid: d0b5fa9f5c30c4849a7163238f8e2810, type: 3}
+  freezeSfx: {fileID: 8300000, guid: d5213964f87d49f46b783ee38a770723, type: 3}
+  slowSfx: {fileID: 0}
+  poisonSfx: {fileID: 0}
+  shieldUpSfx: {fileID: 8300000, guid: c2ae898f782deb148bd41da2dcb09820, type: 3}
+  shieldDownSfx: {fileID: 8300000, guid: cb578750b33b02f4f89f4ff0ab9cb11d, type: 3}
+  shootSounds:
+  - {fileID: 8300000, guid: f119b447d836da944abbbd51abbe43ac, type: 3}
+  - {fileID: 8300000, guid: 6d4ed617c3d74314db38f2a7e94cd276, type: 3}
+  - {fileID: 8300000, guid: 3f49232a41a0bac4298ead3e67f566e3, type: 3}
+  - {fileID: 8300000, guid: 91222c07e49c1b84db9b26850be25b49, type: 3}
+  - {fileID: 8300000, guid: 6e64aeb58aab12f4d974b28ca23febbb, type: 3}
+  reloadStartSound: {fileID: 8300000, guid: a1e9e3ea33d4164488718963a275cd34, type: 3}
+  reloadSound: {fileID: 8300000, guid: 07ed6a52a2cbaa14891200721e16a301, type: 3}
+  reloadStopSound: {fileID: 8300000, guid: 43674f1b1507ff6468a301e55b9f35c7, type: 3}
+--- !u!4 &21376918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21376916}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &26249383
 GameObject:
   m_ObjectHideFlags: 0
@@ -17641,9 +17711,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forcedExit: 0
   isMobile: 0
-  hoverSoundClip: {fileID: 8300000, guid: eb73624a2aa4c2f4a979c64bbdb2fec4, type: 3}
-  smallSelectSoundClip: {fileID: 8300000, guid: 481a121deb6ac5444aa666b27b1764ab, type: 3}
-  largeSelectSoundClip: {fileID: 8300000, guid: 28a01617a0ad27840931274295c17b07, type: 3}
 --- !u!114 &1870241718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19847,6 +19914,7 @@ SceneRoots:
   - {fileID: 1894667802}
   - {fileID: 1408170993}
   - {fileID: 1870241716}
+  - {fileID: 21376918}
   - {fileID: 1753843386}
   - {fileID: 1750954391}
   - {fileID: 1296949666}

@@ -1,6 +1,7 @@
  using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+ using Audio;
+ using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -25,11 +26,6 @@ public class Bullet : MonoBehaviour
 
     Vector3 glueForce;
     Vector3 glueCast;
-
-    public AudioClip burnSFX;
-    public AudioClip freezeSFX;
-    public AudioClip slowSFX;
-    public AudioClip poisonSFX;
 
     //bulletinformation
     bool canBurn;
@@ -85,8 +81,7 @@ public class Bullet : MonoBehaviour
             if (canBurn)
             {
                 enemy.TickDamageClaculation(2);
-                AudioSource.PlayClipAtPoint(burnSFX,transform.position);
-                
+                SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.burnSfx, transform, 1f);
             }
 
             if (canPoision)
@@ -103,7 +98,7 @@ public class Bullet : MonoBehaviour
             if (canFreeze)
             {
                 enemy.TriggerFreeze();
-                AudioSource.PlayClipAtPoint(freezeSFX, transform.position);
+                SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.freezeSfx, transform, 1f);
             }
             
             if (canSlow)

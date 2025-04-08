@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -47,12 +48,6 @@ public class PlayerShooting : MonoBehaviour
     bool isReloading = false;
     bool canShoot = true;
     [SerializeField] float reloadTime = .75f;
-
-    [Header("Sound Effects")]
-    [SerializeField] List<AudioClip> shootSounds = new List<AudioClip>();
-    [SerializeField] AudioClip reloadStartSound = null;
-    [SerializeField] List<AudioClip> reloadSounds = new List<AudioClip>();
-    [SerializeField] AudioClip reloadStopSound = null;
 
     //MODIFIERS FOR UPGRADES
     [HideInInspector] public float bspeedMod = 0;
@@ -130,7 +125,7 @@ public class PlayerShooting : MonoBehaviour
         AimVisualizer(inputDirection);
         if (canShoot && hasAmmo) //if can shoot and has ammo
         {
-            PlaySoundEffect(shootSounds);
+            SoundFXManager.Instance.PlayRandomSoundFXClip(AudioClipManager.Instance.shootSounds, transform, 1f);
 
             float angleStep = bulletsPerShot > 1 ? bulletSpread / (bulletsPerShot - 1) : 0;
             float startingAngle = -bulletSpread / 2;
@@ -285,23 +280,6 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    void PlaySoundEffect(List<AudioClip> soundList)
-    {
-        if (soundList != null)
-        {
-            AudioSource.PlayClipAtPoint(soundList[Random.Range(0, soundList.Count)], this.transform.position);
-        }
-    }
-
-    void PlaySoundEffect(AudioClip sound)
-    {
-        if (sound != null) 
-        {
-            AudioSource.PlayClipAtPoint(sound, this.transform.position);
-        
-        }
-    }
-
     public static Vector2 ConvertToIsometric(Vector2 vector)
     {
         float cos45 = Mathf.Sqrt(2) / 2; // Approx 0.707
@@ -358,7 +336,7 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator ReloadTiming()
     {
-        PlaySoundEffect(reloadStartSound);
+        SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.reloadStartSound, transform, 1f);
         
         isReloading = true; //variable ensures that it does not attempt to reload while already reloading
         StartCoroutine(ReloadTick());
@@ -382,14 +360,14 @@ public class PlayerShooting : MonoBehaviour
             ammoCount++;
             yield return new WaitForSeconds((reloadTime+reloadTimeMod) / (maxAmmo+maxAmmoMod));
             
-            PlaySoundEffect(reloadSounds);
+            SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.reloadSound, transform, 1f);
             _playerUI.UpdateAmmoCount();
             
             StartCoroutine(ReloadTick());
         }
         else
         {
-            PlaySoundEffect(reloadStopSound);
+            SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.reloadStopSound, transform, 1f);
             yield return new WaitForSeconds((reloadTime + reloadTimeMod) / (maxAmmo + maxAmmoMod));
         }
     }

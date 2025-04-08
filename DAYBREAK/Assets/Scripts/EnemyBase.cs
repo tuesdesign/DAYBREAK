@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using UI.Scripts;
 using UI.Scripts.PauseMenu;
 using UnityEngine;
@@ -19,8 +20,6 @@ public class EnemyBase : MonoBehaviour
     Vector3 movePos = Vector2.zero;
 
     [SerializeField] private GameObject floatingDamageNum;
-    
-    [SerializeField] List<AudioClip> hurtSounds = new List<AudioClip>();
 
     //enemy effects
     bool takeTickDamage;
@@ -102,7 +101,8 @@ public class EnemyBase : MonoBehaviour
     public void TakeDamage(float damage)
     {
         curHealth -= damage;
-        PlaySoundEffect(hurtSounds);
+        
+        SoundFXManager.Instance.PlayRandomSoundFXClip(AudioClipManager.Instance.hurtSounds, transform, 1f);
         
         // Spawn UI floating damage numbers
         GameObject dmgText = Instantiate(floatingDamageNum, transform.position, floatingDamageNum.transform.rotation);
@@ -179,15 +179,6 @@ public class EnemyBase : MonoBehaviour
     {
         return curdamage;
     }
-
-    void PlaySoundEffect(List<AudioClip> soundList)
-    {
-        if (soundList != null)
-        {
-            AudioSource.PlayClipAtPoint(soundList[Random.Range(0, soundList.Count)], playerTrans.position);
-        }
-    }
-
 
     private void OnDrawGizmos()
     {
