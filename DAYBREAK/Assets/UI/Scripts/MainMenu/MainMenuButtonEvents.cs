@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -5,6 +6,7 @@ namespace UI.Scripts.MainMenu
 {
     public class MainMenuButtonEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler, ISubmitHandler
     {
+        [SerializeField] private bool isCharacterButton;
         private MainMenuAnimator _animator;
 
         private void Start()
@@ -15,6 +17,8 @@ namespace UI.Scripts.MainMenu
         public void OnPointerEnter(PointerEventData eventData)
         {
             _animator.ButtonHover(gameObject);
+            
+            SoundFXManager.Instance.PlaySoundFXClip(MenuStateManager.Instance.hoverSoundClip, transform, 1f);
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -25,11 +29,17 @@ namespace UI.Scripts.MainMenu
         public void OnPointerClick(PointerEventData eventData)
         {
             _animator.ButtonClick(gameObject);
+
+            SoundFXManager.Instance.PlaySoundFXClip(
+                isCharacterButton
+                    ? MenuStateManager.Instance.largeSelectSoundClip
+                    : MenuStateManager.Instance.smallSelectSoundClip, transform, 1f);
         }
         
         public void OnSelect(BaseEventData eventData)
         {
             _animator.ButtonHover(gameObject);
+            SoundFXManager.Instance.PlaySoundFXClip(MenuStateManager.Instance.hoverSoundClip, transform, 1f);
         }
 
         public void OnDeselect(BaseEventData eventData)
@@ -40,6 +50,11 @@ namespace UI.Scripts.MainMenu
         public void OnSubmit(BaseEventData eventData)
         {
             _animator.ButtonClick(gameObject);
+
+            SoundFXManager.Instance.PlaySoundFXClip(
+                isCharacterButton
+                    ? MenuStateManager.Instance.largeSelectSoundClip
+                    : MenuStateManager.Instance.smallSelectSoundClip, transform, 1f);
         }
     }
 }
