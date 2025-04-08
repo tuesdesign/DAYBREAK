@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 29
-  loreInformation: "Nyxaros-1  \u25CF Climate: Perpetual darkness due to perpetual
-    cloud cover. Planet previously believed to  be a gas giant.  \u25CF Land-to-Ocean
-    Ratio: 40:60 (endless cavern systems beneath the oceans).  \u25CF Notable Features:
-    Bioluminescent fungal forests and sentient, light-emitting organisms  living
-    in the caverns."
-  image: {fileID: 0}
+  loreInformation: "While previous insurgent actions were limited to acts of sabotage
+    and localized civil unrest, recent engagements have demonstrated an unprecedented
+    level of organization and tactical acumen. Targets are selected with precision,
+    and enemy forces exhibit an advanced understanding of stabilizer mechanics. This
+    suggests either internal leaks or recovered data from pre-loop archives. The
+    level of armaments observed by field operatives indicate \r\nprecision weapon
+    fabrication, which therefore suggests illicit materiation.\n \r\nIf uncontained,
+    their actions risk irreversible destabilization of Coeus-3.\n\n(End Report.)"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

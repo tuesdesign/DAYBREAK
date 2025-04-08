@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note35
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Unyielding
   loreNum: 35
-  loreInformation: "Apollo-3 (formerly Earth)  \u25CF Climate: Varied, with restored
-    ecosystems ranging from lush forests to desert expanses.  \u25CF Land-to-Ocean
-    Ratio: 30:70 (oceans have been preserved to reflect their ancient state,  while
-    landmasses remain ecologically diverse).  \u25CF Notable Features:  \u25CB The
-    Shoulders of Giants: Gigantic structures erected by OSOC to honor  humanity\u2019s
-    first civilizations, each pillar engraved with the names of Earth\u2019s most 
-    influential figures and events.  \u25CB Terran Ecological Reserve: A vast area
-    encompassing entire continents,  maintained as untouched wilderness to preserve
-    Earth\u2019s original biodiversity."
-  image: {fileID: 0}
+  loreInformation: "Classified Addendum \u2013 Command Directive \r\n(Strictly for
+    FOREFATHER high command eyes only. Unauthorized distribution subject to capital
+    punishment.) \r\n\nCountermeasures Implemented: \r\n\u25CF Expansion of security
+    presence across all stabilizer sites. \r\n\u25CF Immediate termination of any
+    FOREFATHER personnel found sympathetic to dissident causes. \r\n\u25CF Increased
+    civilian surveillance and suppression of loop retention symptoms among the populace.
+    \r\n\u25CF Authorization for controlled loop collapse, should dissident forces
+    gain irreversible control of temporal infrastructure. \r\n \r\nCoeus-3 must remain
+    intact. The loop must persist. The alternative is annihilation. FOREFATHER is
+    the last line of defense, and we do not yield."
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

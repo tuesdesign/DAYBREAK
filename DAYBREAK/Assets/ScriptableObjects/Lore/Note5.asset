@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 5
-  loreInformation: 'FOREFATHER. The de-facto military and investigative branch of
-    OSOC. Founded by  one Persistence Beck, in an effort to instill preventive measures
-    within OSOC regarding  realized and potential risks regarding materiation and
-    timeline alteration. '
+  loreInformation: "And so it was decreed that the heresy of materiation be named
+    unto all but the Forefather, that  the children of Apollo might remember the
+    cost of reaching beyond the heavens, and that the order of the world might yet
+    be preserved. For unto humanity was given the bounty of the stars, yet not the
+    power to shape them; and unto the children of Apollo was given the gift of life,
+    yet not to summon it. \n\nAnd this shall be the law, unto the last hour, so sayeth
+    the \u2018Father."
   image: {fileID: 0}
   unlocked: 0

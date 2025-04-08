@@ -14,19 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 8
-  loreInformation: "The Power Structure of OSOC: \u25CF Roles:  \u25CB Oversee the
-    long-term survival and stability of the timestream.  \u25CB Approve or deny interventions
-    of extreme scale, such as timeline management  and materiations of the ultimate
-    necessity.  \u25CB Maintain and protect the Absolute Chronology, OSOC\u2019s
-    master record of all  timelines and universal events.  \u25CB Appoint Directors
-    for the major departments and resolve interdepartmental  disputes.  \u25CF Structure: 
-    \u25CB Pentarch-I: Responsible for moderating council discussions.  \u25CB Pentarch-II:
-    Oversees temporal integrity and the enforcement of causality.  \u25CB Pentarch-III:
-    Manages materiation policy, resource allocation, and economic  stability across
-    the federation.  \u25CB Pentarch-IV: Responsible for safeguarding against cosmic
-    and temporal threats.  \u25CB Pentarch-V: Ensures OSOC's philosophical and ethical
-    compass remains intact.  \u25CF Secrecy Measures:  \u25CB Their physical appearances
-    and true voices are hidden, even from their closest  aides, through advanced
-    masking technologies and proxy representatives."
-  image: {fileID: 0}
+  loreInformation: "Independent investigation by Junior Technician [DATA EXPUNGED]
+    suggests the anomaly is growing. Over the past seven loops, the stabilizer's
+    energy fluctuations have increased by 0.02% per reset. An insignificant number\u2014except
+    that the pattern is accelerating. Projections indicate the anomaly will \r\nbecome
+    visible without sensor interference within 250 loops. \r\n\nFOREFATHER command
+    remains silent on the matter. Attempts to escalate the findings have been met
+    with reassignment orders. The junior technician has been removed from field duty.
+    Official statement: \"Mental strain due to prolonged exposure to recursive memory
+    phenomena.\" \n\r\n(End report.)"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

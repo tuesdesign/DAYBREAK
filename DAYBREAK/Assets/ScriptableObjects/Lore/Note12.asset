@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note12
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Surveillance
   loreNum: 12
-  loreInformation: "The Power Structure of OSOC: Regional Branches  OSOC divides
-    the galaxy into sectors, each with its own governing Regionate, who oversees 
-    compliance and local adaptations of universal laws.  \u25CF Role:  \u25CB Implement
-    OSOC policies across sectors.  \u25CB Represents regional interests to the Pentarch
-    Council.  \u25CB Mediate sector-level day-to-day affairs. "
-  image: {fileID: 0}
+  loreInformation: "(Recovered from encrypted server. Timestamp indicates this event
+    has yet to happen.) \n\r\nOfficer: \"Sir, we have a breach. An operative has
+    taken a Desync Harness and exited the loop.\" \n\r\nCommand: \"Do we have an
+    ID?\" \n\r\nOfficer: \"Yes sir. Officer [REDACTED].\"  \n\r\nCommand: \"Dammit.
+    Track them. Eliminate if necessary. We cannot allow temporal dissidents to\u2014\"\n
+    \r\nOfficer: \"Sir, there\u2019s something else.\" \n\r\nCommand: \"Speak.\" "
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

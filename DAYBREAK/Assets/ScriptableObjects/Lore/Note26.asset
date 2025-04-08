@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 26
-  loreInformation: "Solanus-3  \u25CF Climate: Temperate with large swaths of rolling
-    grasslands and forests.  \u25CF Land-to-Ocean Ratio: 55:45 (interconnected continents
-    and shallow seas).  \u25CF Notable Features: Periodic solar flares from a nearby
-    star cause the planet\u2019s flora to emit  energy pulses."
-  image: {fileID: 0}
+  loreInformation: "And then there are the ones who break. They don\u2019t get a
+    trial. They don\u2019t get a doctor. They don\u2019t get sent home. They just
+    disappear. Their names get scrubbed from our logs. Their faces erased. I ask
+    my CO where they went, and he just says, \"They were never here.\" \r\n\nI don\u2019t
+    know how much longer I can do this. I\u2014\n\n(The rest of the letter is charred,
+    completely illegible.)"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

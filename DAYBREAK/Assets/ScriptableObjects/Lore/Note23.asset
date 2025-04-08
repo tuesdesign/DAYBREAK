@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 23
-  loreInformation: "\u25CF Climate: Earth-like, with moderate seasons and a breathable
-    atmosphere.  \u25CF Land-to-Ocean Ratio: 50:50 (diverse continents separated
-    by deep oceans).  \u25CF Notable Features: Atmospheric pressure creates intricate,
-    luminous cloud patterns."
-  image: {fileID: 0}
+  loreInformation: "Situation deescalated when a senior operative arrived to address
+    the crowd. Official statement provided: \"The loop is a safeguard. It ensures
+    your survival. Disrupting it endangers all of us.\" \r\n\nAfter dispersal, multiple
+    protesters exhibited signs of distress and disorientation, repeatedly questioning
+    past events. Witness reports indicate that several members of the crowd displayed
+    symptoms of \"loop retention\"\u2014a phenomenon wherein civilians recall fragments
+    of past cycles.\n\nSupplemental Notes: \r\nIndividuals experiencing loop retention
+    will be monitored for signs of cognitive degradation or instability. Sector 14\u2019s
+    public feeds are to be adjusted to include additional morale programming. Further
+    unrest is unlikely but not impossible. Recommend increased patrol presence."
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 34
-  loreInformation: " Coeus-3  \u25CF Climate: Temperate, with localized weather controls
-    maintaining comfortable conditions  across most regions.  \u25CF Land-to-Ocean
-    Ratio: 95:5 (nearly the entire planet is urbanized, with oceans reduced  to heavily
-    managed reservoirs).  \u25CF Notable Features:  \u25CB Temporal Stabilizers:
-    A series of temporal barriers surrounding regions of  Coeus-3, created and maintained
-    by FOREFATHER to halt the spread of The  Devouring. These fields trap the contents
-    in a five-minute repeating cycle, yet life  stubbornly persists within."
-  image: {fileID: 0}
+  loreInformation: "\"We fought them off. Barely. By the time reinforcements arrived,
+    the stabilizer was half-melted slag. The techs say they got to the core, almost
+    nuked the whole damn sector. We reset, of course. Repaired the damage. But it
+    took longer than usual. I don\u2019t know if that means anything, but\u2026 it
+    doesn\u2019t sit right.\" \r\n\n\"We used to think they were just desperate.
+    Now I think they know something we don\u2019t.\"\n\n(End Report.)"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

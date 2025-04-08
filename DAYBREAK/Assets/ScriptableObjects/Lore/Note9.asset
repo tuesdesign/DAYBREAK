@@ -12,17 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note9
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Escape
   loreNum: 9
-  loreInformation: "The Power Structure of OSOC: Departments and Divisions  Beneath
-    the Pentarch Council, OSOC operates through specialized departments, each with
-    its  subdivisions. These departments ensure the organization's core responsibilities
-    are met.  Department of Materiation Oversight (DMO)  \u25CF Mission: To regulate
-    materiation practices and maintain harmony across infinite  timelines.  \u25CF
-    Divisions:  1. Materiation Licensing Authority: Grants licenses to individuals
-    and  organizations for lawful use of materiation technology.  2. Materiation
-    Monitoring Bureau: Tracks every instance of materiation, ensuring  compliance
-    with OSOC laws.  3. Anomaly Retrieval Unit: Investigates cases of overuse or
-    dangerous materiation."
-  image: {fileID: 0}
+  loreInformation: "I should be dead. We should all be dead. \n\r\nThe Devouring
+    comes in waves, and yet we persist. The loop resets. We repeat. But what if we
+    already lost? What if this isn\u2019t survival\u2014just delay? I saw it. I saw
+    what they don\u2019t want us to see. The stabilizer failed, and through the gap,
+    there was\u2026 light. A world that shouldn\u2019t exist, but does. \r\n\nThey
+    told me I imagined it. \"Loop-induced paranoia.\" That\u2019s what they call
+    it. But I am not alone. Others whisper the same doubts. \n\r\nWe have to get
+    out. "
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

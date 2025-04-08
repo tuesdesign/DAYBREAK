@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note6
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Anomaly
   loreNum: 6
-  loreInformation: 'Temporal Stabilizers: These devices resemble metal stakes topped
-    with eternally  spinning gyroscopes. When placed in a circle, the stabilizers
-    track and preserve the  previous 5 minutes, keeping the interior safely contained
-    in a time loop until ideal  external conditions have been met. Previously a medical
-    technology designed to keep  critically injured patients alive, the stabilizers
-    were not intended for long-term use. The  prospect of reliving the same moments
-    in perpetuity has begun to take its toll on the  survivors.\'
-  image: {fileID: 0}
+  loreInformation: "-deployment successful. Loop stabilization holding at [DATA EXPUNGED].
+    Routine extension operation proceeding as expected. No anomalies. \n\r\nCorrection\u2014unknown
+    interference detected. Stabilizer array at Site-17 exhibiting erratic readings.
+    Initial assumption: hardware malfunction.\n \r\nRecalibration attempt failed.
+    Error persists. Visual confirmation: someone outside the border. Alive. Impossible.
+    Coeus-3 is the last habitable zone. No known surviv\u2014[DATA EXPUNGED] \n\r\n
+    FOREFATHER command orders immediate dismissal of anomaly. Directive received:
+    \"Continue operations. Do not engage with false positives.\" Standard protocol
+    enforced.\n(Cont'd)"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

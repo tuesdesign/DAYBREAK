@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 13
-  loreInformation: "The Power Structure of OSOC: The Assembly of Member Worlds  The
-    Assembly is a forum where representatives from OSOC member worlds gather to voice 
-    concerns, propose policies, and debate temporal ethics. While the Pentarch Council
-    holds  ultimate authority, the Assembly ensures that all voices are heard.  \u25CF
-    Structure:  \u25CB Each sector elects an Ambassador to represent its people. 
-    \u25CB The Assembly meets every five universal years on Coeus-3."
-  image: {fileID: 0}
+  loreInformation: "Officer: \"The security logs from last night. They show multiple
+    accesses to the classified archive. Specifically, files pertaining to Alectrona-5
+    and early materiation trials.\" \n\r\nCommand: \"That\u2019s impossible. Those
+    records are locked behind Admiral-Tier encryption.\" \n\r\nOfficer: \"And yet,
+    sir, someone bypassed it. The logs don\u2019t just show an access attempt. They
+    show a download.\" \n\r\nCommand: \"Find them. Now.\" \n"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

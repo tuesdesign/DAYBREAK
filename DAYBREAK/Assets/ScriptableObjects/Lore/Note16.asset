@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note16
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Voices
   loreNum: 16
-  loreInformation: 'For the Forefather did set forth their commandment from the beginning,
-    that no man should bind  the stones and stars to his own bidding. And in the
-    halls of their wisdom, they decreed the  bounds of matter and the seasons of
-    creation, saying, "This is given unto We alone."  Yet the children of Apollo
-    hearkened not unto the words of the wise, for their eyes were dimmed  by the
-    riches of their making. And they did multiply their creations, and by their arts
-    did they  summon forth spoils from the void, even all that they knew their hands
-    could fashion.  '
-  image: {fileID: 0}
+  loreInformation: "The fragments are speaking to us. Not in words, not in voices,
+    but in glimpses of what was before. Memories we never lived. Visions of things
+    we should not know. \r\n\nSome of us dream of places we\u2019ve never seen. Cities
+    with silver spires. Oceans that stretch beyond sight. A sky that isn\u2019t trapped
+    in this eternal, dying dusk. Are they echoes of a time before the loop? Or another
+    place entirely?\n\nThey want us to forget. FOREFATHER rewrites history, but they
+    cannot erase the whispers. The Devouring remembers. It watches. It learns.\n
+    \r\nThe stabilizers falter. The walls crack. We do not know when, but we know
+    one thing with certainty\u2014  the loop will fail. And when it does, we must
+    be ready."
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

@@ -14,10 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 21
-  loreInformation: "Calypsis-4  \u25CF Climate: Tropical, with intense humidity and
-    frequent superstorms.  \u25CF Land-to-Ocean Ratio: 40:60 (island chains interspersed
-    with shallow oceans).  \u25CF Notable Features: Enormous, bioluminescent flora
-    and fauna; the storms are electrically  charged with particles that disrupt long-range
-    communication."
-  image: {fileID: 0}
+  loreInformation: "FOREFATHER tells us we are safe. That the loop is necessary.
+    That we should be grateful. But gratitude is hard to muster when you know, deep
+    down, that the world outside this city is gone, and all that remains is a dying
+    echo. \r\n\nI tried to leave once. Made it all the way to the outer sectors before
+    I saw it\u2014the edge of the loop. The way the air folds over itself, the way
+    the buildings just stop. I threw a rock past the border. It never landed. It
+    just\u2026 vanished. A hole in reality, endlessly waiting. \r\n\nI don\u2019t
+    try to leave anymore. I just sit here, drinking the same cup of rationed coffee,
+    watching my daughter \"grow up\" in a world that isn\u2019t real. \r\n\nAnd I
+    wonder: if we all vanished tomorrow, would we even care? "
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

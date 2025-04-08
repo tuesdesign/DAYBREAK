@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 11
-  loreInformation: "The Power Structure of OSOC: The Enforcement Branch: FOREFATHER 
-    FOREFATHER acts as OSOC\u2019s militarized and investigative arm, tasked with
-    high-stakes  missions and covert operations. It operates independently but within
-    OSOC's framework,  reporting directly to the Pentarch Council.  \u25CF Specializations: 
-    \u25CB Timeline recovery and intervention.  \u25CB Combat entities that threaten
-    spacetime integrity (see The Devouring)."
-  image: {fileID: 0}
+  loreInformation: "They\u2019re real. I found them. They were waiting for me. Others
+    like me\u2014like us. They\u2019ve seen it too. The fractures in the loop. The
+    way the world shifts, even when it shouldn\u2019t. The things FOREFATHER erases.
+    They have records. Proof. Logs from before the first loop. Evidence that the
+    cycle isn\u2019t what FOREFATHER claims it is.\n\nThey have a plan. \r\n\nI don\u2019t
+    know if I\u2019ll live long enough to see it happen, but I believe in them. If
+    I\u2019m reset\u2014if this version of me disappears\u2014someone else will take
+    my place. \n\nThe cycle will break. \r\n"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

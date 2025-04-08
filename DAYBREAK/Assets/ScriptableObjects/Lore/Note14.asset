@@ -14,14 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 14
-  loreInformation: "Unlabeled Scripture:  This collection of handwritten documents
-    was retrieved from a damaged FOREFATHER  warehouse. Squatters had taken residence
-    inside, in an effort to weather the effects of the  Devouring on the body. FOREFATHER
-    operatives were dispatched to relocate the residents.  Begin document  And it
-    came to pass in the days of plenty, when Apollo\u2019s progeny sought to subdue
-    all need and  want, that they did reach into the firmament and drew forth a new
-    thing, which they called  Materiation.  And they said among themselves, \"Behold,
-    we have harnessed the hidden things, and what we  desire, we may now summon from
-    the void, as the gods who sit above the heavens.\""
-  image: {fileID: 0}
+  loreInformation: "Officer: \"Sir\u2026 it\u2019s not just them. The log shows over
+    twenty unauthorized access points. Across different loop resets.\" \n\r\nCommand:
+    \"What?!\" \n\r\nOfficer: \"It gets worse. The files aren\u2019t being stored
+    in any OSOC systems. They\u2019re being sent somewhere else. Off grid, likely
+    outside the loop. We can have a trace on the download site in just a few\u2013\"\n
+    \r\nCommand: \"No. Shut it down. Wipe everything. If someone is reaching beyond
+    the loop, we cannot afford to let them succeed.\"\n\n(End Log.)"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

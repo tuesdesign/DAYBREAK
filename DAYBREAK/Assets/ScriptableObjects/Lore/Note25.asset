@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note25
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Letter
   loreNum: 25
-  loreInformation: "Umbraxis-8  \u25CF Climate: Perpetual overcast with constant
-    rain and occasional hailstorms.  \u25CF Land-to-Ocean Ratio: 60:40 (vast plateaus
-    bordered by deep fjords).  \u25CF Notable Features: Shadow-like entities that
-    appear during storms and vanish with the  lightning strikes."
-  image: {fileID: 0}
+  loreInformation: "Mom, \r\nI know you don\u2019t understand why I joined FOREFATHER.
+    I barely understand it myself. They told us we were protecting humanity\u2019s
+    last stronghold. That outside of this city, there\u2019s nothing left. That the
+    loop is the only thing keeping us from oblivion. I believed them. I still want
+    to.\n\nBut something\u2019s wrong. I see people asking the same questions over
+    and over, like they know something is missing but they can\u2019t quite grasp
+    it. I see entire families move into housing blocks that I swear were empty just
+    yesterday. I see my own squadmates hesitate when they issue commands, as if they\u2019ve
+    given them before. As if they\u2019ve already lived this moment and are just
+    going through the motions. \r\n\n(Cont'd)"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

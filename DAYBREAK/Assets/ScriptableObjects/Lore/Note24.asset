@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note24
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Non-Essential
   loreNum: 24
-  loreInformation: "Oceionis-10  \u25CF Climate: Temperate oceanic, with mild, rainy
-    weather year-round.  \u25CF Land-to-Ocean Ratio: 10:90 (only small archipelagos
-    dot the vast oceans).  \u25CF Notable Features: A perpetual underwater current
-    that glows faintly green and pulls  objects in seemingly random directions."
-  image: {fileID: 0}
+  loreInformation: "Requester: Civilian ID  #4193. Name: [REDACTED] \r\nRequest Type:
+    Materiation \u2013 Personal Item \r\nItem Description: Stuffed animal: bear,
+    small, brown. \r\nRationale: My son lost his original during an accident in the
+    last cycle. It was his favorite. It helps him sleep. \r\n\nRequest Status: DENIED
+    \r\nRationale: Non-essential materiation request. Civilian fabrication access
+    is restricted under Loop Maintenance Protocol 3-7B.\nAdvisory: Personal attachments
+    to previous cycles may cause psychological distress. Please report to your local
+    adjustment officer if symptoms persist. \r\n\n(Handwritten note at the bottom:)
+    \r\n\"If he forgets it, he won\u2019t cry for it anymore. Maybe that\u2019s what
+    they want.\" "
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

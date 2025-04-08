@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note22
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Unrest
   loreNum: 22
-  loreInformation: "Ignissar-9  \u25CF Climate: Scorched desert, with molten rivers
-    flowing across the surface.  \u25CF Land-to-Ocean Ratio: 95:5 (oceans exist only
-    as boiling, sulfuric pools).  \u25CF Notable Features: Geysers of superheated
-    gas erupt regularly, and the skies glow faintly  red due to particulate matter
-    from volcanic activity."
-  image: {fileID: 0}
+  loreInformation: "Subject: Contained Insurgency \u2013 Sector 14 \r\nFiled by:
+    [REDACTED] \r\nStatus: Resolved. Minimal casualties. \r\n\nAt approximately [REDACTED]
+    cycle mark, a group of approximately 30 civilians gathered at the perimeter of
+    the stabilizer zone in Sector 14. The crowd was unarmed but agitated. Chanting
+    included repeated demands for \"answers\" and accusations that FOREFATHER was
+    \"hiding something.\" \r\n\nAttempts at dispersal were met with resistance. Operatives
+    deployed crowd control measures per standard protocol; mild chemical irritant
+    and high-pressure water hoses. Minor injuries sustained on both sides."
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

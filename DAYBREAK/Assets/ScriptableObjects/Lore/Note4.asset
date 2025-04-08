@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 4
-  loreInformation: "OSOC. Order of Stellar and Omniversal Continuity. The governing
-    body of the  known universe, and the many branch timelines therein. Ironically,
-    its origins have been  long lost, a result of early mankind\u2019s inferior technology
-    and data retention. The  organization\u2019s roots trace back to the infancy
-    of humanity, while we were still within the  cradle of Earth. Some claim OSOC
-    developed the practice of materiation, others claim  they merely uncovered the
-    already-existing technology. Regardless, materiation is  regulated through them
-    and them alone."
+  loreInformation: "But in the millenia to come, a shadow did fall upon the lands,
+    and a sickness did spread among them. And from the formless spaces came forth
+    a host of specters, who bore the visage of death  and the stain of the deep,
+    and they laid waste to the works of men. \n\nAnd on that day, the people wept
+    and cried aloud, \"Who shall deliver us from the curse of our  own hands?\" But
+    there was none to answer, for the veil between the worlds had been torn asunder,
+    and the past and future were drowned with blood."
   image: {fileID: 0}
   unlocked: 0

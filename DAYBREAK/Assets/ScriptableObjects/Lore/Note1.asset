@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note1
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Scripture
   loreNum: 1
-  loreInformation: "Materiation. Allows people to \u201Ccraft\u201D items through
-    temporal probing. Once a  replacement to traditional manufacturing practices,
-    it has since been outlawed for public  use following the Devouring. Now, materiation
-    is a technique exclusively used by  FOREFATHER field operatives to create one-off
-    gadgets or weapons that do not (or  could not) exist in our timeline."
+  loreInformation: "And it came to pass in the days of plenty, when Apollo\u2019s
+    progeny sought to subdue all need and want, that they did reach into the firmament
+    and drew forth a new thing, which they called Materiation. \n\nAnd they said
+    among themselves, \"Behold, we have harnessed the hidden things, and what we
+    desire, we may now summon from the void, as the gods who sit above the heavens.\"."
   image: {fileID: 0}
   unlocked: 0

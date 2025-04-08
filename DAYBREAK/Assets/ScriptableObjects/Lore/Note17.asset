@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note17
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Control
   loreNum: 17
-  loreInformation: But in the millenia to come, a shadow did fall upon the lands,
-    and a sickness did spread among  them. And from the formless spaces came forth
-    a host of specters, who bore the visage of death  and the stain of the deep,
-    and they laid waste to the works of men.  And on that day, the people wept and
-    cried aloud, "Who shall deliver us from the curse of our  own hands?" But there
-    was none to answer, for the veil between the worlds had been torn  asunder, and
-    the past and future were drowned with blood.
-  image: {fileID: 0}
+  loreInformation: "(Damaged security recording. Audio heavily degraded. Transcript
+    reconstructed from surviving segments.) \r\n\n[static]\u2014isn\u2019t right.
+    We were meant to be free. We were meant to break the cycle. But they chose control
+    over truth. They would rather die in a loop than risk the unknown. \n\nThey think
+    they can keep us blind. Keep us spinning in circles, marching to their rhythm.
+    But they don\u2019t understand. The loop isn\u2019t a perfect cage. It has cracks,
+    and we can slip through them. Sometimes for a second. Sometimes longer. \n\nAnd
+    when we do, we see what they don\u2019t want us to see."
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

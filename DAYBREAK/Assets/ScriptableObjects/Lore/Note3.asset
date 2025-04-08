@@ -14,6 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 3
-  loreInformation: Information
+  loreInformation: "For the Forefather did set forth their commandment from the beginning,
+    that no man should bind the stones and stars to his own bidding. And in the halls
+    of their wisdom, they decreed the bounds of matter and the seasons of creation,
+    saying, \"This is given unto We alone.\"  \n\nYet the children of Apollo hearkened
+    not unto the words of the wise, for their eyes were dimmed  by the riches of
+    their making. And they did multiply their creations, and by their arts did they
+    summon forth spoils from the void, even all that they knew their hands could
+    fashion.  "
   image: {fileID: 0}
   unlocked: 0

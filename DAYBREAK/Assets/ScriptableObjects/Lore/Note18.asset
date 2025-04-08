@@ -14,16 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 18
-  loreInformation: "And so it was decreed that the heresy of materiation be named
-    unto all but the Forefather, that  the children of Apollo might remember the
-    cost of reaching beyond the heavens, and that the  order of the world might yet
-    be preserved.  For unto humanity was given the bounty of the stars, yet not the
-    power to shape them; and unto  the children of Apollo was given the gift of life,
-    yet not to summon it. And this shall be the law,  unto the last hour, so sayeth
-    the \u2018Father.   End document  (Investigating operative\u2019s note: This
-    is the fourth squatter call we\u2019ve had in 3 \u201Cdays\u201D, if you can 
-    call them that anymore. And each call we\u2019ve had, we\u2019ve found folks
-    like this: religious nutjobs,  spouting crap about how we have to repent or some
-    bull. Seems like the Devouring brought all  the wackos outta the woodwork.)"
-  image: {fileID: 0}
+  loreInformation: "The Devouring isn\u2019t mindless. It\u2019s not just hunger.
+    It\u2019s remembering. Reclaiming. Every piece of reality it touches, it absorbs.
+    Every piece of us, of our past, of what came before\u2014it's not gone. It\u2019s
+    held. Preserved in its depths. And it knows. It knows what was taken. It knows
+    what FOREFATHER did. Materiation is a sickness, and it is the cure. \r\n\nI walked
+    the edge of the cycle once. Just for a moment. And I saw\u2026 something. A reflection
+    of myself, staring back, but not me. Another version. Another loop? Another timeline?
+    I don\u2019t know. But I wasn\u2019t supposed to see it. And the moment I did,
+    they pulled me back. Reset me. Wiped me clean. \r\n\nBut not completely. Not
+    this time. Each loop, I remember a little more."
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

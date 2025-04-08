@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note28
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Dissent
   loreNum: 28
-  loreInformation: "Noxis-13  \u25CF Climate: Harsh, acidic rain falls in cycles
-    between scorching and freezing seasons.  \u25CF Land-to-Ocean Ratio: 85:15 (jagged
-    continents and acidic seas).  \u25CF Notable Features: Gigantic crystalline formations
-    dot the landscape, acting as natural  light beacons in the dim environment."
-  image: {fileID: 0}
+  loreInformation: "Subject: Status Update \u2013 Anti-Stabilizer Insurgency \r\nPrepared
+    by: Commander [REDACTED], Strategic Operations Division \r\nClassification: ARCHIMEDES-PRIORITY
+    \u2013 Command Access Only \r\n\nOverview: \r\nThe threat posed by dissident
+    factions has escalated beyond projected parameters. Armed cells, operating under
+    various banners, have intensified coordinated strikes against key stabilizer
+    sites in multiple sectors. Intelligence indicates that these groups\u2014though
+    fractured\u2014share a common objective: the dismantling of FOREFATHER\u2019s
+    temporal infrastructure and the forced collapse of the loop. \r\n(Cont'd)"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

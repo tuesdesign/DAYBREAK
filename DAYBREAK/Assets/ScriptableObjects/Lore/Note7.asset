@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 7
-  loreInformation: "The Power Structure of OSOC: The Pentarch Council  At the apex
-    of OSOC's structure lies the Pentarch Council, a five-member body that holds 
-    ultimate authority over all of OSOC\u2019s actions and policies. Their identities
-    are shrouded in  secrecy, known only to the most trusted individuals within the
-    organization. Even high-ranking  officials and Directors operate without direct
-    knowledge of the Pentarchs' true identities or  locations. "
-  image: {fileID: 0}
+  loreInformation: "Further observation at Site-17 suggests the anomaly was not an
+    isolated occurrence. \n\r\nOperators in proximity reported sensations of temporal
+    displacement\u2014momentary disorientation, fragmented memories surfacing before
+    being abruptly lost. One technician insisted he saw a city skyline where none
+    should exist. No official report was filed. He recanted his statement an hour
+    later. FOREFATHER command maintains that all instances of \"hallucination\" are
+    the result of prolonged exposure to stabilizer emissions. \n(Cont'd)\r"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
-  m_Name: Note32
+  m_Name: TempLore 30
   m_EditorClassIdentifier: 
   lorePieceName: 
-  loreNum: 32
-  loreInformation: "The Unbound: \r\nLeadership: Unknown, theorized to be a collective
+  loreNum: 0
+  loreInformation: "\rThe Unbound: \r\nLeadership: Unknown, theorized to be a collective
     rather than a hierarchy. \r\nTactics: Psychological warfare, dissemination of
     counter-narratives within civilian populations, targeting of FOREFATHER\u2019s
     information control grid. \r\nBeliefs: The loop has already collapsed multiple

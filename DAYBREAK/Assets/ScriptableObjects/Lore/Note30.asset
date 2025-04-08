@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note30
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Threats
   loreNum: 30
-  loreInformation: "Helionis-14  \u25CF Climate: Blisteringly hot, with twin suns
-    creating extreme heat and light levels.  \u25CF Land-to-Ocean Ratio: 70:30 (deserts
-    broken by vast underground aquifers).  \u25CF Notable Features: Massive solar
-    towers, natural rock formations that seem to bend  sunlight into dazzling patterns."
-  image: {fileID: 0}
+  loreInformation: "Known Dissident Factions & Profiles:\n \r\nThe Fracture: \r\nLeadership:
+    Unknown, operates as a decentralized network. \r\nTactics: High-precision strikes
+    on stabilizer outposts, often bypassing direct confrontation in favor of surgical
+    disruptions. \r\nBeliefs: The loop is an unnatural prison. Humanity was never
+    meant to exist within temporal recursion, and its continued enforcement is an
+    affront to natural order. \r\nOperational Status: HIGH PRIORITY \u2013 Cells
+    embedded within urban centers, suspected infiltration within lower FOREFATHER
+    ranks. \r"
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

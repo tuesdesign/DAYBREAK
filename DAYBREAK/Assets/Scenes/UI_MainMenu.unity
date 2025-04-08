@@ -545,7 +545,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 9e180ea76b7c81f44a2d7a9ba0e27453, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 1cd7884e9e178044a9a194c4aa8bead0, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 17
           m_FloatArgument: 0
@@ -1201,7 +1201,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 15da4919f24dfcc42b9146cd06869920, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: b57a5022bece58e4f9f52ff246933690, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 6
           m_FloatArgument: 0
@@ -1864,7 +1864,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: e2280d66a4fec6c49a60be3e2a42a251, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 82917908eabf02f4bb0c8774398b37ec, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 32
           m_FloatArgument: 0
@@ -2068,7 +2068,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: bae6076fa404eac409d2f63587fdfa7b, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 6dc190de1865cbb4ead85bb2a21b1407, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 35
           m_FloatArgument: 0
@@ -2676,7 +2676,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 88ce7da840a8a874b83a635f781b7a57, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 089d8fbe3309c67419898b92b8b3f6f6, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 1
           m_FloatArgument: 0
@@ -2808,7 +2808,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 1c71473b5bb3fd740a844b94908b8d57, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: f907debd0189e284d9f9451d8cfa7006, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 34
           m_FloatArgument: 0
@@ -3334,7 +3334,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d3ce8ce6d9161c1418a6ac832091c264, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 681004a20a5712946bfbe7935183ad5a, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 30
           m_FloatArgument: 0
@@ -4966,7 +4966,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 3517a3dde6a295c43a435f852d146737, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: c4ffdccc1ba8f734f897ea11dbed155e, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 29
           m_FloatArgument: 0
@@ -5315,7 +5315,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 9cedf49720e5f8f40a5244bd54916358, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 3b013de0990132f40a05132848451146, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 20
           m_FloatArgument: 0
@@ -5483,7 +5483,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 4637dd2dece763d4892274dc8e47de92, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 7006a3188031d2f479220b434044cc63, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 10
           m_FloatArgument: 0
@@ -5756,7 +5756,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d26facd1b9ec4ea4884a54861931f81a, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 361d811cc1bddbe4bbe4cbc758b9eac1, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 31
           m_FloatArgument: 0
@@ -6845,7 +6845,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: e595c58923f0b0746a6b30285eb64631, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: d289d5c333a07614085fd549199995b6, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 22
           m_FloatArgument: 0
@@ -8831,7 +8831,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 65bf125de8c3c6244a9c7516c5b50f4e, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 3fa8712281877b14c95c291e15f0bee6, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 27
           m_FloatArgument: 0
@@ -8963,7 +8963,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d417e7bb886b3104ba9823cd7eae8881, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 52c308c523193e242905271f5977e996, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 16
           m_FloatArgument: 0
@@ -10674,7 +10674,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 63e7c16a00ff50b4ab590b2a13ecdc14, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 8fa3620bb246cc544ab04195dfa1ac10, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 33
           m_FloatArgument: 0
@@ -11237,7 +11237,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: fb274090645fc264bb8e37f2db6d1066, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 9e180ea76b7c81f44a2d7a9ba0e27453, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 4
           m_FloatArgument: 0
@@ -12376,7 +12376,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 8ee72f1179cae164c874e657e9a088b1, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: c70165d0fa91cfd41bf9ace4145d3637, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 5
           m_FloatArgument: 0
@@ -12508,7 +12508,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: e556213e25567184c8a44ed134b77791, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 5abb88fd02b132b4fadbdaa24694b770, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 19
           m_FloatArgument: 0
@@ -12790,7 +12790,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: a3c0093a518e4984c98999987fb761d5, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: caaae7eb75fc5154eae5e16e2e31d1c0, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 23
           m_FloatArgument: 0
@@ -13635,7 +13635,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 6a3ff4e6b414799458b194827c2dd115, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 0031a40496afc6e419fa8ae17c63ad61, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 8
           m_FloatArgument: 0
@@ -14059,7 +14059,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: b6dd551e70f1f344a8a0997055e50af7, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 487a068f798c16a41860c41992cd9582, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 9
           m_FloatArgument: 0
@@ -15105,7 +15105,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: c72959ef1e4d17f4181ee54de005cee7, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: d417e7bb886b3104ba9823cd7eae8881, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 3
           m_FloatArgument: 0
@@ -15350,7 +15350,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: c70165d0fa91cfd41bf9ace4145d3637, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: e9ed7f09bb144524ea164696dd06bdf7, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 18
           m_FloatArgument: 0
@@ -15585,7 +15585,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 089d8fbe3309c67419898b92b8b3f6f6, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 78f6c489883c8ca44a1cbccf0c34db1e, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 14
           m_FloatArgument: 0
@@ -16240,7 +16240,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f7d09604a0995f74fa02c6f8ac1d714d, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 3385a518b0cb836428916ffc62019f05, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 12
           m_FloatArgument: 0
@@ -16372,7 +16372,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 06be70c9ad8e6f84095062d7a0e194b4, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 06809181a55755f458af55c63e0cfa11, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 24
           m_FloatArgument: 0
@@ -16504,7 +16504,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: ce5f1106b39dc054ab4cf4e4b89915a4, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 4846160e6b62f9f46890f17941282b78, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 15
           m_FloatArgument: 0
@@ -16636,7 +16636,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 06efe62f591478a4f80a2de4174cb02d, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 08daaa039576bc94180d6ce227c8af5e, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 13
           m_FloatArgument: 0
@@ -17196,7 +17196,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 3ce88f79b1051d5448f364b502e18c71, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: c8c5dc967f81e0b429efe67f044debdb, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 36
           m_FloatArgument: 0
@@ -17373,7 +17373,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: a5cc9b36a3e35034ca065c30031bd74a, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: ed6bc26c306e8584dbeba1e1683284a0, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 11
           m_FloatArgument: 0
@@ -18410,7 +18410,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 7092a2bc0b1d3ec419536be142eada0d, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 8942b6a5ef4bec34bbbb4ad5d726f175, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 28
           m_FloatArgument: 0
@@ -18912,7 +18912,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 9512348761091b046a85e735b5b606a0, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 2330e168d09da9b4487390599ae05acb, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 25
           m_FloatArgument: 0
@@ -19101,7 +19101,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 5a44f7cf1f05a2144acd5f267a7be485, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: ce5f1106b39dc054ab4cf4e4b89915a4, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 2
           m_FloatArgument: 0
@@ -19176,7 +19176,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: ffb7c857703d7ff4b8cea316c2c3aa7e, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: c726e56062f5a394b8b4b64813b8b2b0, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 21
           m_FloatArgument: 0
@@ -19308,7 +19308,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f945a0095d25c444ab4cb1d812cfb3d6, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: c5307c591dd81084bab77049a52d7755, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 26
           m_FloatArgument: 0
@@ -19493,7 +19493,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 20688dbc8f4ebe0428aeef06dda8c54f, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 825d1b5ab7bac0149b6a0ef301acbcdd, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 7
           m_FloatArgument: 0

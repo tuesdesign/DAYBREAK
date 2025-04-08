@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47787051ef07e09489ade3a0ad48f1cf, type: 3}
   m_Name: Note20
   m_EditorClassIdentifier: 
-  lorePieceName: 
+  lorePieceName: Slipping
   loreNum: 20
-  loreInformation: "\u25CF Climate: Frozen tundra, with year-round sub-zero temperatures. 
-    \u25CF Land-to-Ocean Ratio: 90:10 (a single, sprawling supercontinent with minimal
-    liquid  water).  \u25CF Notable Features: Massive auroras that span the entire
-    planet\u2019s sky and \u201Cice blooms,\u201D  crystalline growths that appear
-    alive."
-  image: {fileID: 0}
+  loreInformation: "Day number\u2026 what does it matter? Time is a lie here. We
+    don\u2019t get to move forward. We don\u2019t get to heal. We just get to endure.
+    \r\n\nMy daughter still cries in her sleep. She doesn\u2019t remember why. Just
+    that something was lost. But how do you explain grief when the moment that caused
+    it no longer exists? \r\n\nI go to the same job every \"day.\" I repair things
+    that will break again. I rebuild things that will be destroyed again. I watch
+    the same people walk the same streets, have the same conversations, make the
+    same choices. But sometimes\u2014just sometimes\u2014they do something different.
+    A word out of place. A hesitation. A look in their eyes that says, wait, haven\u2019t
+    we done this before?\n \r\nWe aren\u2019t meant to remember, but we do. Just
+    enough to suffer. "
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0

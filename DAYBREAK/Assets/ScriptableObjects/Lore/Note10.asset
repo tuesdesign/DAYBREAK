@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lorePieceName: 
   loreNum: 10
-  loreInformation: 'The Power Structure of OSOC: The Directorates  Each department
-    is led by a Director, appointed by the Council. These Directors form the  Executive
-    Directorate, which executes day-to-day operations and reports directly to the 
-    Council. Directors wield significant autonomy but are subject to Council review
-    during crises.'
-  image: {fileID: 0}
+  loreInformation: "I confronted Officer Rann about it today. She said she didn\u2019t
+    know what I was talking about. That\u2019s a lie. I saw it in her eyes\u2014the
+    flicker of hesitation. The fear. She knows something, but she\u2019s too scared
+    to admit it. FOREFATHER operatives don\u2019t just ignore anomalies. We document.
+    We control. But this? This is different. They want this buried. \n\r\nI\u2019m
+    leaving tonight. Rann won\u2019t stop me. If she does\u2026 if she tries\u2026
+    I hope she understands. I hope she sees what I saw. \n\r\nIf you find this, burn
+    it. If you don\u2019t, make sure someone else does. We can\u2019t let them know
+    we remember."
+  image: {fileID: 8672180112975323454, guid: 336041696d85d4541bd07e21b80c0878, type: 3}
   unlocked: 0
