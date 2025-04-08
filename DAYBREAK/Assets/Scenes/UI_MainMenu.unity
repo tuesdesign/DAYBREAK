@@ -1690,6 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 0
 --- !u!114 &160733721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3687,6 +3688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 1
 --- !u!114 &394547280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4231,6 +4233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 0
 --- !u!1 &502838877
 GameObject:
   m_ObjectHideFlags: 0
@@ -4524,6 +4527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 0
 --- !u!1 &515754906
 GameObject:
   m_ObjectHideFlags: 0
@@ -4652,6 +4656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 1
 --- !u!114 &520595487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6034,6 +6039,51 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &629797057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 629797058}
+  - component: {fileID: 629797059}
+  m_Layer: 0
+  m_Name: SoundMixerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &629797058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629797057}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1408170993}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &629797059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629797057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c500eb1e45400524f957d65626a16f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
 --- !u!1 &647210457
 GameObject:
   m_ObjectHideFlags: 0
@@ -6525,6 +6575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 0
 --- !u!1 &721280223
 GameObject:
   m_ObjectHideFlags: 0
@@ -7506,6 +7557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 0
 --- !u!114 &861791913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8101,6 +8153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 1
 --- !u!114 &882831439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8523,6 +8576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 0
 --- !u!114 &969543525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9419,6 +9473,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 629797059}
+        m_TargetAssemblyTypeName: Audio.SoundMixerManager, Assembly-CSharp
+        m_MethodName: ToggleMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1044730422
 GameObject:
   m_ObjectHideFlags: 0
@@ -9472,6 +9538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 1
 --- !u!114 &1044730425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10888,6 +10955,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 629797059}
+        m_TargetAssemblyTypeName: Audio.SoundMixerManager, Assembly-CSharp
+        m_MethodName: ToggleSoundFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1231398504
 GameObject:
   m_ObjectHideFlags: 0
@@ -11384,7 +11463,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 1631564931}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -11398,6 +11477,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1270607761}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 629797059}
+        m_TargetAssemblyTypeName: Audio.SoundMixerManager, Assembly-CSharp
+        m_MethodName: SetSoundFXVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11561,6 +11652,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 837023590482454740, guid: 90010cb9f5e0347459e676dc44f3ef03, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -2273146209696275378, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
     - target: {fileID: 3000273819286138046, guid: 90010cb9f5e0347459e676dc44f3ef03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11604,6 +11699,10 @@ PrefabInstance:
     - target: {fileID: 4035931216541766681, guid: 90010cb9f5e0347459e676dc44f3ef03, type: 3}
       propertyPath: m_Name
       value: Main Menu Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035931216541766681, guid: 90010cb9f5e0347459e676dc44f3ef03, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11696,7 +11795,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 919003550}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -11710,6 +11809,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1305849400}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 629797059}
+        m_TargetAssemblyTypeName: Audio.SoundMixerManager, Assembly-CSharp
+        m_MethodName: SetMusicVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12099,6 +12210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 0
 --- !u!1 &1336630759
 GameObject:
   m_ObjectHideFlags: 0
@@ -12887,6 +12999,8 @@ Transform:
   - {fileID: 1860028878}
   - {fileID: 324167867}
   - {fileID: 1102724092}
+  - {fileID: 2058169286}
+  - {fileID: 629797058}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1469022124
@@ -13751,6 +13865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 0
 --- !u!114 &1561841364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15001,6 +15116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 0
 --- !u!1 &1645939399
 GameObject:
   m_ObjectHideFlags: 0
@@ -16038,6 +16154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 0
 --- !u!1 &1732917962
 GameObject:
   m_ObjectHideFlags: 0
@@ -16713,7 +16830,7 @@ GameObject:
   - component: {fileID: 1750954389}
   - component: {fileID: 1750954388}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: JsonTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16977,6 +17094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f1975c515e1f445bd9cf4bb014d192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCharacterButton: 1
 --- !u!114 &1822241272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17545,7 +17663,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forcedExit: 0
-  isMobile: 0
+  isMobile: 1
+  hoverSoundClip: {fileID: 8300000, guid: eb73624a2aa4c2f4a979c64bbdb2fec4, type: 3}
+  smallSelectSoundClip: {fileID: 8300000, guid: 481a121deb6ac5444aa666b27b1764ab, type: 3}
+  largeSelectSoundClip: {fileID: 8300000, guid: 28a01617a0ad27840931274295c17b07, type: 3}
 --- !u!114 &1870241718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18976,6 +19097,51 @@ RectTransform:
   m_AnchoredPosition: {x: 700.075, y: -263}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2058169285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2058169286}
+  - component: {fileID: 2058169287}
+  m_Layer: 0
+  m_Name: SoundFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2058169286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058169285}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1408170993}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2058169287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058169285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d917bdb665e3c40b0efde6c5004710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFXObject: {fileID: 8261830951446003568, guid: 050cae49a1ec5374392768c3b30cad23, type: 3}
 --- !u!1 &2062808237
 GameObject:
   m_ObjectHideFlags: 0
