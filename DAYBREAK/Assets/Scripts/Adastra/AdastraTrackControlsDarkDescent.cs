@@ -44,7 +44,7 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
     public bool PlayerMoving = false;
     public int BulletsOnScreen = 0;
 
-    public float MASTER_VOLUME = 1f;
+    //public float MASTER_VOLUME = 1f;
     
     public static AdastraTrackControlsDarkDescent Instance { get; private set; }
 
@@ -69,7 +69,7 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
         else
             Instance = this;
         
-        MASTER_VOLUME = PlayerPrefs.GetFloat("ToggleMusic");
+        //MASTER_VOLUME = PlayerPrefs.GetFloat("ToggleMusic");
     }
     
     public AudioSource FindAudioSource(string name)
@@ -239,17 +239,17 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
             yield return null;
         }
 
-            GuitarSource.pitch = 1;
-            StringPulseSource.pitch = 1;
-            CowbellSource.pitch = 1;
-            RideSource.pitch = 1;
-            BassSource.pitch = 1;
-            ChoirSource.pitch = 1;
-            FranticPluckSource.pitch = 1;
-            GlitchOrganSource.pitch = 1;
-            IntroSource.pitch = 1;
-            LeadSource.pitch = 1;
-            MainOrganSource.pitch = 1;
+        GuitarSource.pitch = 1;
+        StringPulseSource.pitch = 1;
+        CowbellSource.pitch = 1;
+        RideSource.pitch = 1;
+        BassSource.pitch = 1;
+        ChoirSource.pitch = 1;
+        FranticPluckSource.pitch = 1;
+        GlitchOrganSource.pitch = 1;
+        IntroSource.pitch = 1;
+        LeadSource.pitch = 1;
+        MainOrganSource.pitch = 1;
 
         if (DEBUG) { Debug.Log("<color=teal>ADA: </color><color=green>Effect 'slowdown' END</color>"); } // DEBUG message
     }
@@ -259,37 +259,37 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
         BulletsOnScreen = GameObject.FindGameObjectsWithTag("Bullet").Length;
 
        // Guitar (Add 0.1 for every Level, clamp at 0-1)
-       GuitarVolume = Mathf.Clamp((0.1f * Level), 0, 1) * MASTER_VOLUME;
+       GuitarVolume = Mathf.Clamp((0.1f * Level), 0, 1);
 
         // String Pulse (1 minus Player health percentage, clamp at 0-1)
-        StringPulseVolume = Mathf.Clamp(1 - PlayerHealth, 0, 1) * MASTER_VOLUME;
+        StringPulseVolume = Mathf.Clamp(1 - PlayerHealth, 0, 1);
 
         // Cowbell (0 if stationary, 1 if moving)
-        CowbellVolume = (PlayerMoving ? 1 : 0) * MASTER_VOLUME;
+        CowbellVolume = (PlayerMoving ? 1 : 0);
 
         // Ride (Reduce if stationary, increase if moving)
-        RideVolume = (PlayerMoving ? Mathf.Min(1, RideVolume + 0.001f) : Mathf.Max(0, RideVolume - 0.001f)) * MASTER_VOLUME;
+        RideVolume = PlayerMoving ? Mathf.Min(1, RideVolume + 0.001f) : Mathf.Max(0, RideVolume - 0.001f);
 
         // Bass (Keep at 1)
-        BassVolume = 1 * MASTER_VOLUME;
+        BassVolume = 1;
 
         // Choir (Increase if stationary, reduce if moving (slowly))
-        ChoirVolume = PlayerMoving ? Mathf.Max(0, ChoirVolume - 0.001f) : Mathf.Min(1, ChoirVolume + 0.001f) * MASTER_VOLUME;
+        ChoirVolume = PlayerMoving ? Mathf.Max(0, ChoirVolume - 0.001f) : Mathf.Min(1, ChoirVolume + 0.001f);
 
         // Frantic Pluck (Keep at 1)
-        FranticPluckVolume = 1 * MASTER_VOLUME;
+        FranticPluckVolume = 1;
 
         // Glitch Organ (increase by 0.2 for every bullet on screen, clamp at 0-1)
-        GlitchOrganVolume = Mathf.Clamp(0.2f * BulletsOnScreen, 0, 1) * MASTER_VOLUME;
+        GlitchOrganVolume = Mathf.Clamp(0.2f * BulletsOnScreen, 0, 1);
 
         // Intro Drums (keep at 1)
-        IntroVolume = 1 * MASTER_VOLUME;
+        IntroVolume = 1;
 
         // Lead Pluck (Keep at 1)
-        LeadVolume = 1 * MASTER_VOLUME;
+        LeadVolume = 1;
 
         // Main Organ (increase by 0.1 each bullet, clamp at 0-1)
-        MainOrganVolume = Mathf.Clamp(0.1f * BulletsOnScreen, 0, 1) * MASTER_VOLUME;
+        MainOrganVolume = Mathf.Clamp(0.1f * BulletsOnScreen, 0, 1);
     }
 
     public void SetLevel(int level)
@@ -307,10 +307,5 @@ public class AdastraTrackControlsDarkDescent : MonoBehaviour
     public void SetBulletsOnScreen(int bullets)
     {
         BulletsOnScreen = bullets;
-    }
-
-    public void SetMasterVolume(float volume)
-    {
-        MASTER_VOLUME = volume;
     }
 }

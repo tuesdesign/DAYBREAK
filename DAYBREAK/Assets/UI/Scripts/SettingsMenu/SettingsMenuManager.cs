@@ -26,12 +26,6 @@ namespace UI.Scripts.SettingsMenu
         {
             PlayerPrefs.SetFloat("ToggleMusic", slider.value);
             
-            if (AdastraTrackControlsBloodMoon.Instance != null)
-                AdastraTrackControlsBloodMoon.Instance.MASTER_VOLUME = slider.value;
-        
-            if (AdastraTrackControlsDarkDescent.Instance != null) 
-                AdastraTrackControlsDarkDescent.Instance.MASTER_VOLUME = slider.value;
-            
             PlayerPrefs.Save();
         }
 
@@ -41,23 +35,11 @@ namespace UI.Scripts.SettingsMenu
             {
                 PlayerPrefs.SetFloat("ToggleMusic", 0.0001f);
                 audioMixer.SetFloat("MusicVolume", -80);
-                
-                if (AdastraTrackControlsBloodMoon.Instance != null)
-                    AdastraTrackControlsBloodMoon.Instance.MASTER_VOLUME = 0;
-        
-                if (AdastraTrackControlsDarkDescent.Instance != null) 
-                    AdastraTrackControlsDarkDescent.Instance.MASTER_VOLUME = 0;
             }
             else
             {
                 PlayerPrefs.SetFloat("ToggleMusic", 1);
                 audioMixer.SetFloat("MusicVolume", 0);
-                
-                if (AdastraTrackControlsBloodMoon.Instance != null)
-                    AdastraTrackControlsBloodMoon.Instance.MASTER_VOLUME = 1;
-        
-                if (AdastraTrackControlsDarkDescent.Instance != null) 
-                    AdastraTrackControlsDarkDescent.Instance.MASTER_VOLUME = 1;
             }
             
             PlayerPrefs.Save();

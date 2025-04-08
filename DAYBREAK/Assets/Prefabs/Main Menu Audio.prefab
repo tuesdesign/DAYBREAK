@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660bfa4e6ed020b40852d545937d7165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Track: {fileID: 8300000, guid: 72b3a331e44a2c341839a1dd35352726, type: 3}
-  Source: {fileID: 837023590482454740}
-  Volume: 1
+  track: {fileID: 8300000, guid: 72b3a331e44a2c341839a1dd35352726, type: 3}
+  source: {fileID: 837023590482454740}
+  isEnd: 0
 --- !u!82 &837023590482454740
 AudioSource:
   m_ObjectHideFlags: 0
