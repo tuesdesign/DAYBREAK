@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2469209372846459907}
   - component: {fileID: 7888092878762262700}
   - component: {fileID: 3240096709978712682}
+  - component: {fileID: 3690876336143669292}
   m_Layer: 0
   m_Name: Rock 1
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,3 +106,17 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.71007
   m_Center: {x: 0.15887901, y: 0.553353, z: 0.14434399}
+--- !u!114 &3690876336143669292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224140430642841983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878a4178bb9fb994ca056ad373cdfe2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  drep: {fileID: 7734341284071083086, guid: 16022caa23ee7ff4da17bfe618874d4d, type: 3}

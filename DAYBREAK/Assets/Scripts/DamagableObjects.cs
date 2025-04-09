@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamagableObjects : MonoBehaviour
 {
     [SerializeField] float health = 2;
+    [SerializeField] GameObject drep;
 
 
     public void TakeDamage(float amount)
@@ -18,6 +19,11 @@ public class DamagableObjects : MonoBehaviour
 
     void DestroySelf()
     {
+        if (drep != null)
+        {
+            GameObject d = Instantiate(drep, this.transform, true);
+        }
         Destroy(gameObject);
+        
     }
 }

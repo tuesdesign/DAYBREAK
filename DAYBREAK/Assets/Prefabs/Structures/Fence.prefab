@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 85e1a4808c4ff7c4ea3538b2650bfff0, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 3855073655484056057, guid: 85e1a4808c4ff7c4ea3538b2650bfff0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -75,6 +79,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 85e1a4808c4ff7c4ea3538b2650bfff0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3138391655778951491}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 85e1a4808c4ff7c4ea3538b2650bfff0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4002591820693199414}
   m_SourcePrefab: {fileID: 100100000, guid: 85e1a4808c4ff7c4ea3538b2650bfff0, type: 3}
 --- !u!1 &2819489529391377049 stripped
 GameObject:
@@ -102,3 +109,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 4, z: 6}
   m_Center: {x: 0, y: 2, z: -3}
+--- !u!114 &4002591820693199414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819489529391377049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878a4178bb9fb994ca056ad373cdfe2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  drep: {fileID: 9042864522101330659, guid: 4641b1bb49fe51447934438b2ad211d8, type: 3}
