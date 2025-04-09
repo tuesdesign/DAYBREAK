@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  drep: {fileID: 7734341284071083086, guid: 16022caa23ee7ff4da17bfe618874d4d, type: 3}
+  drop: {fileID: 9042864522101330659, guid: 4641b1bb49fe51447934438b2ad211d8, type: 3}

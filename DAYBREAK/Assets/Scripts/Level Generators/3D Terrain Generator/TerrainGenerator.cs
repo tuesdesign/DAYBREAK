@@ -98,7 +98,7 @@ public class TerrainGenerator : MonoBehaviour
         PlaceFoliage(terrainDataObject);
 
         Transform[] children = gameObject.GetComponentsInChildren<Transform>();
-        foreach (Transform child in children) child.tag = "Terrain";
+        //foreach (Transform child in children) child.tag = "Terrain";
     }
 
     private bool GenerationPreChecks()

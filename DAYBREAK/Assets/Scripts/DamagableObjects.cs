@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DamagableObjects : MonoBehaviour
 {
     [SerializeField] float health = 2;
-    [SerializeField] GameObject drep;
+    [SerializeField] GameObject drop;
 
 
     public void TakeDamage(float amount)
@@ -19,9 +20,9 @@ public class DamagableObjects : MonoBehaviour
 
     void DestroySelf()
     {
-        if (drep != null)
+        if (drop != null)
         {
-            GameObject d = Instantiate(drep, this.transform, true);
+            Instantiate(drop, this.transform.position, Quaternion.identity);
         }
         Destroy(gameObject);
         
