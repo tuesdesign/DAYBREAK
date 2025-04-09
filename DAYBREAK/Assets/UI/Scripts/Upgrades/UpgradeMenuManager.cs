@@ -60,8 +60,10 @@ namespace UI.Scripts.Upgrades
             
             _flashEffect.flash = true;
             _appliedUpgrade = false;
-            
-            MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.UpgradeState);
+
+
+            if (MenuStateManager.Instance.CurrentState != MenuStateManager.Instance.WinLossState)
+                MenuStateManager.Instance.SetMenuState(MenuStateManager.Instance.UpgradeState);
             
             if (AdastraTrackControlsBloodMoon.Instance != null)
                 AdastraTrackControlsBloodMoon.Instance.WindDown();
