@@ -37,5 +37,5 @@ MonoBehaviour:
   paths:
   - {fileID: 11400000, guid: dbc5f171042b3914b87f17da97c30f2a, type: 2}
   foliage:
-  - {fileID: 11400000, guid: 5814bb23cbbb0cb499d31b6f0ca2f770, type: 2}
+  - {fileID: 11400000, guid: 41179ff9dd18b6144a8e5ec82bae8635, type: 2}
   - {fileID: 11400000, guid: e0b2fc07066ab764eace9784183331df, type: 2}

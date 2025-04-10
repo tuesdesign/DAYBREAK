@@ -48,7 +48,9 @@ public class TG_Foliage : ScriptableObject
         GameObject instance = Instantiate(prefab, pos, rotation, parent);
         instance.transform.localScale = Vector3.one * Random.Range(minScale, maxScale);
         instance.transform.localPosition += (Vector3.up * instance.transform.localScale.y / 2) - Vector3.up * heightOffset;
-        instance.GetComponent<Renderer>().material = materials[Random.Range(0, materials.Length)];
+
+        if (instance.TryGetComponent(out SpriteRenderer spriteRenderer)) spriteRenderer.color = materials[Random.Range(0, materials.Length)].color;
+        else if (instance.TryGetComponent(out Renderer renderer)) renderer.material = materials[Random.Range(0, materials.Length)];
     }
 
     public enum FoliageRotation
