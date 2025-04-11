@@ -123,7 +123,7 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<DamagableObjects>().TakeDamage(damage);
 
-            switch (collision.gameObject.GetComponent<DamagableObjects>().damagableType)
+            /*switch (collision.gameObject.GetComponent<DamagableObjects>().damagableType)
             {
                 case DamagableType.Metal:
                     SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.destructionMetalSound, transform, 1f);
@@ -138,7 +138,7 @@ public class Bullet : MonoBehaviour
                     break;
                 default:
                     break;
-            }
+            }*/
         }
         
         // Destroys bullets if they hit a wall
