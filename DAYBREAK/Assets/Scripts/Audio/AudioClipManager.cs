@@ -16,6 +16,7 @@ namespace Audio
         [SerializeField] public AudioClip freezeSfx;
         [SerializeField] public AudioClip slowSfx;
         [SerializeField] public AudioClip poisonSfx;
+        [SerializeField] public AudioClip confuseSfx;
         [SerializeField] public AudioClip shieldUpSfx;
         [SerializeField] public AudioClip shieldDownSfx;
         
@@ -24,6 +25,10 @@ namespace Audio
         [SerializeField] public AudioClip reloadStartSound;
         [SerializeField] public AudioClip reloadSound;
         [SerializeField] public AudioClip reloadStopSound;
+        
+        [Header("Destruction SFX")]
+        [SerializeField] public AudioClip destructionWoodSound;
+        [SerializeField] public AudioClip destructionMetalSound;
         
         public static AudioClipManager Instance { get; private set; }
     

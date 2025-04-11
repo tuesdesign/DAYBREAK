@@ -310,8 +310,9 @@ MonoBehaviour:
   pickupSound: {fileID: 8300000, guid: e1f4f3ac7156696459372d81faaf519e, type: 3}
   burnSfx: {fileID: 8300000, guid: d0b5fa9f5c30c4849a7163238f8e2810, type: 3}
   freezeSfx: {fileID: 8300000, guid: d5213964f87d49f46b783ee38a770723, type: 3}
-  slowSfx: {fileID: 0}
-  poisonSfx: {fileID: 0}
+  slowSfx: {fileID: 8300000, guid: cd2ae930c0deb004c9e4d8be2a84ad88, type: 3}
+  poisonSfx: {fileID: 8300000, guid: da7a3775d88d14b4ca30a57247771d51, type: 3}
+  confuseSfx: {fileID: 8300000, guid: 7396e7b61f7b76545810f3479d94acf2, type: 3}
   shieldUpSfx: {fileID: 8300000, guid: c2ae898f782deb148bd41da2dcb09820, type: 3}
   shieldDownSfx: {fileID: 8300000, guid: cb578750b33b02f4f89f4ff0ab9cb11d, type: 3}
   shootSounds:
@@ -323,6 +324,8 @@ MonoBehaviour:
   reloadStartSound: {fileID: 8300000, guid: a1e9e3ea33d4164488718963a275cd34, type: 3}
   reloadSound: {fileID: 8300000, guid: 07ed6a52a2cbaa14891200721e16a301, type: 3}
   reloadStopSound: {fileID: 8300000, guid: 43674f1b1507ff6468a301e55b9f35c7, type: 3}
+  destructionWoodSound: {fileID: 8300000, guid: 62e430faeee2c42498aee56bdd18d311, type: 3}
+  destructionMetalSound: {fileID: 8300000, guid: 3197522856532c64fab2e65b7a48b5df, type: 3}
 --- !u!4 &21376918
 Transform:
   m_ObjectHideFlags: 0

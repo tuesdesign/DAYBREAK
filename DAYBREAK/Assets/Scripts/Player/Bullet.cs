@@ -87,6 +87,7 @@ public class Bullet : MonoBehaviour
             if (canPoision)
             {
                 enemy.TickDamageClaculation(1);
+                SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.poisonSfx, transform, 1f);
             }
 
             if (CanExplode)
@@ -104,7 +105,7 @@ public class Bullet : MonoBehaviour
             if (canSlow)
             {
                 enemy.TriggerSlow();
-
+                SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.slowSfx, transform, 1f);
             }
 
             if (peirceAmount <= 0)
@@ -121,6 +122,23 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Destructible")
         {
             collision.gameObject.GetComponent<DamagableObjects>().TakeDamage(damage);
+
+            switch (collision.gameObject.GetComponent<DamagableObjects>().damagableType)
+            {
+                case DamagableType.Metal:
+                    SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.destructionMetalSound, transform, 1f);
+                    Debug.Log(collision.gameObject.GetComponent<DamagableObjects>().damagableType);
+                    break;
+                case DamagableType.Wood:
+                    SoundFXManager.Instance.PlaySoundFXClip(AudioClipManager.Instance.destructionWoodSound, transform, 1f);
+                    Debug.Log(collision.gameObject.GetComponent<DamagableObjects>().damagableType);
+                    break;
+                case DamagableType.Rock:
+                    Debug.Log(collision.gameObject.GetComponent<DamagableObjects>().damagableType);
+                    break;
+                default:
+                    break;
+            }
         }
         
         // Destroys bullets if they hit a wall

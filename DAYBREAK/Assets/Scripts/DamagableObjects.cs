@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+public enum DamagableType
+{
+    Wood,
+    Metal,
+    Rock
+}
+
 public class DamagableObjects : MonoBehaviour
 {
     [SerializeField] float health = 2;
     [SerializeField] GameObject drop;
 
+    [SerializeField] public DamagableType damagableType;
 
     public void TakeDamage(float amount)
     {
