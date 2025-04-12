@@ -127,11 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySO: {fileID: 11400000, guid: 3e39e7af02b352f4caf789268304dabc, type: 2}
   floatingDamageNum: {fileID: 2699663615665350695, guid: 936fae8e5814dbd47a0e412ea61e55b7, type: 3}
-  hurtSounds:
-  - {fileID: 8300000, guid: d397d227199083c478fc948b4f771426, type: 3}
-  - {fileID: 8300000, guid: 9251b01af7728d649a48d222a7fa61cd, type: 3}
-  - {fileID: 8300000, guid: a60b7e183a0e074489628110eac4a2ad, type: 3}
-  - {fileID: 8300000, guid: c7e030577ec10e04885bf3528e8520ab, type: 3}
   timeBetweenTicks: 1
   onFire: 0
   fireVFX: {fileID: 0}

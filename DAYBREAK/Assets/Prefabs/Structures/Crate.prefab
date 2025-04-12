@@ -122,4 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  drep: {fileID: 843171442062548451, guid: 3bf399f821b4f9c40862c41310c06aaa, type: 3}
+  drop: {fileID: 2111892433035516840, guid: 5516d7da66d7f6c489022bbcd5019c85, type: 3}
+  damagableType: 0
