@@ -10,6 +10,7 @@ public class EnemyBase : MonoBehaviour
 {
     [SerializeField] public EnemySO enemySO;
     Rigidbody _rb;
+    CapsuleCollider _capsuleCollider;
     Transform playerPosition;
 
     float curHealth;
@@ -57,6 +58,8 @@ public class EnemyBase : MonoBehaviour
         curdamage = enemySO.damage;
         
         _pauseManager = FindObjectOfType(typeof(PauseMenuManager)) as PauseMenuManager;
+
+        _capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -80,7 +83,7 @@ public class EnemyBase : MonoBehaviour
 
     void MoveTowardsPlayer()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f, LayerMask.GetMask("Terrain")))
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f * _capsuleCollider.height, LayerMask.GetMask("Terrain")))
         {
             // Get the direction to the player, disregard the y axis
             Vector3 direction = movePos = new Vector3(playerTrans.position.x - transform.position.x, 0, playerTrans.position.z - transform.position.z).normalized;
@@ -94,7 +97,7 @@ public class EnemyBase : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position + Vector3.up * 100, Vector3.down, out hit, 200f, LayerMask.GetMask("Terrain")))
         {
-            _rb.position = hit.point + Vector3.up;
+            _rb.position = hit.point + Vector3.up * _capsuleCollider.height;
         }
     }
 

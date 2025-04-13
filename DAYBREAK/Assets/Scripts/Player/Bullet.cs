@@ -72,6 +72,9 @@ public class Bullet : MonoBehaviour
             We should generaly 'destroy' the bullet when it hits any object. And only apply damage when it hits an enemy.
 
             */
+
+            SoundFXManager.Instance.PlayRandomSoundFXClip(AudioClipManager.Instance.hurtSounds, collision.transform, 1f);
+
             GameObject hVFX = Instantiate(hitEffect, transform.position, Quaternion.identity);
             Destroy(hVFX,0.5f);
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
