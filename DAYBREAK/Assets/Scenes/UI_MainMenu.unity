@@ -2750,7 +2750,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 089d8fbe3309c67419898b92b8b3f6f6, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 88ce7da840a8a874b83a635f781b7a57, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 1
           m_FloatArgument: 0
@@ -11365,7 +11365,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 9e180ea76b7c81f44a2d7a9ba0e27453, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: fb274090645fc264bb8e37f2db6d1066, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 4
           m_FloatArgument: 0
@@ -12537,7 +12537,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: c70165d0fa91cfd41bf9ace4145d3637, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 8ee72f1179cae164c874e657e9a088b1, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 5
           m_FloatArgument: 0
@@ -15270,7 +15270,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d417e7bb886b3104ba9823cd7eae8881, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: c72959ef1e4d17f4181ee54de005cee7, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 3
           m_FloatArgument: 0
@@ -19314,7 +19314,7 @@ MonoBehaviour:
         m_MethodName: OpenNoteText
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: ce5f1106b39dc054ab4cf4e4b89915a4, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 5a44f7cf1f05a2144acd5f267a7be485, type: 2}
           m_ObjectArgumentAssemblyTypeName: LorePieceSO, Assembly-CSharp
           m_IntArgument: 2
           m_FloatArgument: 0
