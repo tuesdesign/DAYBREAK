@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ namespace UI.Scripts.SettingsMenu
     public class SettingsMenuManager : MonoBehaviour
     {
         [SerializeField] private AudioMixer audioMixer;
+        [SerializeField] private SoundMixerManager soundMixerManager;
         
         private PlayerShooting _playerShooting;
         
